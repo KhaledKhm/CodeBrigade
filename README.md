@@ -1,4 +1,4 @@
-# **PiDev Dekstop, Web and Mobile Apps encadré par @marwadoui - Maroua Douiri**
+# **PiDev Project encadré par @marwadoui - Maroua Douiri**
 ## CodeBrigade
 - @KhaledKhm - Khaled Maammar
 - @houcem24 - Houssem Ouerdiane
