@@ -12,23 +12,23 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="{{asset('assets/img/favicon.png" rel="icon"')}}>
+    <link href="{{asset('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     {% block css %}
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
-    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/vendor/icofont/icofont.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/vendor/venobox/venobox.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/vendor/aos/aos.css')}}" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
     {% endblock %}
     <!-- =======================================================
     * Template Name: iPortfolio - v1.5.1
@@ -39,11 +39,12 @@
 </head>
 
 <body>
-{% block body %}
+
 <!-- ======= Mobile nav toggle button ======= -->
 <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
 
 <!-- ======= Header ======= -->
+    {% block header %}
 <header id="header">
     <div class="d-flex flex-column">
 
@@ -60,12 +61,12 @@
 
         <nav class="nav-menu">
             <ul>
-                <li class="active"><a href="index.html"><i class="bx bx-home"></i> <span>Home</span></a></li>
-                <li><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
-                <li><a href="#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-                <li><a href="#portfolio"><i class="bx bx-book-content"></i> Portfolio</a></li>
-                <li><a href="#services"><i class="bx bx-server"></i> Services</a></li>
-                <li><a href="#contact"><i class="bx bx-envelope"></i> Contact</a></li>
+            {% block menu1 %}    <li class="active"><a href="index.html"><i class="bx bx-home"></i> <span>Home</span></a></li> {% endblock %}
+            {% block menu2 %}    <li><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li> {% endblock %}
+            {% block menu3 %}        <li><a href="#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li> {% endblock %}
+            {% block menu4 %}     <li><a href="#portfolio"><i class="bx bx-book-content"></i> Portfolio</a></li> {% endblock %}
+            {% block menu5 %}         <li><a href="#services"><i class="bx bx-server"></i> Services</a></li> {% endblock %}
+            {% block menu6 %}     <li><a href="#contact"><i class="bx bx-envelope"></i> Contact</a></li> {% endblock %}
 
             </ul>
         </nav><!-- .nav-menu -->
@@ -73,7 +74,7 @@
 
     </div>
 </header><!-- End Header -->
-
+{% endblock %}
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
     <div class="hero-container" data-aos="fade-in">
@@ -83,6 +84,7 @@
 
 <main id="main">
 
+    {% block about %}
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
         <div class="container">
@@ -93,7 +95,7 @@
 
             <div class="row">
                 <div class="col-lg-4" data-aos="fade-right">
-                    <img src="assets/img/profile-img.jpg" class="img-fluid" alt="">
+                    <img src="{{asset('assets/img/profile-img.jpg')}}" class="img-fluid" alt="">
                 </div>
                 <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
 
@@ -114,8 +116,9 @@
 
         </div>
     </section><!-- End About Section -->
-
+{% endblock %}
     <!-- ======= Facts Section ======= -->
+    {% block facts %}
     <section id="facts" class="facts">
         <div class="container">
 
@@ -159,8 +162,9 @@
 
         </div>
     </section><!-- End Facts Section -->
-
+{% endblock %}
     <!-- ======= Skills Section ======= -->
+    {% block skills %}
     <section id="skills" class="skills section-bg">
         <div class="container">
 
@@ -188,8 +192,9 @@
             </div>
         </div>
     </section><!-- End Skills Section -->
-
+{% endblock %}
     <!-- ======= Resume Section ======= -->
+    {% block resume %}
     <section id="resume" class="resume">
         <div class="container">
 
@@ -213,8 +218,9 @@
 
         </div>
     </section><!-- End Resume Section -->
-
+{% endblock %}
     <!-- ======= Portfolio Section ======= -->
+    {% block portfolio %}
     <section id="portfolio" class="portfolio section-bg">
         <div class="container">
 
@@ -320,8 +326,9 @@
 
         </div>
     </section><!-- End Portfolio Section -->
-
+{% endblock %}
     <!-- ======= Services Section ======= -->
+    {% block services %}
     <section id="services" class="services">
         <div class="container">
 
@@ -339,8 +346,9 @@
 
         </div>
     </section><!-- End Services Section -->
-
+{% endblock %}
     <!-- ======= Testimonials Section ======= -->
+    {% block testi %}
     <section id="testimonials" class="testimonials section-bg">
         <div class="container">
 
@@ -353,8 +361,9 @@
 
         </div>
     </section><!-- End Testimonials Section -->
-
+{% endblock %}
     <!-- ======= Contact Section ======= -->
+    {% block contact %}
     <section id="contact" class="contact">
         <div class="container">
 
@@ -398,10 +407,11 @@
             </div>
         </div>
     </section><!-- End Contact Section -->
-
+{% endblock %}
 </main><!-- End #main -->
 
 <!-- ======= Footer ======= -->
+{% block footer %}
 <footer id="footer">
     <div class="container">
         <div class="copyright">
@@ -415,7 +425,9 @@
             Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
         </div>
     </div>
-</footer><!-- End  Footer -->
+</footer>
+
+    <!-- End  Footer -->
 {% endblock %}
 
 {% block javascript %}
