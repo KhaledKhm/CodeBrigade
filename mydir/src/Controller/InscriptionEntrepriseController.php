@@ -1,17 +1,20 @@
-{% extends 'base.html.twig' %}
+<?php
 
-{% block menu1 %} {% endblock %}
-{% block menu2 %} {% endblock %}
-{% block menu3 %} {% endblock %}
-{% block menu4 %} {% endblock %}
-{% block menu5 %} {% endblock %}
-{% block menu6 %} {% endblock %}
+namespace App\Controller;
 
-{% block about %} {% endblock %}
-{% block skills %} {% endblock %}
-{% block facts %} {% endblock %}
-{% block resume %} {% endblock %}
-{% block portfolio %} {% endblock %}
-{% block services %} {% endblock %}
-{% block contact %} {% endblock %}
-{% block testi %} {% endblock %}
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+class InscriptionEntrepriseController extends AbstractController
+{
+    /**
+     * @Route("/inscription/entreprise", name="inscription_entreprise")
+     */
+    public function index(): Response
+    {
+        return $this->render('inscription_entreprise/index.html.twig', [
+            'controller_name' => 'InscriptionEntrepriseController',
+        ]);
+    }
+}
