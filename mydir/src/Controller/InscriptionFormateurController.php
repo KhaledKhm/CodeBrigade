@@ -33,6 +33,16 @@ class InscriptionFormateurController extends AbstractController
         $form=$this->createForm(FormateurformType::class,$utilisateur);
         $form->add('Add',SubmitType::class);
         $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+
+            $utilisateur = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($utilisateur);
+            $em->flush();
+            return $this->redirectToRoute('listInscription');
+
+
+        }
                 return $this->render('inscription_formateur/addFormateur.html.twig',[
                     'form' => $form->createView(),
         ]);
