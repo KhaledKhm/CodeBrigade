@@ -28,7 +28,7 @@ class InscriptionFormateurController extends AbstractController
     /**
      * @Route("/inscription/formateur/inscription_formateur_add", name="inscription_formateur_add")
      */
-    public function adduser(Request $request)
+    public function addFormateur(Request $request)
     { $utilisateur = new utilisateur();
         $form=$this->createForm(FormateurformType::class,$utilisateur);
         $form->add('Add',SubmitType::class);
@@ -41,7 +41,7 @@ class InscriptionFormateurController extends AbstractController
     /**
      * @Route("/inscription/formateur/inscription_formateur", name="/inscription/formateur/inscription_formateur2")
      */
-    public function readUtilisateur()
+    public function readFormateur()
     {
         $repository = $this->getDoctrine()->getRepository(Utilisateur::class);
         $utilisateur = $repository->findAll();

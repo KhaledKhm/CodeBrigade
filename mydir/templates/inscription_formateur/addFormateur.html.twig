@@ -5,7 +5,8 @@
             <div class="form-group col-md-6">
                 {{ form_start(form) }}
 
-                {{ form_row(form.username,{ 'attr':{ 'placeholder':"matricule fiscale de la societé",'class':"form-control"}}) }}
+                {{ form_row(form.id,{ 'attr':{ 'class':"form-control"}}) }}
+                {{ form_row(form.username,{ 'attr':{ 'placeholder':"username",'class':"form-control"}}) }}
                 {{ form_row(form.password,{ 'attr':{ 'class':"form-control"}}) }}
 
 
