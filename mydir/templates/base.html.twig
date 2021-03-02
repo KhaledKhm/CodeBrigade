@@ -38,6 +38,7 @@
     ======================================================== -->
 </head>
 
+
 <body>
 
 <!-- ======= Mobile nav toggle button ======= -->
@@ -76,10 +77,12 @@
 </header><!-- End Header -->
 {% endblock %}
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="hero-container" data-aos="fade-in">
 
-    </div>
+<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+
+        {% block test %}
+        {% endblock %}
+
 </section><!-- End Hero -->
 
 <main id="main">
@@ -101,6 +104,7 @@
 
                     <div class="row">
                         <div class="col-lg-6">
+
 
 
                         </div>
@@ -362,6 +366,12 @@
         </div>
     </section><!-- End Testimonials Section -->
 {% endblock %}
+    <!--=================================
+ Header -->
+    <!--=================================
+    Easiest Way to Use -->
+
+
     <!-- ======= Contact Section ======= -->
     {% block contact %}
     <section id="contact" class="contact">
@@ -451,5 +461,4 @@
 {% endblock %}
 
 </body>
-
 </html>
