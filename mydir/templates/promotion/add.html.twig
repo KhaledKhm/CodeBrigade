@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajouter Promotion</title>
+</head>
+<body>
+<h1>Créer une nouvelle Promotion</h1>
+<form action="" method="POST">
+
+    <div class="">
+        <br>
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header"><strong></strong></div>
+                <div class="card-body card-block">
+                    <div class="form-group"><label for="company" class=" form-control-label">Libelle</label><input type="text" name="Libelle" placeholder="Saisissez le titre...... " class="form-control"></div>
+                    <div class="form-group"><label for="vat" class=" form-control-label">PoucentageReduction</label><input type="text" name="PoucentageReduction" placeholder="Saisissez PoucentageReduction......" class="form-control"></div>
+
+
+                    Id evenement: <select name="a">
+
+                        {% for Evenement in class %}
+                            <option value={{ Evenement.id }}>{{ Evenement.id }}</option>
+                        {% endfor %}
+                    </select>
+
+
+                    <div class="form-actions form-group">
+                        <br>
+                        <button type="submit"class="btn btn-primary btn-sm">Ajouter Promotion </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</form>
+</body>
+</html>
+
+{% endblock %}

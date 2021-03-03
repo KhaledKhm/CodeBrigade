@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier Evenement</title>
+</head>
+<body>
+<h1>Modifier Evenement</h1>
+
+<form action="" method="POST">
+    Libelle: <input type="text" placeholder="Libelle" name="Libelle"value={{ evenement.libelle }}>
+    Description: <input type="text" placeholder="Description" name="description"value={{ evenement.description }}>
+    DateDebut: <input type="text" placeholder="DateDebut" name="DateDebut"value={{ evenement.DateDebut }}>
+    DateFin: <input type="text" placeholder="DateDebut" name="DateFin"value={{ evenement.DateFin }}>
+    PrixInscription: <input type="text" placeholder="PrixInscription" name="PrixInscription"value={{ evenement.PrixInscription }}>
+
+
+    <button type="submit" class="btn btn-primary btn-sm" >modifier Evenement</button>
+</form>
+
+</body>
+</html>
+{% endblock %}
