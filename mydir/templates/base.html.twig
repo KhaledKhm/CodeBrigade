@@ -1,464 +1,213 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
+    <!-- Basic Page Info -->
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
 
-    {% block title %}
-    <title>JobBook - index</title>
-    {% endblock %}
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="vendors/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="vendors/images/favicon-16x16.png">
 
-    <!-- Favicons -->
-    <link href="{{asset('assets/img/favicon.png" rel="icon"')}}>
-    <link href="{{asset('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
 
-    {% block css %}
-    <!-- Vendor CSS Files -->
-    <link href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/vendor/icofont/icofont.min.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/vendor/venobox/venobox.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/vendor/aos/aos.css')}}" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-    <!-- Template Main CSS File -->
-    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
-    {% endblock %}
-    <!-- =======================================================
-    * Template Name: iPortfolio - v1.5.1
-    * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
+        gtag('config', 'UA-119386393-1');
+    </script>
 </head>
-
-
 <body>
+<div class="pre-loader">
+    <div class="pre-loader-box">
+        <div class="loader-logo"><img src="vendors/images/deskapp-logo.svg" alt=""></div>
+        <div class='loader-progress' id="progress_div">
+            <div class='bar' id='bar1'></div>
+        </div>
+        <div class='percent' id='percent1'>0%</div>
+        <div class="loading-text">
+            Loading...
+        </div>
+    </div>
+</div>
 
-<!-- ======= Mobile nav toggle button ======= -->
-<button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+<div class="header">
+    <div class="header-left">
+        <div class="menu-icon dw dw-menu"></div>
+        <h1>3abi Lheader</h1>
 
-<!-- ======= Header ======= -->
-    {% block header %}
-<header id="header">
-    <div class="d-flex flex-column">
-
-        <div class="profile">
-            <h1 class="text-light"><a href="index.html">JobBook</a></h1>
-            <!--  <div class="social-links mt-3 text-center">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-              </div>-->
+    </div>
+    <div class="header-right">
+        <div class="dashboard-setting user-notification">
+            <div class="dropdown">
+                <a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
+                    <i class="dw dw-settings2"></i>
+                </a>
+            </div>
         </div>
 
-        <nav class="nav-menu">
-            <ul>
-            {% block menu1 %}    <li class="active"><a href="index.html"><i class="bx bx-home"></i> <span>Home</span></a></li> {% endblock %}
-            {% block menu2 %}    <li><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li> {% endblock %}
-            {% block menu3 %}        <li><a href="#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li> {% endblock %}
-            {% block menu4 %}     <li><a href="#portfolio"><i class="bx bx-book-content"></i> Portfolio</a></li> {% endblock %}
-            {% block menu5 %}         <li><a href="#services"><i class="bx bx-server"></i> Services</a></li> {% endblock %}
-            {% block menu6 %}     <li><a href="#contact"><i class="bx bx-envelope"></i> Contact</a></li> {% endblock %}
+
+
+    </div>
+</div>
+
+<div class="right-sidebar">
+    <div class="sidebar-title">
+        <h3 class="weight-600 font-16 text-blue">
+            Layout Settings
+            <span class="btn-block font-weight-400 font-12">User Interface Settings</span>
+        </h3>
+        <div class="close-sidebar" data-toggle="right-sidebar-close">
+            <i class="icon-copy ion-close-round"></i>
+        </div>
+    </div>
+    <div class="right-sidebar-body customscroll">
+        <div class="right-sidebar-body-content">
+            <h4 class="weight-600 font-18 pb-10">Header Background</h4>
+            <div class="sidebar-btn-group pb-30 mb-10">
+                <a href="javascript:void(0);" class="btn btn-outline-primary header-white active">White</a>
+                <a href="javascript:void(0);" class="btn btn-outline-primary header-dark">Dark</a>
+            </div>
+
+            <h4 class="weight-600 font-18 pb-10">Sidebar Background</h4>
+            <div class="sidebar-btn-group pb-30 mb-10">
+                <a href="javascript:void(0);" class="btn btn-outline-primary sidebar-light ">White</a>
+                <a href="javascript:void(0);" class="btn btn-outline-primary sidebar-dark active">Dark</a>
+            </div>
+
+            <h4 class="weight-600 font-18 pb-10">Menu Dropdown Icon</h4>
+            <div class="sidebar-radio-group pb-10 mb-10">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="sidebaricon-1" name="menu-dropdown-icon" class="custom-control-input" value="icon-style-1" checked="">
+                    <label class="custom-control-label" for="sidebaricon-1"><i class="fa fa-angle-down"></i></label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="sidebaricon-2" name="menu-dropdown-icon" class="custom-control-input" value="icon-style-2">
+                    <label class="custom-control-label" for="sidebaricon-2"><i class="ion-plus-round"></i></label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="sidebaricon-3" name="menu-dropdown-icon" class="custom-control-input" value="icon-style-3">
+                    <label class="custom-control-label" for="sidebaricon-3"><i class="fa fa-angle-double-right"></i></label>
+                </div>
+            </div>
+
+            <h4 class="weight-600 font-18 pb-10">Menu List Icon</h4>
+            <div class="sidebar-radio-group pb-30 mb-10">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="sidebariconlist-1" name="menu-list-icon" class="custom-control-input" value="icon-list-style-1" checked="">
+                    <label class="custom-control-label" for="sidebariconlist-1"><i class="ion-minus-round"></i></label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="sidebariconlist-2" name="menu-list-icon" class="custom-control-input" value="icon-list-style-2">
+                    <label class="custom-control-label" for="sidebariconlist-2"><i class="fa fa-circle-o" aria-hidden="true"></i></label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="sidebariconlist-3" name="menu-list-icon" class="custom-control-input" value="icon-list-style-3">
+                    <label class="custom-control-label" for="sidebariconlist-3"><i class="dw dw-check"></i></label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="sidebariconlist-4" name="menu-list-icon" class="custom-control-input" value="icon-list-style-4" checked="">
+                    <label class="custom-control-label" for="sidebariconlist-4"><i class="icon-copy dw dw-next-2"></i></label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="sidebariconlist-5" name="menu-list-icon" class="custom-control-input" value="icon-list-style-5">
+                    <label class="custom-control-label" for="sidebariconlist-5"><i class="dw dw-fast-forward-1"></i></label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="sidebariconlist-6" name="menu-list-icon" class="custom-control-input" value="icon-list-style-6">
+                    <label class="custom-control-label" for="sidebariconlist-6"><i class="dw dw-next"></i></label>
+                </div>
+            </div>
+
+            <div class="reset-options pt-30 text-center">
+                <button class="btn btn-danger" id="reset-settings">Reset Settings</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="left-side-bar">
+    <div class="brand-logo">
+        <a href="index.html">
+            <img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
+            <h1>JobBook</h1>
+        </a>
+        <div class="close-sidebar" data-toggle="left-sidebar-close">
+            <i class="ion-close-round"></i>
+        </div>
+    </div>
+    <div class="menu-block customscroll">
+        <div class="sidebar-menu">
+            <ul id="accordion-menu">
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="index.html">Dashboard style 1</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-library"></span><span class="mtext">Tables</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="basic-table.html">Basic Tables</a></li>
+
+                    </ul>
+                </li>
+
 
             </ul>
-        </nav><!-- .nav-menu -->
-        <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
-
-    </div>
-</header><!-- End Header -->
-{% endblock %}
-<!-- ======= Hero Section ======= -->
-
-<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-
-        {% block test %}
-        {% endblock %}
-
-</section><!-- End Hero -->
-
-<main id="main">
-
-    {% block about %}
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-        <div class="container">
-
-            <div class="section-title">
-
-            </div>
-
-            <div class="row">
-                <div class="col-lg-4" data-aos="fade-right">
-                    <img src="{{asset('assets/img/profile-img.jpg')}}" class="img-fluid" alt="">
-                </div>
-                <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-
-                    <div class="row">
-                        <div class="col-lg-6">
-
-
-
-                        </div>
-                        <div class="col-lg-6">
-
-
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-
-        </div>
-    </section><!-- End About Section -->
-{% endblock %}
-    <!-- ======= Facts Section ======= -->
-    {% block facts %}
-    <section id="facts" class="facts">
-        <div class="container">
-
-            <div class="section-title">
-
-
-            </div>
-
-            <div class="row no-gutters">
-
-                <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up">
-                    <div class="count-box">
-
-
-
-
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="100">
-                    <div class="count-box">
-
-
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
-                    <div class="count-box">
-
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="300">
-                    <div class="count-box">
-
-
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section><!-- End Facts Section -->
-{% endblock %}
-    <!-- ======= Skills Section ======= -->
-    {% block skills %}
-    <section id="skills" class="skills section-bg">
-        <div class="container">
-
-            <div class="section-title">
-
-
-            </div>
-
-            <div class="row skills-content">
-
-                <div class="col-lg-6" data-aos="fade-up">
-
-
-
-
-
-                </div>
-
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-
-
-
-                </div>
-
-            </div>
-        </div>
-    </section><!-- End Skills Section -->
-{% endblock %}
-    <!-- ======= Resume Section ======= -->
-    {% block resume %}
-    <section id="resume" class="resume">
-        <div class="container">
-
-            <div class="section-title">
-
-
-            </div>
-
-            <div class="row">
-                <div class="col-lg-6" data-aos="fade-up">
-
-
-
-                </div>
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-
-
-
-                </div>
-            </div>
-
-        </div>
-    </section><!-- End Resume Section -->
-{% endblock %}
-    <!-- ======= Portfolio Section ======= -->
-    {% block portfolio %}
-    <section id="portfolio" class="portfolio section-bg">
-        <div class="container">
-
-            <div class="section-title">
-
-
-            </div>
-
-            <div class="row" data-aos="fade-up">
-                <div class="col-lg-12 d-flex justify-content-center">
-
-
-                </div>
-            </div>
-
-            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <div class="portfolio-wrap">
-
-                        <div class="portfolio-links">
-
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                    <div class="portfolio-wrap">
-
-                        <div class="portfolio-links">
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <div class="portfolio-wrap">
-
-                        <div class="portfolio-links">
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <div class="portfolio-wrap">
-
-                        <div class="portfolio-links">
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                    <div class="portfolio-wrap">
-
-                        <div class="portfolio-links">
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <div class="portfolio-wrap">
-
-                        <div class="portfolio-links">
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <div class="portfolio-wrap">
-
-                        <div class="portfolio-links">
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <div class="portfolio-wrap">
-
-                        <div class="portfolio-links">
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                    <div class="portfolio-wrap">
-
-
-                        <div class="portfolio-links">
-
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section><!-- End Portfolio Section -->
-{% endblock %}
-    <!-- ======= Services Section ======= -->
-    {% block services %}
-    <section id="services" class="services">
-        <div class="container">
-
-            <div class="section-title">
-
-
-            </div>
-
-            <div class="row">
-
-
-
-            </div>
-        </div>
-
-        </div>
-    </section><!-- End Services Section -->
-{% endblock %}
-    <!-- ======= Testimonials Section ======= -->
-    {% block testi %}
-    <section id="testimonials" class="testimonials section-bg">
-        <div class="container">
-
-            <div class="section-title">
-
-
-            </div>
-
-
-
-        </div>
-    </section><!-- End Testimonials Section -->
-{% endblock %}
-    <!--=================================
- Header -->
-    <!--=================================
-    Easiest Way to Use -->
-
-
-    <!-- ======= Contact Section ======= -->
-    {% block contact %}
-    <section id="contact" class="contact">
-        <div class="container">
-
-            <div class="section-title">
-
-
-            </div>
-
-            <div class="row" data-aos="fade-in">
-
-                <div class="col-lg-5 d-flex align-items-stretch">
-                    <!--   <div class="info">-->
-                       <!--    <div class="address">-->
-
-
-                    <!--    </div>
-
-                       <div class="email">-->
-                        <!--  <i class="icofont-envelope"></i>-->
-
-
-                    <!--   </div>-->
-
-                     <!--   <div class="phone">-->
-                    <!--      <i class="icofont-phone"></i>-->
-
-
-                    <!--    </div>-->
-
-                      <!-- add a map <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>-->
-                    <!--   </div>
-
-                    </div>
-
-                    <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-
-                    </div>-->
-
-                </div>
-
-            </div>
-        </div>
-    </section><!-- End Contact Section -->
-{% endblock %}
-</main><!-- End #main -->
-
-<!-- ======= Footer ======= -->
-{% block footer %}
-<footer id="footer">
-    <div class="container">
-        <div class="copyright">
-            &copy; Copyright <strong><span>CodeBrigade</span></strong>
-        </div>
-        <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/ -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
         </div>
     </div>
-</footer>
+</div>
+<div class="mobile-menu-overlay"></div>
 
-    <!-- End  Footer -->
-{% endblock %}
+<div class="main-container">
+    <div class="pd-ltr-20">
+        <div class="card-box pd-20 height-100-p mb-30">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <h1 >3abi Lwost</h1>
+                </div>
 
-{% block javascript %}
-<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+            </div>
+        </div>
 
-<!-- Vendor JS Files -->
-<script src="assets/vendor/jquery/jquery.min.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-<script src="assets/vendor/php-email-form/validate.js"></script>
-<script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-<script src="assets/vendor/counterup/counterup.min.js"></script>
-<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="assets/vendor/venobox/venobox.min.js"></script>
-<script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="assets/vendor/typed.js/typed.min.js"></script>
-<script src="assets/vendor/aos/aos.js"></script>
 
-<!-- Template Main JS File -->
-<script src="assets/js/main.js"></script>
-{% endblock %}
 
+        <div class="footer-wrap pd-20 mb-20 card-box">
+            <h1>3abi LFooter</h1>
+        </div>
+    </div>
+</div>
+<!-- js -->
+<script src="vendors/scripts/core.js"></script>
+<script src="vendors/scripts/script.min.js"></script>
+<script src="vendors/scripts/process.js"></script>
+<script src="vendors/scripts/layout-settings.js"></script>
+<script src="src/plugins/apexcharts/apexcharts.min.js"></script>
+<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+<script src="vendors/scripts/dashboard.js"></script>
 </body>
 </html>

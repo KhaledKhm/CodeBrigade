@@ -5,9 +5,12 @@
             <div class="form-group col-md-6">
                 {{ form_start(form) }}
 
-                {{ form_row(form.username,{ 'attr':{ 'placeholder':"username",'class':"form-control"}}) }}
-                {{ form_row(form.password,{ 'attr':{ 'class':"form-control"}}) }}
+                {{ form_label(form.username) }}
+                {{ form_widget(form.username,{ 'attr':{ 'placeholder':"Type your username",'class':"form-control"}}) }}
+                {{ form_label(form.password) }}
+                {{ form_widget(form.password,{ 'attr':{ 'class':"form-control"}}) }}
 
+                {{ form_widget(form.role,{ 'attr':{'style':'display:none'}}) }}
 
 
                 {{ form_row(form.Add,{ 'attr':{ 'class':"btn btn-primary"}}) }}
