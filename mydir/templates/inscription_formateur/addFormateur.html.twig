@@ -3,11 +3,14 @@
     <form action="" method="post" role="form" class="php-email-form">
         <div class="form-row">
             <div class="form-group col-md-6">
-                <form action="" method="POST">
-                    Username <input type="text" placeholder="Username" name="Username">
-                    Password <input type="text" placeholder="Password" name="Password">
-                    Role: <input type="text" placeholder="Role" name="Role">
-                    <button type="submit">ajouter formateur</button>
+                {{ form_start(form) }}
+
+                {{ form_row(form.username,{ 'attr':{ 'placeholder':"username",'class':"form-control"}}) }}
+                {{ form_row(form.password,{ 'attr':{ 'class':"form-control"}}) }}
+
+
+
+                {{ form_row(form.Add,{ 'attr':{ 'class':"btn btn-primary"}}) }}
 
             </div>
         </div>
