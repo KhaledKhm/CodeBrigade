@@ -6,9 +6,9 @@
     <title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
 
     <!-- Site favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="vendors/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="vendors/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('vendors/images/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('vendors/images/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('vendors/images/favicon-16x16.png') }}">
 
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -16,11 +16,11 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
-    <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
-    <link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/core.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/icon-font.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{asset('src/plugins/datatables/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{asset('src/plugins/datatables/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/styles/style.css') }}">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
@@ -35,7 +35,7 @@
 <body>
 <div class="pre-loader">
     <div class="pre-loader-box">
-        <div class="loader-logo"><img src="vendors/images/deskapp-logo.svg" alt=""></div>
+        <div class="loader-logo"><img src="{{asset('vendors/images/deskapp-logo.svg') }}" alt=""></div>
         <div class='loader-progress' id="progress_div">
             <div class='bar' id='bar1'></div>
         </div>
@@ -55,7 +55,7 @@
     <div class="header-right">
         <div class="dashboard-setting user-notification">
             <div class="dropdown">
-                <a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
+                <a class="dropdown-toggle no-arrow" href="{{asset('javascript:;') }}" data-toggle="right-sidebar">
                     <i class="dw dw-settings2"></i>
                 </a>
             </div>
@@ -80,14 +80,14 @@
         <div class="right-sidebar-body-content">
             <h4 class="weight-600 font-18 pb-10">Header Background</h4>
             <div class="sidebar-btn-group pb-30 mb-10">
-                <a href="javascript:void(0);" class="btn btn-outline-primary header-white active">White</a>
-                <a href="javascript:void(0);" class="btn btn-outline-primary header-dark">Dark</a>
+                <a href="{{ asset('javascript:void(0);')}}" class="btn btn-outline-primary header-white active">White</a>
+                <a href="{{ asset('javascript:void(0);')}}" class="btn btn-outline-primary header-dark">Dark</a>
             </div>
 
             <h4 class="weight-600 font-18 pb-10">Sidebar Background</h4>
             <div class="sidebar-btn-group pb-30 mb-10">
-                <a href="javascript:void(0);" class="btn btn-outline-primary sidebar-light ">White</a>
-                <a href="javascript:void(0);" class="btn btn-outline-primary sidebar-dark active">Dark</a>
+                <a href="{{asset('javascript:void(0);') }}" class="btn btn-outline-primary sidebar-light ">White</a>
+                <a href="{{asset('javascript:void(0);') }}" class="btn btn-outline-primary sidebar-dark active">Dark</a>
             </div>
 
             <h4 class="weight-600 font-18 pb-10">Menu Dropdown Icon</h4>
@@ -143,8 +143,8 @@
 
 <div class="left-side-bar">
     <div class="brand-logo">
-        <a href="index.html">
-            <img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
+        <a href="{{ asset('index.html') }}">
+            <img src="{{  asset('vendors/images/deskapp-logo.svg') }}" alt="" class="dark-logo">
             <h1>JobBook</h1>
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
@@ -155,20 +155,20 @@
         <div class="sidebar-menu">
             <ul id="accordion-menu">
                 <li class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle">
+                    <a href="{{ asset('javascript:;') }}" class="dropdown-toggle">
                         <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="index.html">Dashboard style 1</a></li>
+                        <li><a href="{{asset('index.html') }}">Dashboard style 1</a></li>
                     </ul>
                 </li>
 
                 <li class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle">
+                    <a href="{{ asset('avascript:;') }}" class="dropdown-toggle">
                         <span class="micon dw dw-library"></span><span class="mtext">Tables</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="basic-table.html">Basic Tables</a></li>
+                        <li><a href="{{ asset('basic-table.html') }}">Basic Tables</a></li>
 
                     </ul>
                 </li>
@@ -199,15 +199,15 @@
     </div>
 </div>
 <!-- js -->
-<script src="vendors/scripts/core.js"></script>
-<script src="vendors/scripts/script.min.js"></script>
-<script src="vendors/scripts/process.js"></script>
-<script src="vendors/scripts/layout-settings.js"></script>
-<script src="src/plugins/apexcharts/apexcharts.min.js"></script>
-<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-<script src="vendors/scripts/dashboard.js"></script>
+<script src="{{asset('vendors/scripts/core.js') }}"></script>
+<script src="{{asset('vendors/scripts/script.min.js') }}"></script>
+<script src="{{asset('vendors/scripts/process.js') }}"></script>
+<script src="{{asset('vendors/scripts/layout-settings.js') }}"></script>
+<script src="{{asset('src/plugins/apexcharts/apexcharts.min.js') }}"></script>
+<script src="{{asset('src/plugins/datatables/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{asset('src/plugins/datatables/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{asset('src/plugins/datatables/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{asset('src/plugins/datatables/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{asset('vendors/scripts/dashboard.js') }}"></script>
 </body>
 </html>
