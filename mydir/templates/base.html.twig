@@ -35,6 +35,7 @@
     {% endblock %}
 </head>
 <body>
+{% block loading %}
 <div class="pre-loader">
     <div class="pre-loader-box">
         <div class="loader-logo"><img src="{{asset('vendors/images/deskapp-logo.svg') }}" alt=""></div>
@@ -47,6 +48,7 @@
         </div>
     </div>
 </div>
+{% endblock %}
 
 <div class="header">
     <div class="header-left">
@@ -185,14 +187,14 @@
 
 <div class="main-container">
     <div class="pd-ltr-20">
-        <div class="card-box pd-20 height-100-p mb-30">
+
             <div class="row align-items-center">
                 <div class="col-md-4">
                   {% block lwost %}
                     {% endblock %}
                 </div>
 
-            </div>
+
         </div>
 
 

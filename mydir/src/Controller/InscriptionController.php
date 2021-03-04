@@ -37,9 +37,9 @@ class InscriptionController extends AbstractController
     public function updateUtilisateur(UtilisateurRepository $repository,Request $request,$id)
     {
         $Utilisateur=$repository->find($id);
-        $form=$this->createForm(Utilisateur::class,$Utilisateur);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid())
+        $formedit=$this->createForm(Utilisateur::class,$Utilisateur);
+        $formedit->handleRequest($request);
+        if($formedit->isSubmitted() && $formedit->isValid())
         {
             $em=$this->getDoctrine()->getManager();
             $em->flush();
@@ -47,7 +47,7 @@ class InscriptionController extends AbstractController
         }
         return $this->render('inscription/utilisateurs',
             [
-                'form'=>$form->createView(),
+                'form'=>$formedit->createView(),
             ]
         );
         /*$form = $this->createForm(CompanyType::class, $company);

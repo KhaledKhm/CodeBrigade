@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 
+
 use Doctrine\Persistence\ObjectManager;
 
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -34,7 +35,7 @@ class InscriptionFormateurController extends AbstractController
         $form=$this->createForm(FormateurformType::class,$utilisateur);
         $form->add('Add',SubmitType::class);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() /*&& $form->isValid()*/) {
 
             $utilisateur = $form->getData();
             $em = $this->getDoctrine()->getManager();

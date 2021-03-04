@@ -1,84 +1,77 @@
-
+{% extends'base.html.twig' %}
+{% block loading %} {% endblock %}
+{% block header %} <h2>Liste de tous les utilisateurs</h2> {% endblock %}
+{% block footer %} {% endblock %}
+{% block lwost %}
 
 
 
                 {{ form_start(form) }}
-        <div class="my-custom-class-for-errors">
+
                 {{ form_errors(form) }}
-        </div>
-                <div class="row">
-                        <div class="col">
+
+
                                 {{ form_label(form.username) }}
                                 {{ form_widget(form.username,{ 'attr':{ 'placeholder':"Type your username",'class':"form-control"}}) }}
                                 {{ form_errors(form.username) }}
-                        </div>
-                        <div class="col">
+
                                 {{ form_label(form.password) }}
                                 {{ form_widget(form.password,{ 'attr':{ 'class':"form-control"}}) }}
                                 {{ form_errors(form.password) }}
-                        </div>
-                        <div class="col">
+
                                 {{ form_label(form.role) }}
                                 {{ form_widget(form.role,{ 'attr':{'class':"form-control"}}) }}
                                 {{ form_errors(form.role) }}
-                        </div>
-                                <div class="col">
+
                                 {{ form_label(form.accountStatus) }}
                                 {{ form_widget(form.accountStatus,{ 'attr':{'class':"form-control"}}) }}
                                 {{ form_errors(form.accountStatus) }}
-                        </div>
-                        <div class="col">
+
                                 {{ form_label(form.cinPersonne) }}
                                 {{ form_widget(form.cinPersonne,{ 'attr':{'class':"form-control"}}) }}
                                 {{ form_errors(form.cinPersonne) }}
-                        </div>
-                        <div class="col">
+
                                 {{ form_label(form.nomPersonne) }}
                                 {{ form_widget(form.nomPersonne,{ 'attr':{'class':"form-control"}}) }}
                                 {{ form_errors(form.nomPersonne) }}
-                        </div>
-                        <div class="col">
+
                                 {{ form_label(form.prenomPersonne) }}
                                 {{ form_widget(form.prenomPersonne,{ 'attr':{'class':"form-control"}}) }}
                                 {{ form_errors(form.prenomPersonne) }}
-                        </div>
-                        <div class="col">
+
                                 {{ form_label(form.sexePersonne) }}
                                 {{ form_widget(form.sexePersonne,{ 'attr':{'class':"form-control"}}) }}
                                 {{ form_errors(form.sexePersonne) }}
-                        </div>
-                        <div class="col">
+
                                 {{ form_label(form.dateNaisPersonne) }}
                                 {{ form_widget(form.dateNaisPersonne,{ 'attr':{'class':"form-control"}}) }}
                                 {{ form_errors(form.dateNaisPersonne) }}
-                        </div>
-                        <div class="col">
+
                                 {{ form_label(form.etatSocialePersonne) }}
                                 {{ form_widget(form.etatSocialePersonne,{ 'attr':{'class':"form-control"}}) }}
                                 {{ form_errors(form.etatSocialePersonne) }}
-                        </div>
-                        <div class="col">
+
                                 {{ form_label(form.telephone) }}
                                 {{ form_widget(form.telephone,{ 'attr':{'class':"form-control"}}) }}
                                 {{ form_errors(form.telephone) }}
-                        </div>
-                        <div class="col">
+
                                 {{ form_label(form.adresse) }}
                                 {{ form_widget(form.adresse,{ 'attr':{'class':"form-control"}}) }}
                                 {{ form_errors(form.adresse) }}
-                        </div>
-                        <div class="col">
+
                                 {{ form_label(form.email) }}
                                 {{ form_widget(form.email,{ 'attr':{'class':"form-control"}}) }}
                                 {{ form_errors(form.email) }}
-                        </div>
-                        <div class="col">
+
                                 {{ form_label(form.domainePersonne) }}
                                 {{ form_widget(form.domainePersonne,{ 'attr':{'class':"form-control"}}) }}
                                 {{ form_errors(form.domainePersonne) }}
-                        </div>
+
 
                         {{ form_row(form.Add,{ 'attr':{ 'class':"btn btn-primary"}}) }}
 
 
-                        {{ form_rest(form) }}
+
+
+
+{% endblock %}
