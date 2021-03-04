@@ -29,7 +29,8 @@ class InscriptionFormateurController extends AbstractController
      * @Route("/inscription/formateur/inscription_formateur_add", name="inscription_formateur_add")
      */
     public function addFormateur(Request $request)
-    { $utilisateur = new utilisateur();
+    {
+        $utilisateur = new utilisateur();
         $form=$this->createForm(FormateurformType::class,$utilisateur);
         $form->add('Add',SubmitType::class);
         $form->handleRequest($request);

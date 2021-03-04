@@ -5,7 +5,10 @@ namespace App\Controller;
 use App\Entity\Utilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\UtilisateurRepository;
+
 
 class InscriptionController extends AbstractController
 {
@@ -28,15 +31,42 @@ class InscriptionController extends AbstractController
             'utilisateur' => $utilisateur,
         ]);
     }
-    /*/**
+    /**
      * @Route("/modifierUtilisateur/{id}", name="modifierUtilisateur")
      */
-   /* public function updateUtilisateur(Request $request,$id)
+    public function updateUtilisateur(UtilisateurRepository $repository,Request $request,$id)
     {
+        $Utilisateur=$repository->find($id);
+        $form=$this->createForm(Utilisateur::class,$Utilisateur);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em=$this->getDoctrine()->getManager();
+            $em->flush();
+            return $this->redirectToRoute('inscription/utilisateurs');
+        }
+        return $this->render('inscription/utilisateurs',
+            [
+                'form'=>$form->createView(),
+            ]
+        );
+        /*$form = $this->createForm(CompanyType::class, $company);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('company_index');
+        }
+
+        return $this->render('company/edit.html.twig', [
+            'company' => $company,
+            'form' => $form->createView(),
+        ]);
         if ($request->request->count()>0)
         {
             $em=$this->getDoctrine()->getManager();
-            $entretien=$em->getRepository(Entretien::class)->find($id);
+            $entretien=$em->getRepository(Utilisateur::class)->find($id);
             $entretien->setLibelle($request->get('Libelle'));
             $entretien->setDescription($request->get('Description'));
             $entretien->setDateentretien($request->get('Dateentretien'));
@@ -46,8 +76,8 @@ class InscriptionController extends AbstractController
         }
         $class = $this->getDoctrine()->getRepository(Utilisateur::class)->findAll();
         $entretien=$this->getDoctrine()->getRepository(Entretien::class)->find($id);
-        return $this->render('entretien/update.html.twig', ['classe'=>$class,'entretien'=>$entretien]);
-    }*/
+        return $this->render('inscription/update.html.twig', ['classe'=>$class,'entretien'=>$entretien]);*/
+    }
     /**
      * @Route("/supprimerUtilisateur/{id}",name="supprimerUtilisateur")
      */
