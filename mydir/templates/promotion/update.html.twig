@@ -1,4 +1,5 @@
-
+{% extends 'base.html.twig' %}
+{% block body %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,8 @@
     PoucentageReduction: <input type="text" placeholder="PoucentageReduction" name="PoucentageReduction"value={{ promotion.PoucentageReduction }}>
 
 
-    <button type="submit">modifier Promotion</button>
+    <button type="submit" class="btn btn-primary btn-sm" >modifier Promotion</button>
 </form>
 </body>
 </html>
+{% endblock %}
