@@ -48,4 +48,15 @@ class InscriptionController extends AbstractController
         $entretien=$this->getDoctrine()->getRepository(Entretien::class)->find($id);
         return $this->render('entretien/update.html.twig', ['classe'=>$class,'entretien'=>$entretien]);
     }*/
+    /**
+     * @Route("/supprimerUtilisateur/{id}",name="supprimerUtilisateur")
+     */
+    public function deleteUtilisateur($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $class = $this->getDoctrine()->getRepository(Utilisateur::class)->find($id);
+        $em->remove($class);
+        $em->flush();
+        return $this->redirectToRoute('inscription/listUtilisateur.html.twig');
+    }
 }
