@@ -1,6 +1,6 @@
 {% extends'base.html.twig' %}
 {% block loading %} {% endblock %}
-{% block header %} <h2>Inscription d'un candidat</h2> {% endblock %}
+{% block header %} <h2>Inscription d'une Entreprise</h2> {% endblock %}
 {% block footer %} {% endblock %}
 {% block lwost %}
 
@@ -27,29 +27,21 @@
     {{ form_widget(form.accountStatus,{ 'attr':{'class':"form-control"}}) }}
     {{ form_errors(form.accountStatus) }}
 
-    {{ form_label(form.cinPersonne) }}
-    {{ form_widget(form.cinPersonne,{ 'attr':{'class':"form-control"}}) }}
-    {{ form_errors(form.cinPersonne) }}
 
-    {{ form_label(form.nomPersonne) }}
-    {{ form_widget(form.nomPersonne,{ 'attr':{'class':"form-control"}}) }}
-    {{ form_errors(form.nomPersonne) }}
 
-    {{ form_label(form.prenomPersonne) }}
-    {{ form_widget(form.prenomPersonne,{ 'attr':{'class':"form-control"}}) }}
-    {{ form_errors(form.prenomPersonne) }}
+    {{ form_label(form.immatriculeEntreprise) }}
+    {{ form_widget(form.immatriculeEntreprise,{ 'attr':{'class':"form-control"}}) }}
+    {{ form_errors(form.immatriculeEntreprise) }}
 
-    {{ form_label(form.sexePersonne) }}
-    {{ form_widget(form.sexePersonne,{ 'attr':{'class':"form-control"}}) }}
-    {{ form_errors(form.sexePersonne) }}
+    {{ form_label(form.libeleEntreprise) }}
+    {{ form_widget(form.libeleEntreprise,{ 'attr':{'class':"form-control"}}) }}
+    {{ form_errors(form.libeleEntreprise) }}
 
-    {{ form_label(form.dateNaisPersonne) }}
-    {{ form_widget(form.dateNaisPersonne,{ 'attr':{'class':"form-control"}}) }}
-    {{ form_errors(form.dateNaisPersonne) }}
 
-    {{ form_label(form.etatSocialePersonne) }}
-    {{ form_widget(form.etatSocialePersonne,{ 'attr':{'class':"form-control"}}) }}
-    {{ form_errors(form.etatSocialePersonne) }}
+    {{ form_label(form.secteurEntreprise) }}
+    {{ form_widget(form.secteurEntreprise,{ 'attr':{'class':"form-control"}}) }}
+    {{ form_errors(form.secteurEntreprise) }}
+
 
     {{ form_label(form.telephone) }}
     {{ form_widget(form.telephone,{ 'attr':{'class':"form-control"}}) }}
@@ -63,9 +55,6 @@
     {{ form_widget(form.email,{ 'attr':{'class':"form-control"}}) }}
     {{ form_errors(form.email) }}
 
-    {{ form_label(form.domainePersonne) }}
-    {{ form_widget(form.domainePersonne,{ 'attr':{'class':"form-control"}}) }}
-    {{ form_errors(form.domainePersonne) }}
 
 
     {{ form_row(form.Add,{ 'attr':{ 'class':"btn btn-primary"}}) }}

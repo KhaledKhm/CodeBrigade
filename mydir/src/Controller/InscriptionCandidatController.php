@@ -2,19 +2,72 @@
 
 namespace App\Controller;
 
+use App\Entity\Utilisateur;
+use App\Form\FormateurformType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class InscriptionCandidatController extends AbstractController
 {
     /**
-     * @Route("/inscription/candidat", name="inscription_candidat")
+     * @Route("/inscription/formateur/inscription_condidat_add", name="inscription_condidat_add")
      */
-    public function index(): Response
+    public function addCandidat(Request $request)
     {
-        return $this->render('inscription_candidat/index.html.twig', [
-            'controller_name' => 'InscriptionCandidatController',
+        $utilisateur = new utilisateur();
+        $form = $this->createForm(CandidatformType::class, $utilisateur);
+        $form->add('Add', SubmitType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() /*&& $form->isValid()*/) {
+
+            $utilisateur = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($utilisateur);
+            $em->flush();
+            return $this->redirectToRoute('inscription/utilisateurs');
+
+
+        }
+        return $this->render('inscription_formateur/addCandidat.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/inscription/candidat/inscription_candidat", name="/inscription/candidat/inscription_formateur2")
+     */
+    public function readCandidat()
+    {
+        $repository = $this->getDoctrine()->getRepository(Utilisateur::class);
+        $utilisateur = $repository->findAll();
+
+        return $this->render('inscription_candidat/listCandidat.html.twig', [
+            'utilisateur' => $utilisateur,
+        ]);
+    }
+    /* public function adduser(Request $request)
+     {
+         $utilisateur= new $utilisateur();
+         $form=$this->createForm(AddsocieteType::class,$utilisateur);
+         $form->add('Add',SubmitType::class);
+         $form->handleRequest($request);
+         if($form->isSubmitted() && $form->isValid())
+         {
+
+
+
+             $entityManager = $this->getDoctrine()->getManager();
+             $entityManager->persist($user);
+             $entityManager->flush();
+             return $this->redirectToRoute("manager");
+         }
+
+         return $this->render('user/add1.html.twig', [
+             'form' => $form->createView(),
+         ]);
+     }*/
+
 }
