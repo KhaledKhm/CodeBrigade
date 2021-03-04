@@ -28,4 +28,24 @@ class InscriptionController extends AbstractController
             'utilisateur' => $utilisateur,
         ]);
     }
+    /*/**
+     * @Route("/modifierUtilisateur/{id}", name="modifierUtilisateur")
+     */
+   /* public function updateUtilisateur(Request $request,$id)
+    {
+        if ($request->request->count()>0)
+        {
+            $em=$this->getDoctrine()->getManager();
+            $entretien=$em->getRepository(Entretien::class)->find($id);
+            $entretien->setLibelle($request->get('Libelle'));
+            $entretien->setDescription($request->get('Description'));
+            $entretien->setDateentretien($request->get('Dateentretien'));
+            $entretien->setIdutilisateur($request->get('Idutilisateur'));
+            $em->flush();
+            return $this->redirectToRoute('entretien');
+        }
+        $class = $this->getDoctrine()->getRepository(Utilisateur::class)->findAll();
+        $entretien=$this->getDoctrine()->getRepository(Entretien::class)->find($id);
+        return $this->render('entretien/update.html.twig', ['classe'=>$class,'entretien'=>$entretien]);
+    }*/
 }

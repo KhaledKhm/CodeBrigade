@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
@@ -19,6 +20,11 @@ class Utilisateur
 
     /**
      * @ORM\Column(type="string", length=40, nullable=true)
+     * Assert\length(
+     * min=10,
+     * max=39,
+     * minMessage = "Username doit comporter au plus {{ limit }} caractere",
+     * maxMEssage = "Username doit comporter au moins {{ limit }} caractere"
      */
     private $username;
 
