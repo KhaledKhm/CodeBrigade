@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% block head %}
     <!-- Basic Page Info -->
     <meta charset="utf-8">
     <title>JobBook index</title>
@@ -31,6 +32,7 @@
 
         gtag('config', 'UA-119386393-1');
     </script>
+    {% endblock %}
 </head>
 <body>
 <div class="pre-loader">
@@ -49,9 +51,10 @@
 <div class="header">
     <div class="header-left">
         <div class="menu-icon dw dw-menu"></div>
-        <h1>3abi Lheader</h1>
-
+        {% block header %}<h1>3abi Lheader</h1>
+        {% endblock %}
     </div>
+
     <div class="header-right">
         <div class="dashboard-setting user-notification">
             <div class="dropdown">
@@ -164,7 +167,7 @@
                 </li>
 
                 <li class="dropdown">
-                    <a href="{{ asset('avascript:;') }}" class="dropdown-toggle">
+                    <a href="{{ asset('javascript:;') }}" class="dropdown-toggle">
                         <span class="micon dw dw-library"></span><span class="mtext">Tables</span>
                     </a>
                     <ul class="submenu">
@@ -185,17 +188,19 @@
         <div class="card-box pd-20 height-100-p mb-30">
             <div class="row align-items-center">
                 <div class="col-md-4">
-                    <h1 >3abi Lwost</h1>
+                  {% block lwost %}
+                    {% endblock %}
                 </div>
 
             </div>
         </div>
 
 
-
+{% block footer %}
         <div class="footer-wrap pd-20 mb-20 card-box">
-            <h1>3abi LFooter</h1>
+
         </div>
+        {% endblock %}
     </div>
 </div>
 <!-- js -->

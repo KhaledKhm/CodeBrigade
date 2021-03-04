@@ -1,5 +1,9 @@
+{% extends'base.html.twig' %}
 
-<h1>Liste de tous les utilisateurs</h1>
+{% block header %} <h2>Liste de tous les utilisateurs</h2> {% endblock %}
+{% block footer %} {% endblock %}
+{% block lwost %}
+
 <table border="1" class="table table-hover">
     <tr class="table-light">
         <th>ID</th>
@@ -88,3 +92,5 @@
 
     </tr>
 {% endfor %}
+
+    {% endblock %}
