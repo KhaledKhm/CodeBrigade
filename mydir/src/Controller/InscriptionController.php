@@ -57,6 +57,6 @@ class InscriptionController extends AbstractController
         $class = $this->getDoctrine()->getRepository(Utilisateur::class)->find($id);
         $em->remove($class);
         $em->flush();
-        return $this->redirectToRoute('inscription/listUtilisateur.html.twig');
+        return $this->redirectToRoute('inscription/utilisateurs');
     }
 }
