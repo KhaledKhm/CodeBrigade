@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Form\FormTypeInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
@@ -20,56 +21,71 @@ class Utilisateur
 
     /**
      * @ORM\Column(type="string", length=40, nullable=true)
-     * Assert\length(
-     * min=10,
-     * max=39,
-     * minMessage = "Username doit comporter au plus {{ limit }} caractere",
-     * maxMEssage = "Username doit comporter au moins {{ limit }} caractere"
+     * @Assert\NotBlank(
+     * )
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=128, nullable=true)
+    * @Assert\NotBlank(
+     * )
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=16, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $role;
 
     /**
      * @ORM\Column(type="string", length=16, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $accountStatus;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $cinPersonne;
 
     /**
      * @ORM\Column(type="string", length=16, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $immatriculeEntreprise;
 
     /**
      * @ORM\Column(type="string", length=16, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $nomPersonne;
 
     /**
      * @ORM\Column(type="string", length=16, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $prenomPersonne;
 
     /**
      * @ORM\Column(type="string", length=16, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $libelleEntreprise;
 
     /**
      * @ORM\Column(type="string", length=10, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $sexePersonne;
 
@@ -80,36 +96,50 @@ class Utilisateur
 
     /**
      * @ORM\Column(type="string", length=16, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $etatSocialePersonne;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $telephone;
 
     /**
      * @ORM\Column(type="string", length=128, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $adresse;
 
     /**
      * @ORM\Column(type="string", length=64, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=64, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $siteweb;
 
     /**
      * @ORM\Column(type="string", length=64, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $domainePersonne;
 
     /**
      * @ORM\Column(type="string", length=64, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $secteurEntreprise;
 

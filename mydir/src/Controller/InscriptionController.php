@@ -39,7 +39,7 @@ class InscriptionController extends AbstractController
         $Utilisateur=$repository->find($id);
         $formedit=$this->createForm(Utilisateur::class,$Utilisateur);
         $formedit->handleRequest($request);
-        if($formedit->isSubmitted() && $formedit->isValid())
+        if($formedit->isSubmitted() /*&& $formedit->isValid()*/)
         {
             $em=$this->getDoctrine()->getManager();
             $em->flush();

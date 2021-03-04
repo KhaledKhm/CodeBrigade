@@ -3,9 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Utilisateur;
+use Doctrine\DBAL\Types\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\FormTypeInterface;
 
 class FormateurformType extends AbstractType
 {
