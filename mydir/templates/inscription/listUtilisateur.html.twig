@@ -84,7 +84,7 @@
             {{user.secteurEntreprise}}
         </td>
         <td>
-            <a href="/modifierUtilisateur/{{user.id}}">Modifier</a>
+            <form action="{{ path('modifierUtilisateur',{'id':user.id} )}}"><button>Modifier</button></form>
         </td>
         <td>
             <form action="{{ path('supprimerUtilisateur',{'id':user.id} )}}"><button>Supprimer</button></form>

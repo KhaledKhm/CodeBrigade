@@ -9,12 +9,12 @@
 <div class="row">
     <div class="col">
         {{ form_label(formedit.username) }}
-        {{ form_widget(formedit.username,{ 'attr':{ 'placeholder':"Type your username",'class':"form-control"}}) }}
+        {{ form_widget(formedit.username)}}
         {{ form_errors(formedit.username) }}
     </div>
     <div class="col">
         {{ form_label(formedit.password) }}
-        {{ form_widget(formedit.password,{ 'attr':{ 'class':"form-control"}}) }}
+        {{ form_widget(formedit.password,{ 'value':}) }}
         {{ form_errors(formedit.password) }}
     </div>
     <div class="col">

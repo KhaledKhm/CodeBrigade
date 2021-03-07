@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Utilisateur;
 use App\Form\FormateurformType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -37,8 +38,9 @@ class InscriptionController extends AbstractController
      */
     public function updateUtilisateur(Request $request,$id)
     {
+        $Utilisateur=new Utilisateur();
         $em = $this->getDoctrine()->getManager();
-        $Utilisateur = $em->getRepository(UtilisateurRepository::class)->find($id);
+        $Utilisateur = $em->getRepository(Utilisateur::class)->find($id);
         $formedit = $this->createForm(FormateurformType::class);
         $formedit->add('Modifier', SubmitType::class);
 
@@ -47,11 +49,11 @@ class InscriptionController extends AbstractController
         {
             $em=$this->getDoctrine()->getManager();
             $em->flush();
-            return $this->redirectToRoute('inscription/utilisateurs');
+            return $this->redirectToRoute('inscription/listUtilisateur.html.twig');
         }
-        return $this->render('inscription/utilisateurs',
+        return $this->render('inscription/update.html.twig',
             [
-                'form'=>$formedit->createView(),
+                'formedit'=>$formedit->createView(),
             ]
         );
         /*$form = $this->createForm(CompanyType::class, $company);
