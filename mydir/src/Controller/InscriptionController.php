@@ -41,7 +41,7 @@ class InscriptionController extends AbstractController
         $Utilisateur=new Utilisateur();
         $em = $this->getDoctrine()->getManager();
         $Utilisateur = $em->getRepository(Utilisateur::class)->find($id);
-        $formedit = $this->createForm(FormateurformType::class);
+        $formedit = $this->createForm(FormateurformType::class,$Utilisateur);
         $formedit->add('Modifier', SubmitType::class);
 
         $formedit->handleRequest($request);
