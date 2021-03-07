@@ -7,13 +7,28 @@
     <title>Modifier Promotion</title>
 </head>
 <body>
-<h1>Modifier Promotion</h1>
-<form action="" method="POST">
-    Libelle: <input type="text" placeholder="Libelle" name="libelle" value={{ promotion.libelle }}>
-    PoucentageReduction: <input type="text" placeholder="PoucentageReduction" name="PoucentageReduction"value={{ promotion.PoucentageReduction }}>
+<form action="" method="POST" style="width: 3000000000000pt">
 
+    <div class="">
+        <br>
 
-    <button type="submit" class="btn btn-primary btn-sm" >modifier Promotion</button>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header"><strong>Modifier une Promotion</strong></div>
+
+                <div class="card-body card-block">
+                    <div class="form-group"><label  class=" form-control-label">libelle</label><input type="text" name="libelle" value={{ promotion.libelle }} class="form-control"></div>
+                    <div class="form-group"><label class=" form-control-label">PoucentageReduction</label><input type="text" name="PoucentageReduction" value={{ promotion.PoucentageReduction }} class="form-control"></div>
+                    <div class="form-actions form-group">
+                        <br>
+                        <button type="submit"class="btn btn-primary btn-sm">modifier Promotion</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 </form>
 </body>
 </html>

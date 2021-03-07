@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
+ {% block content %}  {% endblock  %}
 {% block body %}
-    <h1>Liste des Evenements</h1>
+  <h2>Liste des Evenements</h2>
 
-
-
-    <table id="bootstrap-data-table" class="table table-striped table-bordered" border="1" class="table table-hover">
+    <br><br><br>
+    <table id="bootstrap-data-table"class="table" >
         <tr class="table-light">
             <th>ID</th>
             <th>Libelle</th>
@@ -38,7 +38,7 @@
                     {{ Evenement.PrixInscription}}dt
                 </td>
                 <td>
-               <form  action="{{ path('modifierEvenement',{'id':Evenement.id} )}}"><button class="btn btn-warning btn-sm"><h6>MODIFIER</h6></button></form>
+               <form  action="{{ path('modifierEvenement',{'id':Evenement.id} )}}"><button class="btn btn-warning btn-sm"><h6>Modifier</h6></button></form>
                 </td>
 
                 <td>
@@ -47,12 +47,14 @@
                 </td>
 
                 <td>
-                    <form action="{{ path('supprimerEvenement',{'id':Evenement.id} )}}"><button class="btn btn-primary btn-xs"><h6>LISTES DES INSCRITS</h6></button></form>
+                    <form action="{{ path('inscriptions',{'id':Evenement.id} )}}"><button  class="btn btn-outline-info"><h6>Liste Des Inscrits</h6></button></form>
+
                 </td>
             </tr>
         {% endfor %}
 
     </table>
+
     <a href={{ path('ajouterEvenement') }}>Créer une Evenement</a>
 
 

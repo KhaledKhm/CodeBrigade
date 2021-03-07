@@ -21,6 +21,7 @@ class Evenement
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
      */
     private $libelle;
 
