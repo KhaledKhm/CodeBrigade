@@ -55,7 +55,9 @@
     {{ form_widget(form.email,{ 'attr':{'class':"form-control"}}) }}
     {{ form_errors(form.email) }}
 
-
+    { form_label(form.siteWeb) }}
+    {{ form_widget(form.siteWeb,{ 'attr':{'class':"form-control"}}) }}
+    {{ form_errors(form.siteWeb) }}
 
     {{ form_row(form.Add,{ 'attr':{ 'class':"btn btn-primary"}}) }}
 

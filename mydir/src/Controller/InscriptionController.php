@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Utilisateur;
+use App\Form\FormateurformType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,12 +35,15 @@ class InscriptionController extends AbstractController
     /**
      * @Route("/modifierUtilisateur/{id}", name="modifierUtilisateur")
      */
-    public function updateUtilisateur(UtilisateurRepository $repository,Request $request,$id)
+    public function updateUtilisateur(Request $request,$id)
     {
-        $Utilisateur=$repository->find($id);
-        $formedit=$this->createForm(Utilisateur::class,$Utilisateur);
+        $em = $this->getDoctrine()->getManager();
+        $Utilisateur = $em->getRepository(UtilisateurRepository::class)->find($id);
+        $formedit = $this->createForm(FormateurformType::class);
+        $formedit->add('Modifier', SubmitType::class);
+
         $formedit->handleRequest($request);
-        if($formedit->isSubmitted() /*&& $formedit->isValid()*/)
+        if($formedit->isSubmitted() && $formedit->isValid())
         {
             $em=$this->getDoctrine()->getManager();
             $em->flush();
