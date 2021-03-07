@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Utilisateur;
+use App\Form\CandidatformType;
 use App\Form\FormateurformType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -22,7 +23,7 @@ class InscriptionCandidatController extends AbstractController
         $form->add('Add', SubmitType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() /*&& $form->isValid()*/) {
-
+            $utilisateur->setRole('Candidat');
             $utilisateur = $form->getData();
             $em = $this->getDoctrine()->getManager();
             $em->persist($utilisateur);
@@ -31,7 +32,7 @@ class InscriptionCandidatController extends AbstractController
 
 
         }
-        return $this->render('inscription_formateur/addCandidat.html.twig', [
+        return $this->render('inscription_candidat/addCandidat.html.twig', [
             'form' => $form->createView(),
         ]);
     }
