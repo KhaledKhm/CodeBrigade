@@ -65,6 +65,12 @@ class Utilisateur
      * @ORM\Column(type="string", length=16, nullable=true)
      * @Assert\NotBlank(
      * )
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * )
      */
     private $nomPersonne;
 
@@ -72,12 +78,23 @@ class Utilisateur
      * @ORM\Column(type="string", length=16, nullable=true)
      * @Assert\NotBlank(
      * )
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 16,
+     *      minMessage = "Your first name must be at least {{ min }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ max }} characters"
+     * )
      */
     private $prenomPersonne;
 
     /**
      * @ORM\Column(type="string", length=16, nullable=true)
      * @Assert\NotBlank(
+     * )@Assert\Length(
+     *      min = 3,
+     *      max = 16,
+     *      minMessage = "Your first name must be at least {{ min }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ max }} characters"
      * )
      */
     private $libelleEntreprise;
@@ -119,12 +136,18 @@ class Utilisateur
      * @ORM\Column(type="string", length=64, nullable=true)
      * @Assert\NotBlank(
      * )
+     * @Assert\Email(
+     *     message = "The email '{{ $adresse }}' is not a valid email."
+     * )
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=64, nullable=true)
      * @Assert\NotBlank(
+     * )
+     * @Assert\Url(
+     *    message = "The url '{{ $email }}' is not a valid url",
      * )
      */
     private $siteweb;
