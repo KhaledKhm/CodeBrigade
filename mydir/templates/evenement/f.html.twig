@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+ {% block content %}  {% endblock  %}
+{% block body %}
+    <h2>Liste des Evenements</h2>
+
+    <br><br><br>
+    <table id="bootstrap-data-table"class="table" >
+        <tr class="table-light">
+            <th>ID</th>
+            <th>Libelle</th>
+            <th>Description</th>
+            <th>Date Debut</th>
+            <th>Date Fin</th>
+            <th>Prix Inscription</th>
+            <th>Participer</th>
+
+
+
+        </tr>
+        {% for Evenement in classe %}
+            <tr>
+                <td>
+                    {{Evenement.id}}
+                </td>
+                <td>
+                    {{Evenement.libelle}}
+                </td>
+                <td>
+                    {{ Evenement.description}}
+                </td>
+                <td>
+                    {{ Evenement.DateDebut}}
+                </td>
+                <td>
+                    {{ Evenement.DateFin}}
+                </td>
+                <td>
+                    {{ Evenement.PrixInscription}}dt
+                </td>
+                <td>
+                    <form action="{{ path('inscriptions',{'id':Evenement.id} )}}"><button  class="btn btn-outline-info"><h6>Participer</h6></button></form>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+
+
+
+
+{% endblock %}

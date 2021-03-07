@@ -25,6 +25,16 @@ class EvenementController extends AbstractController
 
     }
     /**
+     * @Route("/evenementf", name="evenementf")
+     */
+    public function ind(): Response
+    {
+        $class = $this->getDoctrine()->getRepository(Evenement::class)->findAll();
+
+        return $this->render('evenement/f.html.twig', ['classe'=>$class]);
+
+    }
+    /**
      * @Route("/inscriptions", name="inscriptions")
      */
     public function inde(): Response
