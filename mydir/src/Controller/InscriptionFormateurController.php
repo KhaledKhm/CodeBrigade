@@ -38,6 +38,7 @@ class InscriptionFormateurController extends AbstractController
         if ($form->isSubmitted() /*&& $form->isValid()*/) {
 
             $utilisateur = $form->getData();
+            $utilisateur->setRole(["Formateur"]);
             $em = $this->getDoctrine()->getManager();
             $em->persist($utilisateur);
             $em->flush();
