@@ -102,6 +102,8 @@
       <path value="$PROJECT_DIR$/mydir/vendor/symfony/browser-kit" />
       <path value="$PROJECT_DIR$/mydir/vendor/symfony/cache" />
       <path value="$PROJECT_DIR$/mydir/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/mydir/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/mydir/vendor/swiftmailer/swiftmailer" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1">
