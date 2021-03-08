@@ -34,6 +34,8 @@ class Promotion
      */
     private $evenements;
 
+
+
     public function __construct()
     {
         $this->evenements = new ArrayCollection();
@@ -94,4 +96,6 @@ class Promotion
 
         return $this;
     }
+
+
 }

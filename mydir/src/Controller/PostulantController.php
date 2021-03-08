@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+use App\Entity\Postulant;
 use App\Entity\Evenement;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,44 +20,79 @@ class PostulantController extends AbstractController
         ]);
     }
     /**
-     * @Route("/ajouterEvenement", name="ajouterEvenement")
+     * @Route("/inscriptions", name="inscriptions")
      */
-    public function createEvenement(Request $request)
+    public function inde(): Response
     {
-        if ($request->request->count()>0)
-        {
-            $evenement=new Evenement();
-            $evenement->setLibelle($request->get('Libelle'));
-            $evenement->setDescription($request->get('description'));
-            $evenement->setDateDebut($request->get('DateDebut'));
-            $evenement->setDateFin($request->get('DateFin'));
-            $evenement->setPrixInscription($request->get('PrixInscription'));
-            $em=$this->getDoctrine()->getManager();
-            $em->persist($evenement);
-            $em->flush();
-            return $this->redirectToRoute('evenement');
-        }
-        return $this->render('evenement/add.html.twig');
-    } /**
- * @Route("/ajouterParticipation", name="ajouterParticipation")
- */
-    public function createParticipation(Request $request)
-    {
-        if ($request->request->count()>0)
-        {
-            $participation=new Participation();
-            $participation->setLibelle($request->get('Libelle'));
-            $participation->setDescription($request->get('description'));
-            $participation->setDateDebut($request->get('DateDebut'));
-            $participation->setDateFin($request->get('DateFin'));
-            $participation->setPrixInscription($request->get('PrixInscription'));
-            $em=$this->getDoctrine()->getManager();
-            $em->persist($evenement);
-            $em->flush();
-            return $this->redirectToRoute('evenement');
-        }
-        return $this->render('evenement/add.html.twig');
+        $class = $this->getDoctrine()->getRepository(Postulant::class)->findAll();
+        $evenement = $this->getDoctrine()->getRepository(Evenement::class)->findAll();
+
+        return $this->render('postulant/a.html.twig', ['class'=>$class,'classe'=>$evenement]);
+
     }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @Route ("/ajoutPart/{id}", name="ajoutPart")
+     */
+    public function AjouterPart(Request $request, $id){
+
+        $em = $this->getDoctrine()->getManager();
+        $event = $em->getRepository(Evenement::class)->find($id);
+        if ($request->request->count()>0)
+        {
+            $post=new Postulant();
+            $post->setNom($request->get('Nom'));
+            $post->setPrenom($request->get('Prenom'));
+            $post->setSexe($request->get('Sexe'));
+            $post->setEtatScolaire($request->get('EtatScolaire'));
+            $post->setAdresse($request->get('Adresse'));
+            $post->setTelephone($request->get('Telephone'));
+            $post->setEmail($request->get('Email'));
+            $post->setStatus($request->get('Status'));
+            $post->setDateNais($request->get('DateNais'));
+            $post->setCompetences($request->get('Competences'));
+            $post->addEvenement($event);
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($post);
+            $em->flush();
+            return $this->redirectToRoute('evenement');
+        }
+        return $this->render('postulant/add.html.twig');
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @Route ("/ajoutPart1/{id}", name="ajoutPart1")
+     */
+    public function AjouterPart1(Request $request, $id){
+
+        $em = $this->getDoctrine()->getManager();
+        $event = $em->getRepository(Evenement::class)->find($id);
+        if ($request->request->count()>0)
+        {
+            $post=new Postulant();
+            $post->setNom($request->get('Nom'));
+            $post->setPrenom($request->get('Prenom'));
+            $post->setSexe($request->get('Sexe'));
+            $post->setEtatScolaire($request->get('EtatScolaire'));
+            $post->setAdresse($request->get('Adresse'));
+            $post->setTelephone($request->get('Telephone'));
+            $post->setEmail($request->get('Email'));
+            $post->setStatus($request->get('Status'));
+            $post->setDateNais($request->get('DateNais'));
+            $post->setCompetences($request->get('Competences'));
+            $post->addEvenement($event);
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($post);
+            $em->flush();
+            return $this->redirectToRoute('evenementf');
+        }
+        return $this->render('postulant/add.html.twig');
+    }
+
 
 
 

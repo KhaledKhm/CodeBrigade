@@ -21,7 +21,6 @@ class Evenement
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
      */
     private $libelle;
 
@@ -41,7 +40,7 @@ class Evenement
     private $DateFin;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
     private $PrixInscription;
 
@@ -50,12 +49,16 @@ class Evenement
      */
     private $promotions;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Postulant::class, inversedBy="evenements")
+     */
+    private $postulants;
+
     public function __construct()
     {
         $this->promotions = new ArrayCollection();
+        $this->postulants = new ArrayCollection();
     }
-
-
 
     public function getId(): ?int
     {
@@ -110,12 +113,12 @@ class Evenement
         return $this;
     }
 
-    public function getPrixInscription(): ?int
+    public function getPrixInscription(): ?string
     {
         return $this->PrixInscription;
     }
 
-    public function setPrixInscription(int $PrixInscription): self
+    public function setPrixInscription(string $PrixInscription): self
     {
         $this->PrixInscription = $PrixInscription;
 
@@ -142,6 +145,30 @@ class Evenement
     public function removePromotion(Promotion $promotion): self
     {
         $this->promotions->removeElement($promotion);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Postulant[]
+     */
+    public function getPostulants(): Collection
+    {
+        return $this->postulants;
+    }
+
+    public function addPostulant(Postulant $postulant): self
+    {
+        if (!$this->postulants->contains($postulant)) {
+            $this->postulants[] = $postulant;
+        }
+
+        return $this;
+    }
+
+    public function removePostulant(Postulant $postulant): self
+    {
+        $this->postulants->removeElement($postulant);
 
         return $this;
     }

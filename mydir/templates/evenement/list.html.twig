@@ -55,6 +55,9 @@
                 <td>
                     <form action="{{ path('ajoutPromo',{'id':Evenement.id} )}}"><button  class="btn btn-outline-info"><h6>Promotion</h6></button></form>
                 </td>
+                <td>
+                    <form action="{{ path('listPost1',{'id':Evenement.id} )}}"><button  class="btn btn-outline-info"><h6>Liste Des Promo</h6></button></form>
+                </td>
             </tr>
         {% endfor %}
 

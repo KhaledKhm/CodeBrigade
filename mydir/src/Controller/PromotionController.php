@@ -68,4 +68,30 @@ class PromotionController extends AbstractController
         $em->flush();
         return $this->redirectToRoute('promotion');
     }
+    /**
+     * @param Request $request
+     * @param $id
+     * @Route ("/ajoutPromo/{id}", name="ajoutPromo")
+     */
+    public function AjouterPromo(Request $request, $id){
+
+        $em = $this->getDoctrine()->getManager();
+        $event = $em->getRepository(Evenement::class)->find($id);
+        if ($request->request->count()>0)
+        {
+            $promotion=new Promotion();
+            $promotion->setLibelle($request->get('Libelle'));
+            $promotion->setPoucentageReduction($request->get('PoucentageReduction'));
+            $em=$this->getDoctrine()->getManager();
+            $promotion->addEvenement($event);
+            $em->persist($promotion);
+            $em->flush();
+            return $this->redirectToRoute('promotion');
+
+
+            return $this->redirectToRoute('evenementf');
+        }
+        return $this->render('promotion/add.html.twig');
+    }
+
 }

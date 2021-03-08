@@ -35,13 +35,28 @@ class EvenementController extends AbstractController
 
     }
     /**
-     * @Route("/inscriptions", name="inscriptions")
+     * @param $id
+     * @Route ("/listPost/{id}", name="listPost")
      */
-    public function inde(): Response
-    {
-        $class = $this->getDoctrine()->getRepository(Evenement::class)->findAll();
 
-        return $this->render('evenement/a.html.twig', ['classe'=>$class]);
+    public function ListPost($id){
+        $class = $this->getDoctrine()->getRepository(Evenement::class)->find($id);
+        $post =$class->getPostulants();
+        return  $this->render('postulant/a.html.twig', ['post'=>$post]);
+
+
+    }
+
+    /**
+     * @param $id
+     * @Route ("/listPost1/{id}", name="listPost1")
+     */
+
+    public function ListPost1($id){
+        $class = $this->getDoctrine()->getRepository(Evenement::class)->find($id);
+        $post =$class->getPromotions();
+        return  $this->render('promotion/b.html.twig', ['post'=>$post]);
+
 
     }
 

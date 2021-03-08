@@ -70,15 +70,14 @@ class Postulant
     private $Nom;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Evenement::class)
+     * @ORM\ManyToMany(targetEntity=Evenement::class, mappedBy="postulants")
      */
-    private $events;
+    private $evenements;
 
     public function __construct()
     {
-        $this->events = new ArrayCollection();
+        $this->evenements = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
@@ -208,23 +207,26 @@ class Postulant
     /**
      * @return Collection|Evenement[]
      */
-    public function getEvents(): Collection
+    public function getEvenements(): Collection
     {
-        return $this->events;
+        return $this->evenements;
     }
 
-    public function addEvent(Evenement $event): self
+    public function addEvenement(Evenement $evenement): self
     {
-        if (!$this->events->contains($event)) {
-            $this->events[] = $event;
+        if (!$this->evenements->contains($evenement)) {
+            $this->evenements[] = $evenement;
+            $evenement->addPostulant($this);
         }
 
         return $this;
     }
 
-    public function removeEvent(Evenement $event): self
+    public function removeEvenement(Evenement $evenement): self
     {
-        $this->events->removeElement($event);
+        if ($this->evenements->removeElement($evenement)) {
+            $evenement->removePostulant($this);
+        }
 
         return $this;
     }
