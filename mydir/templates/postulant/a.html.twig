@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h4>Inscription Evenements</h4>
+    <br><br><br>
+    <table id="bootstrap-data-table"class="table" >
+        <th>ID event</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Sexe</th>
+        <th>Etat Scolaire</th>
+        <th>Adresse</th>
+        <th>Telephone</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Date de naissance</th>
+        <th>Compétence</th>
+        </tr>
+        {% for Post in post %}
+            <tr>
+
+                <td>
+                    {{Post.Nom}}
+                </td>
+                <td>
+                    {{Post.Prenom}}
+                </td>
+                <td>
+                    {{ Post.Sexe}}
+                </td>
+                <td>
+                    {{ Post.EtatScolaire}}
+                </td>
+                <td>
+                    {{ Post.Adresse}}
+                </td>
+                <td>
+                    {{ Post.Telephone}}
+                </td>
+                <td>
+                    {{ Post.Email}}
+                </td>
+                <td>
+                    {{ Post.Status}}
+                </td>
+                <td>
+                    {{ Post.DateNais}}
+                </td>
+                <td>
+                    {{ Post.Competences}}
+                </td>
+
+
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

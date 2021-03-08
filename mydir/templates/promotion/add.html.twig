@@ -20,16 +20,6 @@
                 <div class="card-body card-block">
                     <div class="form-group"><label class=" form-control-label">Libelle</label><input required type="text" name="Libelle" placeholder="Saisissez le titre...... " class="form-control"></div>
                     <div class="form-group"><label  class=" form-control-label">PoucentageReduction</label><input required type="text" name="PoucentageReduction" placeholder="Saisissez PoucentageReduction......" class="form-control"></div>
-
-
-                    Id evenement: <select name="a" >
-
-                        {% for Evenement in class %}
-                            <option value={{ Evenement.id }}>{{ Evenement.id }}</option>
-                        {% endfor %}
-                    </select>
-
-
                     <div class="form-actions form-group">
                         <br>
                         <button onclick="Alertfunction1()" type="submit"class="btn btn-primary btn-sm">Ajouter Promotion </button>

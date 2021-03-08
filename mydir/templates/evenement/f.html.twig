@@ -38,7 +38,7 @@
                     {{ Evenement.PrixInscription}}dt
                 </td>
                 <td>
-                    <form action="{{ path('inscriptions',{'id':Evenement.id} )}}"><button  class="btn btn-outline-info"><h6>Participer</h6></button></form>
+                    <form action="{{ path('ajoutPart',{'id':Evenement.id} )}}"><button  class="btn btn-outline-info"><h6>Participer</h6></button></form>
                 </td>
             </tr>
         {% endfor %}

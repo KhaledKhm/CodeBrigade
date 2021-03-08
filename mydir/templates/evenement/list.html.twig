@@ -45,10 +45,15 @@
 
                     <form action="{{ path('supprimerEvenement',{'id':Evenement.id} )}}"><button  class="btn btn-danger btn-sm"><h6>Supprimer</h6></button></form>
                 </td>
-
                 <td>
-                    <form action="{{ path('inscriptions',{'id':Evenement.id} )}}"><button  class="btn btn-outline-info"><h6>Liste Des Inscrits</h6></button></form>
+                    <form action="{{ path('ajoutPart',{'id':Evenement.id} )}}"><button  class="btn btn-outline-info"><h6>Participer</h6></button></form>
+                </td>
+                <td>
+                    <form action="{{ path('listPost',{'id':Evenement.id} )}}"><button  class="btn btn-outline-info"><h6>Liste Des Inscrits</h6></button></form>
 
+                </td>
+                <td>
+                    <form action="{{ path('ajoutPromo',{'id':Evenement.id} )}}"><button  class="btn btn-outline-info"><h6>Promotion</h6></button></form>
                 </td>
             </tr>
         {% endfor %}
