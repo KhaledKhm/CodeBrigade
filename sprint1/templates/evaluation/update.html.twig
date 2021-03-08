@@ -40,7 +40,7 @@
     <script>
         function isValidDate2(dateString)
         {
-            var parts = dateString.split("/");
+            var parts = dateString.split("-");
             var day = parseInt(parts[1], 10);
             var month = parseInt(parts[0], 10);
             var year = parseInt(parts[2], 10);
@@ -53,10 +53,10 @@
 
         function isValidDate(dateString)
         {
-            if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
+            if(!/^\d{1,2}\-\d{1,2}\-\d{4}$/.test(dateString))
                 return false;
 
-            var parts = dateString.split("/");
+            var parts = dateString.split("-");
             var day = parseInt(parts[1], 10);
             var month = parseInt(parts[0], 10);
             var year = parseInt(parts[2], 10);

@@ -25,7 +25,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -146,8 +146,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\CodeBrigade\sprint1\src" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -157,7 +163,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615048190923</updated>
-      <workItem from="1615048192022" duration="750000" />
+      <workItem from="1615048192022" duration="818000" />
+      <workItem from="1615155339776" duration="972000" />
+      <workItem from="1615156379827" duration="6168000" />
+      <workItem from="1615192704097" duration="46000" />
+      <workItem from="1615192838783" duration="615000" />
+      <workItem from="1615199497477" duration="130000" />
+      <workItem from="1615199746586" duration="231000" />
+      <workItem from="1615200197826" duration="127000" />
+      <workItem from="1615200374345" duration="711000" />
+      <workItem from="1615203440885" duration="120000" />
+      <workItem from="1615203583025" duration="38000" />
     </task>
     <servers />
   </component>
@@ -174,5 +190,16 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="562" y="141" key="#com.intellij.ide.util.MemberChooser" timestamp="1615158086266">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="562" y="141" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1615158086266" />
+    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1615158619479">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.864@0.0.1536.864" timestamp="1615158619479" />
   </component>
 </project>

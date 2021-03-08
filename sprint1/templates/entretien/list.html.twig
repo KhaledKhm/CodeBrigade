@@ -17,6 +17,7 @@
             <th>Id Participant</th>
             <th>Modifier</th>
             <th>Supprimer</th>
+            <th>Imprimer PDF</th>
         </tr>
         {% for Entretien in classe %}
             <tr>
@@ -36,13 +37,16 @@
                     {{ Entretien.Idevaluation}}
                 </td>
                 <td>
-                    {% if (Entretien.IdParticipant== NULL) %} <form action="{{ path('ajouterParticipantEntretien',{'id':Entretien.ID} )}}"><button class="btn btn-outline-primary"> Ajouter Participant</button></form> {% else  %} {{ Entretien.IdParticipant }} {% endif %}
+                    {% if (Entretien.IdParticipant== NULL) %} <form action="{{ path('ajouterParticipantEntretien',{'id':Entretien.ID,'libelle':Entretien.Libelle,'description':Entretien.Description,'dateentretien':Entretien.Dateentretien,'idevaluation':Entretien.Idevaluation} )}}"><button class="btn btn-outline-primary"> Ajouter Participant</button></form> {% else  %} {{ Entretien.IdParticipant }} {% endif %}
                 </td>
                 <td>
                     <form action="{{ path('modifierEntretien',{'id':Entretien.id} )}}"><button class="btn btn-outline-primary"> Modifier</button></form>
                 </td>
                 <td>
                     <form action="{{ path('supprimerEntretien',{'id':Entretien.id} )}}"><button class="btn btn-outline-primary">Supprimer</button></form>
+                </td>
+                <td>
+                    {% if (Entretien.IdParticipant!= NULL) %} <form action="{{ path('pdfEntretien',{'id':Entretien.ID,'libelle':Entretien.Libelle,'description':Entretien.Description,'dateentretien':Entretien.Dateentretien,'idevaluation':Entretien.idevaluation,'idparticipant':Entretien.IdParticipant} )}}"><button class="btn btn-outline-primary">pdf</button></form> {% endif %}
                 </td>
             </tr>
         {% endfor %}

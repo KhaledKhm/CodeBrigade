@@ -21,7 +21,8 @@
     <br>
     Description <input class="form-control form-control-sm form-control-line" type="text" placeholder="Description" name="Description" id="Description">
     <br>
-    Date Evaluation <input class="form-control form-control-sm form-control-line" type="text" placeholder="Date Evaluation" name="Dateevaluation" id="Dateevaluation">
+    Date Evaluation <input class="form-control form-control-sm form-control-line" placeholder="Date Evaluation" name="Dateevaluation" id="Dateevaluation">
+
     <br>
     Id Entreprise <select class="custom-select col-12" name="Identreprise">
         {% for Entreprise in classe %}
@@ -39,7 +40,7 @@
     <script>
         function isValidDate2(dateString)
         {
-            var parts = dateString.split("/");
+            var parts = dateString.split("-");
             var day = parseInt(parts[1], 10);
             var month = parseInt(parts[0], 10);
             var year = parseInt(parts[2], 10);
@@ -52,10 +53,10 @@
 
         function isValidDate(dateString)
         {
-            if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
+            if(!/^\d{1,2}\-\d{1,2}\-\d{4}$/.test(dateString))
                 return false;
 
-            var parts = dateString.split("/");
+            var parts = dateString.split("-");
             var day = parseInt(parts[1], 10);
             var month = parseInt(parts[0], 10);
             var year = parseInt(parts[2], 10);

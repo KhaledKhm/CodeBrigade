@@ -17,6 +17,7 @@
             <th>ID Entreprise</th>
             <th>Modifier</th>
             <th>Supprimer</th>
+            <th>Imprimer PDF</th>
         </tr>
         {% for Evaluation in classe %}
             <tr>
@@ -41,8 +42,14 @@
                 <td>
                     <form action="{{ path('supprimerEvaluation',{'id':Evaluation.id} )}}"><button class="btn btn-outline-primary">Supprimer</button></form>
                 </td>
+                <td>
+                    <form action="{{ path('pdfEvaluation',{'id':Evaluation.id,'libelle':Evaluation.Libelle,'description':Evaluation.description,'dateevaluation':Evaluation.Dateevaluation,'identreprise':Evaluation.idEntreprise} )}}"><button class="btn btn-outline-primary">pdf</button></form>
+                </td>
+
+
             </tr>
         {% endfor %}
+
 
     </table>
 

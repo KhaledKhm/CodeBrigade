@@ -4,14 +4,11 @@ namespace App\Controller;
 use App\Entity\Evaluation;
 use App\Entity\Quiz;
 use App\Entity\Utilisateur;
-use App\Form\EvaluationType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-//use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 
 
 class EvaluationController extends AbstractController
@@ -24,6 +21,7 @@ class EvaluationController extends AbstractController
         $class = $this->getDoctrine()->getRepository(Evaluation::class)->findAll();
         return $this->render('evaluation/list.html.twig', ['classe'=>$class]);
     }
+
 
     /**
      * @Route("/afficherParticipants", name="afficherParticipants")
@@ -95,6 +93,36 @@ class EvaluationController extends AbstractController
         $em->flush();
         return $this->redirectToRoute('evaluation');
     }
+
+    /**
+     * @Route("/pdfEvaluation/{id}/{libelle}/{description}/{dateevaluation}/{identreprise}",name="pdfEvaluation")
+     */
+    public function pdf($id,$libelle,$description,$dateevaluation,$identreprise)
+    {
+        $mdpdf = new \Mpdf\Mpdf();
+
+        //Contenu du PDF
+        $data= "";
+
+
+        $data.="<h1>Vos Informations</h1>";
+
+        $data.="<strong>ID Evaluation : </strong> " . $id . "<br>";
+        $data.="<strong>libelle Evaluation : </strong> " . $libelle . "<br>";
+        $data.="<strong>Description Evaluation : </strong> " . $description . "<br>";
+        $data.="<strong>Date Dvaluation : </strong> " . $dateevaluation . "<br>";
+        $data.="<strong>ID Entreprise : </strong>" . $identreprise . "<br>";
+
+        //Création du PDF
+        $mdpdf->WriteHTML($data);
+
+        //Téléchargement du PDF
+        $mdpdf->Output("Evaluation N".$id.".pdf","D");
+
+        return $this->redirectToRoute('evaluation');
+    }
+
+
 
 }
 
