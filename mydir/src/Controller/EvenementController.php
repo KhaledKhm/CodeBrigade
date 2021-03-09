@@ -35,6 +35,16 @@ class EvenementController extends AbstractController
 
     }
     /**
+     * @Route("/home", name="home")
+     */
+    public function in(): Response
+    {
+        $class = $this->getDoctrine()->getRepository(Evenement::class)->findAll();
+
+        return $this->render('evenement/home.html.twig', ['classe'=>$class]);
+
+    }
+    /**
      * @param $id
      * @Route ("/listPost/{id}", name="listPost")
      */
