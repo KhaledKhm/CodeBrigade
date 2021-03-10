@@ -18,8 +18,18 @@ class UtilisateurRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Utilisateur::class);
     }
+/*
+    public function findByUsername($username):integer{
+        $entityManager=$this->getEntityManager();
+        $query=$entityManager->createQuery(
+            'SELECT id
+            FROM App\Entity\Utilisateur u
+            WHERE u.username == :username'
+        )->setParameter('username', $username);
+        return $query->getResult();
+}*/
 
-    // /**
+    // / **
     //  * @return Utilisateur[] Returns an array of Utilisateur objects
     //  */
     /*

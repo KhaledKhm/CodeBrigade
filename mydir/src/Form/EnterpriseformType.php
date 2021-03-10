@@ -12,8 +12,8 @@ class EnterpriseformType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
             ->add('password')
+            ->add('confirmPassword')
             ->add('role')
             ->add('accountStatus')
             ->add('cinPersonne')
@@ -30,6 +30,7 @@ class EnterpriseformType extends AbstractType
             ->add('siteweb')
             ->add('domainePersonne')
             ->add('secteurEntreprise')
+
         ;
     }
 

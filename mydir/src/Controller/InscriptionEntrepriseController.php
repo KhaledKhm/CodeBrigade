@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class InscriptionEntrepriseController extends AbstractController
 {
@@ -17,7 +18,7 @@ class InscriptionEntrepriseController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('inscription_entreprise/index.html.twig', [
+        return $this->render('inscription_entreprise/login.html.twig', [
             'controller_name' => 'InscriptionEntrepriseController',
         ]);
     }
@@ -25,13 +26,15 @@ class InscriptionEntrepriseController extends AbstractController
     /**
      * @Route("/inscription/entreprise/inscription_entreprise_add", name="inscription_entreprise_add")
      */
-    public function addEntreprise(Request $request)
+    public function addEntreprise(Request $request,UserPasswordEncoderInterface $passwordEncoder)
     {
         $utilisateur = new utilisateur();
         $form = $this->createForm(CandidatformType::class, $utilisateur);
         $form->add('Add', SubmitType::class);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() /*&& $form->isValid()*/) {
+            $utilisateur->setPassword($passwordEncoder->encodePassword($utilisateur,$utilisateur->getPassword()));
             $utilisateur->setRole('Entreprise');
             $utilisateur = $form->getData();
             $em = $this->getDoctrine()->getManager();

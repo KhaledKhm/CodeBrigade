@@ -4,13 +4,16 @@ namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\Unique;
 use Symfony\Component\Form\FormTypeInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
  */
-class Utilisateur
+
+class Utilisateur implements UserInterface
 {
     /**
      * @ORM\Id
@@ -19,12 +22,6 @@ class Utilisateur
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=40, nullable=true)
-     * @Assert\NotBlank(
-     * )
-     */
-    private $username;
 
     /**
      * @ORM\Column(type="string", length=128, nullable=true)
@@ -38,6 +35,12 @@ class Utilisateur
      * @Assert\NotBlank(
      * )
      */
+
+    /**
+     * @Assert\EqualTo(propertyPath="password",message="Password not matching")
+     */
+    public $confirmPassword;
+
     private $role;
 
     /**
@@ -139,6 +142,9 @@ class Utilisateur
      * @Assert\Email(
      *     message = "The email '{{ $adresse }}' is not a valid email."
      * )
+     * @Unique(
+     *     message= "Email is already used"
+     * )
      */
     private $email;
 
@@ -149,6 +155,7 @@ class Utilisateur
      * @Assert\Url(
      *    message = "The url '{{ $email }}' is not a valid url",
      * )
+
      */
     private $siteweb;
 
@@ -171,18 +178,9 @@ class Utilisateur
         return $this->id;
     }
 
-    public function getUsername(): ?string
-    {
-        return $this->username;
-    }
-
-    public function setUsername(?string $username): self
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
+    /**
+     * @see UserInterface
+     */
     public function getPassword(): ?string
     {
         return $this->password;
@@ -195,9 +193,13 @@ class Utilisateur
         return $this;
     }
 
+    /**
+     * @see UserInterface
+     */
     public function getRole(): ?string
     {
         return $this->role;
+        $role[]= 'ROLE_USER';
     }
 
     public function setRole(?string $role): self
@@ -205,6 +207,22 @@ class Utilisateur
         $this->role = $role;
 
         return $this;
+    }
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
+    {
+        // not needed when using the "auto" algorithm in security.yaml
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
     public function getAccountStatus(): ?string
@@ -385,5 +403,17 @@ class Utilisateur
         $this->secteurEntreprise = $secteurEntreprise;
 
         return $this;
+    }
+
+
+    public function getRoles()
+    {
+        return ['Role_USER'];
+    }
+
+
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
     }
 }

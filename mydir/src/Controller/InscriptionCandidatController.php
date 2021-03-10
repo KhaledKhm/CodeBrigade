@@ -18,6 +18,7 @@ class InscriptionCandidatController extends AbstractController
      */
     public function addCandidat(Request $request)
     {
+
         $utilisateur = new utilisateur();
         $form = $this->createForm(CandidatformType::class, $utilisateur);
         $form->add('Add', SubmitType::class);
