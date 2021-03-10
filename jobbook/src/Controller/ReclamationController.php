@@ -65,7 +65,7 @@ class ReclamationController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('affichereclamation');
         }
-        return $this->render('ajoutreclamation.html.twig',
+        return $this->render('Reclamation.html.twig',
             [
                 'form'=>$form->createView(),
             ]

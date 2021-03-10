@@ -17,32 +17,22 @@ class Avis
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $subject;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
     private $commentaire;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Etoiles;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getSubject(): ?string
-    {
-        return $this->subject;
-    }
-
-    public function setSubject(string $subject): self
-    {
-        $this->subject = $subject;
-
-        return $this;
-    }
 
     public function getCommentaire(): ?string
     {
@@ -52,6 +42,18 @@ class Avis
     public function setCommentaire(string $commentaire): self
     {
         $this->commentaire = $commentaire;
+
+        return $this;
+    }
+
+    public function getEtoiles(): ?int
+    {
+        return $this->Etoiles;
+    }
+
+    public function setEtoiles(int $Etoiles): self
+    {
+        $this->Etoiles = $Etoiles;
 
         return $this;
     }

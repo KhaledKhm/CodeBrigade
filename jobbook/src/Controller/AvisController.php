@@ -64,9 +64,9 @@ class AvisController extends AbstractController
             $em=$this->getDoctrine()->getManager();
             $em->persist($avis);
             $em->flush();
-            return $this->redirectToRoute('afficheravis');
+            return $this->redirectToRoute('ajouteravis');
         }
-        return $this->render('ajoutavis.html.twig',
+        return $this->render('Avis.html.twig',
             [
                 'form'=>$form->createView(),
             ]

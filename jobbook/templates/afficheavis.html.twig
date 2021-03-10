@@ -240,7 +240,6 @@
 						<thead>
 							<tr>
 								<th scope="col">#ID</th>
-								<th scope="col">Subject</th>
 								<th scope="col">Commentaire</th>
 							</tr>
 						</thead>
@@ -248,7 +247,6 @@
 						{%for a in avis%}
 						<tr>
 							<th scope="row">{{ a.id }}</th>
-							<td> {{ a.subject }}</td>
 							<td> {{ a.commentaire }}</td>
 							<td><a href="/Modifieravis/{{a.id}}">Edit</a></td>
 							<td><a href={{  path("deleteavis",{'id':a.id})}}>Delete</a></td>
