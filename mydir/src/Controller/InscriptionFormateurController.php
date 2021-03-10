@@ -68,27 +68,30 @@ class InscriptionFormateurController extends AbstractController
 
 
 
-   /* public function adduser(Request $request)
-    {
-        $utilisateur= new $utilisateur();
-        $form=$this->createForm(AddsocieteType::class,$utilisateur);
-        $form->add('Add',SubmitType::class);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid())
-        {
 
 
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
-            return $this->redirectToRoute("manager");
-        }
+    /* public function adduser(Request $request)
+     {
+         $utilisateur= new $utilisateur();
+         $form=$this->createForm(AddsocieteType::class,$utilisateur);
+         $form->add('Add',SubmitType::class);
+         $form->handleRequest($request);
+         if($form->isSubmitted() && $form->isValid())
+         {
 
-        return $this->render('user/add1.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }*/
+
+
+             $entityManager = $this->getDoctrine()->getManager();
+             $entityManager->persist($user);
+             $entityManager->flush();
+             return $this->redirectToRoute("manager");
+         }
+
+         return $this->render('user/add1.html.twig', [
+             'form' => $form->createView(),
+         ]);
+     }*/
 
 
 }

@@ -1,7 +1,20 @@
-{% extends 'base.html.twig' %}
+{% extends'base.html.twig' %}
+{% block loading %} {% endblock %}
+{% block header %} <h2>Connexion</h2> {% endblock %}
+{% block footer %} {% endblock %}
+{% block lwost %}
 
-{% block title %}Hello AuthentificationController!{% endblock %}
+   <form action="{{ path('login') }}" method="POST">
 
-{% block body %}
-<H1>connexion</H1>
+       <input placeholder="Adresse email"  name="_username" type="text" class="form-control">
+
+
+       <input placeholder="Mot de passe"  name="_password" type="password" class="form-control">
+
+
+
+       <button type="submit" class="btn btn-sucess">Connexion</button>
+
+
+   </form>
 {% endblock %}

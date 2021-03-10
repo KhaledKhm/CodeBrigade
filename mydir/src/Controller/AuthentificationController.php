@@ -13,10 +13,12 @@ class AuthentificationController extends AbstractController
      */
     public function login()
     {
-        return $this->render('authentification/login.html.twig', [
-            'controller_name' => 'AuthentificationController',
-        ]);
+        return $this->render('authentification/login.html.twig');
     }
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logout(){
 
-
+    }
 }
