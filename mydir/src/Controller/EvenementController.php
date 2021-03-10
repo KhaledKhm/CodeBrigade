@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Evenement;
 use App\Entity\Promotion;
 
+use App\Repository\PostulantRepository;
+use App\Repository\EvenementRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -45,6 +47,34 @@ class EvenementController extends AbstractController
 
     }
     /**
+     * @Route("/stats", name="stats")
+     */
+    public function statistiques(EvenementRepository $categEvent){
+        // On va chercher toutes les Evenements
+        $evenements = $categEvent->findAll();
+
+        $categNom = [];
+        $categColor = [];
+        $categCount = [];
+
+        // On "démonte" les données pour les séparer tel qu'attendu par ChartJS
+        foreach($evenements as $evenement){
+            $categNom[] = $evenement->getlibelle();
+            $categColor[] = $evenement->getColor();
+            $categCount[] = count($evenement->getPostulants());
+        }
+
+
+
+        return $this->render('evenement/stats.html.twig', [
+            'categNom' => json_encode($categNom),
+            'categColor' => json_encode($categColor),
+            'categCount' => json_encode($categCount),
+        ]);
+    }
+
+
+    /**
      * @param $id
      * @Route ("/listPost/{id}", name="listPost")
      */
@@ -83,6 +113,7 @@ class EvenementController extends AbstractController
             $evenement->setDateDebut($request->get('DateDebut'));
             $evenement->setDateFin($request->get('DateFin'));
             $evenement->setPrixInscription($request->get('PrixInscription'));
+            $evenement->setcolor($request->get('color'));
             $em=$this->getDoctrine()->getManager();
             $em->persist($evenement);
             $em->flush();
@@ -105,6 +136,8 @@ class EvenementController extends AbstractController
             $evenement->setDateDebut($request->get('DateDebut'));
             $evenement->setDateFin($request->get('DateFin'));
             $evenement->setPrixInscription($request->get('PrixInscription'));
+            $evenement->setcolor($request->get('color'));
+
             $em->flush();
             return $this->redirectToRoute('evenement');
         }

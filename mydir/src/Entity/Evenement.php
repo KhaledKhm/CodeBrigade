@@ -54,6 +54,11 @@ class Evenement
      */
     private $postulants;
 
+    /**
+     * @ORM\Column(type="string", length=7, nullable=true)
+     */
+    private $color;
+
     public function __construct()
     {
         $this->promotions = new ArrayCollection();
@@ -169,6 +174,18 @@ class Evenement
     public function removePostulant(Postulant $postulant): self
     {
         $this->postulants->removeElement($postulant);
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(?string $color): self
+    {
+        $this->color = $color;
 
         return $this;
     }

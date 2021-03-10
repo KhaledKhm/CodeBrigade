@@ -12,7 +12,8 @@
 
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+    {% block stylesheets %}
+    {% endblock %}
     <!-- Google Font -->
     <link href="{{ asset('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap') }}" rel="stylesheet">
     <!-- CSS -->
@@ -150,7 +151,7 @@
                         <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="http://localhost:8000/home">Statistiques</a></li>
+                        <li><a href="http://localhost:8000/stats">Statistiques</a></li>
                     </ul>
                 </li>
 
@@ -195,6 +196,7 @@
     </div>
 </div>
 <!-- js -->
+{% block javascripts %}{% endblock %}
 <script src="{{ asset('vendors/scripts/core.js') }}"></script>
 <script src="{{ asset('vendors/scripts/script.min.js') }}"></script>
 <script src="{{ asset('vendors/scripts/process.js') }}"></script>
