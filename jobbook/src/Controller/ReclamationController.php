@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Reclamation;
+use App\Entity\Avis;
 use App\Form\ReclamationType;
 use App\Repository\ReclamationRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,9 +30,10 @@ class ReclamationController extends AbstractController
      */
     public function Affiche(ReclamationRepository $repository)
     {
+        $avis=$this->getDoctrine()->getManager()->getRepository(avis::class)->findAll();
         $reclamation=$repository->findAll();
         return $this->render('affichereclamation.html.twig',
-            ['reclamation'=>$reclamation]);
+            ['reclamation'=>$reclamation,'avis'=>$avis]);
     }
 
     /**

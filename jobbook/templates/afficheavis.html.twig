@@ -4,11 +4,17 @@
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
 	<title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
-
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 	<!-- Site favicon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="vendors/images/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="vendors/images/favicon-16x16.png">
+
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/templatemo-style.css" rel="stylesheet">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -67,53 +73,54 @@
 					<div class="dropdown-menu dropdown-menu-right">
 						<div class="notification-list mx-h-350 customscroll">
 							<ul>
+								{%for a in avis|reverse%}
 								<li>
 									<a href="#">
-										<img src="../../deskapp-master/vendors/images/img.jpg" alt="">
-										<h3>John Doe</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
+
+											<tr>
+												<td>un utilisateur a commenté : {{ a.commentaire }}</td>
+											</tr>
+
 									</a>
 								</li>
-								<li>
-									<a href="#">
-										<img src="../../deskapp-master/vendors/images/photo1.jpg" alt="">
-										<h3>Lea R. Frith</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img src="../../deskapp-master/vendors/images/photo2.jpg" alt="">
-										<h3>Erik L. Richards</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img src="../../deskapp-master/vendors/images/photo3.jpg" alt="">
-										<h3>John Doe</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img src="../../deskapp-master/vendors/images/photo4.jpg" alt="">
-										<h3>Renee I. Hansen</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img src="../../deskapp-master/vendors/images/img.jpg" alt="">
-										<h3>Vicki M. Coleman</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-									</a>
-								</li>
+								{% endfor %}
+
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
+
+
+			<div class="user-notification">
+				<div class="dropdown">
+					<a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
+						<i class="material-icons">warning</i>
+						<span class="badge notification-active"></span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<div class="notification-list mx-h-350 customscroll">
+							<ul>
+								{%for b in reclamation|reverse%}
+									<li>
+										<a href="#">
+
+											<tr>
+												<td>une reclamation à propos  {{ b.subject }} :</td>
+												<td> {{ b.commentaire }}</td>
+											</tr>
+
+										</a>
+									</li>
+								{% endfor %}
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
 			<div class="github-link">
 				<a href="https://github.com/dropways/deskapp" target="_blank"><img src="../../deskapp-master/vendors/images/github.svg" alt=""></a>
 			</div>
@@ -241,6 +248,7 @@
 							<tr>
 								<th scope="col">#ID</th>
 								<th scope="col">Commentaire</th>
+								<th scope="col">N°Etoiles</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -248,6 +256,7 @@
 						<tr>
 							<th scope="row">{{ a.id }}</th>
 							<td> {{ a.commentaire }}</td>
+							<td> {{ a.etoiles }}</td>
 							<td><a href="/Modifieravis/{{a.id}}">Edit</a></td>
 							<td><a href={{  path("deleteavis",{'id':a.id})}}>Delete</a></td>
 						</tr>
@@ -255,13 +264,107 @@
 
 						</tbody>
 					</table>
+				</div>
 
+			</div>
+		</div>
 	</div>
+
+
+
 	<!-- js -->
 	<script src="../../deskapp-master/vendors/scripts/core.js"></script>
 	<script src="../../deskapp-master/vendors/scripts/script.min.js"></script>
 	<script src="../../deskapp-master/vendors/scripts/process.js"></script>
 	<script src="../../deskapp-master/vendors/scripts/layout-settings.js"></script>
-			</div></div></div>
+
+
+
+
+	<div class="main-container">
+
+		<!-- Main content -->
+		<div class="templatemo-content col-1 light-gray-bg">
+
+
+			<div class="templatemo-flex-row flex-content-row templatemo-overflow-hidden"> <!-- overflow hidden for iPad mini landscape view-->
+				<div class="col-1 templatemo-overflow-hidden">
+					<div class="templatemo-content-widget white-bg templatemo-overflow-hidden">
+						<i class="fa fa-times"></i>
+						<div class="templatemo-flex-row flex-content-row">
+							<div class="col-1 col-lg-6 col-md-12">
+								<div id="pie_chart_div" class="templatemo-chart"></div> <!-- Pie chart div -->
+							</div>
+							<div class="col-1 col-lg-6 col-md-12">
+								<div id="bar_chart_div" class="templatemo-chart"></div> <!-- Bar chart div -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<!-- JS -->
+	<script src="js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
+	<script src="js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
+	<script src="https://www.google.com/jsapi"></script> <!-- Google Chart -->
+	<script>
+		/* Google Chart
+        -------------------------------------------------------------------*/
+		// Load the Visualization API and the piechart package.
+		google.load('visualization', '1.0', {'packages':['corechart']});
+
+		// Set a callback to run when the Google Visualization API is loaded.
+		google.setOnLoadCallback(drawChart);
+
+		// Callback that creates and populates a data table,
+		// instantiates the pie chart, passes in the data and
+		// draws it.
+		function drawChart() {
+			// Create the data table.
+			var data = new google.visualization.DataTable();
+			data.addColumn('string', 'Topping');
+			data.addColumn('number', 'Slices');
+			data.addRows([
+				{% for p in avis%}
+				['star1', {{ p.etoiles }}],
+				{% endfor %}
+			]);
+
+			// Set chart options
+			var options = {'title':'Statistique des Etoiles'};
+
+			// Instantiate and draw our chart, passing in some options.
+			var pieChart = new google.visualization.PieChart(document.getElementById('pie_chart_div'));
+			pieChart.draw(data, options);
+
+			var barChart = new google.visualization.BarChart(document.getElementById('bar_chart_div'));
+			barChart.draw(data, options);
+		}
+
+		$(document).ready(function(){
+			if($.browser.mozilla) {
+				//refresh page on browser resize
+				// http://www.sitepoint.com/jquery-refresh-page-browser-resize/
+				$(window).bind('resize', function(e)
+				{
+					if (window.RT) clearTimeout(window.RT);
+					window.RT = setTimeout(function()
+					{
+						this.location.reload(false); /* false to get page from cache */
+					}, 200);
+				});
+			} else {
+				$(window).resize(function(){
+					drawChart();
+				});
+			}
+		});
+
+	</script>
+	<script type="text/javascript" src="js/templatemo-script.js"></script>      <!-- Templatemo Script -->
+
 </body>
 </html>
