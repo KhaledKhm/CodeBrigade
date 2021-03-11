@@ -19,6 +19,11 @@
     {{ form_errors(form.password) }}
 
 
+    {{ form_label(form.confirmPassword) }}
+    {{ form_widget(form.confirmPassword ,{ 'attr':{'class':"form-control"}}) }}
+    {{ form_errors(form.confirmPassword) }}
+
+
     {{ form_label(form.accountStatus) }}
     {{ form_widget(form.accountStatus,{ 'attr':{'class':"form-control"}}) }}
     {{ form_errors(form.accountStatus) }}

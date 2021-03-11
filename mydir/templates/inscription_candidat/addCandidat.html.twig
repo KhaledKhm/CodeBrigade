@@ -10,14 +10,18 @@
 
     {{ form_errors(form) }}
 
-
-    {{ form_label(form.username) }}
-    {{ form_widget(form.username,{ 'attr':{ 'placeholder':"Type your username",'class':"form-control"}}) }}
-    {{ form_errors(form.username) }}
+    {{ form_label(form.email) }}
+    {{ form_widget(form.email,{ 'attr':{'class':"form-control"}}) }}
+    {{ form_errors(form.email) }}
 
     {{ form_label(form.password) }}
     {{ form_widget(form.password,{ 'attr':{ 'class':"form-control"}}) }}
     {{ form_errors(form.password) }}
+
+
+    {{ form_label(form.confirmPassword) }}
+    {{ form_widget(form.confirmPassword ,{ 'attr':{'class':"form-control"}}) }}
+    {{ form_errors(form.confirmPassword) }}
 
     {{ form_label(form.accountStatus) }}
     {{ form_widget(form.accountStatus,{ 'attr':{'class':"form-control"}}) }}
@@ -55,9 +59,7 @@
     {{ form_widget(form.adresse,{ 'attr':{'class':"form-control"}}) }}
     {{ form_errors(form.adresse) }}
 
-    {{ form_label(form.email) }}
-    {{ form_widget(form.email,{ 'attr':{'class':"form-control"}}) }}
-    {{ form_errors(form.email) }}
+
 
     {{ form_label(form.domainePersonne) }}
     {{ form_widget(form.domainePersonne,{ 'attr':{'class':"form-control"}}) }}
