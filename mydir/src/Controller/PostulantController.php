@@ -90,7 +90,7 @@ class PostulantController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('evenementf');
         }
-        return $this->render('postulant/add.html.twig');
+        return $this->render('postulant/add1.html.twig');
     }
 
 
