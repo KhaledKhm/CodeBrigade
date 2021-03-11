@@ -39,8 +39,9 @@ class InscriptionFormateurController extends AbstractController
         if ($form->isSubmitted() /*&& $form->isValid()*/) {
             $hash = $encoder->encodePassword($utilisateur,$utilisateur->getPassword());
             $utilisateur->setPassword($hash);
-            $utilisateur->setRole('Formateur');
+
             $utilisateur = $form->getData();
+            $utilisateur->setRole('Formateur');
             $em = $this->getDoctrine()->getManager();
             $em->persist($utilisateur);
             $em->flush();
