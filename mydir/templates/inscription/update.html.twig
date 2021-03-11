@@ -7,15 +7,11 @@
     {{ form_errors(formedit) }}
 </div>
 <div class="row">
+
     <div class="col">
-        {{ form_label(formedit.username) }}
-        {{ form_widget(formedit.username)}}
-        {{ form_errors(formedit.username) }}
-    </div>
-    <div class="col">
-        {{ form_label(formedit.password) }}
-        {{ form_widget(formedit.password)}}
-        {{ form_errors(formedit.password) }}
+        {{ form_label(formedit.email) }}
+        {{ form_widget(formedit.email,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.email) }}
     </div>
     <div class="col">
         {{ form_label(formedit.role) }}
@@ -67,11 +63,7 @@
         {{ form_widget(formedit.adresse,{ 'attr':{'class':"form-control"}}) }}
         {{ form_errors(formedit.adresse) }}
     </div>
-    <div class="col">
-        {{ form_label(formedit.email) }}
-        {{ form_widget(formedit.email,{ 'attr':{'class':"form-control"}}) }}
-        {{ form_errors(formedit.email) }}
-    </div>
+
     <div class="col">
         {{ form_label(formedit.domainePersonne) }}
         {{ form_widget(formedit.domainePersonne,{ 'attr':{'class':"form-control"}}) }}
@@ -81,4 +73,4 @@
     {{ form_row(formedit.Modifier,{ 'attr':{ 'class':"btn btn-primary"}}) }}
 
 
-    {{ form_rest(formedit) }}
+

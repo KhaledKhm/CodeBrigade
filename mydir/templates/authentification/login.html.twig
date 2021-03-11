@@ -1,8 +1,6 @@
 {% extends'base.html.twig' %}
-{% block loading %} {% endblock %}
-{% block header %} <h2>Connexion</h2> {% endblock %}
-{% block footer %} {% endblock %}
-{% block lwost %}
+{% block body %}
+{% block lwest %}
 
    <form action="{{ path('login') }}" method="POST">
 
@@ -17,4 +15,5 @@
 
 
    </form>
-{% endblock %}
+{% endblock %}{% endblock %}
+
