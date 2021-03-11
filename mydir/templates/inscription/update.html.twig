@@ -8,7 +8,16 @@
 </div>
 <div class="row">
 
-
+    <div class="col">
+        {{ form_label(formedit.email) }}
+        {{ form_widget(formedit.email,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.email) }}
+    </div>
+    <div class="col">
+        {{ form_label(formedit.password) }}
+        {{ form_widget(formedit.password,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.password) }}
+    </div>
 
     <div class="col">
         {{ form_label(formedit.accountStatus) }}
@@ -65,4 +74,4 @@
     {{ form_row(formedit.Modifier,{ 'attr':{ 'class':"btn btn-primary"}}) }}
 
 
-    {{ form_rest(formedit) }}
+

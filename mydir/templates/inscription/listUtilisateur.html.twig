@@ -1,6 +1,5 @@
 {% extends'base.html.twig' %}
-{% block links %}test links
-{% endblock %}
+
 {% block lwest %}
 
 <table border="1" class="table table-hover">
@@ -90,7 +89,12 @@
 
     </tr>
     {% endfor %}
-        {% block footer %}test
+        {% block footer %}
+            {% block logout %}
+                {% if not app.user %}
+                <a class="btn btn-rose" href="{{ path('logout')}}">Déconnexion</a>
+                {% endif %}
+            {% endblock %}
         {% endblock %}
 
 

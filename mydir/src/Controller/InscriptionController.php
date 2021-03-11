@@ -46,7 +46,7 @@ class InscriptionController extends AbstractController
         $formedit->add('Modifier', SubmitType::class);
 
         $formedit->handleRequest($request);
-        if($formedit->isSubmitted() && $formedit->isValid())
+        if($formedit->isSubmitted() /*&& $formedit->isValid()*/)
         {
             $hash = $encoder->encodePassword($Utilisateur,$Utilisateur->getPassword());
             $Utilisateur->setPassword($hash);

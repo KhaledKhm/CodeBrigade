@@ -30,13 +30,10 @@ class Utilisateur implements UserInterface
      */
     private $password;
 
-    /**
-     * @ORM\Column(type="string", length=16, nullable=true)
-     * @Assert\NotBlank(
-     * )
-     */
 
     /**
+     * @Assert\NotBlank(
+     * )
      * @Assert\EqualTo(propertyPath="password",message="Password not matching")
      */
     public $confirmPassword;

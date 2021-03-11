@@ -1,8 +1,8 @@
 {% extends'base.html.twig' %}
 {% block loading %} {% endblock %}
 {% block header %} <h2>Inscription d'un formateur</h2> {% endblock %}
-{% block footer %} {% endblock %}
-{% block lwost %}
+
+{% block lwest %}
 
 
 
@@ -10,7 +10,9 @@
 
                 {{ form_errors(form) }}
 
-
+    {{ form_label(form.email) }}
+    {{ form_widget(form.email,{ 'attr':{'class':"form-control"}}) }}
+    {{ form_errors(form.email) }}
 
                                 {{ form_label(form.password) }}
                                 {{ form_widget(form.password,{ 'attr':{ 'class':"form-control"}}) }}
@@ -56,9 +58,7 @@
                                 {{ form_widget(form.adresse,{ 'attr':{'class':"form-control"}}) }}
                                 {{ form_errors(form.adresse) }}
 
-                                {{ form_label(form.email) }}
-                                {{ form_widget(form.email,{ 'attr':{'class':"form-control"}}) }}
-                                {{ form_errors(form.email) }}
+
 
                                 {{ form_label(form.domainePersonne) }}
                                 {{ form_widget(form.domainePersonne,{ 'attr':{'class':"form-control"}}) }}
@@ -68,7 +68,11 @@
                         {{ form_row(form.Add,{ 'attr':{ 'class':"btn btn-primary"}}) }}
 
 
-
+    {% block footer %}
+        {% block logout %}
+            <a class="btn btn-rose" href="{{ path('logout')}}">Déconnexion</a>
+        {% endblock %}
+    {% endblock %}
 
 
 {% endblock %}
