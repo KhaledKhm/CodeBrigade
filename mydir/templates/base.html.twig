@@ -78,8 +78,11 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <i>
-                    <a class="nav-link" href="{{ asset('https://www.creative-tim.com/product/material-kit-pro') }}" target="_blank">
+                    <a class="nav-link" href="{{ path('logout' )}}">
+
+                        {% block logout %}
                         <button class="btn btn-rose">Déconnexion</button>
+                        {% endblock %}
                     </a>
                 </i>
             </ul>
@@ -131,6 +134,7 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
     </div>
 </div>
+
 <!--  End Modal -->
 <footer class="footer" data-background-color="black">
     <div class="container">

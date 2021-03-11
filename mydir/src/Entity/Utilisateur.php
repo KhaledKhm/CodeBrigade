@@ -142,9 +142,7 @@ class Utilisateur implements UserInterface
      * @Assert\Email(
      *     message = "The email '{{ $adresse }}' is not a valid email."
      * )
-     * @Unique(
-     *     message= "Email is already used"
-     * )
+
      */
     private $email;
 

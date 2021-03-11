@@ -10,13 +10,14 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class InscriptionCandidatController extends AbstractController
 {
     /**
      * @Route("/inscription/formateur/inscription_condidat_add", name="inscription_condidat_add")
      */
-    public function addCandidat(Request $request)
+    public function addCandidat(Request $request,UserPasswordEncoderInterface $encoder)
     {
 
         $utilisateur = new utilisateur();
@@ -24,6 +25,8 @@ class InscriptionCandidatController extends AbstractController
         $form->add('Add', SubmitType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() /*&& $form->isValid()*/) {
+            $hash = $encoder->encodePassword($utilisateur,$utilisateur->getPassword());
+            $utilisateur->setPassword($hash);
             $utilisateur->setRole('Candidat');
             $utilisateur = $form->getData();
             $em = $this->getDoctrine()->getManager();

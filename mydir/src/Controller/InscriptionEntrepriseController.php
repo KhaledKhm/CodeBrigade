@@ -26,7 +26,7 @@ class InscriptionEntrepriseController extends AbstractController
     /**
      * @Route("/inscription/entreprise/inscription_entreprise_add", name="inscription_entreprise_add")
      */
-    public function addEntreprise(Request $request,UserPasswordEncoderInterface $passwordEncoder)
+    public function addEntreprise(Request $request,UserPasswordEncoderInterface $encoder)
     {
         $utilisateur = new utilisateur();
         $form = $this->createForm(CandidatformType::class, $utilisateur);
@@ -34,7 +34,8 @@ class InscriptionEntrepriseController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() /*&& $form->isValid()*/) {
-            $utilisateur->setPassword($passwordEncoder->encodePassword($utilisateur,$utilisateur->getPassword()));
+            $hash = $encoder->encodePassword($utilisateur,$utilisateur->getPassword());
+            $utilisateur->setPassword($hash);
             $utilisateur->setRole('Entreprise');
             $utilisateur = $form->getData();
             $em = $this->getDoctrine()->getManager();

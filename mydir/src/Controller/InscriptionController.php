@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UtilisateurRepository;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
 class InscriptionController extends AbstractController
@@ -36,7 +37,7 @@ class InscriptionController extends AbstractController
     /**
      * @Route("/modifierUtilisateur/{id}", name="modifierUtilisateur")
      */
-    public function updateUtilisateur(Request $request,$id)
+    public function updateUtilisateur(Request $request,$id,UserPasswordEncoderInterface $encoder)
     {
         $Utilisateur=new Utilisateur();
         $em = $this->getDoctrine()->getManager();
@@ -47,9 +48,11 @@ class InscriptionController extends AbstractController
         $formedit->handleRequest($request);
         if($formedit->isSubmitted() && $formedit->isValid())
         {
+            $hash = $encoder->encodePassword($Utilisateur,$Utilisateur->getPassword());
+            $Utilisateur->setPassword($hash);
             $em=$this->getDoctrine()->getManager();
             $em->flush();
-            return $this->redirectToRoute('inscription/listUtilisateur.html.twig');
+            return $this->redirectToRoute('inscription/utilisateurs');
         }
         return $this->render('inscription/update.html.twig',
             [
