@@ -22,9 +22,6 @@
                                 {{ form_widget(form.confirmPassword ,{ 'attr':{'class':"form-control"}}) }}
                                 {{ form_errors(form.confirmPassword) }}
 
-                                {{ form_label(form.accountStatus) }}
-                                {{ form_widget(form.accountStatus,{ 'attr':{'class':"form-control"}}) }}
-                                {{ form_errors(form.accountStatus) }}
 
                                 {{ form_label(form.cinPersonne) }}
                                 {{ form_widget(form.cinPersonne,{ 'attr':{'class':"form-control"}}) }}
@@ -68,11 +65,6 @@
                         {{ form_row(form.Add,{ 'attr':{ 'class':"btn btn-primary"}}) }}
 
 
-    {% block footer %}
-        {% block logout %}
-            <a class="btn btn-rose" href="{{ path('logout')}}">Déconnexion</a>
-        {% endblock %}
-    {% endblock %}
 
 
 {% endblock %}
