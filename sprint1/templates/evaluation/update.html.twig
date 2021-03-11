@@ -22,7 +22,7 @@
     <br>
     Description <input class="form-control form-control-sm form-control-line" type="text" placeholder="Description" name="Description" id="Description" value={{ evaluation.Description }}>
     <br>
-    Date Evaluation <input class="form-control form-control-sm form-control-line" type="text" placeholder="Date Evaluation" name="Dateevaluation" id="Dateevaluation" value={{ evaluation.Dateevaluation }}>
+    Date Evaluation <input class="form-control form-control-sm form-control-line" type="text" placeholder="Date Evaluation" name="Dateevaluation" id="Dateevaluation" value={{ evaluation.Dateevaluation }} readonly>
     <br>
     Id Entreprise <select class="custom-select col-12" name="Identreprise">
         {% for Entreprise in classe %}
@@ -40,7 +40,7 @@
     <script>
         function isValidDate2(dateString)
         {
-            var parts = dateString.split("-");
+           /* var parts = dateString.split("-");
             var day = parseInt(parts[1], 10);
             var month = parseInt(parts[0], 10);
             var year = parseInt(parts[2], 10);
@@ -48,7 +48,8 @@
             var today = new Date();
             var today_x = today.getFullYear()*10000+(today.getMonth()+1)*100+today.getDate();
             var date_x = year*10000 + month*100 + day;
-            return date_x > today_x;
+            return date_x > today_x;*/
+            return true;
         }
 
         function isValidDate(dateString)

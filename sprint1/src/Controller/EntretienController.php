@@ -27,6 +27,15 @@ class EntretienController extends AbstractController
     }
 
     /**
+     * @Route("/entretienF", name="entretienF")
+     */
+    public function indexF(): Response
+    {
+        $class = $this->getDoctrine()->getRepository(Entretien::class)->findAll();
+        return $this->render('entretien/listF.html.twig', ['classe'=>$class]);
+    }
+
+    /**
      * @Route("/ajouterEntretien", name="ajouterEntretien")
      */
     public function createEntretien(Request $request)

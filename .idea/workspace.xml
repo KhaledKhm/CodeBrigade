@@ -9,7 +9,9 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/sprint1/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -122,6 +124,9 @@
       <path value="$PROJECT_DIR$/sprint1/vendor/symfony/swiftmailer-bundle" />
       <path value="$PROJECT_DIR$/sprint1/vendor/phpmailer/phpmailer" />
       <path value="$PROJECT_DIR$/sprint1/vendor/symfony/intl" />
+      <path value="$PROJECT_DIR$/sprint1/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/sprint1/vendor/mrad/vendor" />
+      <path value="$PROJECT_DIR$/sprint1/vendor/jolicode/gif-exception-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1pOLcfKzOaRhdVMRg5FkIorTvzk" />
@@ -133,9 +138,9 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/PIDEV2020_ELIT_3A17" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Compressed/MahdiPIDEV/MahdiPIDEV" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.zend.framework.tool" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunAnythingCache">
@@ -172,7 +177,12 @@
       <workItem from="1615227192370" duration="274000" />
       <workItem from="1615227671519" duration="1885000" />
       <workItem from="1615229618930" duration="29000" />
-      <workItem from="1615229796188" duration="2291000" />
+      <workItem from="1615229796188" duration="2858000" />
+      <workItem from="1615233903078" duration="5431000" />
+      <workItem from="1615240109806" duration="2949000" />
+      <workItem from="1615247122476" duration="642000" />
+      <workItem from="1615315301204" duration="9611000" />
+      <workItem from="1615333228883" duration="1924000" />
     </task>
     <servers />
   </component>
@@ -196,10 +206,14 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="493" y="309" key="ComposerCompositePathDialog/0.0.1536.864@0.0.1536.864" timestamp="1615150719335" />
-    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1615150717195">
+    <state x="545" y="345" width="445" height="264" key="ComposerInitDialogKey" timestamp="1615236696351">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1615150717195" />
+    <state x="545" y="345" width="445" height="264" key="ComposerInitDialogKey/0.0.1536.864@0.0.1536.864" timestamp="1615236696351" />
+    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1615244220905">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1615244220905" />
     <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1615229561348">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -216,18 +230,18 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1615229561347" />
-    <state x="277" y="77" key="SettingsEditor" timestamp="1615150722653">
+    <state x="277" y="77" key="SettingsEditor" timestamp="1615333377997">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="277" y="77" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1615150722653" />
+    <state x="277" y="77" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1615333377997" />
     <state x="572" y="334" key="SymfonyPathDialog" timestamp="1615150689958">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="572" y="334" key="SymfonyPathDialog/0.0.1536.864@0.0.1536.864" timestamp="1615150689958" />
-    <state x="425" y="197" width="672" height="677" key="run.anything.popup" timestamp="1615229485901">
+    <state x="425" y="197" width="672" height="677" key="run.anything.popup" timestamp="1615236216052">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="425" y="197" width="672" height="677" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1615229485901" />
+    <state x="425" y="197" width="672" height="677" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1615236216052" />
     <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1615150998114">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

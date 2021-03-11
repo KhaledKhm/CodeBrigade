@@ -58,6 +58,28 @@ class QuizController extends AbstractController
         return $this->redirectToRoute('afficherQuiz');
     }
 
+    /**
+     * @Route("/participerQuiz/{id}",name="participerQuiz")
+     */
+    public function participerQuiz(Request $request,$id)
+    {
+        if ($request->request->count()>0)
+        {
+            $em=$this->getDoctrine()->getManager();
+            $evaluation=$em->getRepository(Evaluation::class)->find($id);
+            /*$evaluation->setLibelle($request->get('Libelle'));
+            $evaluation->setDescription($request->get('Description'));
+            $evaluation->setDateevaluation($request->get('Dateevaluation'));
+            $evaluation->setIdEntreprise($request->get('Identreprise'));
+            $em->flush();*/
+            return $this->redirectToRoute('evaluationF');
+        }
+        $evaluation=$this->getDoctrine()->getRepository(Evaluation::class)->find($id);
+        $quiz=$this->getDoctrine()->getRepository(Quiz::class)->findAll();
+        return $this->render('evaluation/quizF.html.twig', ['evaluation'=>$evaluation,'quiz'=>$quiz]);
+    }
+
+
 
 
 }

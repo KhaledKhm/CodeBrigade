@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 use App\Entity\Evaluation;
+use App\Entity\ParticipationEvaluation;
 use App\Entity\Quiz;
 use App\Entity\Utilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,6 +21,16 @@ class EvaluationController extends AbstractController
     {
         $class = $this->getDoctrine()->getRepository(Evaluation::class)->findAll();
         return $this->render('evaluation/list.html.twig', ['classe'=>$class]);
+    }
+
+    /**
+     * @Route("/evaluationF", name="evaluationF")
+     */
+    public function listF(): Response
+    {
+        $class = $this->getDoctrine()->getRepository(Evaluation::class)->findAll();
+        $participation = $this->getDoctrine()->getRepository(ParticipationEvaluation::class)->findAll();
+        return $this->render('evaluation/listF.html.twig', ['classe'=>$class,'participation'=>$participation]);
     }
 
 
@@ -105,13 +116,27 @@ class EvaluationController extends AbstractController
         $data= "";
 
 
-        $data.="<h1>Vos Informations</h1>";
+        $data.="<h1>Votre Evaluation</h1>";
 
         $data.="<strong>ID Evaluation : </strong> " . $id . "<br>";
         $data.="<strong>libelle Evaluation : </strong> " . $libelle . "<br>";
         $data.="<strong>Description Evaluation : </strong> " . $description . "<br>";
         $data.="<strong>Date Dvaluation : </strong> " . $dateevaluation . "<br>";
         $data.="<strong>ID Entreprise : </strong>" . $identreprise . "<br>";
+
+        $quiz = $this->getDoctrine()->getRepository(Quiz::class)->findall();
+        $data.="<h2>Vos Questions du quiz</h2>";
+        $cmp=0;
+        foreach ($quiz as $q)
+        {
+            if($q->getIdEvaluation()==$id)
+            {
+                $data .= "<strong>Question$cmp : </strong> " . $q->getQuestion() . "<br>";
+                $data .= "<strong>Choix1 : </strong> " . $q->getChoix1() . "<br>";
+                $data .= "<strong>Choix2 : </strong> " . $q->getChoix2() . "<br>";
+                $data .= "<strong>Choix3 : </strong> " . $q->getChoix3() . "<br><br>";
+            }
+        }
 
         //Création du PDF
         $mdpdf->WriteHTML($data);

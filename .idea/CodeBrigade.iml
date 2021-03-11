@@ -24,11 +24,13 @@
       <excludeFolder url="file://$MODULE_DIR$/sprint1/vendor/doctrine/sql-formatter" />
       <excludeFolder url="file://$MODULE_DIR$/sprint1/vendor/egulias/email-validator" />
       <excludeFolder url="file://$MODULE_DIR$/sprint1/vendor/friendsofphp/proxy-manager-lts" />
+      <excludeFolder url="file://$MODULE_DIR$/sprint1/vendor/jolicode/gif-exception-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/sprint1/vendor/laminas/laminas-code" />
       <excludeFolder url="file://$MODULE_DIR$/sprint1/vendor/laminas/laminas-eventmanager" />
       <excludeFolder url="file://$MODULE_DIR$/sprint1/vendor/laminas/laminas-zendframework-bridge" />
       <excludeFolder url="file://$MODULE_DIR$/sprint1/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/sprint1/vendor/mpdf/mpdf" />
+      <excludeFolder url="file://$MODULE_DIR$/sprint1/vendor/mrad/vendor" />
       <excludeFolder url="file://$MODULE_DIR$/sprint1/vendor/myclabs/deep-copy" />
       <excludeFolder url="file://$MODULE_DIR$/sprint1/vendor/nikic/php-parser" />
       <excludeFolder url="file://$MODULE_DIR$/sprint1/vendor/phpdocumentor/reflection-common" />
@@ -41,6 +43,7 @@
       <excludeFolder url="file://$MODULE_DIR$/sprint1/vendor/psr/log" />
       <excludeFolder url="file://$MODULE_DIR$/sprint1/vendor/sensio/framework-extra-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/sprint1/vendor/setasign/fpdi" />
+      <excludeFolder url="file://$MODULE_DIR$/sprint1/vendor/swiftmailer/swiftmailer" />
       <excludeFolder url="file://$MODULE_DIR$/sprint1/vendor/symfony/asset" />
       <excludeFolder url="file://$MODULE_DIR$/sprint1/vendor/symfony/browser-kit" />
       <excludeFolder url="file://$MODULE_DIR$/sprint1/vendor/symfony/cache" />
