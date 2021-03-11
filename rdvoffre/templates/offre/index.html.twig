@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Liste des offres</h1>
+    <table border="1" class="table table-hover">
+        <tr class="table-light">
+            <th>Description</th>
+            <th>Libelle</th>
+            <th>Date Limite</th>
+            <th>Salaire</th>
+            <th>Disponabilite</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+        </tr>
+        {% for Offre in class %}
+            <tr>
+                <td>
+                    {{Offre.Description}}
+                </td>
+                <td>
+                    {{Offre.Libelle}}
+                </td>
+                <td>
+                    {{ Offre.DateLimite}}
+                </td>
+                <td>
+                    {{ Offre.Salaire}}
+                </td>
+                <td>
+                    {{ Offre.Disponabilite}}
+                </td>
+                <td>
+                    <form action="{{ path('modifierOffre',{'id':Offre.id} )}}"><button> Modifier</button></form>
+                </td>
+                <td>
+                    <form action="{{ path('supprimerOffre',{'id':Offre.id} )}}"><button>Supprimer</button></form>
+                </td>
+                <td>
+                    <form action="{{ path('listPost',{'id':Offre.id})}}"><button>Liste des postulants</button></form>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+    <a href={{ path('Ajouteroffre') }}>Créer une Offre</a>
+{% endblock %}
