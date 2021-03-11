@@ -39,12 +39,12 @@ class InscriptionFormateurController extends AbstractController
         if ($form->isSubmitted() /*&& $form->isValid()*/) {
             $hash = $encoder->encodePassword($utilisateur,$utilisateur->getPassword());
             $utilisateur->setPassword($hash);
-            $utilisateur = $form->getData();
             $utilisateur->setRole('Formateur');
+            $utilisateur = $form->getData();
             $em = $this->getDoctrine()->getManager();
             $em->persist($utilisateur);
             $em->flush();
-            return $this->redirectToRoute('login');
+            return $this->redirectToRoute('inscription/utilisateurs');
 
 
         }

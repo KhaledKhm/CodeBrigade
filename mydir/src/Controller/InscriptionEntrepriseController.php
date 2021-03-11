@@ -3,7 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Utilisateur;
-use App\Form\CandidatformType;
+use App\Form\EnterpriseformType;
+use App\Repository\UtilisateurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,7 +30,7 @@ class InscriptionEntrepriseController extends AbstractController
     public function addEntreprise(Request $request,UserPasswordEncoderInterface $encoder)
     {
         $utilisateur = new utilisateur();
-        $form = $this->createForm(CandidatformType::class, $utilisateur);
+        $form = $this->createForm(EntrepriseformType::class,$utilisateur);
         $form->add('Add', SubmitType::class);
         $form->handleRequest($request);
 

@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Utilisateur;
 use App\Form\CandidatformType;
-use App\Form\FormateurformType;
+use App\Repository\UtilisateurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class InscriptionCandidatController extends AbstractController
 {
     /**
-     * @Route("/inscription/formateur/inscription_condidat_add", name="inscription_condidat_add")
+     * @Route("/inscription/candidat/inscription_condidat_add", name="inscription_condidat_add")
      */
     public function addCandidat(Request $request,UserPasswordEncoderInterface $encoder)
     {
