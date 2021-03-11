@@ -1,4 +1,9 @@
 
+{% extends'base.html.twig' %}
+{% block loading %} {% endblock %}
+{% block header %} <h2>Inscription d\'un Formateur</h2> {% endblock %}
+
+{% block lwest %}
 
 
 
@@ -73,5 +78,8 @@
 
     {{ form_row(formedit.Modifier,{ 'attr':{ 'class':"btn btn-primary"}}) }}
 
+</div>
 
 
+
+    {% endblock %}

@@ -91,7 +91,7 @@
     {% endfor %}
         {% block footer %}
             {% block logout %}
-                {% if not app.user %}
+                {% if app.user %}
                 <a class="btn btn-rose" href="{{ path('logout')}}">Déconnexion</a>
                 {% endif %}
             {% endblock %}
