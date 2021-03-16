@@ -30,11 +30,11 @@ class InscriptionFormateurController extends AbstractController
     /**
      * @Route("/inscription/formateur/inscription_formateur_add", name="inscription_formateur_add")
      */
-    public function addFormateur(Request $request, UserPasswordEncoderInterface $encoder)
+    public function addFormateur(Request $request, UserPasswordEncoderInterface $encoder) //Inscription d'un formateur
     {
         $utilisateur = new utilisateur();
         $form=$this->createForm(FormateurformType::class,$utilisateur);
-        $form->add('Add',SubmitType::class);
+        $form->add('Inscrire',SubmitType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() /*&& $form->isValid()*/) {
             $hash = $encoder->encodePassword($utilisateur,$utilisateur->getPassword());
