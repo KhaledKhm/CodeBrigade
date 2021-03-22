@@ -3,17 +3,19 @@
 namespace App\Form;
 
 use App\Entity\Utilisateur;
+use Doctrine\DBAL\Types\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\FormTypeInterface;
 
 class FormateurformType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
             ->add('password')
+            ->add('confirmPassword')
             ->add('role')
             ->add('accountStatus')
             ->add('cinPersonne')
@@ -30,6 +32,7 @@ class FormateurformType extends AbstractType
             ->add('siteweb')
             ->add('domainePersonne')
             ->add('secteurEntreprise')
+
         ;
     }
 

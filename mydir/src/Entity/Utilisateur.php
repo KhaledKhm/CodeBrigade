@@ -4,11 +4,16 @@ namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\Unique;
+use Symfony\Component\Form\FormTypeInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
  */
-class Utilisateur
+
+class Utilisateur implements UserInterface
 {
     /**
      * @ORM\Id
@@ -17,53 +22,90 @@ class Utilisateur
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=40, nullable=true)
-     */
-    private $username;
 
     /**
      * @ORM\Column(type="string", length=128, nullable=true)
+    * @Assert\NotBlank(
+     * )
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=16, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $role;
+    /**
+     * @Assert\EqualTo(propertyPath="password",message="Password not matching")
+     */
+    public $confirmPassword;
+
+
 
     /**
      * @ORM\Column(type="string", length=16, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $accountStatus;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $cinPersonne;
 
     /**
      * @ORM\Column(type="string", length=16, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $immatriculeEntreprise;
 
     /**
      * @ORM\Column(type="string", length=16, nullable=true)
+     * @Assert\NotBlank(
+     * )
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * )
      */
     private $nomPersonne;
 
     /**
      * @ORM\Column(type="string", length=16, nullable=true)
+     * @Assert\NotBlank(
+     * )
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 16,
+     *      minMessage = "Your first name must be at least {{ min }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ max }} characters"
+     * )
      */
     private $prenomPersonne;
 
     /**
      * @ORM\Column(type="string", length=16, nullable=true)
+     * @Assert\NotBlank(
+     * )@Assert\Length(
+     *      min = 3,
+     *      max = 16,
+     *      minMessage = "Your first name must be at least {{ min }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ max }} characters"
+     * )
      */
     private $libelleEntreprise;
 
     /**
      * @ORM\Column(type="string", length=10, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $sexePersonne;
 
@@ -74,36 +116,58 @@ class Utilisateur
 
     /**
      * @ORM\Column(type="string", length=16, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $etatSocialePersonne;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $telephone;
 
     /**
      * @ORM\Column(type="string", length=128, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $adresse;
 
     /**
      * @ORM\Column(type="string", length=64, nullable=true)
+     * @Assert\NotBlank(
+     * )
+     * @Assert\Email(
+     *     message = "The email '{{ $adresse }}' is not a valid email."
+     * )
+
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=64, nullable=true)
+     * @Assert\NotBlank(
+     * )
+     * @Assert\Url(
+     *    message = "The url '{{ $email }}' is not a valid url",
+     * )
+
      */
     private $siteweb;
 
     /**
      * @ORM\Column(type="string", length=64, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $domainePersonne;
 
     /**
      * @ORM\Column(type="string", length=64, nullable=true)
+     * @Assert\NotBlank(
+     * )
      */
     private $secteurEntreprise;
 
@@ -112,18 +176,9 @@ class Utilisateur
         return $this->id;
     }
 
-    public function getUsername(): ?string
-    {
-        return $this->username;
-    }
-
-    public function setUsername(?string $username): self
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
+    /**
+     * @see UserInterface
+     */
     public function getPassword(): ?string
     {
         return $this->password;
@@ -136,9 +191,13 @@ class Utilisateur
         return $this;
     }
 
+    /**
+     * @see UserInterface
+     */
     public function getRole(): ?string
     {
         return $this->role;
+        $role[]= 'ROLE_USER';
     }
 
     public function setRole(?string $role): self
@@ -146,6 +205,22 @@ class Utilisateur
         $this->role = $role;
 
         return $this;
+    }
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
+    {
+        // not needed when using the "auto" algorithm in security.yaml
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
     public function getAccountStatus(): ?string
@@ -326,5 +401,17 @@ class Utilisateur
         $this->secteurEntreprise = $secteurEntreprise;
 
         return $this;
+    }
+
+
+    public function getRoles()
+    {
+        return ['Role_USER'];
+    }
+
+
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
     }
 }
