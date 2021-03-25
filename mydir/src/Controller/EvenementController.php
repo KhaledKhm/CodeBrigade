@@ -73,7 +73,6 @@ class EvenementController extends AbstractController
         ]);
     }
 
-
     /**
      * @param $id
      * @Route ("/listPost/{id}", name="listPost")
