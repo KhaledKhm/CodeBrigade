@@ -65,6 +65,50 @@
                 }
             }
         </style>
+        <script>
+            function Verif(){
+                var nom=document.form1.Nom.value;
+                var prenom=document.form1.Prenom.value;
+                var Etat=document.form1.EtatScolaire.value;
+                var Adresse=document.form1.Adresse.value;
+                var Telephone=document.form1.Telephone.value;
+                var Email=document.form1.Email.value;
+                var Telephone=document.form1.Status.value;
+                var datenais=document.form1.DateNais.value;
+                var Competence=document.form1.Competences.value;
+
+                if (nom==null || nom==""){
+                    alert("votre Nom ne peut pas être vide.");
+                    return false;
+                }else if(prenom == null || prenom== ""){
+                    alert("votre prenom ne peut pas etre vide.");
+                    return false;
+                }
+                else if(Etat == null || Etat == ""){
+                    alert("Entrer Votre Etat Scolaire!");
+                    return false;
+                }
+                else if(Adresse == null || Adresse==""){
+                    alert("Entrer Votre Adresse!");
+                    return false;
+                } else if(Telephone == null || Telephone == ""){
+                    alert("la Numéro de telephone ne peut pas être vide.");
+                    return false;
+                }else if(Email == null || Email == ""){
+                    alert("l'email ne peut pas être vide.");
+                    return false;
+                }else if(datenais == null || datenais == ""){
+                    alert("la Date de naissance ne peut pas être vide.");
+                    return false;
+                }else if(Competence == null || Competence == ""){
+                    alert("Entrer Vos Competences!");
+                    return false;
+                }
+
+
+                alert('Vous avez ajouter un Post avec success Merci.');
+            }
+        </script>
     </head>
     <body>
 
@@ -114,7 +158,7 @@
                     <label for="Telephone">Téléphone</label>
                 </div>
                 <div class="col-75">
-                    <input required type="text"  name="Telephone" placeholder="Téléphone..">
+                    <input required type="number"  name="Telephone" placeholder="Téléphone..">
                 </div>
             </div>
             <div class="row">
@@ -147,7 +191,7 @@
                 </div>
             </div>
             <div class="row">
-                <input type="submit" value="Submit" onclick="Alert()">
+                <input type="submit" value="Submit" onclick="Verif()">
             </div>
         </form>
     </div>

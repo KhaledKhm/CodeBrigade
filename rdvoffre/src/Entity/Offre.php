@@ -50,15 +50,6 @@ class Offre
      */
     private $postulants;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Postulant::class, inversedBy="Favoris")
-     */
-    private $PostFavoris;
-
-    public function __construct()
-    {
-        $this->postulants = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -149,15 +140,4 @@ class Offre
         return $this;
     }
 
-    public function getPostFavoris(): ?Postulant
-    {
-        return $this->PostFavoris;
-    }
-
-    public function setPostFavoris(?Postulant $PostFavoris): self
-    {
-        $this->PostFavoris = $PostFavoris;
-
-        return $this;
-    }
 }

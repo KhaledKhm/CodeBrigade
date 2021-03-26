@@ -4,9 +4,7 @@
     <div class="page-content">
 
     <section id="blog" class="content-section" style="width: 1100pt" >
-        <div class="section-heading" >
-            <strong> <h1>Liste des<em>        Offres</em></h1> </strong>
-        </div>
+
 
         <div class="section-content" style="margin-right:50px" >
             <div class="tabs-content" style="margin-top:0px">
@@ -30,12 +28,17 @@
                                                 <p>{{ offre.description}}</p>
 
                                                 <div class="accent-button button">
-                                                    <form action="{{ path('ajoutPost',{'id':offre.id} )}}"><button  class="btn btn-outline-info"><h7>Participer</h7></button></form>
-                                                </div>
-                                                <div class="accent-button button">
-                                                    <form action="{{ path('ajoutFav',{'id':offre.id} )}}"><button  class="btn btn-outline-info"><h7>Ajouter aux Favoris</h7></button></form>
+                                                    <form action="{{ path('ajoutPost',{'id':offre.id} )}}">
+                                                        <button  class="btn btn-outline-info"><h7>Participer</h7>
+                                                        </button></form>
                                                 </div>
                                             </div>
+                                        </div>
+
+                                        <div class="accent-button button">
+                                            <form action="{{ path('ajoutFav',{'id':offre.id} )}}">
+                                                <button  class="btn btn-outline-info"><h7>Ajouter aux Favoris</h7>
+                                                </button></form>
                                         </div>
                                     </li>
 

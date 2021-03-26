@@ -80,7 +80,7 @@
                     alert("Description d'évènement ne peut pas être vide.");
                     return false;
                 }
-                else if(Salaire == null || Salaire == "" || Salaire){
+                else if(Salaire == null || Salaire == ""){
                     alert("Entrer Votre Salaire de l'Offre!");
                     return false;
                 }
@@ -88,16 +88,15 @@
                     alert("Entrer Votre Disponabilite de l'Offre!");
                     return false;
                 } else if(DateLimite == null || DateLimite == ""){
-                    alert("Prix d'inscription ne peut pas être vide.");
+                    alert("la Date limite d'offre ne peut pas être vide.");
                     return false;
                 }
-                alert('Vous avez ajouter un Offre avec success du :  \n '+Libelle+'au\n' +DateLimite+'\n Merci.');
+                alert('Vous avez ajouter un Offre avec success du :  \n '+Libelle+'Merci.');
             }
         </script>
     </head>
     <body>
 
-    <h2>Ajouter une offre</h2>
         <div class="container">
         <form action="" method="post" name="form1">
             <div class="row">
@@ -109,14 +108,6 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-25">
-                    <label for="Salaire">Salaire</label>
-                </div>
-                <div class="col-75">
-                    <input required type="number" placeholder="Salaire" name="Salaire">
-                </div>
-            </div>
             <div class="row">
                 <div class="col-25">
                     <label for="Description">Description</label>
@@ -131,6 +122,15 @@
                 </div>
                 <div class="col-75">
                     <textarea required  name="Disponabilite" placeholder="Disponabilite.." style="height:200px"></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label for="Salaire">Salaire</label>
+                </div>
+                <div class="col-75">
+                    <input required type="number" placeholder="Salaire" name="Salaire">
                 </div>
             </div>
             <div class="row">

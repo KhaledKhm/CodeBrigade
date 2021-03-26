@@ -1,18 +1,18 @@
 {% extends 'base2.html.twig' %}
 {% block body %}
-    <h1>Liste des Participants</h1>
-    <table border="1" class="table table-hover">
+
+    <table class="table">
         <tr class="table-light">
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>Sexe</th>
-            <th>Etat Scolaire</th>
-            <th>Adresse</th>
-            <th>Telephone</th>
-            <th>Email</th>
-            <th>Status</th>
-            <th>Date de naissance</th>
-            <th>Compétence</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Sexe</th>
+            <th scope="col">Etat Scolaire</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Telephone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Status</th>
+            <th scope="col">Date de naissance</th>
+            <th scope="col">Compétence</th>
         </tr>
         {% for Post in post %}
             <tr>
@@ -47,10 +47,10 @@
                     {{ Post.Competences}}
                 </td>
                 <td>
-                    <form action=""><button> accepter</button></form>
+                    <a class="btn btn-success" href="{{ path('rendezvous',{'id':Post.id})}}">Accepter</a>
                 </td>
                 <td>
-                    <form action="{{ path('suppPost',{'id':Post.id})}}"><button> supprimer</button></form>
+                    <form  action="{{ path('suppPost',{'id':Post.id})}}"><button type="submit" class="btn btn-danger"> supprimer</button></form>
                 </td>
 
             </tr>

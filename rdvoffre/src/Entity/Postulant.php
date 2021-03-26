@@ -74,15 +74,11 @@ class Postulant
      */
     private $offres;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Offre::class, mappedBy="PostFavoris")
-     */
-    private $Favoris;
+
 
     public function __construct()
     {
         $this->offres = new ArrayCollection();
-        $this->Favoris = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -237,33 +233,7 @@ class Postulant
         return $this;
     }
 
-    /**
-     * @return Collection|Offre[]
-     */
-    public function getFavoris(): Collection
-    {
-        return $this->Favoris;
-    }
+    
 
-    public function addFavori(Offre $favori): self
-    {
-        if (!$this->Favoris->contains($favori)) {
-            $this->Favoris[] = $favori;
-            $favori->setPostFavoris($this);
-        }
 
-        return $this;
-    }
-
-    public function removeFavori(Offre $favori): self
-    {
-        if ($this->Favoris->removeElement($favori)) {
-            // set the owning side to null (unless already changed)
-            if ($favori->getPostFavoris() === $this) {
-                $favori->setPostFavoris(null);
-            }
-        }
-
-        return $this;
-    }
 }

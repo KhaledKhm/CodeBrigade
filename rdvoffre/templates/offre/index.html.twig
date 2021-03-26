@@ -1,15 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <h1>Liste des offres</h1>
-    <table border="1" class="table table-hover">
+    <table class="table">
         <tr class="table-light">
-            <th>Description</th>
-            <th>Libelle</th>
-            <th>Date Limite</th>
-            <th>Salaire</th>
-            <th>Disponabilite</th>
-            <th>Modifier</th>
-            <th>Supprimer</th>
+            <th scope="col">Description</th>
+            <th scope="col">Libelle</th>
+            <th scope="col">Date Limite</th>
+            <th scope="col">Salaire</th>
+            <th scope="col">Disponabilite</th>
+            <th scope="col">Modifier</th>
+            <th scope="col">Supprimer</th>
         </tr>
         {% for Offre in class %}
             <tr>
@@ -29,17 +28,20 @@
                     {{ Offre.Disponabilite}}
                 </td>
                 <td>
-                    <form action="{{ path('modifierOffre',{'id':Offre.id} )}}"><button> Modifier</button></form>
+                    <form action="{{ path('modifierOffre',{'id':Offre.id} )}}">
+                        <button type="submit" class="btn btn-secondary"> Modifier</button></form>
                 </td>
                 <td>
-                    <form action="{{ path('supprimerOffre',{'id':Offre.id} )}}"><button>Supprimer</button></form>
+                    <form action="{{ path('supprimerOffre',{'id':Offre.id} )}}">
+                        <button type="submit" class="btn btn-danger">Supprimer</button></form>
                 </td>
                 <td>
-                    <form action="{{ path('listPost',{'id':Offre.id})}}"><button>Liste des postulants</button></form>
+                    <form action="{{ path('listPost',{'id':Offre.id})}}">
+                        <button type="submit" class="btn btn-primary">Liste des postulants</button></form>
                 </td>
             </tr>
         {% endfor %}
 
     </table>
-    <a href={{ path('Ajouteroffre') }}>Créer une Offre</a>
+    <a class="btn btn-success"   href={{ path('Ajouteroffre') }}>Créer une Offre</a>
 {% endblock %}
