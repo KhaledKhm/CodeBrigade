@@ -27,7 +27,7 @@ class InscriptionCandidatController extends AbstractController
         if ($form->isSubmitted() /*&& $form->isValid()*/) {
             $hash = $encoder->encodePassword($utilisateur,$utilisateur->getPassword());
             $utilisateur->setPassword($hash);
-            $utilisateur->setRole('Candidat');
+            $utilisateur->setRole('ROLE_Candidat');
             $utilisateur = $form->getData();
             $em = $this->getDoctrine()->getManager();
             $em->persist($utilisateur);

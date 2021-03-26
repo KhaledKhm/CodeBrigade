@@ -8,12 +8,13 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Constraints\Unique;
 use Symfony\Component\Form\FormTypeInterface;
+use Scheb\TwoFactorBundle\Model\Google\TwoFactorInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
  */
 
-class Utilisateur implements UserInterface
+class Utilisateur implements UserInterface, TwoFactorInterface
 {
     /**
      * @ORM\Id
@@ -30,17 +31,12 @@ class Utilisateur implements UserInterface
      */
     private $password;
 
-    /**
-     * @ORM\Column(type="string", length=16, nullable=true)
-     * @Assert\NotBlank(
-     * )
-     */
-    private $role;
+
+
     /**
      * @Assert\EqualTo(propertyPath="password",message="Password not matching")
      */
     public $confirmPassword;
-
 
 
     /**
@@ -140,7 +136,7 @@ class Utilisateur implements UserInterface
      * @Assert\NotBlank(
      * )
      * @Assert\Email(
-     *     message = "The email '{{ $adresse }}' is not a valid email."
+     *     message = "The email '{{ $email }}' is not a valid email."
      * )
 
      */
@@ -151,7 +147,7 @@ class Utilisateur implements UserInterface
      * @Assert\NotBlank(
      * )
      * @Assert\Url(
-     *    message = "The url '{{ $email }}' is not a valid url",
+     *    message = "The url '{{ $siteweb }}' is not a valid url",
      * )
 
      */
@@ -171,10 +167,22 @@ class Utilisateur implements UserInterface
      */
     private $secteurEntreprise;
 
+    /**
+     * @ORM\Column(type="string", length=16, nullable=true)
+     */
+    private $role;
+
+    /**
+     * @ORM\Column(name="googleAuthenticatorSecret", type="string", nullable=true)
+     */
+    private $googleAuthenticatorSecret;
+
+
     public function getId(): ?int
     {
         return $this->id;
     }
+
 
     /**
      * @see UserInterface
@@ -197,7 +205,7 @@ class Utilisateur implements UserInterface
     public function getRole(): ?string
     {
         return $this->role;
-        $role[]= 'ROLE_USER';
+      //  $role[]= 'ROLE_USER';
     }
 
     public function setRole(?string $role): self
@@ -406,12 +414,32 @@ class Utilisateur implements UserInterface
 
     public function getRoles()
     {
-        return ['Role_USER'];
+        return [$this->getRole()];
     }
 
 
     public function getUsername()
     {
-        // TODO: Implement getUsername() method.
+        return $this->getEmail();
+    }
+
+    public function isGoogleAuthenticatorEnabled(): bool
+    {
+        return $this->googleAuthenticatorSecret ? true : false;
+    }
+
+    public function getGoogleAuthenticatorUsername(): string
+    {
+        return $this->email;
+    }
+
+    public function getGoogleAuthenticatorSecret(): ?string
+    {
+        return $this->googleAuthenticatorSecret;
+    }
+
+    public function setGoogleAuthenticatorSecret(?string $googleAuthenticatorSecret): void
+    {
+        $this->googleAuthenticatorSecret = $googleAuthenticatorSecret;
     }
 }

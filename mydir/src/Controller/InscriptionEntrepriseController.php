@@ -37,7 +37,7 @@ class InscriptionEntrepriseController extends AbstractController
         if ($form->isSubmitted() /*&& $form->isValid()*/) {
             $hash = $encoder->encodePassword($utilisateur,$utilisateur->getPassword());
             $utilisateur->setPassword($hash);
-            $utilisateur->setRole('Entreprise');
+            $utilisateur->setRole('ROLE_Entreprise');
             $utilisateur = $form->getData();
             $em = $this->getDoctrine()->getManager();
             $em->persist($utilisateur);

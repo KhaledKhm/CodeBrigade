@@ -28,7 +28,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
 class InscriptionFormateurController extends AbstractController
 {
     /**
-     * @Route("/inscription/formateur/inscription_formateur_add", name="inscription_formateur_add")
+     * @Route("/formateur/inscription/formateur/inscription_formateur_add", name="inscription_formateur_add")
      */
     public function addFormateur(Request $request, UserPasswordEncoderInterface $encoder) //Inscription d'un formateur
     {
@@ -41,7 +41,7 @@ class InscriptionFormateurController extends AbstractController
             $utilisateur->setPassword($hash);
 
             $utilisateur = $form->getData();
-            $utilisateur->setRole('Formateur');
+            $utilisateur->setRole('ROLE_Formateur');
             $em = $this->getDoctrine()->getManager();
             $em->persist($utilisateur);
             $em->flush();
