@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Utilisateur;
 use App\Form\FormateurformType;
 use App\Repository\UtilisateurRepository;
+use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Google\GoogleAuthenticatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,24 +29,29 @@ use Symfony\Component\Validator\Constraints\DateTime;
 class InscriptionFormateurController extends AbstractController
 {
     /**
-     * @Route("/formateur/inscription/formateur/inscription_formateur_add", name="inscription_formateur_add")
+     * @Route("/inscription/formateur/inscription_formateur_add", name="inscription_formateur_add")
      */
-    public function addFormateur(Request $request, UserPasswordEncoderInterface $encoder) //Inscription d'un formateur
+    public function addFormateur(Request $request, UserPasswordEncoderInterface $encoder, GoogleAuthenticatorInterface $authenticator) //Inscription d'un formateur
     {
         $utilisateur = new utilisateur();
         $form=$this->createForm(FormateurformType::class,$utilisateur);
         $form->add('Inscrire',SubmitType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() /*&& $form->isValid()*/) {
+
             $hash = $encoder->encodePassword($utilisateur,$utilisateur->getPassword());
             $utilisateur->setPassword($hash);
 
             $utilisateur = $form->getData();
             $utilisateur->setRole('ROLE_Formateur');
+
+            $secret = $authenticator->generateSecret();
+            $utilisateur->setGoogleAuthenticatorSecret($secret);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($utilisateur);
             $em->flush();
-            return $this->redirectToRoute('inscription/utilisateurs');
+            return $this->redirectToRoute('login');
 
 
         }

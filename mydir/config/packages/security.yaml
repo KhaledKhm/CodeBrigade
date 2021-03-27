@@ -44,5 +44,5 @@ security:
         - { path: ^/formateur, roles: ROLE_Formateur }
         # - { path: ^/entreprise, roles: Entreprise }
         # - { path: ^/candidat, roles: Candidat }
-        # - { path: ^/2fa, role: IS_AUTHENTICATED_2FA_IN_PROGRESS }
+        - { path: ^/2fa, role: IS_AUTHENTICATED_2FA_IN_PROGRESS }
 

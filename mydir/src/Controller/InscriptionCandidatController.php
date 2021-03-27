@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Utilisateur;
 use App\Form\CandidatformType;
 use App\Repository\UtilisateurRepository;
+use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Google\GoogleAuthenticatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +18,7 @@ class InscriptionCandidatController extends AbstractController
     /**
      * @Route("/inscription/candidat/inscription_condidat_add", name="inscription_condidat_add")
      */
-    public function addCandidat(Request $request,UserPasswordEncoderInterface $encoder)
+    public function addCandidat(Request $request,UserPasswordEncoderInterface $encoder, GoogleAuthenticatorInterface $authenticator)
     {
 
         $utilisateur = new utilisateur();
@@ -28,11 +29,15 @@ class InscriptionCandidatController extends AbstractController
             $hash = $encoder->encodePassword($utilisateur,$utilisateur->getPassword());
             $utilisateur->setPassword($hash);
             $utilisateur->setRole('ROLE_Candidat');
+
+            $secret = $authenticator->generateSecret();
+            $utilisateur->setGoogleAuthenticatorSecret($secret);
+
             $utilisateur = $form->getData();
             $em = $this->getDoctrine()->getManager();
             $em->persist($utilisateur);
             $em->flush();
-            return $this->redirectToRoute('inscription/utilisateurs');
+            return $this->redirectToRoute('login');
 
 
         }
