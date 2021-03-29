@@ -200,9 +200,9 @@ The above copyright notice and this permission notice shall be included in all c
                         {#  <input type="text" name="commentaire" class="form-control" id="inputFirstName" placeholder="commentaire"> #}
                         {{ form_widget(form.commentaire,{'attr': {'class': 'form-control','placeholder':'commentaire'}}) }}
                     </div>
+                      {{ form_row(form.captchaCode) }}
 
-
-                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                    <button onclick="noti()" type="submit" class="btn btn-primary">Ajouter</button>
 
 
                   </div>
@@ -311,8 +311,20 @@ The above copyright notice and this permission notice shall be included in all c
         <script src="js/main.js"></script>
 
 
+          <script type="text/javascript" src="{{ asset('vendors/scripts/push.js') }}"></script>
+          <script type="text/javascript" src="{{ asset('vendors/scripts/serviceWorker.min.js') }}"></script>
+          <script>
+          function noti(){
+
+            Push.create("JobBook :",{
+              body: "Avis Soumis ! : ",
+              timeout: 10000,
 
 
+            });
+
+          };
+          </script>
 </body>
 
 </html>

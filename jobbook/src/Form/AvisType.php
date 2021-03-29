@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
 
 class AvisType extends AbstractType
 {
@@ -15,7 +16,11 @@ class AvisType extends AbstractType
         $builder
             ->add('commentaire')
             ->add('etoiles',HiddenType::class)
+            ->add('captchaCode', CaptchaType::class, array(
+                'captchaConfig' => 'ExampleCaptcha'
+            ));
         ;
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

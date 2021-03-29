@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AvisRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Captcha\Bundle\CaptchaBundle\Validator\Constraints as CaptchaAssert;
 
 /**
  * @ORM\Entity(repositoryClass=AvisRepository::class)
@@ -16,7 +17,22 @@ class Avis
      * @ORM\Column(type="integer")
      */
     private $id;
+    /**
+     * @CaptchaAssert\ValidCaptcha(
+     *      message = "CAPTCHA validation failed, try again."
+     * )
+     */
+    protected $captchaCode;
 
+    public function getCaptchaCode()
+    {
+        return $this->captchaCode;
+    }
+
+    public function setCaptchaCode($captchaCode)
+    {
+        $this->captchaCode = $captchaCode;
+    }
 
     /**
      * @ORM\Column(type="string", length=50)
