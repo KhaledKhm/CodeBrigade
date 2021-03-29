@@ -46,10 +46,10 @@ class InscriptionCandidatController extends AbstractController
         ]);
     }
 
-    /**
+   /* /**
      * @Route("/inscription/candidat/inscription_candidat", name="/inscription/candidat/inscription_formateur2")
      */
-    public function readCandidat()
+    /*public function readCandidat()
     {
         $repository = $this->getDoctrine()->getRepository(Utilisateur::class);
         $utilisateur = $repository->findAll();
@@ -57,7 +57,7 @@ class InscriptionCandidatController extends AbstractController
         return $this->render('inscription_candidat/listCandidat.html.twig', [
             'utilisateur' => $utilisateur,
         ]);
-    }
+    }*/
     /* public function adduser(Request $request)
      {
          $utilisateur= new $utilisateur();

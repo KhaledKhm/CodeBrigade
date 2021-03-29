@@ -168,7 +168,7 @@ class Utilisateur implements UserInterface, TwoFactorInterface
     private $secteurEntreprise;
 
     /**
-     * @ORM\Column(type="string", length=16, nullable=true)
+     * @ORM\Column(type="string", length=256, nullable=true)
      */
     private $role;
 

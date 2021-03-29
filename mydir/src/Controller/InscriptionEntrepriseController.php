@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Utilisateur;
 use App\Form\EnterpriseformType;
+use App\Form\FormateurformType;
 use App\Repository\UtilisateurRepository;
 use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Google\GoogleAuthenticatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,7 +32,7 @@ class InscriptionEntrepriseController extends AbstractController
     public function addEntreprise(Request $request,UserPasswordEncoderInterface $encoder, GoogleAuthenticatorInterface $authenticator)
     {
         $utilisateur = new utilisateur();
-        $form = $this->createForm(EntrepriseformType::class,$utilisateur);
+        $form=$this->createForm(EnterpriseformType::class,$utilisateur);
         $form->add('Add', SubmitType::class);
         $form->handleRequest($request);
 
@@ -47,7 +48,7 @@ class InscriptionEntrepriseController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($utilisateur);
             $em->flush();
-            return $this->redirectToRoute('inscription/utilisateurs');
+            return $this->redirectToRoute('login');
 
 
         }

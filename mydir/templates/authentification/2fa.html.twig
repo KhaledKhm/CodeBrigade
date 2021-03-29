@@ -1,0 +1,10 @@
+<p class="label"><label for="_auth_code">auth_code_google!</label> </p>
+
+<img id="ImageQRCode" src="{{ qrCode }}" alt="QR Code" name="imageQRCode"/>
+
+<form class="form" action="/2fa_check" method="post">
+    <p class="widget"><input id="_auth_code" type="text" autocomplete="off" name="_auth_code" /></p>
+    <p class="submit"><input type="submit" value="login"/></p>
+
+</form>
+

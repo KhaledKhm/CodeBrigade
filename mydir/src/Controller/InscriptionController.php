@@ -35,6 +35,13 @@ class InscriptionController extends AbstractController
         ]);
     }
     /**
+     * @Route("/inscription/choix", name="choix_user")
+     */
+    public function choix(){
+        return $this->render('inscription/choixuser.html.twig');
+    }
+
+    /**
      * @Route("/modifierUtilisateur/{id}", name="modifierUtilisateur")
      */
     public function updateUtilisateur(Request $request,$id,UserPasswordEncoderInterface $encoder)
