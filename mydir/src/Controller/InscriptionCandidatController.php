@@ -23,11 +23,13 @@ class InscriptionCandidatController extends AbstractController
 
         $utilisateur = new utilisateur();
         $form = $this->createForm(CandidatformType::class, $utilisateur);
-        $form->add('Add', SubmitType::class);
+        $form->add('Inscrire', SubmitType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() /*&& $form->isValid()*/) {
+
             $hash = $encoder->encodePassword($utilisateur,$utilisateur->getPassword());
             $utilisateur->setPassword($hash);
+
             $utilisateur->setRole('ROLE_Candidat');
 
             $secret = $authenticator->generateSecret();

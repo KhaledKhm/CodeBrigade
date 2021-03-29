@@ -33,7 +33,7 @@ class InscriptionEntrepriseController extends AbstractController
     {
         $utilisateur = new utilisateur();
         $form=$this->createForm(EnterpriseformType::class,$utilisateur);
-        $form->add('Add', SubmitType::class);
+        $form->add('Inscrire', SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() /*&& $form->isValid()*/) {

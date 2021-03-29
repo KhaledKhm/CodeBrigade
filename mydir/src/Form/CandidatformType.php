@@ -30,7 +30,7 @@ class CandidatformType extends AbstractType
             ->add('siteweb')
             ->add('domainePersonne')
             ->add('secteurEntreprise')
-            ->add('confirm_password')
+       
         ;
     }
 
