@@ -16,7 +16,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class InscriptionController extends AbstractController
 {
     /**
-     * @Route("/candidat/inscription/utilisateurs", name="inscription/utilisateurs")
+     * @Route("/inscription/utilisateurs", name="inscription/utilisateurs")
      */
     /*public function index(): Response
     {
@@ -46,7 +46,7 @@ class InscriptionController extends AbstractController
      */
     public function updateUtilisateur(Request $request,$id,UserPasswordEncoderInterface $encoder)
     {
-        $Utilisateur=new Utilisateur();
+
         $em = $this->getDoctrine()->getManager();
         $Utilisateur = $em->getRepository(Utilisateur::class)->find($id);
         $formedit = $this->createForm(FormateurformType::class,$Utilisateur);
@@ -61,38 +61,12 @@ class InscriptionController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('inscription/utilisateurs');
         }
-        return $this->render('inscription/update.html.twig',
+        return $this->render('inscription/updateUtilisateur.html.twig',
             [
                 'formedit'=>$formedit->createView(),
             ]
         );
-        /*$form = $this->createForm(CompanyType::class, $company);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('company_index');
-        }
-
-        return $this->render('company/edit.html.twig', [
-            'company' => $company,
-            'form' => $form->createView(),
-        ]);
-        if ($request->request->count()>0)
-        {
-            $em=$this->getDoctrine()->getManager();
-            $entretien=$em->getRepository(Utilisateur::class)->find($id);
-            $entretien->setLibelle($request->get('Libelle'));
-            $entretien->setDescription($request->get('Description'));
-            $entretien->setDateentretien($request->get('Dateentretien'));
-            $entretien->setIdutilisateur($request->get('Idutilisateur'));
-            $em->flush();
-            return $this->redirectToRoute('entretien');
-        }
-        $class = $this->getDoctrine()->getRepository(Utilisateur::class)->findAll();
-        $entretien=$this->getDoctrine()->getRepository(Entretien::class)->find($id);
-        return $this->render('inscription/update.html.twig', ['classe'=>$class,'entretien'=>$entretien]);*/
     }
     /**
      * @Route("/supprimerUtilisateur/{id}",name="supprimerUtilisateur")
@@ -105,4 +79,37 @@ class InscriptionController extends AbstractController
         $em->flush();
         return $this->redirectToRoute('inscription/utilisateurs');
     }
+
+    /**
+     * @Route("/banUtilisateur/{id}",name="banUtilisateur")
+     */
+    public function banUtilisateur($id){
+
+
+        $em = $this->getDoctrine()->getManager();
+        $Utilisateur = $em->getRepository(Utilisateur::class)->find($id);
+        $Utilisateur->setAccountStatus("Banned");
+      //  $Utilisateur->setIsBlocked(1);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($Utilisateur);
+        $em->flush();
+        return $this->redirectToRoute('inscription/utilisateurs');
+    }
+
+    /**
+     * @Route("/unbanUtilisateur/{id}",name="unbanUtilisateur")
+     */
+    public function unbanUtilisateur($id){
+        $em = $this->getDoctrine()->getManager();
+        $Utilisateur = $em->getRepository(Utilisateur::class)->find($id);
+        $Utilisateur->setAccountStatus(NULL);
+        //$Utilisateur->setIsBlocked(false);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($Utilisateur);
+        $em->flush();
+        return $this->redirectToRoute('inscription/utilisateurs');
+    }
+
 }
+
+

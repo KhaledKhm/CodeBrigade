@@ -16,11 +16,7 @@ class AuthentificationController extends AbstractController
      */
     public function login()
     {
-        $utilisateur = new utilisateur();
-        $role = $utilisateur->getRole();
-        if ($role=="ROLE_Formateur"){
-            return $this->redirectToRoute(inscription_formateur_add);
-        }
+
         return $this->render('authentification/login.html.twig');
     }
     /**
@@ -29,18 +25,6 @@ class AuthentificationController extends AbstractController
     public function logout(){
 
     }
-/*
-    /**
-     * @Route("/2fa", name="2fa_login")
-     */
-  /*  public function displayGoogleAuthenticatorQrCode(QrCodeGenerator $qrCodeGenerator)
-    {
-        // $qrCode is provided by the endroid/qr-code library. See the docs how to customize the look of the QR code:
-        // https://github.com/endroid/qr-code
-        $qrCode = $qrCodeGenerator->getGoogleAuthenticatorQrCode($this->getUser());
-
-        return new Response($qrCode->writeString(), 200, ['Content-Type' => 'image/png']);
-    }*/
 
 
     /**
@@ -53,4 +37,79 @@ class AuthentificationController extends AbstractController
         return $this->render('authentification/2fa.html.twig', [
             'qrCode' => $qrCode]);
     }
+
+    /**
+     * @Route("/banned", name="banned")
+     */
+    public function banned(){
+
+
+        return $this->render();
+    }
+
+
+  /*  /**
+     * @Route("/", name="main")
+     */
+   /* public function index()
+    {
+        if ($this->isGranted('ROLE_Formateur')){
+            return  $this->redirectToRoute("formateur/index");
+        }else if ($this->isGranted('ROLE_Entreprise')){
+            return  $this->redirectToRoute("entreprise/index");
+        }else if ($this->isGranted('ROLE_Candidat')){
+            return  $this->redirectToRoute("candidat/index");
+        }else if ($this->isGranted('ROLE_Admin')){
+            return  $this->redirectToRoute("admin/index");
+        }*/
+
+      /*  $em = $this->getDoctrine()->getManager();
+        $Utilisateur = $em->getRepository(Utilisateur::class)->find($id);
+        if ($Utilisateur->getAccountStatus()=="Banned"){
+            return $this->redirectToRoute(banned);
+        }else if (($Utilisateur->getRole()=="Role_Candidat")){
+            return $this->redirectToRoute(Candidat);
+        }else if (($Utilisateur->getRole()=="Role_Formateur") ){
+            return $this->redirectToRoute(Formateur);
+        }else if (($Utilisateur->getRole()=="Role_Entreprise") ){
+            return $this->redirectToRoute(Entreprise);
+        }else if (($Utilisateur->getRole()=="Role_Admin") ){
+            return $this->redirectToRoute(Admin);
+        }*/
+       /* if ($this->isGranted('ROLE_CAN')){
+            if( $this->getUser()->getAc ){
+                return $this->redirectToRoute("userBlocked");
+            }else if ($this->getUser()->getActivationToken() != null){
+                return new Response("Verifier votre mail pour activer votre compte");
+            }
+            return $this->redirectToRoute("candidat");
+        }else if($this->isGranted('ROLE_REC')){
+            if( $this->getUser()->getIsBlocked() == 1 ){
+                return $this->redirectToRoute("userBlocked");
+            }else if ($this->getUser()->getActivationToken() != null){
+                return new Response("Verifier votre mail pour activer votre compte");
+            }
+            return $this->redirectToRoute("recruteur");
+        }else if ($this->isGranted('ROLE_FORM')){
+            if( $this->getUser()->getIsBlocked() == 1 ){
+                return $this->redirectToRoute("userBlocked");
+            }else if ($this->getUser()->getActivationToken() != null){
+                return new Response("Verifier votre mail pour activer votre compte");
+            }
+            return $this->redirectToRoute("formateur");
+        }else if ($this->isGranted('ROLE_ADMIN')){
+            if( $this->getUser()->getIsBlocked() == 1 ){
+                return $this->redirectToRoute("userBlocked");
+            }else if ($this->getUser()->getActivationToken() != null){
+                return new Response("Verifier votre mail pour activer votre compte");
+            }
+            return $this->redirectToRoute("admin");
+        }
+        else if($this->isGranted('IS_AUTHENTICATED_ANONYMOUSLY')){
+            return $this->render("base.html.twig");
+        }
+    }*/
+
+
+
 }

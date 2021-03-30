@@ -29,7 +29,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
 class InscriptionFormateurController extends AbstractController
 {
     /**
-     * @Route("/formateur/inscription/formateur/inscription_formateur_add", name="inscription_formateur_add")
+     * @Route("/inscription/formateur/inscription_formateur_add", name="inscription_formateur_add")
      */
     public function addFormateur(Request $request, UserPasswordEncoderInterface $encoder, GoogleAuthenticatorInterface $authenticator) //Inscription d'un formateur
     {
@@ -76,29 +76,6 @@ class InscriptionFormateurController extends AbstractController
 
 
 
-
-
-    /* public function adduser(Request $request)
-     {
-         $utilisateur= new $utilisateur();
-         $form=$this->createForm(AddsocieteType::class,$utilisateur);
-         $form->add('Add',SubmitType::class);
-         $form->handleRequest($request);
-         if($form->isSubmitted() && $form->isValid())
-         {
-
-
-
-             $entityManager = $this->getDoctrine()->getManager();
-             $entityManager->persist($user);
-             $entityManager->flush();
-             return $this->redirectToRoute("manager");
-         }
-
-         return $this->render('user/add1.html.twig', [
-             'form' => $form->createView(),
-         ]);
-     }*/
 
 
 }
