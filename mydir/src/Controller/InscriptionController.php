@@ -61,7 +61,7 @@ class InscriptionController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('inscription/utilisateurs');
         }
-        return $this->render('inscription/updateUtilisateur.html.twig',
+        return $this->render('inscription_formateur/updateFormateur.html.twig',
             [
                 'formedit'=>$formedit->createView(),
             ]
