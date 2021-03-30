@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Utilisateur;
 use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Google\GoogleAuthenticatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +16,11 @@ class AuthentificationController extends AbstractController
      */
     public function login()
     {
+        $utilisateur = new utilisateur();
+        $role = $utilisateur->getRole();
+        if ($role=="ROLE_Formateur"){
+            return $this->redirectToRoute(inscription_formateur_add);
+        }
         return $this->render('authentification/login.html.twig');
     }
     /**

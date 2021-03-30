@@ -16,7 +16,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class InscriptionController extends AbstractController
 {
     /**
-     * @Route("/admin/inscription/utilisateurs", name="inscription/utilisateurs")
+     * @Route("/candidat/inscription/utilisateurs", name="inscription/utilisateurs")
      */
     /*public function index(): Response
     {
