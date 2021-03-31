@@ -44,24 +44,31 @@ class AuthentificationController extends AbstractController
     public function banned(){
 
 
-        return $this->render();
+        return $this->render('authentification/banned.html.twig');
     }
 
 
-  /*  /**
+  /* /**
      * @Route("/", name="main")
      */
    /* public function index()
     {
         if ($this->isGranted('ROLE_Formateur')){
-            return  $this->redirectToRoute("formateur/index");
+           /* $em = $this->getDoctrine()->getManager();
+            $Utilisateur = $em->getRepository(Utilisateur::class)->find("app.user.id");
+            if ($Utilisateur->getAccountStatus() == Banned){
+                return $this->redirectToRoute("banned");
+            }else
+
+
+            return  $this->redirectToRoute("inscription/utilisateurs");
         }else if ($this->isGranted('ROLE_Entreprise')){
             return  $this->redirectToRoute("entreprise/index");
         }else if ($this->isGranted('ROLE_Candidat')){
             return  $this->redirectToRoute("candidat/index");
         }else if ($this->isGranted('ROLE_Admin')){
             return  $this->redirectToRoute("admin/index");
-        }*/
+        }
 
       /*  $em = $this->getDoctrine()->getManager();
         $Utilisateur = $em->getRepository(Utilisateur::class)->find($id);

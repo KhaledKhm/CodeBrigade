@@ -75,7 +75,7 @@ class InscriptionFormateurController extends AbstractController
 
 
     /**
-     * @Route("/modifierFormateur/{id}", name="modifierFormateur")
+     * @Route("/formateur/modifierFormateur/{id}", name="modifierFormateur")
      */
     public function updateFormateur(Request $request,$id,UserPasswordEncoderInterface $encoder)
     {
