@@ -32,6 +32,11 @@ class CV
      */
     private $cvdoc;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $idutli;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class CV
     public function setCvdoc(string $cvdoc): self
     {
         $this->cvdoc = $cvdoc;
+
+        return $this;
+    }
+
+    public function getIdutli(): ?int
+    {
+        return $this->idutli;
+    }
+
+    public function setIdutli(int $idutli): self
+    {
+        $this->idutli = $idutli;
 
         return $this;
     }

@@ -69,7 +69,7 @@ function verif(){
         return false;
     }
     Push.create("🔔 JobBook 🔔",{
-        body: " ✏ ✏️Cv Ajoutee ✔✔ ",
+        body: " ✏ ✏️Cv Modifiee ✔✔ ",
         timeout: 10000,
 
 

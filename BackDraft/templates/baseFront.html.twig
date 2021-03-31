@@ -29,7 +29,7 @@
         <link href="{{ asset('assets/css/fileup.css') }}" rel="stylesheet" />
 
         <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/jquery.datetimepicker.css') }}">
-
+        <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
 
     {% endblock %}
 
@@ -45,7 +45,7 @@
         <!--  Google Maps Plugin    -->
         <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
         <script src="{{ asset('assets/js/material-kit.js?v=2.0.7') }}" type="text/javascript"></script>
-        <script type="text/javascript" src="{{ asset('vendors/scripts/MyValidator.js') }}"></script>
+
         <script type="text/javascript" src="{{ asset('vendors/scripts/push.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendors/scripts/serviceWorker.min.js') }}"></script>
 
@@ -56,6 +56,7 @@
         <script src="{{ asset('build/jquery.datetimepicker.full.min.js') }}" ></script>
 
 
+        <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
 
         <script>
             $(document).ready(function() {
@@ -78,6 +79,7 @@
     {% endblock %}
 </head>
 <body>
+{{ include('@MercurySeriesFlashy/flashy.html.twig') }}
 {% block nav %}
     <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
         <div class="container">
@@ -101,17 +103,16 @@
                             <i class="material-icons">apps</i> Services
                         </a>
                         <div class="dropdown-menu dropdown-with-icons">
-                            <a href="" class="dropdown-item">
+                            <a href="{{ path('fajouterCv') }}" class="dropdown-item">
                                 <i class="material-icons">layers</i> Ajout CV
                             </a>
-                            <a href="https://demos.creative-tim.com/material-kit/docs/2.0/getting-started/introduction.html" class="dropdown-item">
-                                <i class="material-icons">content_paste</i> Evenement
+                            <a href="{{ path('fajouterFormation') }}"class="dropdown-item">
+                                <i class="material-icons">content_paste</i> Ajouter Formation
                             </a>
-                            <a href="https://demos.creative-tim.com/material-kit/docs/2.0/getting-started/introduction.html" class="dropdown-item">
-                                <i class="material-icons">bookmark</i> Consulter RDV
-                            </a>
-                            <a href="https://demos.creative-tim.com/material-kit/docs/2.0/getting-started/introduction.html" class="dropdown-item">
-                                <i class="material-icons">warning</i> Reclamation
+                            <a href="{{ path('flistCv') }}"class="dropdown-item">
+                                <i class="material-icons">receipt</i> List des Cv
+                            </a><a href="{{ path('flistFormation') }}"class="dropdown-item">
+                                <i class="material-icons">receipt</i> List des Formations
                             </a>
                         </div>
                     </li>
@@ -152,18 +153,14 @@
 
 {% endblock %}
 
-{% block body1 %}
+{% block body %}
     <div class="main main-raised">
         <div class="section section-basic">
             <div class="container">
                 <div class="col-lg-3 col-sm-4">
                     <div class="form-group has-default">
-                        <h3>Libelle:<input type="text" class="form-control" placeholder="Libelle">
-                            Description: <input type="text" class="form-control" placeholder="Description">
-                            N°Participants:<input type="text" class="form-control" placeholder="N°">
-                            Date Debut: <input type="text" class="form-control" placeholder="dd/mm/yy">
-                            Date fin: <input type="text" class="form-control" placeholder="dd/mm/yy">
-                        </h3>
+
+
                     </div>
                 </div>
 
@@ -176,28 +173,7 @@
     <!-- Classic Modal -->
 
 {% endblock %}
-{% block body2 %}
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <i class="material-icons">clear</i>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-link">Nice Button</button>
-                    <button type="button" class="btn btn-danger btn-link" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-{% endblock %}
+
 {% block footer %}
     <footer class="footer" data-background-color="black">
         <div class="container">

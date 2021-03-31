@@ -1,4 +1,18 @@
 {% extends 'base.html.twig' %}
+{% block preload %}
+    <div class="pre-loader">
+        <div class="pre-loader-box">
+            <div class="loader-logo"><img src="{{ asset('vendors/images/JobbookLogo.svg') }}" alt=""></div>
+            <div class='loader-progress' id="progress_div">
+                <div class='bar' id='bar1'></div>
+            </div>
+            <div class='percent' id='percent1'>0%</div>
+            <div class="loading-text">
+                Loading...
+            </div>
+        </div>
+    </div>
+{% endblock %}
 {% block header %}
     <div class="header">
         <div class="header-left">
@@ -75,8 +89,7 @@
                                     <script>
                                         jQuery('#datetimepicker').datetimepicker({
                                             startDate:'+2021/03/10',
-                                            minDate:'-1970/01/02',
-                                            maxDate:'+1980/01/02',
+                                            minDate:'-1970/01/01',
                                             minTime:'07:00',
                                             maxTime:'19:00'
                                         });
@@ -95,7 +108,7 @@
                                     <script>
                                         jQuery('#datetimepicker1').datetimepicker({
                                             startDate:'-1970/01/02',
-                                            minDate:'-1970/01/02',
+                                            minDate:'-1970/01/01',
                                             maxDate:'+1980/01/02',
                                             minTime:'07:00',
                                             maxTime:'19:00'

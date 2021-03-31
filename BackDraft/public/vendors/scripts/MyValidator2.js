@@ -105,7 +105,7 @@ function verif(){
         return false;
     }
     Push.create("🔔 JobBook 🔔",{
-        body: " ✏ ✏️Formation Cree ✔✔ ",
+        body: " ✏ ✏️Formation Crée ✔✔ ",
         timeout: 10000,
 
 

@@ -1,5 +1,18 @@
 {% extends 'base.html.twig' %}
-
+{% block preload %}
+    <div class="pre-loader">
+        <div class="pre-loader-box">
+            <div class="loader-logo"><img src="{{ asset('vendors/images/JobbookLogo.svg') }}" alt=""></div>
+            <div class='loader-progress' id="progress_div">
+                <div class='bar' id='bar1'></div>
+            </div>
+            <div class='percent' id='percent1'>0%</div>
+            <div class="loading-text">
+                Loading...
+            </div>
+        </div>
+    </div>
+{% endblock %}
 {% block header %}
     <div class="header">
         <div class="header-left">
@@ -24,14 +37,7 @@
 
 
         </div>
-        <div class="header-right">
-            <div class="dashboard-setting user-notification">
-                <div class="dropdown">
-                    <a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
-                        <i class="dw dw-settings2"></i>
-                    </a>
-                </div>
-            </div>
+
 
 
 
@@ -99,6 +105,6 @@
     </div>
     {% block javascripts %}
         {{ parent() }}
-        <script type="text/javascript" src="{{ asset('vendors/scripts/MyValidator.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('vendors/scripts/MyValidator4.js') }}"></script>
     {% endblock %}
 {% endblock %}

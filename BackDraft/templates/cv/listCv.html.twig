@@ -23,18 +23,9 @@
 
 
         </div>
-        <div class="header-right">
-            <div class="dashboard-setting user-notification">
-                <div class="dropdown">
-                    <a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
-                        <i class="dw dw-settings2"></i>
-                    </a>
-                </div>
-            </div>
 
 
 
-        </div>
     </div>
 {% endblock %}
 {% block body %}
@@ -73,7 +64,7 @@
 
                         <a class="font-30" href={{ path('updateCv',{'id':cv.id}) }}>🛠</a>
                         <a class="font-30">|</a>
-                        <a class="font-30" href={{ path('deleteCv',{'id':cv.id}) }}>🗑</a>
+                        <a class="font-30" onclick="notijs()" href={{ path('deleteCv',{'id':cv.id}) }}>🗑</a>
 
                     </td>
 
@@ -109,4 +100,8 @@
     </div>
     </div>
     </div>
+    {% block javascripts %}
+        {{ parent() }}
+        <script type="text/javascript" src="{{ asset('vendors/scripts/deleteCvNoti.js') }}"></script>
+    {% endblock %}
 {% endblock %}

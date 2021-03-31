@@ -1,5 +1,9 @@
 {% extends 'baseFront.html.twig' %}
-{% block body1 %}
+ {% block javascripts %}
+     {{ parent() }}
+     <script type="text/javascript" src="{{ asset('vendors/scripts/MyValidator.js') }}"></script>
+ {% endblock %}
+{% block body %}
     <div class="main main-raised">
         <div class="section section-basic">
             <div class="container">
@@ -42,5 +46,8 @@
         </div>
     </div>
     <!-- Classic Modal -->
+
+
+
 
 {% endblock %}

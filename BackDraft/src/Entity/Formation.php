@@ -42,6 +42,11 @@ class Formation
      */
     private $dateFinFor;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $idutli;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +108,18 @@ class Formation
     public function setDateFinFor(\DateTimeInterface $dateFinFor): self
     {
         $this->dateFinFor = $dateFinFor;
+
+        return $this;
+    }
+
+    public function getIdutli(): ?int
+    {
+        return $this->idutli;
+    }
+
+    public function setIdutli(int $idutli): self
+    {
+        $this->idutli = $idutli;
 
         return $this;
     }

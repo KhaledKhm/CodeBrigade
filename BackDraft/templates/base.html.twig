@@ -16,7 +16,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/jquery.datetimepicker.css') }}">
 
 
-
+        <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy1.css') }}">
 
 
 
@@ -55,26 +55,21 @@
         <script src="{{ asset('vendors/scripts/dashboard.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendors/scripts/push.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendors/scripts/serviceWorker.min.js') }}"></script>
-
-
-
         <script src="{{ asset('build/jquery.datetimepicker.full.min.js') }}" ></script>
+        <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+        <!-- Include Flashy default partial -->
+
+
+
+
+
     {% endblock %}
+
 </head>
 <body>
+
 {% block preload %}
-    <div class="pre-loader">
-        <div class="pre-loader-box">
-            <div class="loader-logo"><img src="{{ asset('vendors/images/JobbookLogo.svg') }}" alt=""></div>
-            <div class='loader-progress' id="progress_div">
-                <div class='bar' id='bar1'></div>
-            </div>
-            <div class='percent' id='percent1'>0%</div>
-            <div class="loading-text">
-                Loading...
-            </div>
-        </div>
-    </div>
+
 {% endblock %}
 {% block header %}
     <div class="header">
@@ -83,99 +78,15 @@
             <h1>3abi Lheader</h1>
 
         </div>
-        <div class="header-right">
-            <div class="dashboard-setting user-notification">
-                <div class="dropdown">
-                    <a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
-                        <i class="dw dw-settings2"></i>
-                    </a>
-                </div>
-            </div>
 
-
-
-        </div>
     </div>
 {% endblock %}
-{% block right_sidebar %}
-    <div class="right-sidebar">
-        <div class="sidebar-title">
-            <h3 class="weight-600 font-16 text-blue">
-                Layout Settings
-                <span class="btn-block font-weight-400 font-12">User Interface Settings</span>
-            </h3>
-            <div class="close-sidebar" data-toggle="right-sidebar-close">
-                <i class="icon-copy ion-close-round"></i>
-            </div>
-        </div>
-        <div class="right-sidebar-body customscroll">
-            <div class="right-sidebar-body-content">
-                <h4 class="weight-600 font-18 pb-10">Header Background</h4>
-                <div class="sidebar-btn-group pb-30 mb-10">
-                    <a href="javascript:void(0);" class="btn btn-outline-primary header-white active">White</a>
-                    <a href="javascript:void(0);" class="btn btn-outline-primary header-dark">Dark</a>
-                </div>
 
-                <h4 class="weight-600 font-18 pb-10">Sidebar Background</h4>
-                <div class="sidebar-btn-group pb-30 mb-10">
-                    <a href="javascript:void(0);" class="btn btn-outline-primary sidebar-light ">White</a>
-                    <a href="javascript:void(0);" class="btn btn-outline-primary sidebar-dark active">Dark</a>
-                </div>
-
-                <h4 class="weight-600 font-18 pb-10">Menu Dropdown Icon</h4>
-                <div class="sidebar-radio-group pb-10 mb-10">
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="sidebaricon-1" name="menu-dropdown-icon" class="custom-control-input" value="icon-style-1" checked="">
-                        <label class="custom-control-label" for="sidebaricon-1"><i class="fa fa-angle-down"></i></label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="sidebaricon-2" name="menu-dropdown-icon" class="custom-control-input" value="icon-style-2">
-                        <label class="custom-control-label" for="sidebaricon-2"><i class="ion-plus-round"></i></label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="sidebaricon-3" name="menu-dropdown-icon" class="custom-control-input" value="icon-style-3">
-                        <label class="custom-control-label" for="sidebaricon-3"><i class="fa fa-angle-double-right"></i></label>
-                    </div>
-                </div>
-
-                <h4 class="weight-600 font-18 pb-10">Menu List Icon</h4>
-                <div class="sidebar-radio-group pb-30 mb-10">
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="sidebariconlist-1" name="menu-list-icon" class="custom-control-input" value="icon-list-style-1" checked="">
-                        <label class="custom-control-label" for="sidebariconlist-1"><i class="ion-minus-round"></i></label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="sidebariconlist-2" name="menu-list-icon" class="custom-control-input" value="icon-list-style-2">
-                        <label class="custom-control-label" for="sidebariconlist-2"><i class="fa fa-circle-o" aria-hidden="true"></i></label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="sidebariconlist-3" name="menu-list-icon" class="custom-control-input" value="icon-list-style-3">
-                        <label class="custom-control-label" for="sidebariconlist-3"><i class="dw dw-check"></i></label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="sidebariconlist-4" name="menu-list-icon" class="custom-control-input" value="icon-list-style-4" checked="">
-                        <label class="custom-control-label" for="sidebariconlist-4"><i class="icon-copy dw dw-next-2"></i></label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="sidebariconlist-5" name="menu-list-icon" class="custom-control-input" value="icon-list-style-5">
-                        <label class="custom-control-label" for="sidebariconlist-5"><i class="dw dw-fast-forward-1"></i></label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="sidebariconlist-6" name="menu-list-icon" class="custom-control-input" value="icon-list-style-6">
-                        <label class="custom-control-label" for="sidebariconlist-6"><i class="dw dw-next"></i></label>
-                    </div>
-                </div>
-
-                <div class="reset-options pt-30 text-center">
-                    <button class="btn btn-danger" id="reset-settings">Reset Settings</button>
-                </div>
-            </div>
-        </div>
-    </div>
-{% endblock %}
 {% block left_sidebar %}
     <div class="left-side-bar">
+
         <div class="brand-logo">
+            {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
             <a href="{{ path('ajouterCv') }}">
                 <img src="{{ asset('vendors/images/JobBookWordLogo.svg') }}" alt="" class="dark-logo">
                 <img src="{{ asset('vendors/images/JobBookWordLogo.svg') }}" alt="" class="light-logo">
@@ -217,7 +128,7 @@
                     </li>
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle">
-                            <span class="micon dw dw-analytics-21"></span><span class="mtext">Satistiques</span>
+                            <span class="micon dw dw-analytics-21"></span><span class="mtext">Satisitiques</span>
                         </a>
                         <ul class="submenu">
                             <li><a href="{{ path('statFormation') }}">Formation</a></li>
@@ -225,7 +136,8 @@
                         </ul>
 
                     </li>
-                    statFormation
+
+
                 </ul>
             </div>
         </div>
@@ -253,15 +165,16 @@
 
         <div class="footer">
             <ul class="social-network social-circle">
-                <li><a class="icoLinkedin" href="https://www.linkedin.com/in/priyank1205" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                <li><a class="icoTwitter" href="https://twitter.com/priyank1205" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                <li><a class="icoMedium" href="https://medium.com/@priyank1205" title="Medium"><i class="fa fa-medium"></i></a></li>
-                <li><a class="icoQuora" href="https://www.quora.com/profile/Priyank-Agarwal-7" title="Quora"><i class="fa fa-quora"></i></a></li>
-                <li><a class="icoFacebook" href="https://www.facebook.com/priyank.agarwal1205" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                <li><a class="icoInstagram" href="https://www.instagram.com/priyank.agarwal1205/" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                <li><a class="icoLinkedin" href="https://www.linkedin.com" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                <li><a class="icoTwitter" href="https://twitter.com" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                <li><a class="icoMedium" href="https://medium.com" title="Medium"><i class="fa fa-medium"></i></a></li>
+                <li><a class="icoQuora" href="https://www.quora.com" title="Quora"><i class="fa fa-quora"></i></a></li>
+                <li><a class="icoFacebook" href="https://www.facebook.com" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                <li><a class="icoInstagram" href="https://www.instagram.com" title="Instagram"><i class="fa fa-instagram"></i></a></li>
             </ul>
         </div>
     </div>
 {% endblock %}
+
 </body>
 </html>
