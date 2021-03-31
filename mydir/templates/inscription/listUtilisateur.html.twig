@@ -1,6 +1,7 @@
-{% extends'khaledbase.html.twig' %}
-
-{% block lwest %}
+{% extends'khaledbackbase.html.twig' %}
+{% block loading %} {% endblock %}
+{% block header %} {% endblock %}
+{% block lwost %}
 
 <table border="1" class="table table-hover">
     <tr class="table-light">
@@ -11,15 +12,12 @@
         <th>Nom Personne</th>
         <th>Prenom de Personne</th>
         <th>Libelle de Entreprise</th>
-        <th>sexePersonne</th>
-        <th>etatSocialePersonne</th>
-        <th>telephone</th>
         <th>Adresse</th>
-        <th>siteweb</th>
         <th>Domaine de Personnne</th>
         <th>secteur de l'Entreprise</th>
         <th>Modifier</th>
         <th>Supprimer</th>
+        <th>Ban/Unban</th>
     </tr>
     {% for user in utilisateur %}
     <tr>
@@ -46,21 +44,9 @@
             {{user.libelleEntreprise}}
         </td>
         <td>
-            {{user.sexePersonne}}
-        </td>
-        <td>
-            {{user.etatSocialePersonne}}
-        </td>
-        <td>
-            {{user.telephone}}
-        </td>
-        <td>
             {{user.adresse}}
         </td>
 
-        <td>
-            {{user.siteweb}}
-        </td>
         <td>
             {{user.domainePersonne}}
         </td>
@@ -74,10 +60,12 @@
             <form action="{{ path('supprimerUtilisateur',{'id':user.id} )}}"><button>Supprimer</button></form>
         </td>
         <td>
-            <form action="{{ path('banUtilisateur',{'id':user.id} )}}"><button>Ban</button></form>
-        </td>
-        <td>
-            <form action="{{ path('unbanUtilisateur',{'id':user.id} )}}"><button>Unban</button></form>
+            {% if user.accountStatus=="Banned" %}
+        <form action="{{ path('unbanUtilisateur',{'id':user.id} )}}"><button>Unban</button></form>
+
+            {% else  %}
+                <form action="{{ path('banUtilisateur',{'id':user.id} )}}"><button>Ban</button></form>
+                {% endif %}
         </td>
 
 

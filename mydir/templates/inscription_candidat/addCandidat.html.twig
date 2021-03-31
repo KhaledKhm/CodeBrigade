@@ -1,69 +1,72 @@
-{% extends'khaledbase.html.twig' %}
+{% extends'profileedit.html.twig' %}
 {% block loading %} {% endblock %}
-{% block header %} <h2>Inscription d'un candidat</h2> {% endblock %}
-{% block footer %} {% endblock %}
-{% block lwest %}
+{% block header %} <h2>Modification d\'un Utilisateur</h2> {% endblock %}
+
+{% block lwost %}
 
 
 
-    {{ form_start(form) }}
-
-    {{ form_errors(form) }}
-
-    {{ form_label(form.email) }}
-    {{ form_widget(form.email,{ 'attr':{'class':"form-control"}}) }}
-    {{ form_errors(form.email) }}
-
-    {{ form_label(form.password) }}
-    {{ form_widget(form.password,{ 'attr':{ 'class':"form-control"}}) }}
-    {{ form_errors(form.password) }}
+    {{ form_start(formedit) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(formedit) }}
+    </div>
 
 
-    {{ form_label(form.confirmPassword) }}
-    {{ form_widget(form.confirmPassword ,{ 'attr':{'class':"form-control"}}) }}
-    {{ form_errors(form.confirmPassword) }}
+    <div class="form-group">
+        {{ form_label(formedit.email) }}
+        {{ form_widget(formedit.email,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.email) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formedit.password, 'Reecrire votre mot de passe') }}
+        {{ form_widget(formedit.password,{ 'attr':{'class':"form-control"},'placeholder':"test"}) }}
+        {{ form_errors(formedit.password) }}
+    </div>
 
 
-    {{ form_label(form.cinPersonne) }}
-    {{ form_widget(form.cinPersonne,{ 'attr':{'class':"form-control"}}) }}
-    {{ form_errors(form.cinPersonne) }}
+    <div class="form-group">
+        {{ form_label(formedit.cinPersonne, 'Votre CIN') }}
+        {{ form_widget(formedit.cinPersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.cinPersonne) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formedit.nomPersonne, 'Votre Nom') }}
+        {{ form_widget(formedit.nomPersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.nomPersonne) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formedit.prenomPersonne, 'Votre Prenom') }}
+        {{ form_widget(formedit.prenomPersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.prenomPersonne) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formedit.sexePersonne, 'Votre Sexe') }}
+        {{ form_widget(formedit.sexePersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.sexePersonne) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formedit.etatSocialePersonne, 'Votre Etat Social') }}
+        {{ form_widget(formedit.etatSocialePersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.etatSocialePersonne) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formedit.telephone, 'Votre Numero de telephone') }}
+        {{ form_widget(formedit.telephone,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.telephone) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formedit.adresse, 'Votre Adresse') }}
+        {{ form_widget(formedit.adresse,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.adresse) }}
+    </div>
 
-    {{ form_label(form.nomPersonne) }}
-    {{ form_widget(form.nomPersonne,{ 'attr':{'class':"form-control"}}) }}
-    {{ form_errors(form.nomPersonne) }}
+    <div class="form-group">
+        {{ form_label(formedit.domainePersonne, 'Votre domaine en informatique') }}
+        {{ form_widget(formedit.domainePersonne,{ 'attr':{'class':"form-control"}}) }}
+        {{ form_errors(formedit.domainePersonne) }}
+    </div>
 
-    {{ form_label(form.prenomPersonne) }}
-    {{ form_widget(form.prenomPersonne,{ 'attr':{'class':"form-control"}}) }}
-    {{ form_errors(form.prenomPersonne) }}
-
-    {{ form_label(form.sexePersonne) }}
-    {{ form_widget(form.sexePersonne,{ 'attr':{'class':"form-control"}}) }}
-    {{ form_errors(form.sexePersonne) }}
-
-    {{ form_label(form.dateNaisPersonne) }}
-    {{ form_widget(form.dateNaisPersonne,{ 'attr':{'class':"form-control"}}) }}
-    {{ form_errors(form.dateNaisPersonne) }}
-
-    {{ form_label(form.etatSocialePersonne) }}
-    {{ form_widget(form.etatSocialePersonne,{ 'attr':{'class':"form-control"}}) }}
-    {{ form_errors(form.etatSocialePersonne) }}
-
-    {{ form_label(form.telephone) }}
-    {{ form_widget(form.telephone,{ 'attr':{'class':"form-control"}}) }}
-    {{ form_errors(form.telephone) }}
-
-    {{ form_label(form.adresse) }}
-    {{ form_widget(form.adresse,{ 'attr':{'class':"form-control"}}) }}
-    {{ form_errors(form.adresse) }}
-
-
-
-    {{ form_label(form.domainePersonne) }}
-    {{ form_widget(form.domainePersonne,{ 'attr':{'class':"form-control"}}) }}
-    {{ form_errors(form.domainePersonne) }}
-
-
-    {{ form_row(form.Inscrire,{ 'attr':{ 'class':"btn btn-primary"}}) }}
+    {{ form_row(formedit.Modifier,{ 'attr':{ 'class':"btn btn-primary"}}) }}
 
 
 

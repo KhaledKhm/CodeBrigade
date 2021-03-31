@@ -19,13 +19,13 @@ class UtilisateurRepository extends ServiceEntityRepository
         parent::__construct($registry, Utilisateur::class);
     }
 
-    public function findByUsername($username):integer{
+    public function findByEmail($email):string{
         $entityManager=$this->getEntityManager();
         $query=$entityManager->createQuery(
             'SELECT id
             FROM App\Entity\Utilisateur u
-            WHERE u.username == :username'
-        )->setParameter('username', $username);
+            WHERE u.email== :email'
+        )->setParameter('email', $email);
         return $query->getResult();
 
 }

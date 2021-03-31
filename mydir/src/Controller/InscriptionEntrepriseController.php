@@ -56,4 +56,32 @@ class InscriptionEntrepriseController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/modifierEntreprise/{id}", name="modifierEntreprise")
+     */
+    public function updateEntreprise(Request $request,$id,UserPasswordEncoderInterface $encoder)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $Utilisateur = $em->getRepository(Utilisateur::class)->find($id);
+        $formedit=$this->createForm(EnterpriseformType::class,$Utilisateur);
+        $formedit->add('Modifier', SubmitType::class);
+
+        $formedit->handleRequest($request);
+        if($formedit->isSubmitted() /*&& $formedit->isValid()*/)
+        {
+            $hash = $encoder->encodePassword($Utilisateur,$Utilisateur->getPassword());
+            $Utilisateur->setPassword($hash);
+            $em=$this->getDoctrine()->getManager();
+            $em->flush();
+            return $this->redirectToRoute('inscription/utilisateurs');
+        }
+        return $this->render('inscription_Entreprise/updateEntreprise.html.twig',
+            [
+                'formedit'=>$formedit->createView(),
+            ]
+        );
+
+    }
 }

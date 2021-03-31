@@ -71,12 +71,16 @@ The above copyright notice and this permission notice shall be included in all c
                             <i class="material-icons">warning</i> Reclamation
                         </a>
                     </div>
-                </li>
+                </li>{% block compte %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons">account_circle</i> Mon Compte
-                    </a>
-                </li>
+                    <form action="{{ path('modifierUtilisateur',{'id':app.user.id} )}}">
+                        <button class="navbar-transparent">
+                            <i class="material-icons">account_circle</i>
+                            Mon Compte</button>
+                    </form>
+
+
+                </li>{% endblock %}
                 <li class="nav-item">
                     <a href="{{ asset('javascript:;') }}" class="btn btn-rose btn-raised btn-fab btn-round" data-toggle="dropdown">
                         <i class="material-icons">email</i>

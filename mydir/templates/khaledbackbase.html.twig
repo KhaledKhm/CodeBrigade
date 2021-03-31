@@ -58,10 +58,9 @@
 
     <div class="header-right">
         <div class="dashboard-setting user-notification">
-            <div class="dropdown">
-                <a class="dropdown-toggle no-arrow" href="{{asset('javascript:;') }}" data-toggle="right-sidebar">
-                    <i class="dw dw-settings2"></i>
-                </a>
+            <div>
+                <form action="{{ path('modifierUtilisateur',{'id':app.user.id} )}}"><button >   <i class="dw dw-settings2"></i></button></form>
+
             </div>
         </div>
 

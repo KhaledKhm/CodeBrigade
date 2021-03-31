@@ -40,4 +40,5 @@ class CandidatformType extends AbstractType
             'data_class' => Utilisateur::class,
         ]);
     }
+
 }

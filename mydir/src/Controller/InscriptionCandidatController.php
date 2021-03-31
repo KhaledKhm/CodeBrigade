@@ -48,9 +48,38 @@ class InscriptionCandidatController extends AbstractController
         ]);
     }
 
-   /* /**
-     * @Route("/inscription/candidat/inscription_candidat", name="/inscription/candidat/inscription_formateur2")
+    /**
+     * @Route("/modifierCandidat/{id}", name="modifierCandidat")
      */
+    public function updateCandidat(Request $request,$id,UserPasswordEncoderInterface $encoder)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $Utilisateur = $em->getRepository(Utilisateur::class)->find($id);
+        $formedit = $this->createForm(CandidatformType::class, $Utilisateur);
+        $formedit->add('Modifier', SubmitType::class);
+
+        $formedit->handleRequest($request);
+        if($formedit->isSubmitted() /*&& $formedit->isValid()*/)
+        {
+            $hash = $encoder->encodePassword($Utilisateur,$Utilisateur->getPassword());
+            $Utilisateur->setPassword($hash);
+            $em=$this->getDoctrine()->getManager();
+            $em->flush();
+            return $this->redirectToRoute('inscription/utilisateurs');
+        }
+        return $this->render('inscription_candidat/updateCandidat.html.twig',
+            [
+                'formedit'=>$formedit->createView(),
+            ]
+        );
+
+    }
+
+
+    /* /**
+      * @Route("/inscription/candidat/inscription_candidat", name="/inscription/candidat/inscription_formateur2")
+      */
     /*public function readCandidat()
     {
         $repository = $this->getDoctrine()->getRepository(Utilisateur::class);

@@ -6,12 +6,14 @@ use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Constraints\Unique;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Form\FormTypeInterface;
 use Scheb\TwoFactorBundle\Model\Google\TwoFactorInterface;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
+ * @UniqueEntity("email")
  */
 
 class Utilisateur implements UserInterface, TwoFactorInterface
@@ -132,7 +134,7 @@ class Utilisateur implements UserInterface, TwoFactorInterface
     private $adresse;
 
     /**
-     * @ORM\Column(type="string", length=64, nullable=true)
+     * @ORM\Column(type="string", length=64, nullable=true, unique=true)
      * @Assert\NotBlank(
      * )
      * @Assert\Email(
