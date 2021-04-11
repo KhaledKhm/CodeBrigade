@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  * @author OneEffect007
  */
 public class MaConnexion {
-    public String url ="jdbc:mysql://localhost:3306/shapeup";
+    public String url ="jdbc:mysql://localhost:3306/jobbook";
     public String user ="root";
     public String pwd ="";
     
