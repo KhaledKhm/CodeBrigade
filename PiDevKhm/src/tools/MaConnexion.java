@@ -5,39 +5,42 @@
  */
 package tools;
 
-import com.mysql.jdbc.Connection;
 import java.sql.*;
-import java.util.logging.*;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author SPIRIT
+ * @author OneEffect007
  */
 public class MaConnexion {
-     public String url ="jdbc:mysql://localhost/jobbook";
-   public String user ="root";
-   public String pwd = "";
-   
-   private Connection cnx;
-   public static MaConnexion ct;
-
-    private MaConnexion() {
-       try {
-           cnx = DriverManager.getConnection(url,user,pwd);
-           System.out.println("Connexion etablie");
-       } catch (SQLException ex) {
-           System.out.println(ex.getMessage());
-       }
+    public String url ="jdbc:mysql://localhost:3306/shapeup";
+    public String user ="root";
+    public String pwd ="";
+    
+    private Connection cnx;
+    public static MaConnexion ct;
+    
+    private MaConnexion()
+    {
+        try {
+            cnx=DriverManager.getConnection(url,user,pwd);
+            System.out.println("Connexion établie,vous etes connecté sur localhost");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }    
     }
     
-    public static MaConnexion getInstance(){
+    public static MaConnexion getInstance()
+    {
         if (ct==null)
-            ct = new MaConnexion();
+            ct=new MaConnexion();
         return ct;
     }
 
     public Connection getCnx() {
         return cnx;
     }
+    
+    
 }
