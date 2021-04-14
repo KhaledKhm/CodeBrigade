@@ -19,10 +19,10 @@ public class khmMain {
         mc = MaConnexion.getInstance();
       
         //************************des test sur table utilisateur ***********************//
-        /*  utilisateur u; //test pour ajouter un utilisateur
+          utilisateur u; //test pour ajouter un utilisateur
         u = new utilisateur("password","immatricule","libelle",24746877,"adresse","email","siteweb","secteur_entreprise","role","googleAuthenticatorSecret"); 
         entrepriseService us = new entrepriseService();
-        us.ajouterEntreprise(u);*/
+        us.ajouterEntreprise(u);
       
       /*utilisateurService u = new utilisateurService(); //test pour supprimer un utilisateur
     u.supprimerUtilisateur(41);*/
@@ -32,8 +32,8 @@ public class khmMain {
         utilisateurService us = new utilisateurService();
         us.modifierUtilisateur(u, 36);*/
      
-    /* utilisateurService u = new utilisateurService(); //test pour afficher les utilisateurs
-        System.out.println(u.afficherUtilisateurs().toString());*/
+     utilisateurService uA = new utilisateurService(); //test pour afficher les utilisateurs
+        System.out.println(uA.afficherUtilisateurs().toString());
      
      
       
