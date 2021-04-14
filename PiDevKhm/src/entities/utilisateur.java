@@ -5,7 +5,7 @@
  */
 package entities;
 
-import java.sql.Date;
+import java.sql.*;
 
 /**
  *
@@ -30,8 +30,14 @@ public class utilisateur {
     private String domaine_personne;
     private String secteur_entreprise;
     private String role;
+    private String googleAuthenticatorSecret;
 
-    public utilisateur(int id, String password, String account_status, int cin_personne, String immatricule_entreprise, String nom_personne, String prenom_personne, String libelle_entreprise, String sexe_personne, Date date_nais_personne, String etat_sociale_personne, int telephone, String adresse, String email, String siteweb, String domaine_personne, String secteur_entreprise, String role) {
+    public utilisateur() {
+    }
+
+    
+    //constructor global
+    public utilisateur(int id, String password, String account_status, int cin_personne, String immatricule_entreprise, String nom_personne, String prenom_personne, String libelle_entreprise, String sexe_personne, Date date_nais_personne, String etat_sociale_personne, int telephone, String adresse, String email, String siteweb, String domaine_personne, String secteur_entreprise, String role, String googleAuthenticatorSecret) {
         this.id = id;
         this.password = password;
         this.account_status = account_status;
@@ -50,7 +56,58 @@ public class utilisateur {
         this.domaine_personne = domaine_personne;
         this.secteur_entreprise = secteur_entreprise;
         this.role = role;
+        this.googleAuthenticatorSecret = googleAuthenticatorSecret;
     }
+
+    //constructor pour formateur et candidat
+    public utilisateur(String password, int cin_personne, String nom_personne, String prenom_personne, String sexe_personne, Date date_nais_personne, String etat_sociale_personne, int telephone, String adresse, String email, String domaine_personne, String role, String googleAuthenticatorSecret) {
+        this.password = password;
+        this.cin_personne = cin_personne;
+        this.nom_personne = nom_personne;
+        this.prenom_personne = prenom_personne;
+        this.sexe_personne = sexe_personne;
+        this.date_nais_personne = date_nais_personne;
+        this.etat_sociale_personne = etat_sociale_personne;
+        this.telephone = telephone;
+        this.adresse = adresse;
+        this.email = email;
+        this.domaine_personne = domaine_personne;
+        this.role = role;
+        this.googleAuthenticatorSecret = googleAuthenticatorSecret;
+    }
+  
+
+    //constructor pour entreprise
+    public utilisateur(String password, String immatricule_entreprise, String libelle_entreprise, int telephone, String adresse, String email, String siteweb, String secteur_entreprise, String role, String googleAuthenticatorSecret) {
+        this.password = password;
+        this.immatricule_entreprise = immatricule_entreprise;
+        this.libelle_entreprise = libelle_entreprise;
+        this.telephone = telephone;
+        this.adresse = adresse;
+        this.email = email;
+        this.siteweb = siteweb;
+        this.secteur_entreprise = secteur_entreprise;
+        this.role = role;
+        this.googleAuthenticatorSecret = googleAuthenticatorSecret;
+    }
+    
+    
+    
+
+    public utilisateur(String password, String account_status) { //pour tester
+        this.password = password;
+        this.account_status = account_status;
+    }
+
+ 
+
+    public utilisateur(int id, String password) { // pour tester
+        this.id = id;
+        this.password = password;
+    }
+
+   
+
 
     public int getId() {
         return id;
@@ -194,6 +251,14 @@ public class utilisateur {
 
     public void setRole(String role) {
         this.role = role;
+    }
+    
+       public String getGoogleAuthenticatorSecret() {
+        return googleAuthenticatorSecret;
+    }
+
+    public void setGoogleAuthenticatorSecret(String googleAuthenticatorSecret) {
+        this.googleAuthenticatorSecret = googleAuthenticatorSecret;
     }
 
     @Override
