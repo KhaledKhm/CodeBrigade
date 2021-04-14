@@ -50,7 +50,7 @@ public class blogService {
             while (rs.next()) { 
                 blog b = new blog();
                 b.setTitre(rs.getString("titre"));
-                b.setContenu(rs.getString(2));
+                b.setContenu(rs.getString("contenu"));
                 blogs.add(b);
                 
             
@@ -60,4 +60,36 @@ public class blogService {
         }
      return blogs;
    }
+         
+         
+         public void supprimerBlog(int idblog) {
+        try {
+            String sql = "DELETE FROM `blog` WHERE idblog=" + idblog;
+
+            ste = cnx.prepareStatement(sql);
+
+            ste.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    
+      public void modifierBlog(blog b, int id) {
+        try {
+                    String req= "UPDATE blog SET titre=?,"
+                    + "contenu=? where idblog=?";
+                                ste = cnx.prepareStatement(req);
+
+            ste.setString(1, b.getTitre());
+            ste.setString(2, b.getContenu());
+
+            ste.setInt(3, id);
+           System.out.println(ste);
+
+            ste.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 }
