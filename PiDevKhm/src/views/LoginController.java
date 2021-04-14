@@ -7,7 +7,8 @@ package views;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import javafx.fxml.*;
+import javafx.scene.control.*;
 
 /**
  * FXML Controller class
@@ -23,5 +24,14 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    @FXML
+    private Label labelStatus;
+    @FXML
+    private TextField utilisateurEmail;
+    @FXML
+    private TextField utilisateurPassword;
+    
+    
     
 }
