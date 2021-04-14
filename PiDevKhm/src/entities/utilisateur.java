@@ -106,6 +106,14 @@ public class utilisateur {
         this.password = password;
     }
 
+    public utilisateur(String password, String account_status, String email) {
+        this.password = password;
+        this.account_status = account_status;
+        this.email = email;
+    }
+    
+    
+
    
 
 
