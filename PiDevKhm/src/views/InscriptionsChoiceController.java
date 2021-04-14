@@ -65,39 +65,57 @@ public class InscriptionsChoiceController implements Initializable {
     }
     
     @FXML
-    public void inscrireCandidat(ActionEvent event) throws Exception{
-       Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("ajouterCandidat.fxml"));
+    public void inscrireCandidat(ActionEvent event) {
+         try{
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ajouterCandidat.fxml"));
         
-        Scene scene = new Scene(root, 600, 400);
-        scene.getStylesheets().add(getClass().getResource("../tools/css/ajoutercandidat.css").toExternalForm());
-        primaryStage.setTitle("Inscription d'un candidat");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        Parent root;
+        root = loader.load();
+        AjouterCandidatController ACC = loader.getController();
+        labelInscrireEtant.getScene().setRoot(root);
+      //  scene.getStylesheets().add(getClass().getResource("../tools/css/ajoutercandidat.css").toExternalForm());
+  
+        }catch(IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+       
     }
     
     @FXML
-    public void inscrireEntreprise(ActionEvent event) throws Exception{
-       Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("ajouterEntreprise.fxml"));
+    public void inscrireEntreprise(ActionEvent event) {
+        try{
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ajouterEntreprise.fxml"));
         
-        Scene scene = new Scene(root, 600, 400);
-        scene.getStylesheets().add(getClass().getResource("../tools/css/ajouterentreprise.css").toExternalForm());
-        primaryStage.setTitle("Inscription d'une entreprise");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        Parent root;
+        root = loader.load();
+        AjouterEntrepriseController AEC = loader.getController();
+        labelInscrireEtant.getScene().setRoot(root);
+      //  scene.getStylesheets().add(getClass().getResource("../tools/css/ajouterentreprise.css").toExternalForm());
+  
+        }catch(IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+       
     }
     
     @FXML
-    public void retourALogin(ActionEvent event) throws Exception{
-       Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+    public void retourALogin(ActionEvent event) {
+        try{
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
         
-        Scene scene = new Scene(root, 600, 400);
-        scene.getStylesheets().add(getClass().getResource("../tools/css/login.css").toExternalForm());
-        primaryStage.setTitle("Login");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        Parent root;
+        root = loader.load();
+        LoginController LC = loader.getController();
+        labelInscrireEtant.getScene().setRoot(root);
+      //  scene.getStylesheets().add(getClass().getResource("../tools/css/login.css").toExternalForm());
+  
+        }catch(IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+       
     }
     
 }
