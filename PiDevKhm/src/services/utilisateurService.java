@@ -9,6 +9,8 @@ import entities.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tools.MaConnexion;
 
 /**
@@ -49,8 +51,8 @@ public class utilisateurService {
             while (rs.next()) { 
                 utilisateur u = new utilisateur();
                 u.setId(rs.getInt("id"));
-                u.setNom_personne(rs.getString(2));
-                u.setPrenom_personne(rs.getString("prenom"));
+                u.setPassword(rs.getString("password"));
+                u.setEmail(rs.getString("email"));
                 utilisateurs.add(u);
                 
             
@@ -60,5 +62,38 @@ public class utilisateurService {
         }
      return utilisateurs;
    }
+      
+    public void supprimerUtilisateur(int id) {
+        try {
+            String sql = "DELETE FROM `utilisateur` WHERE id=" + id;
+
+            ste = cnx.prepareStatement(sql);
+
+            ste.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    
+      public void modifierUtilisateur(utilisateur u, int id) {
+        try {
+                    String req= "UPDATE utilisateur SET email=?,"
+                    + "password=?,"
+                    + "account_status=? where id=?";
+                                ste = cnx.prepareStatement(req);
+
+            ste.setString(1, u.getEmail());
+            ste.setString(2, u.getPassword());
+            ste.setString(3, u.getAccount_status());
+
+            ste.setInt(4, id);
+           System.out.println(ste);
+
+            ste.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
     
 }
