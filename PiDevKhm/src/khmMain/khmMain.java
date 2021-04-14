@@ -5,6 +5,8 @@
  */
 package khmMain;
 
+import entities.*;
+import services.*;
 import tools.MaConnexion;
 
 /**
@@ -15,6 +17,14 @@ public class khmMain {
     public static void main(String[] args) {
         MaConnexion mc;
         mc = MaConnexion.getInstance();
+      /*  utilisateur u;
+        u = new utilisateur("password","immatricule","libelle",24746877,"adresse","email","siteweb","secteur_entreprise","role","googleAuthenticatorSecret");
+        entrepriseService us = new entrepriseService();
+        us.ajouterEntreprise(u);*/
+      blog b;
+      b = new blog("Titre2","contenu treeeeeeeeeeeeeeeeeeeeeeeeeeeeeees long",1);
+      blogService bs = new blogService();
+      bs.ajouterBlog(b);
         
     }
 }
