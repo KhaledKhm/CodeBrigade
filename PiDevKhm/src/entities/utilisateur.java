@@ -111,6 +111,14 @@ public class utilisateur {
         this.account_status = account_status;
         this.email = email;
     }
+
+    public utilisateur(String password, int cin, String nom, String prenom, String sexe, String etat, int telephone, String adresse, String email, String domaine, String role_Formateur, String aNULL) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public utilisateur(String password, int cin, String nom, String prenom, String sexe, String etat, int telephone, String adresse, String email, String domaine, String role_Formateur) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 

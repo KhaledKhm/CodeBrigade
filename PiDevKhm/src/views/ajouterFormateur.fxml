@@ -87,12 +87,12 @@
       <DatePicker fx:id="formateurDate" layoutX="676.0" layoutY="291.0" />
       <ComboBox fx:id="formateurEtat" layoutX="157.0" layoutY="403.0" prefWidth="150.0" promptText="Celibataire" />
       <ChoiceBox fx:id="formateurDomaine" layoutX="676.0" layoutY="521.0" prefWidth="150.0" />
-      <Button fx:id="retourFormateur" layoutX="504.0" layoutY="688.0" mnemonicParsing="false" text="Retour">
+      <Button fx:id="retourFormateur" layoutX="504.0" layoutY="688.0" mnemonicParsing="false" onAction="#retourInscriptionChoice" text="Retour">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="inscrureFormateur" layoutX="656.0" layoutY="692.0" mnemonicParsing="false" text="Inscrire">
+      <Button fx:id="inscrireFormateur" layoutX="656.0" layoutY="692.0" mnemonicParsing="false" onAction="#addFormateur" text="Inscrire">
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font>
