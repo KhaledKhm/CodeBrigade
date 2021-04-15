@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="662.0" prefWidth="946.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.java.gui.EvaluationController">
+   <children>
+      <Label layoutX="471.0" layoutY="93.0" prefHeight="18.0" prefWidth="74.0" text="ID Evaluation" />
+      <Label layoutX="471.0" layoutY="126.0" text="Libelle" />
+      <Label layoutX="471.0" layoutY="159.0" text="Description" />
+      <Label layoutX="471.0" layoutY="193.0" text="Date" />
+      <Label layoutX="470.0" layoutY="231.0" text="ID Entreprise" />
+      <TextField editable="false" layoutX="575.0" layoutY="89.0" prefHeight="26.0" prefWidth="194.0" text="ID sera généré automatiquement " />
+      <TextField fx:id="tf_ajout_libelle_eval" layoutX="575.0" layoutY="122.0" promptText="Libelle" />
+      <TextField fx:id="tf_ajout_description_eval" layoutX="575.0" layoutY="155.0" promptText="Description" />
+      <Button fx:id="btn_ajout_eval" layoutX="609.0" layoutY="262.0" mnemonicParsing="false" onAction="#ajouterEvaluation" text="Ajouter" />
+      <TableView fx:id="table_eval" layoutX="28.0" layoutY="49.0" prefHeight="200.0" prefWidth="430.0">
+        <columns>
+          <TableColumn fx:id="col_id_eval" prefWidth="52.000030517578125" text="ID" />
+          <TableColumn fx:id="col_libelle_eval" prefWidth="88.0" text="Libelle" />
+            <TableColumn fx:id="col_description_eval" prefWidth="103.99996948242188" text="Description" />
+            <TableColumn fx:id="col_date_eval" prefWidth="85.60003662109375" text="Date" />
+            <TableColumn fx:id="col_entreprise_eval" prefWidth="102.39996337890625" text="ID Entreprise" />
+        </columns>
+      </TableView>
+      <Label layoutX="538.0" layoutY="59.0" text="Ajouter Evaluation" textFill="#c10b0b" />
+      <Label layoutX="130.0" layoutY="282.0" text="Modifier Evaluation" textFill="#911010" />
+      <Label layoutX="56.0" layoutY="317.0" prefHeight="18.0" prefWidth="74.0" text="ID Evaluation" />
+      <Label layoutX="56.0" layoutY="350.0" text="Libelle" />
+      <Label layoutX="56.0" layoutY="383.0" text="Description" />
+      <Label layoutX="56.0" layoutY="417.0" text="Date" />
+      <Label layoutX="55.0" layoutY="455.0" text="ID Entreprise" />
+      <ComboBox fx:id="tf_modif_id_eval" layoutX="149.0" layoutY="314.0" onAction="#cbb_modif_change" prefHeight="26.0" prefWidth="103.0" />
+      <TextField fx:id="tf_modif_libelle_eval" layoutX="150.0" layoutY="346.0" promptText="Libelle" />
+      <TextField fx:id="tf_modif_description_eval" layoutX="150.0" layoutY="379.0" promptText="Description" />
+      <TextField fx:id="tf_modif_date_eval" editable="false" layoutX="151.0" layoutY="413.0" promptText="Date" />
+      <Button fx:id="btn_modif_eval" layoutX="183.0" layoutY="485.0" mnemonicParsing="false" onAction="#modifierEvaluation" text="Modifier" />
+      <ComboBox fx:id="tf_supp_id_eval" layoutX="571.0" layoutY="370.0" prefHeight="26.0" prefWidth="103.0" />
+      <Label layoutX="548.0" layoutY="327.0" text="Supprimer Evaluation" textFill="#a40f0f" />
+      <Button fx:id="btn_supp_eval" layoutX="561.0" layoutY="422.0" mnemonicParsing="false" onAction="#supprimerEvaluation" text="Supprimer" />
+      <Label layoutX="468.0" layoutY="374.0" prefHeight="18.0" prefWidth="74.0" text="ID Evaluation" />
+      <ComboBox fx:id="tf_ajout_entreprise_eval" layoutX="575.0" layoutY="227.0" prefHeight="26.0" prefWidth="103.0" />
+      <TextField fx:id="tf_modif_entreprise_eval" editable="false" layoutX="151.0" layoutY="451.0" promptText="ID Entreprise" />
+      <Label layoutX="364.0" layoutY="14.0" text="Evaluations" textAlignment="CENTER" textFill="#ac1717">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="tf_ajout_date_eval" layoutX="575.0" layoutY="189.0" />
+      <Button fx:id="btn_page_quiz" layoutX="36.0" layoutY="603.0" mnemonicParsing="false" onAction="#pageQuiz" text="Quiz" />
+      <Button fx:id="btn_page_participations" layoutX="97.0" layoutY="603.0" mnemonicParsing="false" onAction="#pageParticipations" text="Participations" />
+      <Button fx:id="btn_page_entretiens" layoutX="215.0" layoutY="604.0" mnemonicParsing="false" onAction="#pageEntretiens" text="Entretiens" />
+   </children>
+</AnchorPane>

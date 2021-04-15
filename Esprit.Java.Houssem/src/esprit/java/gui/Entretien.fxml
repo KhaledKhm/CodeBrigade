@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="692.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.java.gui.EntretienController">
+   <children>
+      <TableView fx:id="table_entretien" layoutX="15.0" layoutY="78.0" prefHeight="200.0" prefWidth="572.0">
+        <columns>
+          <TableColumn fx:id="col_id_ent" prefWidth="80.7999849319458" text="ID Entretien" />
+          <TableColumn fx:id="col_libelle_ent" prefWidth="87.20001220703125" text="Libelle" />
+            <TableColumn fx:id="col_description_ent" prefWidth="97.60002136230469" text="Description" />
+            <TableColumn fx:id="col_date_ent" prefWidth="112.79998779296875" text="Date" />
+            <TableColumn fx:id="col_idEval_ent" prefWidth="84.79998779296875" text="ID Evaluation" />
+            <TableColumn fx:id="col_idParticipant_ent" prefWidth="108.79998779296875" text="ID Participant" />
+        </columns>
+      </TableView>
+      <Label layoutX="409.0" layoutY="14.0" text="Entretiens" textFill="#f40606">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label layoutX="718.0" layoutY="85.0" text="Ajouter Entretien" textFill="RED" />
+      <Label layoutX="613.0" layoutY="128.0" text="ID Entretien" />
+      <Label layoutX="613.0" layoutY="161.0" text="Libelle" />
+      <Label layoutX="613.0" layoutY="193.0" text="Description" />
+      <Label layoutX="616.0" layoutY="229.0" text="Date" />
+      <Label layoutX="616.0" layoutY="258.0" text="ID Evaluation" />
+      <Label layoutX="615.0" layoutY="295.0" text="ID Participant" />
+      <TextField editable="false" layoutX="725.0" layoutY="124.0" prefHeight="26.0" prefWidth="192.0" text="ID sera généré automatiquement " />
+      <TextField fx:id="tf_ajout_libelle_entretien" layoutX="726.0" layoutY="157.0" promptText="Libelle" />
+      <TextField fx:id="tf_ajout_description_entretien" layoutX="727.0" layoutY="189.0" promptText="Description" />
+      <DatePicker fx:id="tf_ajout_date_entretien" layoutX="727.0" layoutY="220.0" promptText="Date Entretien" />
+      <ComboBox fx:id="tf_ajout_idEval_entretien" layoutX="726.0" layoutY="253.0" onAction="#cbb_eval_change" prefWidth="150.0" />
+      <ComboBox fx:id="tf_ajout_idParticipant_entretien" layoutX="726.0" layoutY="288.0" prefWidth="150.0" />
+      <Button fx:id="btn_ajout_entretien" layoutX="735.0" layoutY="339.0" mnemonicParsing="false" onAction="#ajouterEntretien" text="Ajouter" />
+      <Label layoutX="99.0" layoutY="360.0" text="Modifier Entretien" textFill="RED" />
+      <Label layoutX="45.0" layoutY="396.0" text="ID Entretien" />
+      <Label layoutX="45.0" layoutY="429.0" text="Libelle" />
+      <Label layoutX="45.0" layoutY="461.0" text="Description" />
+      <Label layoutX="48.0" layoutY="494.0" text="Date" />
+      <Label layoutX="48.0" layoutY="527.0" text="ID Evaluation" />
+      <Label layoutX="47.0" layoutY="560.0" text="ID Participant" />
+      <TextField fx:id="tf_modif_libelle_entretien" layoutX="163.0" layoutY="425.0" promptText="Libelle" />
+      <TextField fx:id="tf_modif_description_entretien" layoutX="163.0" layoutY="457.0" promptText="Description" />
+      <TextField fx:id="tf_modif_date_entretien" editable="false" layoutX="163.0" layoutY="490.0" promptText="Date Entretien" />
+      <TextField fx:id="tf_modif_idEval_entretien" editable="false" layoutX="163.0" layoutY="523.0" promptText="ID Evaluation" />
+      <TextField fx:id="tf_modif_idParticipant_entretien" editable="false" layoutX="163.0" layoutY="556.0" promptText="ID Participant" />
+      <Button fx:id="btn_modif_entretien" layoutX="121.0" layoutY="596.0" mnemonicParsing="false" onAction="#modifierEntretien" text="Modifier" />
+      <Label layoutX="615.0" layoutY="405.0" text="Supprimer Entretien" textFill="#ff0101" />
+      <ComboBox fx:id="tf_supp_id_entretien" layoutX="669.0" layoutY="438.0" prefWidth="150.0" />
+      <Label layoutX="573.0" layoutY="442.0" text="ID Entretien" />
+      <Button fx:id="btn_supp_entretien" layoutX="686.0" layoutY="481.0" mnemonicParsing="false" onAction="#supprimerEntretien" text="Supprimer" />
+      <ComboBox fx:id="tf_modif_id_entretien" layoutX="163.0" layoutY="392.0" onAction="#cbb_modif_change" prefWidth="150.0" />
+      <Button fx:id="page_evaluations" layoutX="403.0" layoutY="653.0" mnemonicParsing="false" onAction="#pageEvaluations" text="Evaluations" />
+      <Button fx:id="page_quiz" layoutX="515.0" layoutY="653.0" mnemonicParsing="false" onAction="#pageQuiz" text="Quiz" />
+      <Button fx:id="page_participations" layoutX="590.0" layoutY="653.0" mnemonicParsing="false" onAction="#pageParticipations" text="Participations" />
+   </children>
+</AnchorPane>

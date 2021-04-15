@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="594.0" prefWidth="843.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.java.gui.QuizController">
+   <children>
+      <Label layoutX="358.0" layoutY="11.0" text="Quiz" textFill="RED">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <TableView fx:id="table_quiz" layoutX="119.0" layoutY="56.0" prefHeight="200.0" prefWidth="544.0">
+        <columns>
+          <TableColumn fx:id="col_id_quiz" prefWidth="75.0" text="ID Quiz" />
+          <TableColumn fx:id="col_question_quiz" prefWidth="75.0" text="Question" />
+            <TableColumn fx:id="col_choix1_quiz" prefWidth="75.0" text="Choix 1" />
+            <TableColumn fx:id="col_choix2_quiz" prefWidth="75.0" text="Choix 2" />
+            <TableColumn fx:id="col_choix3_quiz" prefWidth="75.0" text="Choix 3" />
+            <TableColumn fx:id="col_reponse_quiz" prefWidth="75.0" text="Reponse" />
+            <TableColumn fx:id="col_ideval_quiz" prefWidth="92.0" text="ID Evaluation" />
+        </columns>
+      </TableView>
+      <Label layoutX="185.0" layoutY="277.0" text="Ajouter Quiz" textFill="#c70b0b" />
+      <Label layoutX="118.0" layoutY="311.0" text="ID Quiz" />
+      <Label layoutX="115.0" layoutY="347.0" text="Question" />
+      <Label layoutX="118.0" layoutY="382.0" text="Choix 1" />
+      <Label layoutX="118.0" layoutY="414.0" text="Choix 2" />
+      <Label layoutX="118.0" layoutY="449.0" text="Choix 3" />
+      <Label layoutX="118.0" layoutY="482.0" text="Reponse" />
+      <Label layoutX="104.0" layoutY="511.0" text="ID Evaluation" />
+      <TextField editable="false" layoutX="178.0" layoutY="307.0" prefHeight="26.0" prefWidth="193.0" text="ID sera généré automatiquement " />
+      <TextField fx:id="tf_ajout_question_quiz" layoutX="179.0" layoutY="343.0" promptText="Question" />
+      <TextField fx:id="tf_ajout_choix1_quiz" layoutX="180.0" layoutY="378.0" promptText="Choix 1" />
+      <TextField fx:id="tf_ajout_choix2_quiz" layoutX="181.0" layoutY="411.0" promptText="Choix 2" />
+      <TextField fx:id="tf_ajout_choix3_quiz" layoutX="181.0" layoutY="446.0" promptText="Choix 3" />
+      <ComboBox fx:id="tf_ajout_reponse_quiz" layoutX="182.0" layoutY="478.0" prefHeight="26.0" prefWidth="106.0" />
+      <ComboBox fx:id="tf_ajout_ideval_quiz" layoutX="182.0" layoutY="508.0" prefHeight="26.0" prefWidth="106.0" />
+      <Label layoutX="552.0" layoutY="277.0" text="Supprimer Quiz" textFill="#c10909" />
+      <ComboBox fx:id="tf_supp_id_quiz" layoutX="597.0" layoutY="316.0" prefHeight="26.0" prefWidth="106.0" />
+      <Label layoutX="536.0" layoutY="320.0" text="ID Quiz" />
+      <Button fx:id="btn_ajout_quiz" layoutX="226.0" layoutY="543.0" mnemonicParsing="false" onAction="#ajouterQuiz" text="Ajouter" />
+      <Button fx:id="btn_supp_quiz" layoutX="635.0" layoutY="366.0" mnemonicParsing="false" onAction="#supprimerQuiz" text="Supprimer" />
+      <Button fx:id="btn_page_evaluations" layoutX="724.0" layoutY="543.0" mnemonicParsing="false" onAction="#pageEvaluations" text="Evaluations" />
+      <Button fx:id="btn_page_entretien" layoutX="622.0" layoutY="543.0" mnemonicParsing="false" onAction="#pageEntretien" text="Entretiens" />
+      <Button fx:id="btn_page_participations" layoutX="492.0" layoutY="543.0" mnemonicParsing="false" onAction="#pageParticipations" text="Participations" />
+   </children>
+</AnchorPane>
