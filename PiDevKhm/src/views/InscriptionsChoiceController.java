@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -33,6 +34,8 @@ public class InscriptionsChoiceController implements Initializable {
     private Button inscrireEntreprise;
     @FXML
     private Button retourLogin;
+    @FXML
+    private AnchorPane inscriptionsChoice;
 
     /**
      * Initializes the controller class.
