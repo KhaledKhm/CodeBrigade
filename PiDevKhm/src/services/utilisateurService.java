@@ -9,6 +9,8 @@ import entities.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tools.MaConnexion;
 
 /**
@@ -22,6 +24,38 @@ public class utilisateurService {
     public utilisateurService() {
         cnx = MaConnexion.getInstance().getCnx();
     }
+    
+    
+    public boolean login(String email, String password) {
+
+        try {
+            ste = cnx.prepareStatement("select * from utilisateur where email=? and password=?");
+            ste.setString(1, email);
+            ste.setString(2, password);
+            ResultSet rs = ste.executeQuery();
+            if (rs.isBeforeFirst()) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(utilisateurService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    
+    public void setNewMotPass(int idUser ,String pass){
+        try {
+            String req = "UPDATE `utilisateur` SET `password` ='" + pass + "' WHERE `utilisateur`.`id` = "+idUser;
+            ste = cnx.prepareStatement(req);
+            ste.executeUpdate(req);
+             System.out.println(req);
+        } catch (SQLException ex) {
+            Logger.getLogger(utilisateurService.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+        
+    }
+    
+    
     
        public void ajouterUtilisateur(utilisateur p)
    {
@@ -49,8 +83,8 @@ public class utilisateurService {
             while (rs.next()) { 
                 utilisateur u = new utilisateur();
                 u.setId(rs.getInt("id"));
-                u.setNom_personne(rs.getString(2));
-                u.setPrenom_personne(rs.getString("prenom"));
+                u.setPassword(rs.getString("password"));
+                u.setEmail(rs.getString("email"));
                 utilisateurs.add(u);
                 
             
@@ -60,5 +94,85 @@ public class utilisateurService {
         }
      return utilisateurs;
    }
+      
+    public void supprimerUtilisateur(int id) {
+        try {
+            String sql = "DELETE FROM `utilisateur` WHERE id=" + id;
+
+            ste = cnx.prepareStatement(sql);
+
+            ste.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    
+      public void modifierUtilisateur(utilisateur u, int id) {
+        try {
+                    String req= "UPDATE utilisateur SET email=?,"
+                    + "password=?,"
+                    + "account_status=? where id=?";
+                                ste = cnx.prepareStatement(req);
+
+            ste.setString(1, u.getEmail());
+            ste.setString(2, u.getPassword());
+            ste.setString(3, u.getAccount_status());
+
+            ste.setInt(4, id);
+           System.out.println(ste);
+
+            ste.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+      
+       public String getRolebyId(int id) {
+        try {
+            ste = cnx.prepareStatement("select * from utilisateur where id=?");
+            ste.setInt(1, id);
+            ResultSet rs = ste.executeQuery();
+            rs.beforeFirst();
+            if (rs.next()) {
+                return rs.getString("role");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(utilisateurService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "";
+
+    }
+       
+          public int getIdbymail(String mail) {
+        try {
+            ste = cnx.prepareStatement("select * from utilisateur where email=?");
+            ste.setString(1, mail);
+            ResultSet rs = ste.executeQuery();
+            rs.beforeFirst();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(utilisateurService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+
+    }
+          
+            public String getPassbyId(int id) {
+        try {
+            ste = cnx.prepareStatement("select * from utilisateur where id=?");
+            ste.setInt(1, id);
+            ResultSet rs = ste.executeQuery();
+            rs.beforeFirst();
+            if (rs.next()) {
+                return rs.getString("password");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(utilisateurService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "";
+    }
     
 }

@@ -24,7 +24,7 @@ public class formateurService {
       public void ajouterFormateur(utilisateur p)
    {
         try {
-            String sql="insert into utilisateur(email,password,cin_personne,nom_personne,prenom_personne,sexe_personne,date_nais_personne,etat_sociale_personne,telephone,adresse,siteweb,domaine_personne,role,googleAuthenticatorSecret)"+"Values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql="insert into utilisateur(email,password,cin_personne,nom_personne,prenom_personne,sexe_personne,date_nais_personne,etat_sociale_personne,telephone,adresse,domaine_personne,role,googleAuthenticatorSecret)"+"Values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
             ste = cnx.prepareStatement(sql);
             ste.setString(1,p.getEmail());
             ste.setString(2,p.getPassword());
@@ -40,7 +40,7 @@ public class formateurService {
             ste.setString(12, p.getRole());
             ste.setString(13, p.getGoogleAuthenticatorSecret());
             ste.executeUpdate();
-            System.out.println("Candidat Ajoutée");
+            System.out.println("Formateur Ajoutée");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

@@ -25,6 +25,11 @@ public class blog {
         this.contenu = contenu;
         this.idUtilisateur = idUtilisateur;
     }
+
+    public blog(String titre, String contenu) { //to edit title and contenu only
+        this.titre = titre;
+        this.contenu = contenu;
+    }
     
     
 

@@ -78,7 +78,7 @@ public class utilisateur {
   
 
     //constructor pour entreprise
-    public utilisateur(String password, String immatricule_entreprise, String libelle_entreprise, int telephone, String adresse, String email, String siteweb, String secteur_entreprise, String role, String googleAuthenticatorSecret) {
+    public utilisateur(String email, String password, String immatricule_entreprise, String libelle_entreprise, int telephone, String adresse, String siteweb, String secteur_entreprise, String role, String googleAuthenticatorSecret) {
         this.password = password;
         this.immatricule_entreprise = immatricule_entreprise;
         this.libelle_entreprise = libelle_entreprise;
@@ -90,8 +90,7 @@ public class utilisateur {
         this.role = role;
         this.googleAuthenticatorSecret = googleAuthenticatorSecret;
     }
-    
-    
+  
     
 
     public utilisateur(String password, String account_status) { //pour tester
@@ -105,6 +104,76 @@ public class utilisateur {
         this.id = id;
         this.password = password;
     }
+
+    public utilisateur(String password, String account_status, String email) {
+        this.password = password;
+        this.account_status = account_status;
+        this.email = email;
+    }
+
+    public utilisateur(String password, int cin_personne, String nom_personne, String prenom_personne, String sexe_personne, int telephone, String adresse, String email, String domaine_personne, String role) {
+        this.password = password;
+        this.cin_personne = cin_personne;
+        this.nom_personne = nom_personne;
+        this.prenom_personne = prenom_personne;
+        this.sexe_personne = sexe_personne;
+        this.telephone = telephone;
+        this.adresse = adresse;
+        this.email = email;
+        this.domaine_personne = domaine_personne;
+        this.role = role;
+    }
+
+    public utilisateur(String password, int cin_personne, String nom_personne, String prenom_personne, String sexe_personne, Date date_nais_personne, String etat_sociale_personne, int telephone, String adresse, String email, String domaine_personne, String role) {
+        this.password = password;
+        this.cin_personne = cin_personne;
+        this.nom_personne = nom_personne;
+        this.prenom_personne = prenom_personne;
+        this.sexe_personne = sexe_personne;
+        this.date_nais_personne = date_nais_personne;
+        this.etat_sociale_personne = etat_sociale_personne;
+        this.telephone = telephone;
+        this.adresse = adresse;
+        this.email = email;
+        this.domaine_personne = domaine_personne;
+        this.role = role;
+    }
+
+    public utilisateur(String password, int cin_personne, String nom_personne, String prenom_personne, String sexe_personne, String etat_sociale_personne, int telephone, String adresse, String email, String domaine_personne, String role) {
+        this.password = password;
+        this.cin_personne = cin_personne;
+        this.nom_personne = nom_personne;
+        this.prenom_personne = prenom_personne;
+        this.sexe_personne = sexe_personne;
+        this.etat_sociale_personne = etat_sociale_personne;
+        this.telephone = telephone;
+        this.adresse = adresse;
+        this.email = email;
+        this.domaine_personne = domaine_personne;
+        this.role = role;
+    }
+
+    public utilisateur(String email, String password, int cin_personne, String nom_personne, String prenom_personne, String sexe_personne, Date date_nais_personne, String etat_sociale_personne, int telephone, String adresse, String domaine_personne, String role, String googleAuthenticatorSecret) {
+        this.password = password;
+        this.cin_personne = cin_personne;
+        this.nom_personne = nom_personne;
+        this.prenom_personne = prenom_personne;
+        this.sexe_personne = sexe_personne;
+        this.date_nais_personne = date_nais_personne;
+        this.etat_sociale_personne = etat_sociale_personne;
+        this.telephone = telephone;
+        this.adresse = adresse;
+        this.email = email;
+        this.domaine_personne = domaine_personne;
+        this.role = role;
+        this.googleAuthenticatorSecret = googleAuthenticatorSecret;
+    }
+
+  
+    
+
+  
+    
 
    
 

@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.InscriptionsChoiceController">
+<AnchorPane id="AnchorPane" fx:id="inscriptionsChoice" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="Controller.InscriptionsChoiceController">
     <stylesheets>
-        <URL value="@inscriptionschoice.css"/>
+        <URL value="@../tools/css/inscriptionschoice.css" />
     </stylesheets>
+   <children>
+      <Button fx:id="inscrireFormateur" layoutX="83.0" layoutY="175.0" mnemonicParsing="false" onAction="#inscrireFormateur" text="Formateur">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="inscrireCandidat" layoutX="267.0" layoutY="175.0" mnemonicParsing="false" onAction="#inscrireCandidat" text="Candidat">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="inscrireEntreprise" layoutX="447.0" layoutY="175.0" mnemonicParsing="false" onAction="#inscrireEntreprise" text="Entreprise">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+      </Button>
+      <Label fx:id="labelInscrireEtant" layoutX="244.0" layoutY="96.0" text="Inscrire etant que.." textAlignment="CENTER" textFill="#2e0bf2">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="retourLogin" layoutX="378.0" layoutY="288.0" mnemonicParsing="false" onAction="#retourALogin" text="Retour">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

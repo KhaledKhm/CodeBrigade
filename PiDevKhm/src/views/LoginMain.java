@@ -36,9 +36,9 @@ public class LoginMain extends Application {
         root.getChildren().add(btn);*/
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         
-        Scene scene = new Scene(root, 300, 250);
-        
-        primaryStage.setTitle("Hello World!");
+        Scene scene = new Scene(root, 1300, 800);
+        scene.getStylesheets().add(getClass().getResource("../tools/css/Login.css").toExternalForm());
+        primaryStage.setTitle("Pidev");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
