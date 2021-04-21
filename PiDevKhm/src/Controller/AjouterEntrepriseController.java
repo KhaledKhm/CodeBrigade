@@ -75,7 +75,7 @@ public class AjouterEntrepriseController implements Initializable {
     @FXML
     private TextField entrepriseSite;
     @FXML
-    private ChoiceBox<?> entrepriseSecteur;
+    private ComboBox<?> entrepriseSecteur;
     @FXML
     private Label labelTestImmatricule;
     @FXML
