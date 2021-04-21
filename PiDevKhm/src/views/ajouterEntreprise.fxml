@@ -178,7 +178,7 @@
                                     <Label fx:id="labelTestAdresse" layoutX="444.0" layoutY="253.0" />
                                     <Label fx:id="labelTestSite" layoutX="444.0" layoutY="294.0" />
                                     <Label fx:id="labelTestSecteur" layoutX="444.0" layoutY="338.0" />
-                                    <ComboBox fx:id="entrepriseSecteur" layoutX="220.0" layoutY="334.0" prefWidth="150.0" />
+                                    <ComboBox fx:id="entrepriseSecteur" layoutX="218.0" layoutY="334.0" prefWidth="150.0" promptText="Informatique décisionnelle" styleClass="comboBox" stylesheets="@../tools/css/style.css" />
                                  </children>
                               </AnchorPane>
                            </content>
