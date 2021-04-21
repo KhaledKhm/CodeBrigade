@@ -14,6 +14,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import services.utilisateurService;
+
 
 /**
  * FXML Controller class
@@ -24,6 +26,16 @@ public class LoginController implements Initializable {
 
     @FXML
     private Button inscrire;
+    
+    @FXML
+    private Button forgottonPass;
+    
+    public static String username;
+    public static String motpass;
+    
+    
+    
+ 
 
     /**
      * Initializes the controller class.
@@ -42,7 +54,77 @@ public class LoginController implements Initializable {
     
     @FXML
     public void Login(ActionEvent event) throws Exception{
+        username = utilisateurEmail.getText();
+        motpass = utilisateurPassword.getText();
+        utilisateurService sc = new utilisateurService();
+        if (sc.login(username, motpass)) {
+            String role = sc.getRolebyId(sc.getIdbymail(username));
+
+            switch (role) {
+                case "ROLE_Formateur":
+                    {
+                        FXMLLoader loader = new FXMLLoader();
+                        labelStatus.getScene().getWindow().hide();
+                        Stage prStage = new Stage();
+                        loader.setLocation(getClass().getResource("../views/ajouterBlog.fxml"));
+                        Parent root = loader.load();
+                        Scene scene = new Scene(root);
+                        prStage.setScene(scene);
+                        prStage.setResizable(false);
+                        prStage.show();
+                        break;
+                    }
+                case "ROLE_Candidat":
+                    {
+                        FXMLLoader loader = new FXMLLoader();
+                        labelStatus.getScene().getWindow().hide();
+                        Stage prStage = new Stage();
+                        loader.setLocation(getClass().getResource("../views/ajouterBlog.fxml"));
+                        Parent root = loader.load();
+                        Scene scene = new Scene(root);
+                        prStage.setScene(scene);
+                        prStage.setResizable(false);
+                        prStage.show();
+                        break;
+                    }
+                case "ROLE_Entreprise":
+                    {
+                        FXMLLoader loader = new FXMLLoader();
+                        labelStatus.getScene().getWindow().hide();
+                        Stage prStage = new Stage();
+                        loader.setLocation(getClass().getResource("../views/ajouterBlog.fxml"));
+                        Parent root = loader.load();
+                        Scene scene = new Scene(root);
+                        prStage.setScene(scene);
+                        prStage.setResizable(false);
+                        prStage.show();
+                        break;
+                    }
+                case "ROLE_Admin":
+                    {
+                        FXMLLoader loader = new FXMLLoader();
+                        labelStatus.getScene().getWindow().hide();
+                        Stage prStage = new Stage();
+                        loader.setLocation(getClass().getResource("../views/Dashboard.fxml"));
+                        Parent root = loader.load();
+                        Scene scene = new Scene(root);
+                        prStage.setScene(scene);
+                        prStage.setResizable(false);
+                        prStage.show();
+                        break;
+                    }
+                default:
+                    break;
+            }
+        }  else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Alerte");
+            alert.setHeaderText(null);
+            alert.setContentText("Verifier votre Coordonnees!");
+            alert.showAndWait();
+        }
  
+        
     }
     
     @FXML
@@ -60,5 +142,9 @@ public class LoginController implements Initializable {
         }catch(IOException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    @FXML
+    private void forgottonPass(ActionEvent event) {
     }
 }

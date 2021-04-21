@@ -143,5 +143,36 @@ public class utilisateurService {
         return "";
 
     }
+       
+          public int getIdbymail(String mail) {
+        try {
+            ste = cnx.prepareStatement("select * from utilisateur where email=?");
+            ste.setString(1, mail);
+            ResultSet rs = ste.executeQuery();
+            rs.beforeFirst();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(utilisateurService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+
+    }
+          
+            public String getPassbyId(int id) {
+        try {
+            ste = cnx.prepareStatement("select * from utilisateur where id=?");
+            ste.setInt(1, id);
+            ResultSet rs = ste.executeQuery();
+            rs.beforeFirst();
+            if (rs.next()) {
+                return rs.getString("password");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(utilisateurService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "";
+    }
     
 }
