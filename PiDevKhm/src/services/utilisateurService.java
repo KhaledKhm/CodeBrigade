@@ -25,6 +25,38 @@ public class utilisateurService {
         cnx = MaConnexion.getInstance().getCnx();
     }
     
+    
+    public boolean login(String email, String password) {
+
+        try {
+            ste = cnx.prepareStatement("select * from utilisateur where email=? and password=?");
+            ste.setString(1, email);
+            ste.setString(2, password);
+            ResultSet rs = ste.executeQuery();
+            if (rs.isBeforeFirst()) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(utilisateurService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    
+    public void setNewMotPass(int idUser ,String pass){
+        try {
+            String req = "UPDATE `utilisateur` SET `password` ='" + pass + "' WHERE `utilisateur`.`id` = "+idUser;
+            ste = cnx.prepareStatement(req);
+            ste.executeUpdate(req);
+             System.out.println(req);
+        } catch (SQLException ex) {
+            Logger.getLogger(utilisateurService.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+        
+    }
+    
+    
+    
        public void ajouterUtilisateur(utilisateur p)
    {
         try {
@@ -94,6 +126,22 @@ public class utilisateurService {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+      
+       public String getRolebyId(int id) {
+        try {
+            ste = cnx.prepareStatement("select * from utilisateur where id=?");
+            ste.setInt(1, id);
+            ResultSet rs = ste.executeQuery();
+            rs.beforeFirst();
+            if (rs.next()) {
+                return rs.getString("role");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(utilisateurService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "";
+
     }
     
 }
