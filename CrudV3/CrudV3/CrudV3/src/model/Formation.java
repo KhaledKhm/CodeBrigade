@@ -10,6 +10,11 @@ public class Formation {
     private String description;
     private float prix;
     private String adresse;
+    private int nbr_participant;
+    private LocalDate date_debut;
+    private LocalDate date_fin;
+    private String photo;
+    private int id_utili;
 
     public Formation() {
 
@@ -30,14 +35,6 @@ public class Formation {
     public void setAdresse(String adresse) {
         this.adresse = adresse;
     }
-
-    private int nbr_participant;
-    private LocalDate date_debut;
-    private LocalDate date_fin;
-    private String photo;
-    private int id_utili;
-
-
 
     public int getId() {
         return id;

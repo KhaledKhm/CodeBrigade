@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="1215.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AjouterFormationController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="1215.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DetailsFormationController2">
    <children>
       <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
@@ -96,7 +96,7 @@
                            <children>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
                                  <children>
-                                    <Label prefHeight="29.0" prefWidth="190.0" text="Ajouter" textFill="#878787">
+                                    <Label prefHeight="29.0" prefWidth="190.0" text="Details" textFill="#878787">
                                        <font>
                                           <Font name="Cambria Bold" size="18.0" />
                                        </font>
@@ -140,7 +140,7 @@
                                           <Font name="Cambria" size="16.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="libellefield" layoutX="216.0" layoutY="43.0" />
+                                    <TextField fx:id="libellefield" disable="true" layoutX="216.0" layoutY="43.0" />
                                     <Label alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="86.0" text="Description">
                                        <font>
                                           <Font name="Cambria" size="16.0" />
@@ -161,31 +161,28 @@
                                           <Font name="Cambria" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="65.0" layoutY="401.0" text="Photo">
+                                    <Label layoutX="559.0" layoutY="26.0" text="Photo">
                                        <font>
                                           <Font name="Cambria" size="16.0" />
                                        </font>
                                     </Label>
-                                    <TextArea fx:id="descriptionfield" layoutX="215.0" layoutY="77.0" prefHeight="128.0" prefWidth="200.0" />
-                                    <TextField fx:id="nbrparfield" layoutX="210.0" layoutY="274.0" />
-                                    <DatePicker fx:id="datedebfield" layoutX="212.0" layoutY="311.0" onAction="#OnDateDebChanged" />
-                                    <DatePicker fx:id="datefinfield" layoutX="213.0" layoutY="353.0" onAction="#OnDateFinChanged" />
-                                    <Button fx:id="browser" layoutX="239.0" layoutY="398.0" mnemonicParsing="false" text="Browser" />
+                                    <TextArea fx:id="descriptionfield" disable="true" layoutX="215.0" layoutY="77.0" prefHeight="128.0" prefWidth="200.0" />
+                                    <TextField fx:id="nbrparfield" disable="true" layoutX="210.0" layoutY="274.0" />
+                                    <DatePicker fx:id="datedebfield" disable="true" layoutX="212.0" layoutY="311.0" />
+                                    <DatePicker fx:id="datefinfield" disable="true" layoutX="213.0" layoutY="353.0" />
                                     <ImageView fx:id="imagedisplay" fitHeight="316.0" fitWidth="306.0" layoutX="432.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Button fx:id="ajouterformation" layoutX="199.0" layoutY="438.0" mnemonicParsing="false" onAction="#AjouterFormation" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../values/style.css" text="Ajouter" textFill="WHITE" />
                                     <Label fx:id="prixlabel" layoutX="50.0" layoutY="205.0" text="Prix">
                                        <font>
                                           <Font name="Cambria" size="16.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="prixfield" layoutX="217.0" layoutY="207.0" />
+                                    <TextField fx:id="prixfield" disable="true" layoutX="217.0" layoutY="207.0" />
                                     <Label layoutX="52.0" layoutY="239.0" prefHeight="19.0" prefWidth="64.0" text="Adresse">
                                        <font>
                                           <Font name="Cambria" size="16.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="adressefield" layoutX="219.0" layoutY="241.0" />
-                                    <Label fx:id="labelerrorimage" layoutX="571.0" layoutY="402.0" visible="false" />
+                                    <TextField fx:id="adressefield" disable="true" layoutX="219.0" layoutY="241.0" />
                                  </children>
                               </AnchorPane>
                            </content>

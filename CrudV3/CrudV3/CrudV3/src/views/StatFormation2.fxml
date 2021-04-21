@@ -2,12 +2,10 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="1215.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AjouterFormationController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="1215.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.StatFormation2Controller">
    <children>
       <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
@@ -96,7 +94,7 @@
                            <children>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
                                  <children>
-                                    <Label prefHeight="29.0" prefWidth="190.0" text="Ajouter" textFill="#878787">
+                                    <Label prefHeight="29.0" prefWidth="190.0" text="Details" textFill="#878787">
                                        <font>
                                           <Font name="Cambria Bold" size="18.0" />
                                        </font>
@@ -108,6 +106,7 @@
                                     </Label>
                                  </children>
                               </VBox>
+                              <Button fx:id="GoToBarChart" mnemonicParsing="false" onAction="#GoToBarChartOn" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../values/style.css" text="BarChart" textFill="WHITE" />
                            </children>
                         </HBox>
                         <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
@@ -115,7 +114,7 @@
                            <children>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0">
                                  <children>
-                                    <Button fx:id="GoTo" mnemonicParsing="false" onAction="#GoToOn" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../values/style.css" text="Retourner" textFill="WHITE" />
+                                    <Button fx:id="GoTo1" mnemonicParsing="false" onAction="#GoToOn" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../values/style.css" text="Retourner" textFill="WHITE" />
                                  </children>
                               </VBox>
                            </children>
@@ -135,57 +134,7 @@
                            <content>
                               <AnchorPane prefHeight="100.0" prefWidth="150.0">
                                  <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="35.0" layoutY="28.0" prefHeight="55.0" prefWidth="106.0" text="Libelle" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="28.0">
-                                       <font>
-                                          <Font name="Cambria" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="libellefield" layoutX="216.0" layoutY="43.0" />
-                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="86.0" text="Description">
-                                       <font>
-                                          <Font name="Cambria" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="43.0" layoutY="272.0" text="Nb Participants">
-                                       <font>
-                                          <Font name="Cambria" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="47.0" layoutY="317.0" text="Date Debut">
-                                       <font>
-                                          <Font name="Cambria" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="53.0" layoutY="353.0" text="Date Fin">
-                                       <font>
-                                          <Font name="Cambria" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="65.0" layoutY="401.0" text="Photo">
-                                       <font>
-                                          <Font name="Cambria" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <TextArea fx:id="descriptionfield" layoutX="215.0" layoutY="77.0" prefHeight="128.0" prefWidth="200.0" />
-                                    <TextField fx:id="nbrparfield" layoutX="210.0" layoutY="274.0" />
-                                    <DatePicker fx:id="datedebfield" layoutX="212.0" layoutY="311.0" onAction="#OnDateDebChanged" />
-                                    <DatePicker fx:id="datefinfield" layoutX="213.0" layoutY="353.0" onAction="#OnDateFinChanged" />
-                                    <Button fx:id="browser" layoutX="239.0" layoutY="398.0" mnemonicParsing="false" text="Browser" />
-                                    <ImageView fx:id="imagedisplay" fitHeight="316.0" fitWidth="306.0" layoutX="432.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Button fx:id="ajouterformation" layoutX="199.0" layoutY="438.0" mnemonicParsing="false" onAction="#AjouterFormation" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../values/style.css" text="Ajouter" textFill="WHITE" />
-                                    <Label fx:id="prixlabel" layoutX="50.0" layoutY="205.0" text="Prix">
-                                       <font>
-                                          <Font name="Cambria" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="prixfield" layoutX="217.0" layoutY="207.0" />
-                                    <Label layoutX="52.0" layoutY="239.0" prefHeight="19.0" prefWidth="64.0" text="Adresse">
-                                       <font>
-                                          <Font name="Cambria" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="adressefield" layoutX="219.0" layoutY="241.0" />
-                                    <Label fx:id="labelerrorimage" layoutX="571.0" layoutY="402.0" visible="false" />
+                                    <PieChart fx:id="piechart" prefHeight="512.0" prefWidth="768.0" />
                                  </children>
                               </AnchorPane>
                            </content>

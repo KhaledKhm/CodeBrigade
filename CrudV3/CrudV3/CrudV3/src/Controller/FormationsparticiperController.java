@@ -9,6 +9,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -27,12 +28,11 @@ import utils.DataSource;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class FormationsController implements Initializable {
+public class FormationsparticiperController implements Initializable {
     @FXML
     private VBox chosenFormationCard;
 
@@ -51,7 +51,7 @@ public class FormationsController implements Initializable {
     @FXML
     private GridPane grid;
     @FXML
-    private Button gotoajouter;
+    private Button gotoList;
 
 
     private List<Formation> formations = new ArrayList<>();
@@ -147,63 +147,46 @@ public class FormationsController implements Initializable {
         }
 
     }
-    @FXML
-    public void gotoAjouterOn(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/ajouterFormation.fxml"));
+
+
+
+
+    public void gotoListOn(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/list_formation_utili.fxml"));
         Parent root = loader.load();
-        gotoajouter.getScene().setRoot(root);
-      /*  Parent TestPage = FXMLLoader.load(getClass().getResource("../views/ajouterFormation.fxml"));
+        gotoList.getScene().setRoot(root);
+    }
+
+    public void participer(ActionEvent actionEvent) throws IOException {
+        DataSource db=DataSource.getInstance();
+        formationService fs= new formationService();
+        if(fs.checkparticipation(1,tmpf)==false)
+        {
+            fs.participer(1,tmpf);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/list_formation_utili.fxml"));
+            Parent root = loader.load();
+            gotoList.getScene().setRoot(root);
+        }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("JobBook");
+            alert.setHeaderText("Erreur Participation");
+            alert.setContentText("Vous Etes Deja Participee A Cette Formation");
+            alert.showAndWait();
+        }
+
+
+
+    }
+
+
+
+    public void GoToOn(ActionEvent actionEvent) throws IOException {
+        Parent TestPage = FXMLLoader.load(getClass().getResource("../views/formations.fxml"));
         Scene Test = new Scene(TestPage);
         Stage App = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         App.setScene(Test);
-        App.show();*/
-
-
-
-    }
-
-    public void gotoSupprimerOn(ActionEvent actionEvent) throws IOException {
-        DataSource db=DataSource.getInstance();
-        formationService fs= new formationService();
-        Formation f= fs.readbyId(tmpf);
-        String currentDirectory = System.getProperty("user.dir");
-        File file= new File(currentDirectory+"\\src"+f.getPhoto());
-        System.out.println(currentDirectory+"\\src"+f.getPhoto());
-        file.delete();
-        fs.supprimer(tmpf);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/formations.fxml"));
-        Parent root = loader.load();
-        gotoajouter.getScene().setRoot(root);
-
-    }
-
-    public void gotoModifierOn(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/modifierFormation.fxml"));
-        Parent root = loader.load();
-        ModifierFormationController mf = loader.getController();
-        mf.setData(tmpf);
-        gotoajouter.getScene().setRoot(root);
-    }
-
-    public void showmoreOn(ActionEvent actionEvent) throws IOException {
-       FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/detailsFormation.fxml"));
-        Parent root = loader.load();
-        DetailsFormationController df = loader.getController();
-        df.setData(tmpf);
-        gotoajouter.getScene().setRoot(root);
-
-    }
-
-    public void gocOn(ActionEvent actionEvent) throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/formationsparticiper.fxml"));
-        Parent root = loader.load();
-        gotoajouter.getScene().setRoot(root);
-    }
-
-    public void gostatOn(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/StatFormation.fxml"));
-        Parent root = loader.load();
-        gotoajouter.getScene().setRoot(root);
+        App.show();
     }
 }

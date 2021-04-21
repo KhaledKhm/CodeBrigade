@@ -96,7 +96,7 @@
                            <children>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
                                  <children>
-                                    <Label prefHeight="29.0" prefWidth="190.0" text="List Des Formations" textFill="#878787">
+                                    <Label prefHeight="29.0" prefWidth="190.0" text="Ajouter" textFill="#878787">
                                        <font>
                                           <Font name="Cambria Bold" size="18.0" />
                                        </font>
@@ -168,8 +168,8 @@
                                     </Label>
                                     <TextArea fx:id="descriptionfield" layoutX="215.0" layoutY="77.0" prefHeight="128.0" prefWidth="200.0" />
                                     <TextField fx:id="nbrparfield" layoutX="210.0" layoutY="274.0" />
-                                    <DatePicker fx:id="datedebfield" layoutX="212.0" layoutY="311.0" />
-                                    <DatePicker fx:id="datefinfield" layoutX="213.0" layoutY="353.0" />
+                                    <DatePicker fx:id="datedebfield" layoutX="212.0" layoutY="311.0" onAction="#OnDateDebChanged" />
+                                    <DatePicker fx:id="datefinfield" layoutX="213.0" layoutY="353.0" onAction="#OnDateFinChanged" />
                                     <Button fx:id="browser" layoutX="239.0" layoutY="398.0" mnemonicParsing="false" text="Browser" />
                                     <ImageView fx:id="imagedisplay" fitHeight="316.0" fitWidth="306.0" layoutX="432.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" />
                                     <Button fx:id="ajouterformation" layoutX="199.0" layoutY="438.0" mnemonicParsing="false" onAction="#AjouterFormation" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../values/style.css" text="Ajouter" textFill="WHITE" />
@@ -185,6 +185,7 @@
                                        </font>
                                     </Label>
                                     <TextField fx:id="adressefield" layoutX="219.0" layoutY="241.0" />
+                                    <Label fx:id="labelerrorimage" layoutX="571.0" layoutY="402.0" visible="false" />
                                  </children>
                               </AnchorPane>
                            </content>
