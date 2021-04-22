@@ -21,9 +21,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import java.lang.Object;
 import java.util.Random;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import org.controlsfx.control.Rating ;
+import javax.management.Notification;
+import org.controlsfx.control.action.Action;
 
 
 
@@ -129,6 +135,23 @@ public class AjouterAvisController implements Initializable {
             AfficherAvisController ap = loader.getController();
             ap.setTxtafficher();
             txtnom.getScene().setRoot(root);
+            
+            
+            
+            Notifications notificationBuilder = Notifications.create()
+                    .title("Avis")
+                    .text("Ajout Reussit")
+                    .graphic(null)
+                    .hideAfter(Duration.seconds(5))
+                    .position(Pos.CENTER_RIGHT)
+                    .onAction(new EventHandler<ActionEvent>(){
+                    @Override
+                    public void handle(ActionEvent event){System.out.println("Notification");}
+                    });
+            notificationBuilder.showConfirm();
+            
+            
+            
             }
             else
                     {
