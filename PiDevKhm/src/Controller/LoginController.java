@@ -33,6 +33,11 @@ public class LoginController implements Initializable {
     public static String email;
     public static String motpass;
     
+    public static boolean isValidEmailAddress(String email) {
+       
+        return true;
+    }
+    
     
     
  
@@ -137,7 +142,6 @@ public class LoginController implements Initializable {
         root = loader.load();
         InscriptionsChoiceController icc = loader.getController();
         labelStatus.getScene().setRoot(root);
-      //  scene.getStylesheets().add(getClass().getResource("../tools/css/inscriptionchoice.css").toExternalForm());
   
         }catch(IOException ex) {
             System.out.println(ex.getMessage());

@@ -44,14 +44,18 @@ public class AjouterBlogController implements Initializable {
     private Label labelTestEmail;
     @FXML
     private Button retourBlog;
+    @FXML
     private TextField blogTitre;
+    @FXML
     private TextArea blogContenu;
     @FXML
     private Button home;
     @FXML
-    private TableColumn<?, ?> nombre;
+    private Button ajouterBlog;
     @FXML
-    private TableColumn<?, ?> sujet;
+    private Label labelImmatricule;
+    @FXML
+    private Label labelImmatricule1;
 
     /**
      * Initializes the controller class.
@@ -61,6 +65,7 @@ public class AjouterBlogController implements Initializable {
         // TODO
     }    
 
+    @FXML
     private void addBlog(ActionEvent event) throws IOException {        
           String Titre = blogTitre.getText();
           String Contenu = blogContenu.getText();
@@ -90,9 +95,5 @@ public class AjouterBlogController implements Initializable {
     private void home(ActionEvent event) {
     }
 
-    @FXML
-    private void sujetCommut(TableColumn.CellEditEvent<S, T> event) {
-        
-    }
     
 }
