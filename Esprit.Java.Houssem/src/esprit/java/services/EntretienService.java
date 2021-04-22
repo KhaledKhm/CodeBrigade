@@ -30,7 +30,7 @@ public class EntretienService {
         cnx=MaConnexion.getInstance().getCnx();
     }
     
-    public void ajouterEntretien(Entretien e)
+    public void ajouterEntretien(Entretien e) //CRUD
     {
         String sql="insert into entretien(libelle,description,dateEntretien,idevaluation,id_participant)"+"Values(?,?,?,?,?)";
         try {
@@ -48,7 +48,7 @@ public class EntretienService {
         
     }
     
-    public ObservableList<Entretien> afficherEntretien()//affichage dans le tableau
+    public ObservableList<Entretien> afficherEntretien()//CRUD
     {
         ObservableList<Entretien> entretiens= FXCollections.observableArrayList();
         try {
@@ -72,7 +72,7 @@ public class EntretienService {
         return entretiens;
     }
     
-    public void modifierEntretien(Entretien e,String id)
+    public void modifierEntretien(Entretien e,String id)//CRUD
     {
         String sql="update entretien set libelle='"+e.getLibelle()+"',description='"+e.getDescription()+"',dateEntretien='"+e.getDateEntretien()+"',idevaluation='"+e.getIdEvaluation()+"',id_participant='"+e.getIdParticipant()+"' where id="+id;
         try {
@@ -85,9 +85,9 @@ public class EntretienService {
         
     }
     
-    public void supprimerEntretien(String id)
+    public void supprimerEntretien(String id)//CRUD
     {
-        String req ="delete from entretien where id = "+id;
+        String req ="delete from entretien where id ="+id;
         try {
             st=cnx.createStatement();
             st.executeUpdate(req);
@@ -97,16 +97,40 @@ public class EntretienService {
         }
     }
     
-    public ObservableList<String> afficherID()
+    public ObservableList<Entretien> afficherIDP(String id)//front
+    {
+        ObservableList<Entretien> entretiens= FXCollections.observableArrayList();
+        try {
+            String sql="select * from entretien where id_participant="+id;
+            ste=cnx.prepareStatement(sql);
+            ResultSet rs=ste.executeQuery();
+            while (rs.next())
+            {
+               Entretien e = new Entretien();
+               e.setId(rs.getInt("id"));
+               e.setLibelle(rs.getString("libelle"));
+               e.setDescription(rs.getString("description"));
+               e.setDateEntretien(rs.getString("DateEntretien"));
+               e.setIdEvaluation(rs.getInt("idevaluation"));
+               e.setIdParticipant(rs.getInt("id_participant"));
+               entretiens.add(e);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return entretiens;
+    }
+    
+    public ObservableList<String> afficherIDEvaluation() 
     {
         ObservableList<String> ids= FXCollections.observableArrayList();
         try {
-            String sql="select id from entretien";
+            String sql="select libelle from evaluation";
             ste=cnx.prepareStatement(sql);
             ResultSet rs=ste.executeQuery();
             while (rs.next())
             {    
-                ids.add(rs.getString("id"));
+                ids.add(rs.getString("libelle"));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -114,21 +138,21 @@ public class EntretienService {
         return ids;
     }
     
-    public ObservableList<String> afficherIDEvaluation() 
+    public int afficherIDEvaluation2(String libelle) 
     {
-        ObservableList<String> ids= FXCollections.observableArrayList();
         try {
-            String sql="select id from evaluation";
+            String sql="select id from evaluation where libelle='"+libelle+"'";
             ste=cnx.prepareStatement(sql);
             ResultSet rs=ste.executeQuery();
             while (rs.next())
             {    
-                ids.add(rs.getString("id"));
+                int id=rs.getInt("id");
+                return id;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return ids;
+        return 0;
     }
     
     public ObservableList<String> afficherParticipant(String id)
@@ -136,12 +160,12 @@ public class EntretienService {
         ObservableList<String> participants= FXCollections.observableArrayList();
         try {
             //String role="ROLE_Entreprise";
-            String sql="select id_p from participation_evaluation where id_e="+id;
+            String sql="select prenom_personne from participation_evaluation p join utilisateur u on u.id=p.id_p where p.id_e="+id;
             ste=cnx.prepareStatement(sql);
             ResultSet rs=ste.executeQuery();
             while (rs.next())
             {    
-                participants.add(rs.getString("id_p"));
+                participants.add(rs.getString("prenom_personne"));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -149,7 +173,24 @@ public class EntretienService {
         return participants;
     }
     
-    public Entretien getEntretien(String id)
+    public int afficherIDParticipant2(String nomp) 
+    {
+        try {
+            String sql="select id from utilisateur where prenom_personne='"+nomp+"'";
+            ste=cnx.prepareStatement(sql);
+            ResultSet rs=ste.executeQuery();
+            while (rs.next())
+            {    
+                int id=rs.getInt("id");
+                return id;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return 0;
+    }
+    
+    /*public Entretien getEntretien(String id)
     {
         Entretien e = new Entretien();
         try {  
@@ -169,5 +210,24 @@ public class EntretienService {
             System.out.println(ex.getMessage());
         }
         return e;
+    }*/
+    
+     public String getMail(String id)//MAILING
+    {
+        try {
+            String mail;
+            String sql="select email from utilisateur where id="+id;
+            ste=cnx.prepareStatement(sql);
+            ResultSet rs=ste.executeQuery();
+            while (rs.next())
+            {    
+                mail=rs.getString("email");
+                return mail;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
     }
+     
 }

@@ -29,7 +29,7 @@ public class Participation_EvaluationService {
         cnx=MaConnexion.getInstance().getCnx();
     }
     
-    public void ajouterParticipation(Participation_Evaluation p)
+    public void ajouterParticipation(Participation_Evaluation p)//CRUD
     {
         String sql="insert into participation_evaluation (id_p,id_e,note)"+"Values(?,?,?)";
         try {
@@ -44,7 +44,7 @@ public class Participation_EvaluationService {
         }   
     }
     
-    public ObservableList<Participation_Evaluation> afficherParticipation()//affichage dans le tableau
+    public ObservableList<Participation_Evaluation> afficherParticipation()//CRUD
     {
         ObservableList<Participation_Evaluation> participations= FXCollections.observableArrayList();
         try {
@@ -66,7 +66,7 @@ public class Participation_EvaluationService {
         return participations;
     }
     
-    public void supprimerParticipation(String id)
+    public void supprimerParticipation(String id)//CRUD
     {
         String req ="delete from participation_evaluation where code = "+id;
         try {

@@ -5,18 +5,25 @@
  */
 package esprit.java.gui;
 
+import com.pdfjet.*;
 import esprit.java.entities.Entretien;
 import esprit.java.services.EntretienService;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import static java.lang.Integer.parseInt;
-import java.net.Authenticator;
-import java.net.PasswordAuthentication;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,9 +38,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 
 /**
@@ -57,8 +69,6 @@ public class EntretienController implements Initializable {
     private ComboBox tf_ajout_idParticipant_entretien;
     @FXML
     private Button btn_ajout_entretien;
-    @FXML
-    private ComboBox tf_modif_id_entretien;
     @FXML
     private TextField tf_modif_libelle_entretien;
     @FXML
@@ -86,13 +96,17 @@ public class EntretienController implements Initializable {
     @FXML
     private TableColumn<?, ?> col_idParticipant_ent;
     @FXML
-    private ComboBox tf_supp_id_entretien;
+    private TextField tf_supp_id_entretien;
     @FXML
     private Button page_evaluations;
     @FXML
     private Button page_quiz;
     @FXML
     private Button page_participations;
+    @FXML
+    private Button btn_pdf_entretien;
+    @FXML
+    private TextField searchtf;
 
     /**
      * Initializes the controller class.
@@ -114,14 +128,30 @@ public class EntretienController implements Initializable {
         col_idParticipant_ent.setCellValueFactory(new PropertyValueFactory<>("idParticipant"));
         table_entretien.setItems((ObservableList<Entretien>) entretiens);
         //combobox modifier & supprimer
-        List<String> ids=es.afficherID();
-        tf_modif_id_entretien.setItems((ObservableList<String>)ids);
-        tf_supp_id_entretien.setItems((ObservableList<String>)ids);
-        //combobox entreprise
-        //List<String> participants=es.afficherParticipant();
         List<String> evaluations=es.afficherIDEvaluation();
-        //tf_ajout_idParticipant_entretien.setItems((ObservableList<String>)participants);
         tf_ajout_idEval_entretien.setItems((ObservableList<String>)evaluations);
+        ObservableList<Entretien> entretienList=es.afficherEntretien();
+        //ObservableList<User>usersList = FXCollections.observableArrayList();
+        FilteredList<Entretien> filteredData = new FilteredList<>( entretienList, b -> true);
+        searchtf.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(entretien -> {
+		
+		if (newValue == null || newValue.isEmpty()) return true;
+		String lowerCaseFilter = newValue.toLowerCase();
+		if (String.valueOf(entretien.getId()).toLowerCase().contains(lowerCaseFilter) ) return true;
+		else if (entretien.getLibelle().contains(lowerCaseFilter)) return true;
+                else if (entretien.getDescription().contains(lowerCaseFilter))return true;
+                else if (entretien.getDateEntretien().contains(lowerCaseFilter))return true;
+                else if (String.valueOf(entretien.getIdParticipant()).contains(lowerCaseFilter)) return true;
+                else if (String.valueOf(entretien.getIdEvaluation()).contains(lowerCaseFilter)) return true;
+		else return false;
+                                // Does not match.
+			});
+		});
+		
+	SortedList<Entretien> sortedData = new SortedList<>(filteredData);
+	sortedData.comparatorProperty().bind( table_entretien.comparatorProperty());
+	table_entretien.setItems(sortedData);
     }
 
     @FXML
@@ -130,10 +160,12 @@ public class EntretienController implements Initializable {
         String libelle=tf_ajout_libelle_entretien.getText();
         String description=tf_ajout_description_entretien.getText();
         LocalDate date=tf_ajout_date_entretien.getValue();
-        String idevaluation=(String) tf_ajout_idEval_entretien.getSelectionModel().getSelectedItem();
-        String idparticipant=(String) tf_ajout_idParticipant_entretien.getSelectionModel().getSelectedItem();
-        Entretien e= new Entretien(parseInt(idevaluation),parseInt(idparticipant),libelle,description,String.valueOf(date));
         EntretienService es=new EntretienService();
+        String idevaluation=(String) tf_ajout_idEval_entretien.getSelectionModel().getSelectedItem();
+        int idevaluation2=es.afficherIDEvaluation2(idevaluation);
+        String idparticipant=(String) tf_ajout_idParticipant_entretien.getSelectionModel().getSelectedItem();
+        int idparticipant2=es.afficherIDParticipant2(idparticipant);
+        Entretien e= new Entretien(idevaluation2,idparticipant2,libelle,description,String.valueOf(date));
         //controle de saisie
         boolean cond=true;
         if(tf_ajout_libelle_entretien.getText().isEmpty() |tf_ajout_description_entretien.getText().isEmpty()|tf_ajout_date_entretien.getValue().toString().isEmpty())
@@ -149,7 +181,7 @@ public class EntretienController implements Initializable {
         {
         es.ajouterEntretien(e);
         //mailing
-        /*Properties properties = new Properties();
+        Properties properties = new Properties();
 
         properties.put("mail.smtp.auth","true");
         properties.put("mail.smtp.starttls.enable","true");
@@ -165,15 +197,15 @@ public class EntretienController implements Initializable {
             protected PasswordAuthentication getPasswordAuthentication(){
                 return new PasswordAuthentication(MyAccountEmail,Password);
             }
-        }
+        });
 
         Message message = new MimeMessage(session);
         message.setFrom(new InternetAddress(MyAccountEmail));
-        message.setRecipient(Message.RecipientType.TO,new InternetAddress("houssem.ouerdiane@esprit.tn"));
-        message.setSubject("test");
-        message.setText("test");
+        message.setRecipient(Message.RecipientType.TO,new InternetAddress(es.getMail(String.valueOf(idparticipant2))));
+        message.setSubject("Nouveau Entretien");
+        message.setText("Monsieur/Madame,Nous sommes ravi de vous faire connaitre que vous etes affectué a un entretien "+libelle+", "+description+" le "+String.valueOf(date));
 
-        Transport.send(message);*/
+        Transport.send(message);
 
         //alerte d'ajout
         Alert alert = new Alert(AlertType.INFORMATION);
@@ -181,6 +213,14 @@ public class EntretienController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText("Entretien Ajoutée");
         alert.showAndWait();
+        //notification
+        TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+        tray.setAnimationType(type);
+        tray.setTitle("Ajout Entretien");
+        tray.setMessage("Entretien Ajoutée");
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(3000));
         //refresh
         Rebelotte();
         }
@@ -189,7 +229,6 @@ public class EntretienController implements Initializable {
     @FXML
     private void modifierEntretien(ActionEvent event) {
         //ajout
-        String id= (String) tf_modif_id_entretien.getSelectionModel().getSelectedItem();
         String libelle=tf_modif_libelle_entretien.getText();
         String description=tf_modif_description_entretien.getText();
         String date=tf_modif_date_entretien.getText();
@@ -210,13 +249,21 @@ public class EntretienController implements Initializable {
         }
         if (cond==true)
         {
-        es.modifierEntretien(e,id);
+        es.modifierEntretien(e,tf_supp_id_entretien.getText());
         //alerte de modification
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Nouveau Mise a Jour dans la base de données!");
         alert.setHeaderText(null);
         alert.setContentText("Evaluation Modifiée");
         alert.showAndWait();
+        //notification
+        TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+        tray.setAnimationType(type);
+        tray.setTitle("Modification Entretien");
+        tray.setMessage("Entretien Modifiée");
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(3000));
         //refresh
         Rebelotte();
         }
@@ -225,7 +272,7 @@ public class EntretienController implements Initializable {
     @FXML
     private void supprimerEntretien(ActionEvent event) {
         //suppression
-        String id= (String) tf_supp_id_entretien.getSelectionModel().getSelectedItem();
+        String id= (String) tf_supp_id_entretien.getText();
         EntretienService es=new EntretienService();
         es.supprimerEntretien(id);
         //alerte de suppression
@@ -234,28 +281,25 @@ public class EntretienController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText("Entretien Supprimée");
         alert.showAndWait();
+        //notification
+        TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+        tray.setAnimationType(type);
+        tray.setTitle("Suppression Entretien");
+        tray.setMessage("Entretien Supprimée");
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(3000));
         //refresh
         Rebelotte();
     }
 
-    @FXML
-    private void cbb_modif_change(ActionEvent event) {
-        String id= (String) tf_modif_id_entretien.getSelectionModel().getSelectedItem();
-        EntretienService es=new EntretienService();
-        Entretien e=es.getEntretien(id);
-        tf_modif_libelle_entretien.setText(e.getLibelle());
-        tf_modif_description_entretien.setText(e.getDescription());
-        tf_modif_date_entretien.setText(e.getDateEntretien());
-        tf_modif_idEval_entretien.setText(String.valueOf(e.getIdEvaluation()));
-        tf_modif_idParticipant_entretien.setText(String.valueOf(e.getIdParticipant()));
-        Rebelotte();
-    }
 
     @FXML
     private void cbb_eval_change(ActionEvent event) {
-        String id= (String) tf_ajout_idEval_entretien.getSelectionModel().getSelectedItem();
+        String libelle= (String) tf_ajout_idEval_entretien.getSelectionModel().getSelectedItem();
         EntretienService es=new EntretienService();
-        List<String> participants=es.afficherParticipant(id);
+        int id=es.afficherIDEvaluation2(libelle);
+        List<String> participants=es.afficherParticipant(String.valueOf(id));
         tf_ajout_idParticipant_entretien.setItems((ObservableList<String>)participants);
         Rebelotte();
     }
@@ -298,7 +342,112 @@ public class EntretienController implements Initializable {
             System.out.println(ex.getMessage());
         }
     }
-    
-    
+
+    @FXML
+    private void creerPDF(ActionEvent event) throws Exception {
+        File out=new File("Entretiens.pdf");
+        try {
+            //creation du pdf & page
+            FileOutputStream fos=new FileOutputStream(out);
+            PDF pdf = new PDF(fos);
+            Page page = new Page(pdf,A4.PORTRAIT);
+            //les fonts du tableau
+            Font f1=new Font(pdf,CoreFont.HELVETICA_BOLD);
+            Font f2=new Font(pdf,CoreFont.HELVETICA);
+            //tableau
+            Table table = new Table();
+            List<List<Cell>> tableData=new ArrayList<List<Cell>>();
+            //table row
+            List<Cell> tableRow = new ArrayList<Cell>();
+            //Ajout des elements
+            Cell cell = new Cell(f1,col_id_ent.getText());
+            tableRow.add(cell);
+            cell = new Cell(f1,col_libelle_ent.getText());
+            tableRow.add(cell);
+            cell = new Cell(f1,col_description_ent.getText());
+            tableRow.add(cell);
+            cell = new Cell(f1,col_date_ent.getText());
+            tableRow.add(cell);
+            cell = new Cell(f1,col_idEval_ent.getText());
+            tableRow.add(cell);
+            cell = new Cell(f1,col_idParticipant_ent.getText());
+            tableRow.add(cell);
+            //add row to table
+            tableData.add(tableRow);
+            //ajout du data
+            List<Entretien> items = table_entretien.getItems();
+            for (Entretien e : items)
+            {
+                Cell id=new Cell(f2,String.valueOf(e.getId()));
+                Cell libelle=new Cell(f2,e.getLibelle());
+                Cell description=new Cell(f2,e.getDescription());
+                Cell date=new Cell(f2,e.getDateEntretien());
+                Cell idEvaluation=new Cell(f2,String.valueOf(e.getIdEvaluation()));
+                Cell idParticipant=new Cell(f2,String.valueOf(e.getIdParticipant()));
+                
+                tableRow = new ArrayList<Cell>();
+                tableRow.add(id);
+                tableRow.add(libelle);
+                tableRow.add(description);
+                tableRow.add(date);
+                tableRow.add(idEvaluation);
+                tableRow.add(idParticipant);
+                
+                //add row to table
+                tableData.add(tableRow);
+            }
+            
+            table.setData(tableData);
+            table.setColumnWidth(0, 100f);
+            table.setColumnWidth(1, 100f);
+            table.setColumnWidth(2, 100f);
+            table.setColumnWidth(3, 100f);
+            table.setColumnWidth(4, 100f);
+            table.setColumnWidth(5, 100f);
+                
+            //création d'une nouveau page ou cas ou
+            while(true)
+                {
+                    table.drawOn(page);
+                            if(!table.hasMoreData())
+                            {
+                                table.resetRenderedPagesCount();
+                                break;
+                            }
+                            page = new Page(pdf,A4.PORTRAIT);
+                }    
+            System.out.println("Saved To"+out.getAbsolutePath());
+            table.setData(tableData);
+            table.setPosition(70f,60f);
+            pdf.close();
+            fos.close();
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("PDF crée!");
+            alert.setHeaderText(null);
+            alert.setContentText("PDF crée");
+            alert.showAndWait();
+            //notification
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+            tray.setAnimationType(type);
+            tray.setTitle("Création du PDF");
+            tray.setMessage("PDF Crée");
+            tray.setNotificationType(NotificationType.SUCCESS);
+            tray.showAndDismiss(Duration.millis(3000));
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @FXML
+    private void click(MouseEvent event) {
+        Entretien e = table_entretien.getItems().get(table_entretien.getSelectionModel().getSelectedIndex());
+        tf_modif_libelle_entretien.setText(e.getLibelle());
+        tf_modif_description_entretien.setText(e.getDescription());
+        tf_modif_date_entretien.setText(e.getDateEntretien());
+        tf_modif_idParticipant_entretien.setText(String.valueOf(e.getIdParticipant()));
+        tf_modif_idEval_entretien.setText(String.valueOf(e.getIdEvaluation()));
+        tf_supp_id_entretien.setText(String.valueOf(e.getId()));
+    }
     
 }

@@ -17,10 +17,10 @@ public class Participation_Evaluation {
     public Participation_Evaluation() {
     }
 
-    public Participation_Evaluation(int id_p, int id_e) {
+    public Participation_Evaluation(int id_p, int id_e,int note) {
         this.id_p = id_p;
         this.id_e = id_e;
-        this.note = 0;
+        this.note = note;
     }
 
     public int getCode() {

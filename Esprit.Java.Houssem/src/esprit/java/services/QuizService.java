@@ -29,7 +29,7 @@ public class QuizService {
         cnx=MaConnexion.getInstance().getCnx();
     }
     
-    public void ajouterQuiz(Quiz q)
+    public void ajouterQuiz(Quiz q)//CRUD
     {
         String sql="insert into quiz (question,choix1,choix2,choix3,reponse,id_evaluation)"+"Values(?,?,?,?,?,?)";
         try {
@@ -47,7 +47,7 @@ public class QuizService {
         }   
     }
     
-    public ObservableList<Quiz> afficherQuiz()//affichage dans le tableau
+    public ObservableList<Quiz> afficherQuiz()//CRUD
     {
         ObservableList<Quiz> quizs= FXCollections.observableArrayList();
         try {
@@ -72,7 +72,7 @@ public class QuizService {
         return quizs;
     }
     
-    public void supprimerQuiz(String id)
+    public void supprimerQuiz(String id)//CRUD
     {
         String req ="delete from quiz where id = "+id;
         try {
@@ -84,24 +84,41 @@ public class QuizService {
         }
     }
     
-    public ObservableList<String> afficherIDEvaluation()
+    public ObservableList<String> afficherEvaluation()
     {
         ObservableList<String> ids= FXCollections.observableArrayList();
         try {
-            String sql="select id from evaluation";
+            String sql="select libelle from evaluation";
             ste=cnx.prepareStatement(sql);
             ResultSet rs=ste.executeQuery();
             while (rs.next())
             {    
-                ids.add(rs.getString("id"));
+                ids.add(rs.getString("libelle"));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return ids;
     }
+    
+    public int afficherIDEvaluation2(String libelle) 
+    {
+        try {
+            String sql="select id from evaluation where libelle='"+libelle+"'";
+            ste=cnx.prepareStatement(sql);
+            ResultSet rs=ste.executeQuery();
+            while (rs.next())
+            {    
+                int id=rs.getInt("id");
+                return id;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return 0;
+    }
      
-     public ObservableList<String> afficherID()
+    /* public ObservableList<String> afficherID()
     {
         ObservableList<String> ids= FXCollections.observableArrayList();
         try {
@@ -116,9 +133,9 @@ public class QuizService {
             System.out.println(ex.getMessage());
         }
         return ids;
-    }
+    }*/
      
-     public ObservableList<String> afficherReponse()
+     public ObservableList<String> afficherReponse()//CRUD
     {
         ObservableList<String> reponses= FXCollections.observableArrayList();
         reponses.add("1");

@@ -24,7 +24,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -44,13 +46,7 @@ public class Participation_EvaluationController implements Initializable {
     @FXML
     private TableColumn<?, ?> col_note_participation;
     @FXML
-    private ComboBox tf_ajout_participant_participation;
-    @FXML
-    private ComboBox tf_ajout_evaluation_participation;
-    @FXML
-    private ComboBox tf_supp_id_participation;
-    @FXML
-    private Button btn_ajout_participation;
+    private TextField tf_supp_id_participation;
     @FXML
     private Button btn_supp_participation;
     @FXML
@@ -78,15 +74,12 @@ public class Participation_EvaluationController implements Initializable {
         col_note_participation.setCellValueFactory(new PropertyValueFactory<>("note"));
         table_participation.setItems((ObservableList<Participation_Evaluation>) participations);
         //combobox
-        List<String> participants=ps.afficherParticipants();
-        List<String> evaluations=ps.afficherIDEvaluation();
-        List<String> ids=ps.afficherID();
-        tf_supp_id_participation.setItems((ObservableList<String>)ids);
-        tf_ajout_participant_participation.setItems((ObservableList<String>)participants);
-        tf_ajout_evaluation_participation.setItems((ObservableList<String>)evaluations);
+        //List<String> participants=ps.afficherParticipants();
+        //List<String> evaluations=ps.afficherIDEvaluation();
+        
     }    
 
-    @FXML
+    /*@FXML
     private void AjouterParticipation(ActionEvent event) {
         //ajout
         String participant=(String) tf_ajout_participant_participation.getSelectionModel().getSelectedItem();
@@ -102,12 +95,12 @@ public class Participation_EvaluationController implements Initializable {
         alert.showAndWait();
         //refresh
         Rebelotte();
-    }
+    }*/
 
     @FXML
     private void supprimerParticipation(ActionEvent event) {
         //suppression
-        String id= (String) tf_supp_id_participation.getSelectionModel().getSelectedItem();
+        String id= (String) tf_supp_id_participation.getText();
         Participation_EvaluationService es=new Participation_EvaluationService();
         es.supprimerParticipation(id);
         //alerte de suppression
@@ -126,7 +119,7 @@ public class Participation_EvaluationController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Evaluation.fxml"));
             Parent root = loader.load();
             EvaluationController ec = loader.getController();
-            btn_ajout_participation.getScene().setRoot(root);
+            table_participation.getScene().setRoot(root);
             
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -139,7 +132,7 @@ public class Participation_EvaluationController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Entretien.fxml"));
             Parent root = loader.load();
             EntretienController ec = loader.getController();
-            btn_ajout_participation.getScene().setRoot(root);
+            table_participation.getScene().setRoot(root);
             
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -152,11 +145,17 @@ public class Participation_EvaluationController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Quiz.fxml"));
             Parent root = loader.load();
             QuizController qc = loader.getController();
-            btn_ajout_participation.getScene().setRoot(root);
+            table_participation.getScene().setRoot(root);
             
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    @FXML
+    private void click(MouseEvent event) {
+        Participation_Evaluation e = table_participation.getItems().get(table_participation.getSelectionModel().getSelectedIndex());
+        tf_supp_id_participation.setText(String.valueOf(e.getCode()));
     }
     
 }

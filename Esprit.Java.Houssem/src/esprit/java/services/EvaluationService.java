@@ -6,6 +6,7 @@
 package esprit.java.services;
 
 import esprit.java.entities.Evaluation;
+import esprit.java.entities.Quiz;
 import esprit.java.tools.MaConnexion;
 import static java.lang.Integer.parseInt;
 import java.sql.*;
@@ -31,7 +32,7 @@ public class EvaluationService {
         cnx=MaConnexion.getInstance().getCnx();
     }
     
-    public void ajouterEvaluation(Evaluation e)
+    public void ajouterEvaluation(Evaluation e)//CRUD
     {
         String sql="insert into evaluation(libelle,description,dateEvaluation,id_entreprise)"+"Values(?,?,?,?)";
         try {
@@ -48,7 +49,7 @@ public class EvaluationService {
         
     }
     
-    public ObservableList<Evaluation> afficherEvaluation()//affichage dans le tableau
+    public ObservableList<Evaluation> afficherEvaluation()//CRUD
     {
         ObservableList<Evaluation> evaluations= FXCollections.observableArrayList();
         try {
@@ -71,16 +72,16 @@ public class EvaluationService {
         return evaluations;
     }
     
-    public ObservableList<String> afficherID() //pour le combobox modif
+    public ObservableList<String> afficherID() //front
     {
         ObservableList<String> ids= FXCollections.observableArrayList();
         try {
-            String sql="select id from evaluation";
+            String sql="select libelle from evaluation";
             ste=cnx.prepareStatement(sql);
             ResultSet rs=ste.executeQuery();
             while (rs.next())
             {    
-                ids.add(rs.getString("id"));
+                ids.add(rs.getString("libelle"));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -88,17 +89,17 @@ public class EvaluationService {
         return ids;
     }
     
-    public ObservableList<String> afficherEntreprise() //pour le combobox modif
+    public ObservableList<String> afficherEntreprise()
     {
         ObservableList<String> entreprises= FXCollections.observableArrayList();
         try {
             //String role="ROLE_Entreprise";
-            String sql="select id from utilisateur where role='ROLE_Entreprise'";
+            String sql="select libelle_entreprise from utilisateur where role='ROLE_Entreprise'";
             ste=cnx.prepareStatement(sql);
             ResultSet rs=ste.executeQuery();
             while (rs.next())
             {    
-                entreprises.add(rs.getString("id"));
+                entreprises.add(rs.getString("libelle_entreprise"));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -106,7 +107,24 @@ public class EvaluationService {
         return entreprises;
     }
     
-    public void modifierEvaluation(Evaluation e,String id)
+    public int getIdEntreprise(String libelle)
+    {
+        try {  
+            String sql="select id from utilisateur where libelle_entreprise='"+libelle+"'";
+            st=cnx.createStatement();
+            ResultSet rs=st.executeQuery(sql);
+            while (rs.next())
+            {    
+                int id=rs.getInt("id");
+                return id;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return 0;
+    }
+    
+    public void modifierEvaluation(Evaluation e,String id)//CRUD
     {
         String sql="update evaluation set libelle='"+e.getLibelle()+"',description='"+e.getDescription()+"',dateEvaluation='"+e.getDateEvaluation()+"',id_entreprise='"+e.getId_entreprise()+"' where id="+id;
         try {
@@ -119,7 +137,7 @@ public class EvaluationService {
         
     }
     
-    public void supprimerEvaluation(String id)
+    public void supprimerEvaluation(String id)//CRUD
     {
         String req ="delete from evaluation where id = "+id;
         try {
@@ -131,7 +149,7 @@ public class EvaluationService {
         }
     }
     
-    public Evaluation getEvaluation(String id)
+    /*public Evaluation getEvaluation(String id)
     {
         Evaluation e = new Evaluation();
         try {  
@@ -150,6 +168,70 @@ public class EvaluationService {
             System.out.println(ex.getMessage());
         }
         return e;
+    }*/
+    
+     /*public ObservableList<Evaluation> afficherEvaluationP(String id)//affichage dans le tableau
+    {
+        ObservableList<Evaluation> evaluations= FXCollections.observableArrayList();
+        try {
+            String sql="select * from evaluation e join participation_evaluation p on e.id=p.id_e where p.id_p="+id;
+            ste=cnx.prepareStatement(sql);
+            ResultSet rs=ste.executeQuery();
+            while (rs.next())
+            {
+                Evaluation e = new Evaluation();
+                e.setId(rs.getInt("id"));
+                e.setLibelle(rs.getString("libelle"));
+                e.setDescription(rs.getString("description"));
+                e.setDateEvaluation(rs.getString("DateEvaluation"));
+                e.setId_entreprise(rs.getInt("id_entreprise"));
+                evaluations.add(e);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return evaluations;
+    }*/
+     
+    public ObservableList<Quiz> Questions(String id)//FRONT
+    {
+        ObservableList<Quiz> questions= FXCollections.observableArrayList();
+        try {
+            String sql="select * from quiz where id_evaluation="+id;
+            ste=cnx.prepareStatement(sql);
+            ResultSet rs=ste.executeQuery();
+            while (rs.next())
+            {
+                Quiz q = new Quiz();
+                q.setQuestion(rs.getString("question"));
+                q.setChoix1(rs.getString("choix1"));
+                q.setChoix2(rs.getString("choix2"));
+                q.setChoix3(rs.getString("choix3"));
+                q.setReponse(rs.getInt("reponse"));
+                questions.add(q);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return questions;
     }
+    
+    public String getIdEval(String libelle)
+    {
+        try {  
+            String sql="select id from evaluation where libelle='"+libelle+"'";
+            st=cnx.createStatement();
+            ResultSet rs=st.executeQuery(sql);
+            while (rs.next())
+            {    
+                String id=String.valueOf(rs.getInt("id"));
+                return id;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return "";
+    }
+    
     
 }

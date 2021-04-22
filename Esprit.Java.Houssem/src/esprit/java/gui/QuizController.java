@@ -27,6 +27,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -64,7 +69,7 @@ public class QuizController implements Initializable {
     @FXML
     private ComboBox tf_ajout_ideval_quiz;
     @FXML
-    private ComboBox tf_supp_id_quiz;
+    private TextField tf_supp_id_quiz;
     @FXML
     private Button btn_ajout_quiz;
     @FXML
@@ -97,11 +102,11 @@ public void Rebelotte(){
         col_ideval_quiz.setCellValueFactory(new PropertyValueFactory<>("idEvaluation"));
         table_quiz.setItems((ObservableList<Quiz>) quizs);
         //combobox
-        List<String> idEs=es.afficherIDEvaluation();
-        List<String> ids=es.afficherID();
+        List<String> idEs=es.afficherEvaluation();
+        //List<String> ids=es.afficherID();
         List<String> reponses=es.afficherReponse();
         tf_ajout_ideval_quiz.setItems((ObservableList<String>)idEs);
-        tf_supp_id_quiz.setItems((ObservableList<String>)ids);
+        //tf_supp_id_quiz.setItems((ObservableList<String>)ids);
         tf_ajout_reponse_quiz.setItems((ObservableList<String>)reponses);
     }    
 
@@ -113,9 +118,10 @@ public void Rebelotte(){
         String choix2=tf_ajout_choix2_quiz.getText();
         String choix3=tf_ajout_choix3_quiz.getText();
         String reponse=(String) tf_ajout_reponse_quiz.getSelectionModel().getSelectedItem();
-        String idEvaluation=(String) tf_ajout_ideval_quiz.getSelectionModel().getSelectedItem();
-        Quiz q= new Quiz(parseInt(idEvaluation),parseInt(reponse),question,choix1,choix2,choix3);
         QuizService qs=new QuizService();
+        String idEvaluation=(String) tf_ajout_ideval_quiz.getSelectionModel().getSelectedItem();
+        int idEvaluation2=qs.afficherIDEvaluation2(idEvaluation);
+        Quiz q= new Quiz(idEvaluation2,parseInt(reponse),question,choix1,choix2,choix3);
         //controle de saisie
         boolean cond=true;
         if(tf_ajout_question_quiz.getText().isEmpty() |tf_ajout_choix1_quiz.getText().isEmpty()|tf_ajout_choix2_quiz.getText().isEmpty()|tf_ajout_choix3_quiz.getText().isEmpty())
@@ -136,6 +142,14 @@ public void Rebelotte(){
         alert.setHeaderText(null);
         alert.setContentText("Quiz Ajoutée");
         alert.showAndWait();
+        //notification
+        TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+        tray.setAnimationType(type);
+        tray.setTitle("Ajout Quiz");
+        tray.setMessage("Quiz Ajoutée");
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(3000));
         //refresh
         Rebelotte();
         }
@@ -144,7 +158,7 @@ public void Rebelotte(){
     @FXML
     private void supprimerQuiz(ActionEvent event) {
         //suppression
-        String id= (String) tf_supp_id_quiz.getSelectionModel().getSelectedItem();
+        String id= (String) tf_supp_id_quiz.getText();
         QuizService es=new QuizService();
         es.supprimerQuiz(id);
         //alerte de suppression
@@ -153,6 +167,14 @@ public void Rebelotte(){
         alert.setHeaderText(null);
         alert.setContentText("Quiz Supprimée");
         alert.showAndWait();
+        //notification
+        TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+        tray.setAnimationType(type);
+        tray.setTitle("Suppression Quiz");
+        tray.setMessage("Quiz Supprimée");
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(3000));
         //refresh
         Rebelotte();
     }
@@ -195,6 +217,12 @@ public void Rebelotte(){
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    @FXML
+    private void click(MouseEvent event) {
+        Quiz q = table_quiz.getItems().get(table_quiz.getSelectionModel().getSelectedIndex());
+        tf_supp_id_quiz.setText(String.valueOf(q.getId()));
     }
 
     
