@@ -32,8 +32,13 @@ public class PassCodeController implements Initializable {
     @FXML
     private TextField codePass;
     
-    public String code;
+    public int code;
 
+    FXMLLoader loader = new FXMLLoader();
+          
+            LoginController ircc = loader.getController();
+
+            code = ircc.codem;
     /**
      * Initializes the controller class.
      */
@@ -44,10 +49,10 @@ public class PassCodeController implements Initializable {
 
     @FXML
     private void confirmCode(ActionEvent event) throws IOException {
-          String codex = codePass.getText();
+          int codex = Integer.parseInt(codePass.getText());
         utilisateurService sc = new utilisateurService();
         String x="x";
-        if (codePass.getText().toString().equals(x))
+        if (codePass.getText().equals(x))
         {Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Alerte");
             alert.setHeaderText(null);

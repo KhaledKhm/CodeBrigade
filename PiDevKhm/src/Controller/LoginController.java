@@ -7,6 +7,8 @@ package Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Properties;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
@@ -14,8 +16,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javax.mail.*;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import services.utilisateurService;
 
 
@@ -34,6 +38,7 @@ public class LoginController implements Initializable {
     
     public static String email;
     public static String motpass;
+    public static int  codem;
     
     public static boolean isValidEmailAddress(String email) {
         boolean result = true;
@@ -158,6 +163,60 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    private void forgottonPass(ActionEvent event) {
+    private void forgottonPass(ActionEvent event) throws MessagingException, IOException{
+         email = utilisateurEmail.getText();
+        utilisateurService sc = new utilisateurService();
+   		
+        Random r = new Random ();
+      codem =r.nextInt(9999-1000+1);
+                System.out.println(codem);
+                //sc.setCodepass(sc.getIdbymail(t1.getText()), codem);
+
+        //System.out.println(sc.getPassbyId(sc.getIdbymail(t1.getText())));
+        if(isValidEmailAddress(utilisateurEmail.getText())){
+   //     SendMail.send(t1.getText(), sc.getPassbyId(sc.getIdbymail(t1.getText())));
+   
+    Properties properties = new Properties();
+
+        properties.put("mail.smtp.auth","true");
+        properties.put("mail.smtp.starttls.enable","true");
+        properties.put("mail.smtp.host","smtp.gmail.com");
+        properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        properties.put("mail.smtp.starttls.port","587");
+
+        String MyAccountEmail= "houssem.ouerdiane@esprit.tn"; 
+        String Password= "fallout3";
+
+        Session session;
+        session = Session.getDefaultInstance(properties,new javax.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication(){
+                return new PasswordAuthentication(MyAccountEmail,Password);
+            }
+        });
+
+        Message message = new MimeMessage(session);
+        message.setFrom(new InternetAddress(MyAccountEmail));
+        message.setRecipient(Message.RecipientType.TO,new InternetAddress("khmthe@gmail.com")); // to be changed aa ey 
+        message.setSubject("new password");
+        message.setText("Monsieur/Madame, Votre code est "+codem); //to be changed 
+
+        Transport.send(message);
+   
+   
+ 
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/passCode.fxml"));
+        
+        Parent root;
+        root = loader.load();
+        PassCodeController pcc = loader.getController();
+        labelStatus.getScene().setRoot(root);}
+        else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Alerte");
+            alert.setHeaderText(null);
+            alert.setContentText("!!! Adresse Email Non Valide !!!");
+            alert.showAndWait();
+        }
     }
 }
