@@ -55,6 +55,21 @@ public class utilisateurService {
         
     }
     
+    public String getCodebyId(int id) {
+        try {
+            ste = cnx.prepareStatement("select * from utilisateur where id=?");
+            ste.setInt(1, id);
+            ResultSet rs = ste.executeQuery();
+            rs.beforeFirst();
+            if (rs.next()) {
+                return rs.getString("googleAuthenticatorSecret");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(utilisateurService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "";
+    }
+    
     
     
        public void ajouterUtilisateur(utilisateur p)
@@ -174,5 +189,7 @@ public class utilisateurService {
         }
         return "";
     }
+            
+            
     
 }

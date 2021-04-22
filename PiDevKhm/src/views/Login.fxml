@@ -13,7 +13,7 @@
         <URL value="@../tools/css/login.css" />
     </stylesheets>
    <children>
-      <Button layoutX="331.0" layoutY="272.0" mnemonicParsing="false" onAction="#Login" text="Login">
+      <Button layoutX="331.0" layoutY="233.0" mnemonicParsing="false" onAction="#Login" text="Login">
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font>
@@ -33,12 +33,12 @@
             <Font name="Times New Roman" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="inscrire" layoutX="241.0" layoutY="272.0" mnemonicParsing="false" onAction="#Inscrire" text="Inscrire">
+      <Button fx:id="inscrire" layoutX="242.0" layoutY="233.0" mnemonicParsing="false" onAction="#Inscrire" text="Inscrire">
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="forgottonPass" layoutX="234.0" layoutY="234.0" mnemonicParsing="false" onAction="#forgottonPass" text="Mot de passe oublié">
+      <Button fx:id="forgottonPass" layoutX="237.0" layoutY="271.0" mnemonicParsing="false" onAction="#forgottonPass" text="Mot de passe oublié">
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font>

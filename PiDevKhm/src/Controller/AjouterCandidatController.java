@@ -45,24 +45,6 @@ public class AjouterCandidatController implements Initializable {
     @FXML
     private Label labelEmail;
     @FXML
-    private Label labelSexe;
-    @FXML
-    private Label labelDate;
-    @FXML
-    private Label labelEtat;
-    @FXML
-    private Label labelDomaine;
-    @FXML
-    private Label labelPrenom;
-    @FXML
-    private Label labelAdresse;
-    @FXML
-    private Label labelPassword;
-    @FXML
-    private Label labelNom;
-    @FXML
-    private Label labelTelephone;
-    @FXML
     private Label labelTestCIN;
     @FXML
     private Label labelTestEmail;
@@ -86,25 +68,16 @@ public class AjouterCandidatController implements Initializable {
     private Label labelTestDomaine;
     @FXML
     private TextField candidatCIN;
-    @FXML
     private TextField candidatTelephone;
-    @FXML
     private DatePicker candidatDate;
-    @FXML
     private TextField candidatPrenom;
     @FXML
     private TextField candidatEmail;
-    @FXML
     private PasswordField candidatPassword;
-    @FXML
     private TextField candidatNom;
-    @FXML
     private TextField candidatAdresse;
-    @FXML
     private ChoiceBox<?> candidatSexe;
-    @FXML
     private ChoiceBox<?> candidatEtat;
-    @FXML
     private ChoiceBox<?> candidatDomaine;
     @FXML
     private Button inscrireCandidat;
