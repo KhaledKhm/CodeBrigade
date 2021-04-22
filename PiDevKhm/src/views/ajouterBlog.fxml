@@ -109,8 +109,8 @@
                               <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card" stylesheets="@../tools/css/style.css">
                                  <children>
-                                    <Button fx:id="ajouterBlog" mnemonicParsing="false" onAction="#addEntreprise" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../tools/css/style.css" text="Ajouter" textFill="WHITE" />
-                                    <Button fx:id="retourBlog" mnemonicParsing="false" onAction="#retourInscriptionChoice" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../tools/css/style.css" text="Retourner" textFill="WHITE" />
+                                    <Button fx:id="ajouterBlog" mnemonicParsing="false" onAction="#addBlog" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../tools/css/style.css" text="Ajouter" textFill="WHITE" />
+                                    <Button fx:id="retourBlog" mnemonicParsing="false" onAction="#returnBlog" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../tools/css/style.css" text="Retourner" textFill="WHITE" />
                                  </children>
                               </HBox>
                               <Pane prefHeight="84.0" prefWidth="96.0" />

@@ -5,20 +5,19 @@
  */
 package Controller;
 
+import entities.blog;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.Parent;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import services.blogService;
 
 /**
  * FXML Controller class
@@ -34,59 +33,23 @@ public class AjouterBlogController implements Initializable {
     @FXML
     private ComboBox<?> languageChange;
     @FXML
-    private Button inscrireEntreprise;
-    @FXML
-    private Button retourEntreprise;
-    @FXML
     private ScrollPane scroll;
     @FXML
     private Label labelImmatricule;
-    @FXML
-    private Label labelEmail;
-    @FXML
-    private Label labelPassword;
-    @FXML
-    private Label labelLibelle;
-    @FXML
-    private Label labelTelephone;
-    @FXML
-    private Label labelAdresse;
-    @FXML
-    private Label labelSite;
-    @FXML
-    private Label labelSecteur;
-    @FXML
-    private TextField entrepriseImmatricule;
-    @FXML
-    private TextField entrepriseEmail;
-    @FXML
-    private PasswordField entreprisePassword;
-    @FXML
-    private TextField entrepriseLibelle;
-    @FXML
-    private TextField entrepriseTelephone;
-    @FXML
-    private TextField entrepriseAdresse;
-    @FXML
-    private TextField entrepriseSite;
-    @FXML
-    private ChoiceBox<?> entrepriseSecteur;
     @FXML
     private Label labelTestImmatricule;
     @FXML
     private Label labelTestEmail;
     @FXML
-    private Label labelTestPassword;
+    private Button ajouterBlog;
     @FXML
-    private Label labelTestLabel;
+    private Button retourBlog;
     @FXML
-    private Label labelTestTelephone;
+    private TextField blogTitre;
     @FXML
-    private Label labelTestAdresse;
+    private TextArea blogContenu;
     @FXML
-    private Label labelTestSite;
-    @FXML
-    private Label labelTestSecteur;
+    private Label labelImmatricule1;
 
     /**
      * Initializes the controller class.
@@ -97,11 +60,24 @@ public class AjouterBlogController implements Initializable {
     }    
 
     @FXML
-    private void addEntreprise(ActionEvent event) {
+    private void addBlog(ActionEvent event) throws IOException {        
+          String Titre = blogTitre.getText();
+          String Contenu = blogContenu.getText();
+          blog b;
+          b=new blog(Titre,Contenu,48);
+          blogService bs = new blogService();
+          bs.ajouterBlog(b);
+          
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/inscriptionsChoice.fxml"));
+        
+        Parent root;
+        root = loader.load();
+        InscriptionsChoiceController LCC = loader.getController();
+        blogTitre.getScene().setRoot(root);
     }
 
     @FXML
-    private void retourInscriptionChoice(ActionEvent event) {
+    private void returnBlog(ActionEvent event) {
     }
     
 }
