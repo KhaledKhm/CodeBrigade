@@ -14,6 +14,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import services.utilisateurService;
 
 
@@ -34,8 +36,15 @@ public class LoginController implements Initializable {
     public static String motpass;
     
     public static boolean isValidEmailAddress(String email) {
-       
-        return true;
+        boolean result = true;
+        try {
+            InternetAddress emailAddr = new InternetAddress(email);
+            emailAddr.validate();
+        } catch (AddressException ex) {
+            result = false;
+        }
+        return result;
+        
     }
     
     
