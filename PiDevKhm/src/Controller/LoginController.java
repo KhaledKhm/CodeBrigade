@@ -38,7 +38,7 @@ public class LoginController implements Initializable {
     
     public static String email;
     public static String motpass;
-    public static int  codem;
+    public int codem;
     
     public static boolean isValidEmailAddress(String email) {
         boolean result = true;
@@ -169,6 +169,7 @@ public class LoginController implements Initializable {
    		
         Random r = new Random ();
       codem =r.nextInt(9999-1000+1);
+ 
                 System.out.println(codem);
                 //sc.setCodepass(sc.getIdbymail(t1.getText()), codem);
 

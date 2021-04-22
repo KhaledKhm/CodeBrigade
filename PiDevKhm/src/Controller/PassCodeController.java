@@ -34,11 +34,7 @@ public class PassCodeController implements Initializable {
     
     public int code;
 
-    FXMLLoader loader = new FXMLLoader();
-          
-            LoginController ircc = loader.getController();
-
-            code = ircc.codem;
+    
     /**
      * Initializes the controller class.
      */
@@ -49,6 +45,11 @@ public class PassCodeController implements Initializable {
 
     @FXML
     private void confirmCode(ActionEvent event) throws IOException {
+        FXMLLoader loader1 = new FXMLLoader();
+          
+            LoginController ircc = loader1.getController();
+
+            code = ircc.codem;
           int codex = Integer.parseInt(codePass.getText());
         utilisateurService sc = new utilisateurService();
         String x="x";
@@ -62,7 +63,14 @@ public class PassCodeController implements Initializable {
         
         else if (code == codex) {
             
-            FXMLLoader loader = new FXMLLoader();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/forgottenpass.fxml"));
+        
+        Parent root;
+        root = loader.load();
+        ForgottenpassController LC = loader.getController();
+        codePass.getScene().setRoot(root);
+            
+          /*  FXMLLoader loader = new FXMLLoader();
             codePass.getScene().getWindow().hide();
             Stage prStage = new Stage();
             loader.setLocation(getClass().getResource("../views/forgottenpass.fxml"));
@@ -70,7 +78,7 @@ public class PassCodeController implements Initializable {
             Scene scene = new Scene(root);
             prStage.setScene(scene);
             prStage.setResizable(false);
-            prStage.show();
+            prStage.show();*/
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Alerte");
