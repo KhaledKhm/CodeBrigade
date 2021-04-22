@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import static Controller.LoginController.email;
 import entities.blog;
 import java.io.IOException;
 import java.net.URL;
@@ -18,6 +19,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import services.blogService;
+import services.utilisateurService;
 
 /**
  * FXML Controller class
@@ -63,17 +65,22 @@ public class AjouterBlogController implements Initializable {
     private void addBlog(ActionEvent event) throws IOException {        
           String Titre = blogTitre.getText();
           String Contenu = blogContenu.getText();
+         
+          
+          utilisateurService us = new utilisateurService();
+          int id = us.getIdbymail(email);
+          
           blog b;
-          b=new blog(Titre,Contenu,48);
+          b=new blog(Titre,Contenu,id);
           blogService bs = new blogService();
           bs.ajouterBlog(b);
           
-             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/inscriptionsChoice.fxml"));
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/inscriptionsChoice.fxml"));
         
-        Parent root;
-        root = loader.load();
-        InscriptionsChoiceController LCC = loader.getController();
-        blogTitre.getScene().setRoot(root);
+          Parent root;
+          root = loader.load();
+          InscriptionsChoiceController LCC = loader.getController();
+          blogTitre.getScene().setRoot(root);
     }
 
     @FXML

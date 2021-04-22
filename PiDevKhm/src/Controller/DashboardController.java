@@ -57,13 +57,12 @@ public class DashboardController implements Initializable {
 
     @FXML
     private void logout(ActionEvent event) throws IOException {
-         Parent root = FXMLLoader.load(getClass().getResource("../views/Login.fxml"));
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/Login.fxml"));
         
-        Scene scene = new Scene(root, 1300, 800);
-        scene.getStylesheets().add(getClass().getResource("../tools/css/style.css").toExternalForm());
-        primaryStage.setTitle("Pidev");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+          Parent root;
+          root = loader.load();
+          LoginController LCC = loader.getController();
+          BtDashboard1.getScene().setRoot(root);
     }
 
     @FXML

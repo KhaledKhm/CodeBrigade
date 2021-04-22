@@ -30,7 +30,7 @@ public class LoginController implements Initializable {
     @FXML
     private Button forgottonPass;
     
-    public static String username;
+    public static String email;
     public static String motpass;
     
     
@@ -54,11 +54,11 @@ public class LoginController implements Initializable {
     
     @FXML
     public void Login(ActionEvent event) throws Exception{
-        username = utilisateurEmail.getText();
+        email = utilisateurEmail.getText();
         motpass = utilisateurPassword.getText();
         utilisateurService sc = new utilisateurService();
-        if (sc.login(username, motpass)) {
-            String role = sc.getRolebyId(sc.getIdbymail(username));
+        if (sc.login(email, motpass)) {
+            String role = sc.getRolebyId(sc.getIdbymail(email));
 
             switch (role) {
                 case "ROLE_Formateur":
