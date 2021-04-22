@@ -20,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import java.lang.Object;
+import javafx.scene.Scene;
 import org.controlsfx.control.Rating ;
 
 
@@ -37,6 +38,8 @@ public class ModifierAvisController implements Initializable {
     private Rating txtprenom;
     @FXML
     private Button btnmodifier;
+    @FXML
+    private Button btncancel;
     @FXML
     private TextField txtid;
 
@@ -60,7 +63,20 @@ public class ModifierAvisController implements Initializable {
     }
     
   
-    
+    @FXML
+    private void cancelon(ActionEvent event) {
+        try { 
+            
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherAvis.fxml"));
+            Parent root = loader.load();
+            
+            btnmodifier.getScene().setRoot(root);
+            
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
     
     
     @FXML

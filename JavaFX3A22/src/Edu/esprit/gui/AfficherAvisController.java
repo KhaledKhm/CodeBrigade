@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -52,6 +53,9 @@ public class AfficherAvisController implements Initializable {
     private Button modifier ; 
     
     @FXML
+    private Button pgajt ; 
+    
+    @FXML
     private Button supprimer ;
 
     /**
@@ -75,6 +79,24 @@ public class AfficherAvisController implements Initializable {
         
         table.setItems((ObservableList<Avis>) Avis);
     }
+    
+    
+    @FXML
+    private void takeajt(ActionEvent event) {
+        try { 
+            
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterAvis.fxml"));
+            Parent root = loader.load();
+            
+            modifier.getScene().setRoot(root);
+            
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    
     
     @FXML
     public void modifieron() throws IOException{

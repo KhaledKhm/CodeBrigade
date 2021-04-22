@@ -6,6 +6,7 @@
 package Edu.esprit.gui;
 
 import java.io.IOException;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
@@ -46,7 +47,10 @@ public class TestFXMain extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
         launch(args);
     }
+    
+    
     
 }

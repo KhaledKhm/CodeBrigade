@@ -6,19 +6,26 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Edu.esprit.gui.AfficherAvisController">
    <children>
-      <TableView fx:id="table" layoutX="55.0" layoutY="37.0" prefHeight="326.0" prefWidth="318.0">
+      <TableView fx:id="table" layoutX="267.0" layoutY="14.0" prefHeight="298.0" prefWidth="318.0">
         <columns>
           <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
           <TableColumn fx:id="commentaire" prefWidth="96.800048828125" text="Commentaire" />
             <TableColumn fx:id="etoiles" prefWidth="144.80002441406248" text="Etoiles" />
         </columns>
       </TableView>
-      <Button fx:id="modifier" layoutX="468.0" layoutY="187.0" mnemonicParsing="false" onAction="#modifieron" text="Modifier" />
-      <Button fx:id="supprimer" layoutX="463.0" layoutY="223.0" mnemonicParsing="false" onAction="#supprimeron" text="Supprimer" />
-      <TextField fx:id="txt" layoutX="424.0" layoutY="134.0" />
-      <Label layoutX="424.0" layoutY="103.0" text="Enter ID :" />
+      <Button fx:id="modifier" layoutX="360.0" layoutY="348.0" mnemonicParsing="false" onAction="#modifieron" text="Modifier" />
+      <Button fx:id="supprimer" layoutX="420.0" layoutY="348.0" mnemonicParsing="false" onAction="#supprimeron" text="Supprimer" />
+      <TextField fx:id="txt" layoutX="420.0" layoutY="319.0" prefHeight="26.0" prefWidth="71.0" />
+      <Label layoutX="360.0" layoutY="324.0" text="Enter ID :" />
+      <VBox prefHeight="400.0" prefWidth="147.0" style="-fx-background-color: #808080;">
+         <children>
+            <Button fx:id="pgajt" mnemonicParsing="false" onAction="#takeajt" prefHeight="36.0" prefWidth="147.0" text="Ajout" />
+            <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="147.0" text="Affich" underline="true" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
