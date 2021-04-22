@@ -16,8 +16,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import static javafx.scene.input.KeyCode.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import static javax.swing.text.html.HTML.Tag.*;
 import services.blogService;
 import services.utilisateurService;
 
@@ -37,21 +39,19 @@ public class AjouterBlogController implements Initializable {
     @FXML
     private ScrollPane scroll;
     @FXML
-    private Label labelImmatricule;
-    @FXML
     private Label labelTestImmatricule;
     @FXML
     private Label labelTestEmail;
     @FXML
-    private Button ajouterBlog;
-    @FXML
     private Button retourBlog;
-    @FXML
     private TextField blogTitre;
-    @FXML
     private TextArea blogContenu;
     @FXML
-    private Label labelImmatricule1;
+    private Button home;
+    @FXML
+    private TableColumn<?, ?> nombre;
+    @FXML
+    private TableColumn<?, ?> sujet;
 
     /**
      * Initializes the controller class.
@@ -61,7 +61,6 @@ public class AjouterBlogController implements Initializable {
         // TODO
     }    
 
-    @FXML
     private void addBlog(ActionEvent event) throws IOException {        
           String Titre = blogTitre.getText();
           String Contenu = blogContenu.getText();
@@ -85,6 +84,15 @@ public class AjouterBlogController implements Initializable {
 
     @FXML
     private void returnBlog(ActionEvent event) {
+    }
+
+    @FXML
+    private void home(ActionEvent event) {
+    }
+
+    @FXML
+    private void sujetCommut(TableColumn.CellEditEvent<S, T> event) {
+        
     }
     
 }

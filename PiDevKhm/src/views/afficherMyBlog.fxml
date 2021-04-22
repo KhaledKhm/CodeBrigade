@@ -7,8 +7,8 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -17,9 +17,9 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AjouterBlogController">
-    <stylesheets>
-        <URL value="@/tools/css/style.css" />
-    </stylesheets>
+   <stylesheets>
+      <URL value="@/tools/css/style.css" />
+   </stylesheets>
    <children>
       <AnchorPane fx:id="rootPane" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="1215.0">
          <stylesheets>
@@ -92,7 +92,7 @@
                                  <children>
                                     <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
                                        <children>
-                                          <Label prefHeight="29.0" prefWidth="203.0" text="L'ajout d'un" textFill="#878787">
+                                          <Label prefHeight="29.0" prefWidth="203.0" text="Ma liste" textFill="#878787">
                                              <font>
                                                 <Font name="Cambria Bold" size="18.0" />
                                              </font>
@@ -109,7 +109,6 @@
                               <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card" stylesheets="@../tools/css/style.css">
                                  <children>
-                                    <Button fx:id="ajouterBlog" mnemonicParsing="false" onAction="#addBlog" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../tools/css/style.css" text="Ajouter" textFill="WHITE" />
                                     <Button fx:id="retourBlog" mnemonicParsing="false" onAction="#returnBlog" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../tools/css/style.css" text="Retourner" textFill="WHITE" />
                                     <Button fx:id="home" mnemonicParsing="false" onAction="#home" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../tools/css/style.css" text="Home" textFill="WHITE" />
                                  </children>
@@ -129,20 +128,14 @@
                                  <content>
                                     <AnchorPane prefHeight="498.0" prefWidth="738.0">
                                        <children>
-                                          <Label fx:id="labelImmatricule" alignment="CENTER" contentDisplay="CENTER" layoutX="35.0" layoutY="28.0" prefHeight="55.0" prefWidth="106.0" text="Titre" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="28.0">
-                                             <font>
-                                                <Font name="Cambria" size="16.0" />
-                                             </font>
-                                          </Label>
-                                          <TextField fx:id="blogTitre" layoutX="210.0" layoutY="43.0" />
                                           <Label fx:id="labelTestImmatricule" layoutX="445.0" layoutY="47.0" />
                                           <Label fx:id="labelTestEmail" layoutX="445.0" layoutY="87.0" />
-                                          <TextArea fx:id="blogContenu" layoutX="207.0" layoutY="125.0" prefHeight="271.0" prefWidth="464.0" />
-                                          <Label fx:id="labelImmatricule1" alignment="CENTER" contentDisplay="CENTER" layoutX="35.0" layoutY="180.0" prefHeight="55.0" prefWidth="106.0" text="Contenu">
-                                             <font>
-                                                <Font name="Cambria" size="16.0" />
-                                             </font>
-                                          </Label>
+                                          <TableView layoutX="85.0" layoutY="35.0" prefHeight="384.0" prefWidth="572.0">
+                                            <columns>
+                                              <TableColumn fx:id="nombre" prefWidth="75.0" text="Numero" />
+                                              <TableColumn fx:id="sujet" onEditCommit="#sujetCommut" prefWidth="75.0" text="Sujet" />
+                                            </columns>
+                                          </TableView>
                                        </children>
                                     </AnchorPane>
                                  </content>
