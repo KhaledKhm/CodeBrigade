@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import com.sun.istack.internal.Nullable;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
@@ -38,7 +39,7 @@ public class LoginController implements Initializable {
     
     public static String email;
     public static String motpass;
-    public int codem;
+    public static int codem;
     
     public static boolean isValidEmailAddress(String email) {
         boolean result = true;
@@ -78,10 +79,48 @@ public class LoginController implements Initializable {
         utilisateurService sc = new utilisateurService();
         if (sc.login(email, motpass)) {
             String role = sc.getRolebyId(sc.getIdbymail(email));
+         
+            //String status = sc.getStatusbyID(sc.getIdbymail(email));
+            
+            String status;
+if(sc.getRolebyId(sc.getIdbymail(email)) != null)
+{
+    status = "Banned";
+}
+else
+{
+    status = "";
+}
+            
+          /*  if (status.equals("Banned")){
+                  /* try{
+    
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/bannedAccount.fxml"));
+        
+        Parent root;
+        root = loader.load();
+        BannedAccountController bac = loader.getController();
+        labelStatus.getScene().setRoot(root);
+  
+        }catch(IOException ex) {
+            System.out.println(ex.getMessage());
+        }*/
+              /*    Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("BANNED");
+            alert.setHeaderText(null);
+            alert.setContentText("!!! Your account is banned! !!!");
+            alert.showAndWait();
+            }*/
 
-            switch (role) {
-                case "ROLE_Formateur":
-                    {
+            if(role.equals("ROLE_Formateur"))
+                    { if (status.equals("Banned")){
+                     Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("BANNED");
+            alert.setHeaderText(null);
+            alert.setContentText("!!! Your account is banned! !!!");
+            alert.showAndWait();
+            
+                    }else if (status.equals("NULL")){
                         FXMLLoader loader = new FXMLLoader();
                         labelStatus.getScene().getWindow().hide();
                         Stage prStage = new Stage();
@@ -91,10 +130,18 @@ public class LoginController implements Initializable {
                         prStage.setScene(scene);
                         prStage.setResizable(false);
                         prStage.show();
-                        break;
-                    }
-                case "ROLE_Candidat":
-                    {
+                    } 
+                    } 
+            else if(role.equals("ROLE_Candidat"))
+                    { 
+                         if (status.equals("Banned")){
+                     Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("BANNED");
+            alert.setHeaderText(null);
+            alert.setContentText("!!! Your account is banned! !!!");
+            alert.showAndWait();
+            
+                    }else if (status.isEmpty()){
                         FXMLLoader loader = new FXMLLoader();
                         labelStatus.getScene().getWindow().hide();
                         Stage prStage = new Stage();
@@ -104,10 +151,17 @@ public class LoginController implements Initializable {
                         prStage.setScene(scene);
                         prStage.setResizable(false);
                         prStage.show();
-                        break;
+                    }  
                     }
-                case "ROLE_Entreprise":
-                    {
+               else if(role.equals("ROLE_Entreprise"))
+                    { if (status.equals("Banned")){
+                     Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("BANNED");
+            alert.setHeaderText(null);
+            alert.setContentText("!!! Your account is banned! !!!");
+            alert.showAndWait();
+            
+                    }else if (status.isEmpty()){
                         FXMLLoader loader = new FXMLLoader();
                         labelStatus.getScene().getWindow().hide();
                         Stage prStage = new Stage();
@@ -117,10 +171,17 @@ public class LoginController implements Initializable {
                         prStage.setScene(scene);
                         prStage.setResizable(false);
                         prStage.show();
-                        break;
+                    }   
                     }
-                case "ROLE_Admin":
-                    {
+               else if(role.equals("ROLE_Admin"))
+                    { if (status.equals("Banned")){
+                     Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("BANNED");
+            alert.setHeaderText(null);
+            alert.setContentText("!!! Your account is banned! !!!");
+            alert.showAndWait();
+            
+                    }else if (!status.isEmpty()){
                         FXMLLoader loader = new FXMLLoader();
                         labelStatus.getScene().getWindow().hide();
                         Stage prStage = new Stage();
@@ -130,11 +191,10 @@ public class LoginController implements Initializable {
                         prStage.setScene(scene);
                         prStage.setResizable(false);
                         prStage.show();
-                        break;
-                    }
-                default:
-                    break;
-            }
+                    }   
+                    }               
+            
+            
         }  else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Alerte");
@@ -142,8 +202,8 @@ public class LoginController implements Initializable {
             alert.setContentText("Verifier votre Coordonnees!");
             alert.showAndWait();
         }
- 
         
+    
     }
     
     @FXML
