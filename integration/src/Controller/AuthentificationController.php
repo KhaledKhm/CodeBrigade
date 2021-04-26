@@ -48,10 +48,10 @@ class AuthentificationController extends AbstractController
     }
 
 
-  /* /**
+   /**
      * @Route("/", name="main")
      */
-   /* public function index()
+    public function index()
     {
         if ($this->isGranted('ROLE_Formateur')){
            /* $em = $this->getDoctrine()->getManager();
@@ -61,7 +61,7 @@ class AuthentificationController extends AbstractController
             }else*/
 
 
-         /*   return  $this->redirectToRoute("formateur/index");
+            return  $this->redirectToRoute("formateur/index");
         }else if ($this->isGranted('ROLE_Entreprise')){
             return  $this->redirectToRoute("evaluation");
         }else if ($this->isGranted('ROLE_Candidat')){
@@ -71,7 +71,7 @@ class AuthentificationController extends AbstractController
         }
 
 
-    }*/
+    }
 
 
 
