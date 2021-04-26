@@ -130,6 +130,8 @@ public class AjouterFormateurController implements Initializable {
           String adresse = formateurAdresse.getText();
           String domaine = formateurDomaine.getTypeSelector();
           utilisateur p;
+          utilisateurService us = new utilisateurService();
+          password=us.MD5(password);
           p=new utilisateur(email,password,cin,nom,prenom,sexe,date,etat,telephone,adresse,domaine,"ROLE_Formateur","NULL");
           formateurService ps = new formateurService();
           ps.ajouterFormateur(p);
