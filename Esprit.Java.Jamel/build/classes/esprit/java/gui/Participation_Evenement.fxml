@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.java.gui.Participation_EvenementController">
+   <children>
+      <Label layoutX="329.0" layoutY="14.0" text="Participation Evenement" textFill="#eb0d0d">
+         <font>
+            <Font name="System Bold Italic" size="36.0" />
+         </font>
+      </Label>
+      <TableView fx:id="table_participation" layoutX="154.0" layoutY="115.0" onMouseClicked="#click" prefHeight="271.0" prefWidth="714.0">
+        <columns>
+       
+          <TableColumn fx:id="col_participant_participation" prefWidth="209.0" text="ID Evenement" />
+            <TableColumn fx:id="col_eval_participation" prefWidth="246.0" text="ID Participant" />
+             <TableColumn fx:id="tf_email_evenement" prefWidth="290.0" text="Participant Email" />
+           
+        </columns>
+      </TableView>
+      
+      
+      <Label layoutX="64.0" layoutY="444.0" text="Supprimer Participation" textFill="RED">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font></Label>
+         
+      <Label layoutX="38.0" layoutY="487.0" text="ID Participation" />
+      <Button fx:id="btn_supp_participation" layoutX="110.0" layoutY="527.0" mnemonicParsing="false" onAction="#supprimerParticipation" text="Supprimer" />
+ 
+      <TextField fx:id="tf_supp_id_participation" layoutX="146.0" layoutY="483.0" />
+      
+      <Button fx:id="page_evenements" layoutX="892.0" layoutY="661.0" mnemonicParsing="false" onAction="#pageEvenements" text="Evenements" />
+      <Button layoutX="455.0" layoutY="397.0" mnemonicParsing="false" onAction="#Envoyeremail" prefHeight="31.0" prefWidth="113.0" text="Envoyer email" />
+   </children>
+</AnchorPane>
