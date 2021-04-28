@@ -131,7 +131,13 @@ public class AfficherMyBlogController implements Initializable {
     }
 
     @FXML
-    private void returnBlog(ActionEvent event) {
+    private void returnBlog(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Evaluation.fxml"));
+        
+          Parent root;
+          root = loader.load();
+          EvaluationController LCC = loader.getController();
+          home.getScene().setRoot(root);
     }
 
     @FXML

@@ -20,6 +20,7 @@ import Edu.esprit.tools.MaConnexion;
 public class utilisateurService {
     Connection cnx;
     PreparedStatement ste;
+    Statement st;
 
     public utilisateurService() {
         cnx = MaConnexion.getInstance().getCnx();
@@ -145,15 +146,16 @@ public class utilisateurService {
       
        public String getRolebyId(int id) {
         try {
-            ste = cnx.prepareStatement("select * from utilisateur where id=?");
-            ste.setInt(1, id);
-            ResultSet rs = ste.executeQuery();
-            rs.beforeFirst();
-            if (rs.next()) {
-                return rs.getString("role");
+            String sql="select role from utilisateur where id='"+id+"'";
+             st=cnx.createStatement();
+            ResultSet rs=st.executeQuery(sql);
+            while (rs.next())
+            {    
+                String role=rs.getString("role");
+                return role;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(utilisateurService.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         return "";
 
@@ -161,46 +163,50 @@ public class utilisateurService {
        
           public int getIdbymail(String mail) {
         try {
-            ste = cnx.prepareStatement("select * from utilisateur where email=?");
-            ste.setString(1, mail);
-            ResultSet rs = ste.executeQuery();
-            rs.beforeFirst();
-            if (rs.next()) {
-                return rs.getInt(1);
+            String sql="select id from utilisateur where email='"+mail+"'";
+            st=cnx.createStatement();
+            ResultSet rs=st.executeQuery(sql);
+            while (rs.next())
+            {    
+                int id=rs.getInt("id");
+                return id;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(utilisateurService.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
+           
         return 0;
 
     }
           
             public String getPassbyId(int id) {
         try {
-            ste = cnx.prepareStatement("select * from utilisateur where id=?");
-            ste.setInt(1, id);
-            ResultSet rs = ste.executeQuery();
-            rs.beforeFirst();
-            if (rs.next()) {
-                return rs.getString("password");
+            String sql="select password from utilisateur where id=='"+id+"'";
+             st=cnx.createStatement();
+            ResultSet rs=st.executeQuery(sql);
+            while (rs.next())
+            {    
+                String password=rs.getString("password");
+                return password;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(utilisateurService.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         return "";
     }
             
             public String getStatusbyID(int id) {
         try {
-            ste = cnx.prepareStatement("select * from utilisateur where id=?");
-            ste.setInt(1, id);
-            ResultSet rs = ste.executeQuery();
-            rs.beforeFirst();
-            if (rs.next()) {
-                return rs.getString("account_status");
+            String sql="select account_status from utilisateur where id='"+id+"'";
+            st=cnx.createStatement();
+            ResultSet rs=st.executeQuery(sql);
+            while (rs.next())
+            {    
+                String account_status=rs.getString("password");
+                return account_status;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(utilisateurService.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         return "";
     }
