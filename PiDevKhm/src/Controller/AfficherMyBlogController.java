@@ -38,7 +38,12 @@ import java.util.List;
 
 import static Controller.LoginController.email;
 import entities.blog;
+import javafx.scene.control.Alert;
+import javafx.util.Duration;
 import services.utilisateurService;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -65,8 +70,6 @@ public class AfficherMyBlogController implements Initializable {
     private Label labelTestEmail;
     @FXML
     private TableView<blog> table_myblog;
-    private TableColumn<?, ?> col_id_eval;
-    private TableColumn<?, ?> col_libelle_eval;
     @FXML
     private TextField tf_modif_sujet;
     @FXML
@@ -80,31 +83,30 @@ public class AfficherMyBlogController implements Initializable {
     @FXML
     private TextField searchtf;
     
+    int idBlog;
     
-    utilisateurService sc = new utilisateurService();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        afficherMesBlogs();
     }    
     
     
     public void afficherMesBlogs(){
+        utilisateurService sc = new utilisateurService();
         int idUser = sc.getIdbymail(email);
         blogService bg=new blogService();
         List<blog> Blogs=bg.afficherMyBlogs(idUser);
-        //col_id_eval.setCellValueFactory(new PropertyValueFactory<>("id"));
-        col_sujet.setCellValueFactory(new PropertyValueFactory<>("sujet"));
+
+        col_sujet.setCellValueFactory(new PropertyValueFactory<>("titre"));
         col_contenu.setCellValueFactory(new PropertyValueFactory<>("contenu"));
         table_myblog.setItems((ObservableList<blog>) Blogs);
-     //   List<String> entreprises=bg.afficherEntreprise();
-       // tf_ajout_entreprise_eval.setItems((ObservableList<String>)entreprises);
+
         //recherche
         ObservableList<blog> blogList=bg.afficherMyBlogs(idUser);
-        //ObservableList<User>usersList = FXCollections.observableArrayList();
         FilteredList<blog> filteredData = new FilteredList<>( blogList, b -> true);
         searchtf.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(blog -> {
@@ -135,30 +137,54 @@ public class AfficherMyBlogController implements Initializable {
 
     @FXML
     private void click(MouseEvent event) {
+        blog e = table_myblog.getItems().get(table_myblog.getSelectionModel().getSelectedIndex());
+        idBlog=e.getIdblog();
+        System.out.println(idBlog);
+        tf_modif_sujet.setText(e.getTitre());
+        tf_modif_contenu.setText(e.getContenu());
     }
 
     @FXML
     private void modifierEvaluation(ActionEvent event) {
+         String Titre = tf_modif_sujet.getText();
+          String Contenu = tf_modif_contenu.getText();
+         
+          
+          utilisateurService us = new utilisateurService();
+          int id = us.getIdbymail(email);
+          
+          blog b;
+          b=new blog(Titre,Contenu);
+          blogService bs = new blogService();
+          
+         //cs
+         boolean condition=true;
+         if(tf_modif_sujet.getText().isEmpty() |tf_modif_contenu.getText().isEmpty()){
+             Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Vérifiez vos Champs!");
+            alert.showAndWait();
+            condition=false;
+         }
+         if (condition==true){
+       //      System.out.println(b.getIdblog());
+             bs.modifierBlog(b, idBlog);
+             
+             //tray notif
+             TrayNotification tray = new TrayNotification();
+             AnimationType type = AnimationType.POPUP;
+             tray.setAnimationType(type);
+             tray.setTitle("Modification Blog");
+             tray.setMessage("Blog Modifiée");
+             tray.setNotificationType(NotificationType.SUCCESS);
+             tray.showAndDismiss(Duration.millis(3000));
+             afficherMesBlogs();         
+         }
     }
-    }
+    
 
-    @FXML
-    private void returnBlog(ActionEvent event) {
-    }
 
-    @FXML
-    private void home(ActionEvent event) {
-    }
-
-    @FXML
-    private void click(MouseEvent event) {
-blog e = table_blog.getItems().get(table_blog.getSelectionModel().getSelectedIndex());
-        tf_modif_libelle_eval.setText(e.getLibelle());
-        tf_modif_description_eval.setText(e.getDescription());
-        tf_modif_date_eval.setText(e.getDateEvaluation());
-        tf_modif_entreprise_eval.setText(String.valueOf(e.getId_entreprise()));
-        tf_supp_id_eval.setText(String.valueOf(e.getId()));
-    }
 
   
     

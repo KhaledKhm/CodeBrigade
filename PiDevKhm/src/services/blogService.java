@@ -8,6 +8,8 @@ package services;
 import entities.blog;
 import java.sql.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import tools.MaConnexion;
@@ -52,6 +54,7 @@ public class blogService {
             ResultSet rs = ste.executeQuery();
             while (rs.next()) { 
                 blog b = new blog();
+                b.setIdblog(rs.getInt("idblog"));
                 b.setTitre(rs.getString("titre"));
                 b.setContenu(rs.getString("contenu"));
                 blogs.add(b);
@@ -112,4 +115,19 @@ public class blogService {
             System.out.println(ex.getMessage());
         }
     }
+      
+      public int getBlogID(blog b){
+          try {
+            ste = cnx.prepareStatement("select * from blog where titre="+b.getTitre()+"and");
+           // ste.setString(1, idBlog);
+            ResultSet rs = ste.executeQuery();
+            rs.beforeFirst();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(utilisateurService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+      }
 }

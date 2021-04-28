@@ -83,7 +83,7 @@ public class AjouterBlogController implements Initializable {
         
           Parent root;
           root = loader.load();
-          InscriptionsChoiceController LCC = loader.getController();
+          AfficherMyBlogController AMBC = loader.getController();
           blogTitre.getScene().setRoot(root);
     }
 
