@@ -5,8 +5,8 @@
  */
 package Edu.esprit.gui;
 
-import Edu.esprit.services.utilisateurService;
 import Edu.esprit.services.formateurService;
+import Edu.esprit.services.utilisateurService;
 import Edu.esprit.entities.utilisateur;
 import java.io.IOException;
 import java.net.URL;

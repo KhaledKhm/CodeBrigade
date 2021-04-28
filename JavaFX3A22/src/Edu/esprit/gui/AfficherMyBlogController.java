@@ -41,6 +41,9 @@ import Edu.esprit.entities.blog;
 import javafx.scene.control.Alert;
 import javafx.util.Duration;
 import Edu.esprit.services.utilisateurService;
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
@@ -132,7 +135,13 @@ public class AfficherMyBlogController implements Initializable {
     }
 
     @FXML
-    private void home(ActionEvent event) {
+    private void home(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Evaluation.fxml"));
+        
+          Parent root;
+          root = loader.load();
+          EvaluationController LCC = loader.getController();
+          home.getScene().setRoot(root);
     }
 
     @FXML

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="Edu.esprit.gui.PassCodeController">
+    <stylesheets>
+        <URL value="@/tools/css/style.css" />
+    </stylesheets>
+   <children>
+      <Button fx:id="confirmCode" layoutX="291.0" layoutY="225.0" mnemonicParsing="false" onAction="#confirmCode" text="Confirmer" />
+      <Label layoutX="148.0" layoutY="160.0" text="Ecrire le code" />
+      <TextField fx:id="codePass" layoutX="252.0" layoutY="156.0" />
+   </children>
+</AnchorPane>

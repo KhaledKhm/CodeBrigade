@@ -74,7 +74,7 @@ public class ForgottenpassController implements Initializable {
         { String newPass = password.getText();
         utilisateurService sc = new utilisateurService();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../views/Login.fxml"));
+        loader.setLocation(getClass().getResource("Login.fxml"));
         LoginController ircc = loader.getController();
         mail=ircc.email;
         int id = sc.getIdbymail(ircc.email);
@@ -83,7 +83,7 @@ public class ForgottenpassController implements Initializable {
         FXMLLoader loaderr = new FXMLLoader();
         password.getScene().getWindow().hide();
         Stage prStage = new Stage();
-        loaderr.setLocation(getClass().getResource("../views/Login.fxml"));
+        loaderr.setLocation(getClass().getResource("Login.fxml"));
         Parent root = loaderr.load();
         Scene scene = new Scene(root);
         prStage.setScene(scene);
