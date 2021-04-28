@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="SmallPane" maxHeight="695.0" maxWidth="996.0" minHeight="695.0" minWidth="996.0" prefHeight="695.0" prefWidth="996.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Edu.esprit.gui.PromotionController">
+    <children>
+      
+         <Text fill="#1a154a" layoutX="274.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List Promotions">
+         <font>
+            <Font name="Caviar Dreams Bold" size="35.0" />
+         </font>
+      </Text>
+        
+      <TableView fx:id="table_promotion" layoutX="14.0" layoutY="117.0" onMouseClicked="#mouseClickedd" prefHeight="207.0" prefWidth="618.0" AnchorPane.rightAnchor="364.0">
+        <columns>
+          <TableColumn fx:id="col_id_entt" prefWidth="103.0" text="ID promotion" />
+          <TableColumn fx:id="col_libelle_entt" prefWidth="83.0" text="Libelle" />
+            <TableColumn fx:id="col_PoucentageReduction_ent" prefWidth="158.0" text="Poucentage Reduction" />
+              <TableColumn fx:id="col_id_evenement_ent" prefWidth="109.0" text="Titre evenement" /> 
+        </columns>
+      </TableView>
+      
+     
+       <Button fx:id="btn_supp_promotion" layoutX="155.0" layoutY="337.0" mnemonicParsing="false" onAction="#supprimerPromotion" opacity="0.75" prefHeight="31.0" prefWidth="367.0" styleClass="Supp" stylesheets="@../stylesheets/buttons.css" text="Sélectionner le champ à supprimer" />
+      <TextField fx:id="filterField" layoutX="14.0" layoutY="78.0" onKeyReleased="#filterFieldActionn" prefHeight="31.0" prefWidth="574.0" promptText="Search..." />
+      <Line endX="100.0" layoutX="653.0" layoutY="335.0" rotate="90.0" scaleX="2.7" scaleY="2.0" scaleZ="2.0" startX="-100.0" stroke="#1a154a" />
+
+           <Text fill="#1a154a" layoutX="642.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Promotion" textAlignment="CENTER" wrappingWidth="353.6708984375">
+         <font>
+            <Font name="Caviar Dreams Bold" size="30.0" />
+         </font>
+      </Text>
+      
+      <Button fx:id="btn_modif_promotion" layoutX="707.0" layoutY="394.0" mnemonicParsing="false" onAction="#modifierPromotion" opacity="0.75" prefHeight="37.0" prefWidth="206.0" styleClass="DarkBlue" stylesheets="@../stylesheets/buttons.css" text="Valider la modifiaction" />
+      
+      <TextField fx:id="tf_modif_id_promotion" disable="true" layoutX="684.0" layoutY="178.0" />
+      <TextField fx:id="tf_modif_libelle_promotion" layoutX="684.0" layoutY="229.0" prefHeight="31.0" prefWidth="252.0" promptText="Nouveau Titre..." />
+      <TextField fx:id="tf_modif_PoucentageReduction_promotion" layoutX="684.0" layoutY="286.0" prefHeight="31.0" prefWidth="252.0" promptText="Nouveau PoucentageReduction..." />
+      <TextField fx:id="tf_modif_id_evenement_promotion" layoutX="684.0" layoutY="339.0" prefHeight="31.0" prefWidth="252.0" promptText="Titre evenement..." />
+    
+        <Button fx:id="page_evenements" layoutX="913.0" layoutY="661.0" mnemonicParsing="false" onAction="#pageEvenements" text="Evenements" />
+        
+      <Label layoutX="54.0" layoutY="452.0" text="Libelle" />
+       <Label layoutX="2.0" layoutY="494.0" text="PoucentageReduction" />
+      <Label layoutX="34.0" layoutY="534.0" text="Titre evenement" />
+      
+      <TextField fx:id="tf_ajout_libelle_promotion" layoutX="131.0" layoutY="448.0" prefHeight="25.0" prefWidth="163.0" promptText="Libelle" />
+      <TextField fx:id="tf_ajout_PoucentageReduction_promotion" layoutX="131.0" layoutY="490.0" prefHeight="25.0" prefWidth="163.0" promptText="PoucentageReduction" />
+      <TextField fx:id="tf_ajout_id_evenement_promotion" layoutX="131.0" layoutY="530.0" prefHeight="25.0" prefWidth="163.0" promptText="Titre evenement" />
+     
+  <Button fx:id="btn_ajout_promotion" layoutX="60.0" layoutY="579.0" mnemonicParsing="false" onAction="#ajouterPromotion" prefHeight="37.0" prefWidth="171.0" styleClass="DarkBlue" stylesheets="@../stylesheets/buttons.css" text="Valider" textOverrun="WORD_ELLIPSIS">
+         <font>
+            <Font name="Caviar Dreams Italic" size="15.0" />
+         </font></Button>
+         
+   <Text fill="#1a154a" layoutX="-22.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Promotion" textAlignment="CENTER" wrappingWidth="353.6708984375">
+         <font>
+            <Font name="Caviar Dreams Bold" size="30.0" />
+         </font>
+      </Text>
+   
+   </children>
+</AnchorPane>
