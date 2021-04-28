@@ -37,6 +37,12 @@
       <TextField fx:id="tf_supp_id_participation" layoutX="146.0" layoutY="483.0" />
       
       <Button fx:id="page_evenements" layoutX="892.0" layoutY="661.0" mnemonicParsing="false" onAction="#pageEvenements" text="Evenements" />
-      <Button layoutX="455.0" layoutY="397.0" mnemonicParsing="false" onAction="#Envoyeremail" prefHeight="31.0" prefWidth="113.0" text="Envoyer email" />
+      
+      <Button layoutX="455.0" layoutY="397.0" mnemonicParsing="false" onAction="#Envoyeremail" prefHeight="35.0" prefWidth="149.0" styleClass="DarkBlue" stylesheets="@../stylesheets/buttons.css" text="Envoyer email" textOverrun="WORD_ELLIPSIS">
+       <font>
+            <Font name="Caviar Dreams Italic" size="15.0" />
+         </font></Button>
+      
+      
    </children>
 </AnchorPane>

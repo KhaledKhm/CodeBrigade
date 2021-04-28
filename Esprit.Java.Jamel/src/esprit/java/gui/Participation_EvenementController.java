@@ -123,6 +123,10 @@ public class Participation_EvenementController implements Initializable {
     @FXML
     private void Envoyeremail(ActionEvent event) throws AddressException, MessagingException {
             //mailing
+             //String host = "relay.jangosmtp.net";
+              //props.put("mail.smtp.connectiontimeout", "t1");
+    //props.put("mail.smtp.timeout", "t2");
+
         Properties properties = new Properties();
 
         properties.put("mail.smtp.auth","true");
@@ -139,19 +143,26 @@ public class Participation_EvenementController implements Initializable {
             protected PasswordAuthentication getPasswordAuthentication(){
                 return new PasswordAuthentication(MyAccountEmail,Password);
             }
+         
         });
-        
+       
  Participation_EvenementService es=new Participation_EvenementService();
  
           Message message = new MimeMessage(session);
         message.setFrom(new InternetAddress(MyAccountEmail));
-      
-        
-      //message.setRecipient(Message.RecipientType.TO,new InternetAddress(es.getMail(mail)));
-        message.setSubject("Nouveau Entretien");
-        message.setText("Monsieur/Madame,Nous sommes ravi de vous faire connaitre que vous etes affectué a un entretien");
 
+        message.setRecipient(Message.RecipientType.TO,new InternetAddress(es.getMail()));
+          
+       //String to = "mohamedjameleddine.kalai@esprit.tn";
+      // message.setRecipients(Message.RecipientType.TO,
+            //  InternetAddress.parse(to)); 
+        
+        message.setSubject("Nouveau participation a un Evenement");
+        message.setText("Monsieur/Madame,Nous sommes ravi de vous faire connaitre que vous etes participer a un Evenement");
+        
         Transport.send(message);
+      
+        System.out.println("Sent message successfully....");
     }
 
     

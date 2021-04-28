@@ -71,7 +71,7 @@ public class Participation_EvenementService {
     
     public void supprimerParticipation(String id)//CRUD
     {
-        String req ="delete from participation_evenement where id_p = "+id;
+        String req ="delete from participation_evenement where id_e = "+id;
         try {
             st=cnx.createStatement();
             st.executeUpdate(req);
@@ -159,13 +159,14 @@ public class Participation_EvenementService {
     {
         try {
             String mail;
-            String sql="select email from participation_evenement where id_e=15";
+            String sql="select email from participation_evenement where id_p=29";
             ste=cnx.prepareStatement(sql);
             ResultSet rs=ste.executeQuery();
             while (rs.next())
             {    
                 mail=rs.getString("email");
                 return mail;
+             
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

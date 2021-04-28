@@ -24,7 +24,7 @@
           <TableColumn fx:id="col_id_entt" prefWidth="103.0" text="ID promotion" />
           <TableColumn fx:id="col_libelle_entt" prefWidth="83.0" text="Libelle" />
             <TableColumn fx:id="col_PoucentageReduction_ent" prefWidth="158.0" text="Poucentage Reduction" />
-              <TableColumn fx:id="col_id_evenement_ent" prefWidth="109.0" text="id evenement" /> 
+              <TableColumn fx:id="col_id_evenement_ent" prefWidth="109.0" text="Titre evenement" /> 
         </columns>
       </TableView>
       
@@ -44,17 +44,17 @@
       <TextField fx:id="tf_modif_id_promotion" disable="true" layoutX="684.0" layoutY="178.0" />
       <TextField fx:id="tf_modif_libelle_promotion" layoutX="684.0" layoutY="229.0" prefHeight="31.0" prefWidth="252.0" promptText="Nouveau Titre..." />
       <TextField fx:id="tf_modif_PoucentageReduction_promotion" layoutX="684.0" layoutY="286.0" prefHeight="31.0" prefWidth="252.0" promptText="Nouveau PoucentageReduction..." />
-      <TextField fx:id="tf_modif_id_evenement_promotion" layoutX="684.0" layoutY="339.0" prefHeight="31.0" prefWidth="252.0" promptText="id_evenement..." />
+      <TextField fx:id="tf_modif_id_evenement_promotion" layoutX="684.0" layoutY="339.0" prefHeight="31.0" prefWidth="252.0" promptText="Titre evenement..." />
     
         <Button fx:id="page_evenements" layoutX="913.0" layoutY="661.0" mnemonicParsing="false" onAction="#pageEvenements" text="Evenements" />
         
       <Label layoutX="54.0" layoutY="452.0" text="Libelle" />
        <Label layoutX="2.0" layoutY="494.0" text="PoucentageReduction" />
-      <Label layoutX="34.0" layoutY="534.0" text="id_evenement" />
+      <Label layoutX="34.0" layoutY="534.0" text="Titre evenement" />
       
       <TextField fx:id="tf_ajout_libelle_promotion" layoutX="131.0" layoutY="448.0" prefHeight="25.0" prefWidth="163.0" promptText="Libelle" />
       <TextField fx:id="tf_ajout_PoucentageReduction_promotion" layoutX="131.0" layoutY="490.0" prefHeight="25.0" prefWidth="163.0" promptText="PoucentageReduction" />
-      <TextField fx:id="tf_ajout_id_evenement_promotion" layoutX="131.0" layoutY="530.0" prefHeight="25.0" prefWidth="163.0" promptText="id_evenement" />
+      <TextField fx:id="tf_ajout_id_evenement_promotion" layoutX="131.0" layoutY="530.0" prefHeight="25.0" prefWidth="163.0" promptText="Titre evenement" />
      
   <Button fx:id="btn_ajout_promotion" layoutX="60.0" layoutY="579.0" mnemonicParsing="false" onAction="#ajouterPromotion" prefHeight="37.0" prefWidth="171.0" styleClass="DarkBlue" stylesheets="@../stylesheets/buttons.css" text="Valider" textOverrun="WORD_ELLIPSIS">
          <font>
