@@ -17,12 +17,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javax.mail.*;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import services.utilisateurService;
-
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -77,13 +80,9 @@ public class LoginController implements Initializable {
         email = utilisateurEmail.getText();
         motpass = utilisateurPassword.getText();
         utilisateurService sc = new utilisateurService();
-        if (sc.login(email, motpass)) {
-            String role = sc.getRolebyId(sc.getIdbymail(email));
-         
-            //String status = sc.getStatusbyID(sc.getIdbymail(email));
-            
-            String status;
-if(sc.getRolebyId(sc.getIdbymail(email)) != null)
+        motpass = sc.MD5(motpass);
+                   String status;
+if(sc.getRolebyId(sc.getIdbymail(email)).toString() == "NULL")
 {
     status = "Banned";
 }
@@ -91,6 +90,14 @@ else
 {
     status = "";
 }
+        //System.out.println(status);
+      //  System.out.println(motpass);
+        if (sc.login(email, motpass)) {
+            String role = sc.getRolebyId(sc.getIdbymail(email));
+         
+            //String status = sc.getStatusbyID(sc.getIdbymail(email));
+            
+ 
             
           /*  if (status.equals("Banned")){
                   /* try{
@@ -120,7 +127,7 @@ else
             alert.setContentText("!!! Your account is banned! !!!");
             alert.showAndWait();
             
-                    }else if (status.equals("NULL")){
+                    }else if (status.isEmpty()){
                         FXMLLoader loader = new FXMLLoader();
                         labelStatus.getScene().getWindow().hide();
                         Stage prStage = new Stage();
@@ -130,6 +137,14 @@ else
                         prStage.setScene(scene);
                         prStage.setResizable(false);
                         prStage.show();
+                        
+                        TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+        tray.setAnimationType(type);
+        tray.setTitle("Login effectue");
+        tray.setMessage("Bonjour Formateur");
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(3000));
                     } 
                     } 
             else if(role.equals("ROLE_Candidat"))
@@ -151,6 +166,14 @@ else
                         prStage.setScene(scene);
                         prStage.setResizable(false);
                         prStage.show();
+                        
+                          TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+        tray.setAnimationType(type);
+        tray.setTitle("Login effectue");
+        tray.setMessage("Bonjour Candidat");
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(3000));
                     }  
                     }
                else if(role.equals("ROLE_Entreprise"))
@@ -171,6 +194,14 @@ else
                         prStage.setScene(scene);
                         prStage.setResizable(false);
                         prStage.show();
+                        
+                          TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+        tray.setAnimationType(type);
+        tray.setTitle("Login effectue");
+        tray.setMessage("Bonjour Entreprise");
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(3000));
                     }   
                     }
                else if(role.equals("ROLE_Admin"))
@@ -181,7 +212,7 @@ else
             alert.setContentText("!!! Your account is banned! !!!");
             alert.showAndWait();
             
-                    }else if (!status.isEmpty()){
+                    }else if (status.isEmpty()){
                         FXMLLoader loader = new FXMLLoader();
                         labelStatus.getScene().getWindow().hide();
                         Stage prStage = new Stage();
@@ -191,6 +222,14 @@ else
                         prStage.setScene(scene);
                         prStage.setResizable(false);
                         prStage.show();
+                        
+                          TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+        tray.setAnimationType(type);
+        tray.setTitle("Login effectue");
+        tray.setMessage("Bonjour Admin");
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(3000));
                     }   
                     }               
             

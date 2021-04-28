@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author OneEffect007
+ * @author SPIRIT
  */
 public class MaConnexion {
     public String url ="jdbc:mysql://localhost:3306/jobbook";

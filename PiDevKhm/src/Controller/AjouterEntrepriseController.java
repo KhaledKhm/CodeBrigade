@@ -24,6 +24,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import services.entrepriseService;
+import services.utilisateurService;
 
 /**
  * FXML Controller class
@@ -110,8 +111,10 @@ public class AjouterEntrepriseController implements Initializable {
           String adresse = entrepriseAdresse.getText();
           String site = entrepriseSite.getText();
           int telephone = Integer.parseInt(entrepriseTelephone.getText());
-          String secteur = entrepriseSecteur.getTypeSelector();
+          String secteur = entrepriseSecteur.getTypeSelector();       
           utilisateur p;
+          utilisateurService us = new utilisateurService();
+          password=us.MD5(password);
           p=new utilisateur(email,password,immatricule,libelle,telephone,adresse,site,secteur,"ROLE_Entreprise","NULL");
           entrepriseService ps = new entrepriseService();
           ps.ajouterEntreprise(p);

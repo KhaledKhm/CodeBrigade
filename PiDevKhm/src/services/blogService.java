@@ -8,6 +8,8 @@ package services;
 import entities.blog;
 import java.sql.*;
 import java.util.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import tools.MaConnexion;
 
 /**
@@ -40,11 +42,12 @@ public class blogService {
    }
       
       
-         public List<blog> afficherBlogs(){
-       List<blog> blogs = new ArrayList<>();
+         public ObservableList<blog> afficherMyBlogs(int idUtilisateur){ // user
+       ObservableList<blog> blogs =FXCollections.observableArrayList();
+       
         try {
             
-            String sql="select * from blog";
+            String sql="select * from blog where idUtilisateur="+idUtilisateur;
             ste =cnx.prepareStatement(sql);
             ResultSet rs = ste.executeQuery();
             while (rs.next()) { 
@@ -60,6 +63,23 @@ public class blogService {
         }
      return blogs;
    }
+         
+         public ObservableList<String> afficherBlogID() 
+    {
+        ObservableList<String> ids= FXCollections.observableArrayList();
+        try {
+            String sql="select titre from blog";
+            ste=cnx.prepareStatement(sql);
+            ResultSet rs=ste.executeQuery();
+            while (rs.next())
+            {    
+                ids.add(rs.getString("titre"));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return ids;
+    } 
          
          
          public void supprimerBlog(int idblog) {

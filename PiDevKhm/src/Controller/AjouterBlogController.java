@@ -79,7 +79,7 @@ public class AjouterBlogController implements Initializable {
           blogService bs = new blogService();
           bs.ajouterBlog(b);
           
-          FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/inscriptionsChoice.fxml"));
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/afficherMyBlog.fxml"));
         
           Parent root;
           root = loader.load();
@@ -88,11 +88,23 @@ public class AjouterBlogController implements Initializable {
     }
 
     @FXML
-    private void returnBlog(ActionEvent event) {
+    private void returnBlog(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/afficherMyBlog.fxml"));
+        
+          Parent root;
+          root = loader.load();
+          AfficherMyBlogController LCC = loader.getController();
+          blogTitre.getScene().setRoot(root);
     }
 
     @FXML
-    private void home(ActionEvent event) {
+    private void home(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/afficherMyBlog.fxml"));
+        
+          Parent root;
+          root = loader.load();
+          AfficherMyBlogController LCC = loader.getController();
+          blogTitre.getScene().setRoot(root);
     }
 
     

@@ -9,6 +9,8 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -130,12 +132,23 @@
                                        <children>
                                           <Label fx:id="labelTestImmatricule" layoutX="445.0" layoutY="47.0" />
                                           <Label fx:id="labelTestEmail" layoutX="445.0" layoutY="87.0" />
-                                          <TableView layoutX="85.0" layoutY="35.0" prefHeight="384.0" prefWidth="572.0">
-                                            <columns>
-                                              <TableColumn fx:id="nombre" prefWidth="75.0" text="Numero" />
-                                              <TableColumn fx:id="sujet" onEditCommit="#sujetCommut" prefWidth="75.0" text="Sujet" />
-                                            </columns>
+                                          <TableView fx:id="table_myblog" layoutX="50.0" layoutY="39.0" onMouseClicked="#click" prefHeight="210.0" prefWidth="635.0">
+                                             <columns>
+                                                <TableColumn fx:id="col_sujet" prefWidth="198.0" text="Sujet" />
+                                                <TableColumn fx:id="col_contenu" prefWidth="228.0" text="Contenu" />
+                                             </columns>
                                           </TableView>
+                                          <Label layoutX="50.0" layoutY="268.0" text="Sujet" />
+                                          <Label layoutX="50.0" layoutY="301.0" text="Contenu" />
+                                          <TextField fx:id="tf_modif_sujet" layoutX="144.0" layoutY="264.0" promptText="Libelle" />
+                                          <Button fx:id="btn_modif_blog" layoutX="555.0" layoutY="437.0" mnemonicParsing="false" onAction="#modifierEvaluation" text="Modifier" />
+                                          <TextArea fx:id="tf_modif_contenu" layoutX="144.0" layoutY="301.0" prefHeight="132.0" prefWidth="336.0" promptText="Contenu" />
+                                          <TextField fx:id="searchtf" layoutX="151.0" layoutY="11.0" />
+                                          <Label layoutX="50.0" layoutY="9.0" prefHeight="29.0" prefWidth="111.0" text="Recherche" textFill="#878787">
+                                             <font>
+                                                <Font name="Cambria Bold" size="18.0" />
+                                             </font>
+                                          </Label>
                                        </children>
                                     </AnchorPane>
                                  </content>

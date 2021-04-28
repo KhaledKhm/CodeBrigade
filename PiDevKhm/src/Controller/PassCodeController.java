@@ -52,8 +52,8 @@ public class PassCodeController implements Initializable {
             code = ircc.codem;
           int codex = Integer.parseInt(codePass.getText());
         utilisateurService sc = new utilisateurService();
-        String x="x";
-        if (codePass.getText().equals(x))
+      //  String x="x";
+        if (codePass.getText().isEmpty())
         {Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Alerte");
             alert.setHeaderText(null);
@@ -68,7 +68,7 @@ public class PassCodeController implements Initializable {
         Parent root;
         root = loader.load();
         ForgottenpassController LC = loader.getController();
-        codePass.getScene().setRoot(root);
+        confirmCode.getScene().setRoot(root);
             
           /*  FXMLLoader loader = new FXMLLoader();
             codePass.getScene().getWindow().hide();

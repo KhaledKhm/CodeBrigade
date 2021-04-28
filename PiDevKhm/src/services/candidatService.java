@@ -7,6 +7,8 @@ package services;
 
 import entities.utilisateur;
 import java.sql.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import tools.MaConnexion;
 
 /**
@@ -48,5 +50,22 @@ public class candidatService {
         }
        
    }
+       
+       public ObservableList<String> afficherID()
+    {
+        ObservableList<String> ids= FXCollections.observableArrayList();
+        try {
+            String sql="select id from quiz";
+            ste=cnx.prepareStatement(sql);
+            ResultSet rs=ste.executeQuery();
+            while (rs.next())
+            {    
+                ids.add(rs.getString("id"));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return ids;
+    }
     
 }

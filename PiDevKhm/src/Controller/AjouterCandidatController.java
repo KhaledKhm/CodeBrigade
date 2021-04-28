@@ -26,6 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import services.candidatService;
+import services.utilisateurService;
 
 /**
  * FXML Controller class
@@ -110,6 +111,9 @@ public class AjouterCandidatController implements Initializable {
     private Button inscrireCandidat;
     @FXML
     private Button retourCandidat;
+    
+    
+ 
 
     /**
      * Initializes the controller class.
@@ -136,6 +140,8 @@ public class AjouterCandidatController implements Initializable {
           String adresse = candidatAdresse.getText();
           String domaine = candidatDomaine.getTypeSelector();
           utilisateur u;
+          utilisateurService us = new utilisateurService();
+          password=us.MD5(password);
           u=new utilisateur(email,password,cin,nom,prenom,sexe,date,etat,telephone,adresse,domaine,"ROLE_Candidat","NULL");
           candidatService ps = new candidatService();
           ps.ajouterCandidat(u);
