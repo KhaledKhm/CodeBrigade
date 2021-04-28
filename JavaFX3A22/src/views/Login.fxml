@@ -13,7 +13,7 @@
         <URL value="@../tools/css/login.css" />
     </stylesheets>
    <children>
-      <Button layoutX="331.0" layoutY="233.0" mnemonicParsing="false" onAction="#Login" text="Login">
+      <Button layoutX="349.0" layoutY="233.0" mnemonicParsing="false" onAction="#Login" styleClass="add-btn" stylesheets="@../tools/css/style.css" text="Login">
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font>
@@ -28,19 +28,19 @@
             <Font name="Times New Roman" size="18.0" />
          </font>
       </PasswordField>
-      <Label fx:id="labelStatus" layoutX="196.0" layoutY="77.0" prefHeight="17.0" prefWidth="213.0" text="Status" textFill="#f80a0a">
+      <Label fx:id="labelStatus" layoutX="196.0" layoutY="77.0" prefHeight="17.0" prefWidth="213.0" text="Bienvenue" textFill="#f80a0a">
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="inscrire" layoutX="242.0" layoutY="233.0" mnemonicParsing="false" onAction="#Inscrire" text="Inscrire">
+      <Button fx:id="inscrire" layoutX="230.0" layoutY="233.0" mnemonicParsing="false" onAction="#Inscrire" styleClass="add-btn" stylesheets="@../tools/css/style.css" text="Inscrire">
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="forgottonPass" layoutX="237.0" layoutY="271.0" mnemonicParsing="false" onAction="#forgottonPass" text="Mot de passe oublié">
+      <Button fx:id="forgottonPass" layoutX="267.0" layoutY="274.0" mnemonicParsing="false" onAction="#forgottonPass" prefHeight="6.0" prefWidth="124.0" styleClass="add-btn" stylesheets="@../tools/css/style.css" text="Mot de passe oublié" textFill="RED">
          <font>
-            <Font name="Times New Roman" size="18.0" />
+            <Font name="Times New Roman" size="13.0" />
          </font>
       </Button>
    </children>
