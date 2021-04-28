@@ -38,6 +38,11 @@ public class TestFXMain extends Application {
             primaryStage.setTitle("Gestion des Avis");
             primaryStage.setScene(scene);
             primaryStage.show();
+            
+            
+            new animatefx.animation.BounceIn(root).play();
+        
+        
         } catch (IOException ex) {
             Logger.getLogger(TestFXMain.class.getName()).log(Level.SEVERE, null, ex);
         }

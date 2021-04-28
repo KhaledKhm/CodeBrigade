@@ -20,8 +20,10 @@
       <TextField fx:id="Enter" layoutX="275.0" layoutY="251.0" prefHeight="26.0" prefWidth="94.0" promptText="Enter Captcha" />
       <VBox prefHeight="402.0" prefWidth="137.0" style="-fx-background-color: #808080;">
          <children>
-            <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="147.0" text="Ajout" underline="true" />
-            <Button fx:id="takeaffich" mnemonicParsing="false" onAction="#takeaff" prefHeight="36.0" prefWidth="147.0" text="Affich" />
+            <Button fx:id="pgajt" mnemonicParsing="false" onAction="#takeajt" prefHeight="36.0" prefWidth="147.0" text="Ajout Avis" underline="true" />
+            <Button fx:id="takeaffich" mnemonicParsing="false" onAction="#takeaff" prefHeight="36.0" prefWidth="147.0" text="Affich Avis" />
+            <Button fx:id="ajrec" mnemonicParsing="false" onAction="#addReclamation" prefHeight="36.0" prefWidth="147.0" text="Ajout Reclamation" underline="true" />
+            <Button fx:id="affrec" mnemonicParsing="false" onAction="#affrecon" prefHeight="36.0" prefWidth="147.0" text="Affiche Reclamation" />
          </children>
       </VBox>
    </children>

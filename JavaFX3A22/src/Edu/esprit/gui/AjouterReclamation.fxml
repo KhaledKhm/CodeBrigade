@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Edu.esprit.gui.AjouterReclamationController">
+   <children>
+      <Label layoutX="271.0" layoutY="40.0" text="A Propos :" />
+      <Button fx:id="btnajout" layoutX="272.0" layoutY="362.0" mnemonicParsing="false" onAction="#ajrec" text="Ajouter" />
+      <TextField fx:id="captchatxt" layoutX="275.0" layoutY="283.0" prefHeight="26.0" prefWidth="94.0" promptText="Captcha" />
+      <Button fx:id="btncaptcha" layoutX="369.0" layoutY="283.0" mnemonicParsing="false" onAction="#generate" prefHeight="18.0" prefWidth="78.0" text="Generate&#10;" textAlignment="CENTER" textFill="#100000" />
+      <Label layoutX="145.0" layoutY="183.0" />
+      <TextField fx:id="Enter" layoutX="275.0" layoutY="310.0" prefHeight="26.0" prefWidth="94.0" promptText="Enter Captcha" />
+      <VBox prefHeight="402.0" prefWidth="137.0" style="-fx-background-color: #808080;">
+         <children>
+            <Button fx:id="pgajt" mnemonicParsing="false" onAction="#takeajt" prefHeight="36.0" prefWidth="147.0" text="Ajout Avis" underline="true" />
+            <Button fx:id="takeaffich" mnemonicParsing="false" onAction="#takeaff" prefHeight="36.0" prefWidth="147.0" text="Affich Avis" />
+            <Button fx:id="ajrec" mnemonicParsing="false" onAction="#ajrecon" prefHeight="36.0" prefWidth="147.0" text="Ajout Reclamation" />
+            <Button fx:id="affrec" mnemonicParsing="false" onAction="#affrecon" prefHeight="36.0" prefWidth="147.0" text="Affiche Reclamation" />
+         </children>
+      </VBox>
+      <TextField fx:id="commentaire" layoutX="275.0" layoutY="201.0" prefHeight="67.0" prefWidth="173.0" promptText="Text..." />
+      <Label layoutX="271.0" layoutY="110.0" text="Intensité d'interference :" />
+      <Label layoutX="271.0" layoutY="174.0" text="Commentaire :" />
+      <ComboBox fx:id="propos" layoutX="271.0" layoutY="65.0" onAction="#Selecti" prefWidth="150.0" promptText="select..." />
+      <ComboBox fx:id="intensite" layoutX="271.0" layoutY="139.0" onAction="#Selectii" prefWidth="150.0" />
+   </children>
+</AnchorPane>

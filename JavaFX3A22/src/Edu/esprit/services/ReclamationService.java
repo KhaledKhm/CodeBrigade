@@ -1,6 +1,7 @@
 package Edu.esprit.services;
 
 import Edu.esprit.entities.Avis;
+import Edu.esprit.entities.Reclamation;
 import Edu.esprit.tools.MaConnexion;
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,40 +16,45 @@ import javafx.geometry.Pos;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 
-public class AvisService {
+public class ReclamationService {
 
     Connection cnx;
     PreparedStatement ste;
 
-    public AvisService() {
+    public ReclamationService() {
         cnx = MaConnexion.getInstance().getCnx();
     }
     
-   public void ajouterAvis(Avis p)
+   public void ajouterReclamation(Reclamation p)
    {
         try {
-            String sql="insert into avis(commentaire,etoiles)"+"Values(?,?)";
+            String sql="insert into Reclamation(sujet,intensite,commentaire)"+"Values(?,?,?)";
             ste = cnx.prepareStatement(sql);
-            ste.setString(1,p.getCommentaire());
-            ste.setInt(2, p.getEtoiles());
+            ste.setString(1,p.getSujet());
+           ste.setString(2,p.getIntensite());
+           ste.setString(3,p.getCommentaire());
             ste.executeUpdate();
-            System.out.println("Avis Ajoutée");
+            System.out.println("Reclamation Ajoutée");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
        
    }
     
-    public void supprimerAvis(Avis a){
-        String requete = "DELETE FROM Avis WHERE ID = ?";
+   public void supprimerReclamation(Reclamation a){
+        String requete = "DELETE FROM Reclamation WHERE id = ?";
         try {
            PreparedStatement st=cnx.prepareStatement(requete);
             st.setInt(1, a.getId());
             st.executeUpdate();
-            
-             
-                    Notifications notificationBuilder = Notifications.create()
-                    .title("Avis")
+        } catch (SQLException ex) {
+             System.out.println(ex.getMessage());
+        }
+        System.out.println("Reclamation supprimée!");
+        
+        
+        Notifications notificationBuilder = Notifications.create()
+                    .title("Reclamation")
                     .text("Suppression Reussite")
                     .graphic(null)
                     .hideAfter(Duration.seconds(5))
@@ -58,44 +64,39 @@ public class AvisService {
                     public void handle(ActionEvent event){System.out.println("Notification");}
                     });
             notificationBuilder.showConfirm();
-            
-            
-        } catch (SQLException ex) {
-             System.out.println(ex.getMessage());
-        }
-        System.out.println("Avis supprimée!");
+        
     }
    
    
-   public ObservableList<Avis> afficherAvis(){  
-       ObservableList<Avis> Avis= FXCollections.observableArrayList();
+   public ObservableList<Reclamation> afficherReclamation(){  
+       ObservableList<Reclamation> Reclamation= FXCollections.observableArrayList();
         try {
             
-            String sql="select * from Avis";
+            String sql="select * from Reclamation";
             ste =cnx.prepareStatement(sql);
             ResultSet rs = ste.executeQuery();
             while (rs.next()) { 
-                Avis p = new Avis(rs.getInt(1),rs.getString(2),rs.getInt(3));
-                Avis.add(p);
+                Reclamation p = new Reclamation(rs.getString(2),rs.getString(3),rs.getString(4));
+                Reclamation.add(p);
                 
             
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-     return Avis;
+     return Reclamation;
    }
    
-   public Avis readbyId(int id){
-        Avis a=null;
-        String req ="SELECT * FROM Avis WHERE id=?";
+   public Reclamation readbyId(int id){
+        Reclamation a=null;
+        String req ="SELECT * FROM Reclamation WHERE id=?";
         try {
             PreparedStatement st=cnx.prepareStatement(req);
             st.setInt(1, id);
             ResultSet rs=st.executeQuery();
             if(rs.next())
             {
-                a=new Avis(rs.getInt(1), rs.getString(2), rs.getInt(3));
+           //     a=new Reclamation(rs.getInt(1), rs.getString(2), rs.getInt(3));
 
             }
 
@@ -108,30 +109,18 @@ public class AvisService {
     }
    
    
-   public void modifier(int id,Avis f){
-        String req ="UPDATE Avis SET etoiles=?,commentaire=? WHERE id=?";
+   public void modifier(int id,Reclamation f){
+       System.out.println("testinside2222");
+        String req ="UPDATE Reclamation SET sujet=?,intensite=?,commentaire=? WHERE id=?";
 
         try {
             PreparedStatement st=cnx.prepareStatement(req);
-            st.setInt(1, f.getEtoiles());
-            st.setString(2,f.getCommentaire());
-            st.setInt(3,id);
+            st.setInt(1, id);
+            st.setString(2, f.getSujet());
+            st.setString(3,f.getIntensite());
+            st.setString(4,f.getCommentaire());
             st.executeUpdate();
-            System.out.println("Avis modifiee !");
-            
-             
-                    Notifications notificationBuilder = Notifications.create()
-                    .title("Avis")
-                    .text("Modification Reussite")
-                    .graphic(null)
-                    .hideAfter(Duration.seconds(5))
-                    .position(Pos.CENTER_RIGHT)
-                    .onAction(new EventHandler<ActionEvent>(){
-                    @Override
-                    public void handle(ActionEvent event){System.out.println("Notification");}
-                    });
-            notificationBuilder.showConfirm();
-            
+            System.out.println("Reclamation modifiee !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
