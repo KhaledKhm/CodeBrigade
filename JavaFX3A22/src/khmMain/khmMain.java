@@ -5,9 +5,7 @@
  */
 package khmMain;
 
-import entities.*;
-import services.*;
-import tools.MaConnexion;
+import Edu.esprit.tools.MaConnexion;
 
 /**
  *
