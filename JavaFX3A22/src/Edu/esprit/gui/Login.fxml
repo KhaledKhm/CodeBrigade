@@ -9,7 +9,13 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Edu.esprit.gui.LoginController">
+<<<<<<< HEAD
     
+=======
+    <stylesheets>
+        <URL value="@..Edu/esprit/tools/css/login.css" />
+    </stylesheets>
+>>>>>>> b4f7624762d95467cd24cfd2eb1703696d0cc675
    <children>
       <Button layoutX="349.0" layoutY="233.0" mnemonicParsing="false" onAction="#Login" styleClass="add-btn" stylesheets="@../tools/css/style.css" text="Login">
          <font>
