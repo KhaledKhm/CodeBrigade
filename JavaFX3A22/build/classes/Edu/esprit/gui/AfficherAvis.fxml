@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Edu.esprit.gui.AfficherAvisController">
+   <children>
+      <TableView fx:id="table" layoutX="267.0" layoutY="14.0" prefHeight="298.0" prefWidth="318.0">
+        <columns>
+          <TableColumn fx:id="commentaire" prefWidth="166.4000244140625" text="Commentaire" />
+            <TableColumn fx:id="etoiles" prefWidth="150.39999999999998" text="Etoiles" />
+        </columns>
+      </TableView>
+      <Button fx:id="modifier" layoutX="452.0" layoutY="312.0" mnemonicParsing="false" onAction="#modifieron" text="Modifier" />
+      <Button fx:id="supprimer" layoutX="514.0" layoutY="312.0" mnemonicParsing="false" onAction="#supprimeron" text="Supprimer" />
+      <VBox prefHeight="400.0" prefWidth="147.0" style="-fx-background-color: #808080;">
+         <children>
+            <Button fx:id="pgajt" mnemonicParsing="false" onAction="#takeajt" prefHeight="36.0" prefWidth="147.0" text="Ajout Avis" />
+            <Button fx:id="takeaffich" mnemonicParsing="false" onAction="#takeaff" prefHeight="36.0" prefWidth="147.0" text="Affich Avis" underline="true" />
+            <Button fx:id="ajrec" mnemonicParsing="false" onAction="#ajrecon" prefHeight="36.0" prefWidth="147.0" text="Ajout Reclamation" />
+            <Button fx:id="affrec" mnemonicParsing="false" onAction="#affrecon" prefHeight="36.0" prefWidth="147.0" text="Affiche Reclamation" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

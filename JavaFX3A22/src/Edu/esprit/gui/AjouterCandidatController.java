@@ -27,6 +27,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import Edu.esprit.services.candidatService;
 import Edu.esprit.services.utilisateurService;
+import java.util.List;
+import javafx.collections.ObservableList;
 
 /**
  * FXML Controller class
@@ -102,11 +104,11 @@ public class AjouterCandidatController implements Initializable {
     @FXML
     private TextField candidatAdresse;
     @FXML
-    private ChoiceBox<?> candidatSexe;
+    private ComboBox<?> candidatSexe;
     @FXML
-    private ChoiceBox<?> candidatEtat;
+    private ComboBox<?> candidatEtat;
     @FXML
-    private ChoiceBox<?> candidatDomaine;
+    private ComboBox<?> candidatDomaine;
     @FXML
     private Button inscrireCandidat;
     @FXML
@@ -120,11 +122,31 @@ public class AjouterCandidatController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Rebelotte();
     }    
     
     
-   
+   public void Rebelotte(){
+         //combobox
+         utilisateurService us = new utilisateurService();
+    
+        
+        List<String> reponses=us.afficherSexe();
+        List<String> reponses2=us.afficherEtat();
+        List<String> reponses3=us.afficherDomaine();
+
+        candidatSexe.setItems((ObservableList) reponses);
+        
+      
+
+        candidatEtat.setItems((ObservableList) reponses2);
+        
+        
+
+        candidatDomaine.setItems((ObservableList) reponses3);
+        
+        
+    }    
 
     @FXML
     private void addCandidat(ActionEvent event) throws IOException {
@@ -175,6 +197,19 @@ public class AjouterCandidatController implements Initializable {
         }catch(IOException ex) {
             System.out.println(ex.getMessage());
     }
+    }
+
+    @FXML
+    private void candidatSexe(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void candidatEtat(ActionEvent event) {
+    }
+
+    @FXML
+    private void candidatDomaine(ActionEvent event) {
     }
       
    

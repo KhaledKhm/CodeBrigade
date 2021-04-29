@@ -5,7 +5,7 @@
  */
 package Edu.esprit.gui;
 
-import com.sun.istack.internal.Nullable;
+//import com.sun.istack.internal.Nullable;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
@@ -81,15 +81,15 @@ public class LoginController implements Initializable {
         motpass = utilisateurPassword.getText();
         utilisateurService sc = new utilisateurService();
         motpass = sc.MD5(motpass);
-                   String status;
-if(sc.getRolebyId(sc.getIdbymail(email)).toString() == "NULL")
+                  // String status;
+/*if(sc.getStatusbyID(sc.getIdbymail(email)).toString().equals("Banned"))
 {
     status = "Banned";
 }
 else
 {
     status = "";
-}
+}*/
         //System.out.println(status);
       //  System.out.println(motpass);
         if (sc.login(email, motpass)) {
@@ -120,14 +120,14 @@ else
             }*/
 
             if(role.equals("ROLE_Formateur"))
-                    { if (status.equals("Banned")){
+                    { /*if (status.equals("Banned")){
                      Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("BANNED");
             alert.setHeaderText(null);
             alert.setContentText("!!! Your account is banned! !!!");
             alert.showAndWait();
             
-                    }else if (status.isEmpty()){
+                    }else if (status.equals("Unbanned")){*/
                         FXMLLoader loader = new FXMLLoader();
                         labelStatus.getScene().getWindow().hide();
                         Stage prStage = new Stage();
@@ -145,10 +145,10 @@ else
         tray.setMessage("Bonjour Formateur");
         tray.setNotificationType(NotificationType.SUCCESS);
         tray.showAndDismiss(Duration.millis(3000));
-                    } 
+                //    } 
                     } 
             else if(role.equals("ROLE_Candidat"))
-                    { 
+                    { /*
                          if (status.equals("Banned")){
                      Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("BANNED");
@@ -156,11 +156,11 @@ else
             alert.setContentText("!!! Your account is banned! !!!");
             alert.showAndWait();
             
-                    }else if (status.isEmpty()){
+                    }else {*/
                         FXMLLoader loader = new FXMLLoader();
                         labelStatus.getScene().getWindow().hide();
                         Stage prStage = new Stage();
-                        loader.setLocation(getClass().getResource("ajouterBlog.fxml"));
+                        loader.setLocation(getClass().getResource("EditerProfil.fxml"));
                         Parent root = loader.load();
                         Scene scene = new Scene(root);
                         prStage.setScene(scene);
@@ -174,17 +174,17 @@ else
         tray.setMessage("Bonjour Candidat");
         tray.setNotificationType(NotificationType.SUCCESS);
         tray.showAndDismiss(Duration.millis(3000));
-                    }  
+                  //  }  
                     }
                else if(role.equals("ROLE_Entreprise"))
-                    { if (status.equals("Banned")){
+                    { /*if (status.equals("Banned")){
                      Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("BANNED");
             alert.setHeaderText(null);
             alert.setContentText("!!! Your account is banned! !!!");
             alert.showAndWait();
             
-                    }else if (status.isEmpty()){
+                    }else if (status.equals("Unbanned")){*/
                         FXMLLoader loader = new FXMLLoader();
                         labelStatus.getScene().getWindow().hide();
                         Stage prStage = new Stage();
@@ -202,17 +202,17 @@ else
         tray.setMessage("Bonjour Entreprise");
         tray.setNotificationType(NotificationType.SUCCESS);
         tray.showAndDismiss(Duration.millis(3000));
-                    }   
+                 //   }   
                     }
                else if(role.equals("ROLE_Admin"))
-                    { if (status.equals("Banned")){
+                    { /*if (status.equals("Banned")){
                      Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("BANNED");
             alert.setHeaderText(null);
             alert.setContentText("!!! Your account is banned! !!!");
             alert.showAndWait();
             
-                    }else if (status.isEmpty()){
+                    }else {*/
                         FXMLLoader loader = new FXMLLoader();
                         labelStatus.getScene().getWindow().hide();
                         Stage prStage = new Stage();
@@ -230,7 +230,7 @@ else
         tray.setMessage("Bonjour Admin");
         tray.setNotificationType(NotificationType.SUCCESS);
         tray.showAndDismiss(Duration.millis(3000));
-                    }   
+                  //  }   
                     }               
             
             
@@ -297,7 +297,7 @@ else
 
         Message message = new MimeMessage(session);
         message.setFrom(new InternetAddress(MyAccountEmail));
-        message.setRecipient(Message.RecipientType.TO,new InternetAddress("khmthe@gmail.com")); // to be changed aa ey 
+        message.setRecipient(Message.RecipientType.TO,new InternetAddress(email)); // to be changed aa ey 
         message.setSubject("new password");
         message.setText("Monsieur/Madame, Votre code est "+codem); //to be changed 
 

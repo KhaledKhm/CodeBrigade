@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Edu.esprit.gui.ModifierAvisController">
+   <children>
+      <Label layoutX="141.0" layoutY="40.0" text="Commentaire :" />
+      <Label layoutX="145.0" layoutY="116.0" text="Etoiles: " />
+      <TextField fx:id="txtnom" layoutX="141.0" layoutY="66.0" />
+      <Button fx:id="btnmodifier" layoutX="134.0" layoutY="200.0" mnemonicParsing="false" onAction="#modifieron" text="Modifier" />
+      <Rating fx:id="txtprenom" layoutX="133.0" layoutY="142.0" />
+      <TextField fx:id="txtid" layoutX="348.0" layoutY="66.0" visible="false" />
+      <Button fx:id="btncancel" layoutX="209.0" layoutY="200.0" mnemonicParsing="false" onAction="#cancelon" text="Cancel" />
+   </children>
+</AnchorPane>

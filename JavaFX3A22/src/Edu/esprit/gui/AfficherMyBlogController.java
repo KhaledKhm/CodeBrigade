@@ -41,6 +41,10 @@ import Edu.esprit.entities.blog;
 import javafx.scene.control.Alert;
 import javafx.util.Duration;
 import Edu.esprit.services.utilisateurService;
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert.AlertType;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
@@ -58,8 +62,6 @@ public class AfficherMyBlogController implements Initializable {
     private VBox chosenFruitCard;
     @FXML
     private ComboBox<?> languageChange;
-    @FXML
-    private Button retourBlog;
     @FXML
     private Button home;
     @FXML
@@ -84,6 +86,10 @@ public class AfficherMyBlogController implements Initializable {
     private TextField searchtf;
     
     int idBlog;
+    @FXML
+    private Button btn_supp_blog;
+    @FXML
+    private Button retourBlog1;
     
 
     /**
@@ -128,11 +134,23 @@ public class AfficherMyBlogController implements Initializable {
     }
 
     @FXML
-    private void returnBlog(ActionEvent event) {
+    private void returnBlog(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherAllBlogs.fxml"));
+        
+          Parent root;
+          root = loader.load();
+          AfficherAllBlogsController LCC = loader.getController();
+          home.getScene().setRoot(root);
     }
 
     @FXML
-    private void home(ActionEvent event) {
+    private void home(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherAllBlogs.fxml"));
+        
+          Parent root;
+          root = loader.load();
+          AfficherAllBlogsController LCC = loader.getController();
+          home.getScene().setRoot(root);
     }
 
     @FXML
@@ -144,8 +162,9 @@ public class AfficherMyBlogController implements Initializable {
         tf_modif_contenu.setText(e.getContenu());
     }
 
+   
     @FXML
-    private void modifierEvaluation(ActionEvent event) {
+    private void modifierBlog(ActionEvent event) {
          String Titre = tf_modif_sujet.getText();
           String Contenu = tf_modif_contenu.getText();
          
@@ -182,6 +201,29 @@ public class AfficherMyBlogController implements Initializable {
              afficherMesBlogs();         
          }
     }
+
+    @FXML
+    private void supprimerBlog(ActionEvent event) {
+        String id= (String) tf_modif_sujet.getText();
+        blogService es=new blogService();
+        es.supprimerBlog(idBlog);
+        //alerte de suppression
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Gestion des blogs");
+        alert.setHeaderText(null);
+        alert.setContentText("Blog Supprimé");
+        alert.showAndWait();
+        //notification
+        TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+        tray.setAnimationType(type);
+        tray.setTitle("Suppression Evaluation");
+        tray.setMessage("Evaluation Supprimée");
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(3000));
+        afficherMesBlogs(); 
+    }
+
     
 
 

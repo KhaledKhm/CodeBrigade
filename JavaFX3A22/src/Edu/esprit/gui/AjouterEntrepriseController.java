@@ -25,6 +25,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import Edu.esprit.services.entrepriseService;
 import Edu.esprit.services.utilisateurService;
+import java.util.List;
+import javafx.collections.ObservableList;
 
 /**
  * FXML Controller class
@@ -99,7 +101,25 @@ public class AjouterEntrepriseController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Rebelotte();
+    }    
+    
+    
+   public void Rebelotte(){
+         //combobox
+         utilisateurService us = new utilisateurService();
+    
+        
+        
+        List<String> reponses=us.afficherDomaine();
+
+       
+        
+        
+
+        entrepriseSecteur.setItems((ObservableList) reponses);
+        
+        
     }    
 
     @FXML
@@ -129,6 +149,10 @@ public class AjouterEntrepriseController implements Initializable {
 
     @FXML
     private void retourInscriptionChoice(ActionEvent event) {
+    }
+
+    @FXML
+    private void entrepriseSecteur(ActionEvent event) {
     }
     
 }

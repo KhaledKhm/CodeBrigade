@@ -47,17 +47,17 @@ public class DashboardController implements Initializable {
 
     @FXML
     private void gotoUtilisateurs(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/DashboardUtilisateurs.fxml"));
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherAllUsers.fxml"));
         
         Parent root;
         root = loader.load();
-        DashboardUtilisateursController DUC = loader.getController();
+        AfficherAllUsersController DUC = loader.getController();
         BtUtilisateurs1.getScene().setRoot(root);
     }
 
     @FXML
     private void logout(ActionEvent event) throws IOException {
-       FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/Login.fxml"));
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
         
           Parent root;
           root = loader.load();

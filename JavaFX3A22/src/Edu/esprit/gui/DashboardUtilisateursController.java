@@ -61,7 +61,7 @@ public class DashboardUtilisateursController implements Initializable {
     @FXML
     private void logout(ActionEvent event) throws IOException {
         
-           FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/Login.fxml"));
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
         
           Parent root;
           root = loader.load();
@@ -75,7 +75,7 @@ public class DashboardUtilisateursController implements Initializable {
 
     @FXML
     private void gotoDashboard(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/Dashboard.fxml"));
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
         
           Parent root;
           root = loader.load();

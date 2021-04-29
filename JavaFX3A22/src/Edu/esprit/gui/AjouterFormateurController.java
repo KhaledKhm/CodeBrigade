@@ -5,14 +5,16 @@
  */
 package Edu.esprit.gui;
 
-import Edu.esprit.services.utilisateurService;
 import Edu.esprit.services.formateurService;
+import Edu.esprit.services.utilisateurService;
 import Edu.esprit.entities.utilisateur;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -94,8 +96,35 @@ public class AjouterFormateurController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Rebelotte();
     }    
+    
+    
+   public void Rebelotte(){
+         //combobox
+         utilisateurService us = new utilisateurService();
+    
+        
+        List<String> reponses=us.afficherSexe();
+        List<String> reponses2=us.afficherEtat();
+        List<String> reponses3=us.afficherDomaine();
+
+        formateurSexe.setItems((ObservableList) reponses);
+        
+      
+
+        formateurEtat.setItems((ObservableList) reponses2);
+        
+        
+
+        formateurDomaine.setItems((ObservableList) reponses3);
+        
+        
+    }    
+    
+    
+    
+    
     @FXML
     private TextField formateurCIN;
     @FXML
@@ -105,17 +134,17 @@ public class AjouterFormateurController implements Initializable {
     @FXML
      private TextField formateurPrenom;
     @FXML
-     private ChoiceBox<?> formateurSexe;
+     private ComboBox<?> formateurSexe;
     @FXML
      private DatePicker formateurDate;
     @FXML
-     private ChoiceBox<?> formateurEtat;
+     private ComboBox<?> formateurEtat;
     @FXML
      private TextField formateurTelephone;
     @FXML
      private TextField formateurAdresse;
     @FXML
-     private ChoiceBox<?> formateurDomaine;
+     private ComboBox<?> formateurDomaine;
      
     @FXML
       private void addFormateur(ActionEvent event) throws Exception{
@@ -163,6 +192,18 @@ public class AjouterFormateurController implements Initializable {
             System.out.println(ex.getMessage());
         }
        
+    }
+
+    @FXML
+    private void formateurSexe(ActionEvent event) {
+    }
+
+    @FXML
+    private void formateurEtat(ActionEvent event) {
+    }
+
+    @FXML
+    private void formateurDomaine(ActionEvent event) {
     }
 
 

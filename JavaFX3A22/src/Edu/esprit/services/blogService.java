@@ -67,6 +67,30 @@ public class blogService {
      return blogs;
    }
          
+          public ObservableList<blog> afficherAllBlogs(){ 
+       ObservableList<blog> blogs =FXCollections.observableArrayList();
+       
+        try {
+            
+            String sql="select * from blog";
+            ste =cnx.prepareStatement(sql);
+            ResultSet rs = ste.executeQuery();
+            while (rs.next()) { 
+                blog b = new blog();
+                b.setIdblog(rs.getInt("idblog"));
+                b.setTitre(rs.getString("titre"));
+                b.setContenu(rs.getString("contenu"));
+                b.setIdUtilisateur(rs.getInt("idUtilisateur"));
+                blogs.add(b);
+                
+            
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+     return blogs;
+   }
+         
          public ObservableList<String> afficherBlogID() 
     {
         ObservableList<String> ids= FXCollections.observableArrayList();

@@ -63,7 +63,7 @@ public class PassCodeController implements Initializable {
         
         else if (code == codex) {
             
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/forgottenpass.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("forgottenpass.fxml"));
         
         Parent root;
         root = loader.load();

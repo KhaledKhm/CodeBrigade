@@ -169,6 +169,11 @@ public class utilisateur {
         this.googleAuthenticatorSecret = googleAuthenticatorSecret;
     }
 
+    public utilisateur(int cin_personne, String email, String password, String nom_personne, String prenom_personne, int telephone, String adresse) {
+        
+        
+    }
+
   
     
 

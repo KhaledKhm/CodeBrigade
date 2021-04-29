@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="300.0" stylesheets="@HoussemStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Edu.esprit.gui.SampleEntretienController">
+   <children>
+      <ImageView fx:id="sample_img" fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="sample_label" layoutX="125.0" layoutY="189.0" text="Label" textFill="#eb0808">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="sample_description" layoutX="125.0" layoutY="224.0" text="Description">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="sample_date" layoutX="125.0" layoutY="259.0" text="Date">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

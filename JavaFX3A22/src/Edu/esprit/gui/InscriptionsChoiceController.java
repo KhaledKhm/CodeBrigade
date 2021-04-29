@@ -54,7 +54,7 @@ public class InscriptionsChoiceController implements Initializable {
         
             try{
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/ajouterFormateur.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ajouterFormateur.fxml"));
         
         Parent root;
         root = loader.load();
@@ -72,7 +72,7 @@ public class InscriptionsChoiceController implements Initializable {
     public void inscrireCandidat(ActionEvent event) {
          try{
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/ajouterCandidat.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ajouterCandidat.fxml"));
         
         Parent root;
         root = loader.load();
@@ -90,7 +90,7 @@ public class InscriptionsChoiceController implements Initializable {
     public void inscrireEntreprise(ActionEvent event) {
         try{
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/ajouterEntreprise.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ajouterEntreprise.fxml"));
         
         Parent root;
         root = loader.load();
@@ -108,7 +108,7 @@ public class InscriptionsChoiceController implements Initializable {
     public void retourALogin(ActionEvent event) {
         try{
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/Login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
         
         Parent root;
         root = loader.load();
