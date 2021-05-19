@@ -57,9 +57,15 @@ public class SignInForm extends BaseForm {
         password.setSingleLineTextArea(false);
         Button signIn = new Button("Sign In");
         Button signUp = new Button("Sign Up");
+        
+        //forgotten password
+        Button mp= new Button ("Mot de passe oublier?","CenterLabel");
+        
+        
+        
         signUp.addActionListener(e -> new SignUpForm(res).show());
         signUp.setUIID("Link");
-        Label doneHaveAnAccount = new Label("Don't have an account?");
+        Label doneHaveAnAccount = new Label("Vous n'avez pas du compte?");
         
         Container content = BoxLayout.encloseY(
                 new FloatingHint(email),
@@ -67,7 +73,7 @@ public class SignInForm extends BaseForm {
                 new FloatingHint(password),
                 createLineSeparator(),
                 signIn,
-                FlowLayout.encloseCenter(doneHaveAnAccount, signUp)
+                FlowLayout.encloseCenter(doneHaveAnAccount, signUp),mp
         );
         content.setScrollableY(true);
         add(BorderLayout.SOUTH, content);
@@ -76,6 +82,15 @@ public class SignInForm extends BaseForm {
         {
            ServiceUtilisateur.getInstance().signin(email, password, res);
         });
+        
+        //forgotten password event
+        
+        mp.addActionListener((e) -> {
+        
+            new ActivateForm(res).show();
+        });
+        
+        
     }
     
 }

@@ -20,9 +20,11 @@
 package com.mycompany.gui;
 
 import com.codename1.components.FloatingHint;
+import com.codename1.components.InfiniteProgress;
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
@@ -44,7 +46,7 @@ public class ActivateForm extends BaseForm {
         super(new BorderLayout());
         Toolbar tb = new Toolbar(true);
         setToolbar(tb);
-        tb.setUIID("Container");
+        tb.setUIID("IMGLogin");
         getTitleArea().setUIID("Container");
         Form previous = Display.getInstance().getCurrent();
         tb.setBackCommand("", e -> previous.showBack());
@@ -52,12 +54,41 @@ public class ActivateForm extends BaseForm {
         
         add(BorderLayout.NORTH, 
                 BoxLayout.encloseY(
-                        new Label(res.getImage("smily.png"), "LogoLabel"),
+                        new Label(res.getImage("oublier.png"), "LogoLabel"),
                         new Label("Awsome Thanks!", "LogoLabel")
                 )
         );
         
-        TextField code = new TextField("", "Enter Code", 20, TextField.PASSWORD);
+        TextField email = new TextField("","saisir votre email",20,TextField.ANY);
+        email.setSingleLineTextArea(false);
+        
+        Button valider = new Button("Valider");
+        Label haveAnAcount = new Label("Retour pour connecter?");
+        Button signIn = new Button("Rennouveler votre mot de passe");
+        signIn.addActionListener( e-> previous.showBack());//to return to the previous window
+        signIn.setUIID("CenterLink");
+        
+        Container content = BoxLayout.encloseY(
+     
+                new FloatingHint(email),
+                createLineSeparator(),
+                valider,
+                FlowLayout.encloseCenter(haveAnAcount, signIn)
+                
+        );
+        
+        content.setScrollableY(true);
+        
+        add(BorderLayout.CENTER,content);
+        
+        valider.requestFocus();
+        
+        valider.addActionListener(e -> {
+            InfiniteProgress ip = new InfiniteProgress();
+                final Dialog ipDialog = ip.showInfiniteBlocking();
+        });
+        
+      /*  TextField code = new TextField("", "Enter Code", 20, TextField.PASSWORD);
         code.setSingleLineTextArea(false);
         
         Button signUp = new Button("Sign Up");
@@ -79,7 +110,7 @@ public class ActivateForm extends BaseForm {
         content.setScrollableY(true);
         add(BorderLayout.SOUTH, content);
         signUp.requestFocus();
-        signUp.addActionListener(e -> new NewsfeedForm(res).show());
+        signUp.addActionListener(e -> new NewsfeedForm(res).show());*/
     }
     
 }
