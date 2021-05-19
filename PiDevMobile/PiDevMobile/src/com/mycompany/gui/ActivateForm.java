@@ -22,7 +22,10 @@ package com.mycompany.gui;
 import com.codename1.components.FloatingHint;
 import com.codename1.components.InfiniteProgress;
 import com.codename1.components.SpanLabel;
+
+
 import com.codename1.ui.Button;
+import com.codename1.ui.Command;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
@@ -34,6 +37,16 @@ import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.util.Resources;
+import com.mycompany.services.ServiceUtilisateur;
+import com.sun.mail.smtp.SMTPTransport;
+import java.util.Date;
+import java.util.Properties;
+
+import javax.mail.Message;
+
+import javax.mail.Session;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  * Account activation UI
@@ -42,6 +55,7 @@ import com.codename1.ui.util.Resources;
  */
 public class ActivateForm extends BaseForm {
 
+    TextField email;
     public ActivateForm(Resources res) {
         super(new BorderLayout());
         Toolbar tb = new Toolbar(true);
@@ -54,12 +68,12 @@ public class ActivateForm extends BaseForm {
         
         add(BorderLayout.NORTH, 
                 BoxLayout.encloseY(
-                        new Label(res.getImage("oublier.png"), "LogoLabel"),
-                        new Label("Awsome Thanks!", "LogoLabel")
+                        new Label(res.getImage("oublie.png"), "LogoLabel"),
+                        new Label("Mot de passe Oublie!", "LogoLabel")
                 )
         );
         
-        TextField email = new TextField("","saisir votre email",20,TextField.ANY);
+        email = new TextField("","saisir votre email",20,TextField.ANY);
         email.setSingleLineTextArea(false);
         
         Button valider = new Button("Valider");
@@ -73,7 +87,8 @@ public class ActivateForm extends BaseForm {
                 new FloatingHint(email),
                 createLineSeparator(),
                 valider,
-                FlowLayout.encloseCenter(haveAnAcount, signIn)
+                FlowLayout.encloseCenter(haveAnAcount),
+                signIn
                 
         );
         
@@ -86,6 +101,12 @@ public class ActivateForm extends BaseForm {
         valider.addActionListener(e -> {
             InfiniteProgress ip = new InfiniteProgress();
                 final Dialog ipDialog = ip.showInfiniteBlocking();
+                
+                sendMail(res);
+                ipDialog.dispose();
+                Dialog.show("Mot de passe","Nous avons envoye le mdp par email",new Command("Ok"));
+                new SignInForm(res).show();
+                refreshTheme();
         });
         
       /*  TextField code = new TextField("", "Enter Code", 20, TextField.PASSWORD);
@@ -112,5 +133,42 @@ public class ActivateForm extends BaseForm {
         signUp.requestFocus();
         signUp.addActionListener(e -> new NewsfeedForm(res).show());*/
     }
+    //sendMail
+    public void sendMail(Resources res){
+        try{
+            Properties props = new Properties();
+		props.put("mail.transport.protocol", "smtp"); //SMTP protocol
+                props.put("mail.smtps.host", "smtp.gmail.com"); //SMTP Host
+		props.put("mail.smtp.port", "587"); //TLS Port
+		props.put("mail.smtp.auth", "true"); //enable authentication
+		
+                Session session = Session.getInstance(props, null);
+                
+                MimeMessage msg = new MimeMessage(session);
+                
+                msg.setFrom(new InternetAddress("Reinitialisation de mot de passe <monEmail@domain.com>"));
+                msg.setRecipients(Message.RecipientType.TO, email.getText().toString());
+                msg.setSubject("JobBook : Confirmation du ");
+                msg.setSentDate(new Date(System.currentTimeMillis()));
+                
+                String mp = ServiceUtilisateur.getInstance().getPasswordByEmail(email.getText().toString(),res);
+                String txt = "Bienvenue sur JobBook : Taoer ce mot de passe : "+mp+" dans le champs requis et appuier sur confirmer";
+            
+                msg.setText(txt);
+                
+                SMTPTransport st = (SMTPTransport)session.getTransport("smtps");
+                st.connect("smtp.gmail",465,"houssem.ouerdiane@esprit.tn","fallout3");
+                
+                st.sendMessage(msg, msg.getAllRecipients());
+            
+                System.out.println("server response : "+st.getLastServerResponse());
+            
+            
+        }catch(Exception e ){
+            e.printStackTrace();
+        }
+    }
+    
+    
     
 }

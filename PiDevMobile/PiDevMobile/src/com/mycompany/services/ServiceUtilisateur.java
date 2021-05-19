@@ -11,7 +11,9 @@ import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.*;
 import com.codename1.ui.util.Resources;
+import com.mycompany.gui.SessionManager;
 import com.mycompany.utils.Statics;
+import static java.lang.Integer.parseInt;
 import java.util.Map;
 import java.util.Vector;
 
@@ -31,6 +33,11 @@ public class ServiceUtilisateur {
     
     //initialisation connection request
     private ConnectionRequest req;
+    String json;
+    
+    int onlineId;
+    String onlineEmail;
+    String onlineRole;
     
     public static ServiceUtilisateur getInstance() {
         if (instance == null)
@@ -97,9 +104,36 @@ public class ServiceUtilisateur {
                 
                 Map<String,Object> user = j.parseJSON(new CharArrayReader(json.toCharArray()));
                 
+                
+                //session
+                
+                 //Session  Service
+                float id = Float.parseFloat(user.get("id").toString());
+                SessionManager.setId((int)id);
+                
+                SessionManager.setEmail(user.get("email").toString());
+                SessionManager.setPassowrd(user.get("password").toString());
+                SessionManager.setRole(user.get("role").toString());
+                
+                System.out.println("current user ==>"+SessionManager.getEmail()+", "+SessionManager.getPassowrd()+", "+SessionManager.getRole());
+                
+                onlineId=parseInt(user.get("id").toString());
+                onlineEmail=user.get("password").toString();
+                onlineRole=user.get("role").toString();
+              
+                
                 if(user.size() >0){ //user found
                     //ekteb lblasa eli 7achtek biha par exemple
+                    if(onlineRole.equals("ROLE_Candidat")){
                     //new ListeReclamationForm(rs).show();
+                    }else if(onlineRole.equals("ROLE_Formateur")){
+                    //new ListeReclamationForm(rs).show();
+                    }else if(onlineRole.equals("ROLE_Entreprise")){
+                    //new ListeReclamationForm(rs).show();
+                    }else if(onlineRole.equals("ROLE_Admin")){
+                    //new ListeReclamationForm(rs).show();
+                    }
+                    
                 }   
             
             }
@@ -113,5 +147,33 @@ public class ServiceUtilisateur {
     }
     
     
+    //mdp oublie
+    public String getPasswordByEmail(String email, Resources rs){
+    
+        String mp= " ";
+        String url=Statics.BASE_URL+"/mobile/getPasswordByEmail?email="+email;
+        req = new ConnectionRequest(url,false);
+        req.setUrl(url);
+        
+        req.addResponseListener(e ->{
+            JSONParser j = new JSONParser();
+            
+            json = new String(req.getResponseData()) + "";
+            
+            try{
+            
+                System.out.println("data =="+json);
+                
+                Map<String,Object> password = j.parseJSON(new CharArrayReader(json.toCharArray()));
+            }catch(Exception ex){
+                ex.printStackTrace();
+            }
+            
+        });
+        
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        
+       return json;
+    }
     
 }
