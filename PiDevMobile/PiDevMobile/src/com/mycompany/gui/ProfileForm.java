@@ -21,7 +21,7 @@ import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
-import com.mycompany.Service.ServiceUtilisateur;
+import com.mycompany.services.ServiceUtilisateur;
 import com.mycompany.gui.BaseForm;
 import com.mycompany.gui.SessionManager;
 import java.io.IOException;
@@ -118,7 +118,7 @@ public class ProfileForm extends BaseForm {
         modiff.addActionListener((edit)-> {
                  InfiniteProgress ip = new InfiniteProgress();
             final Dialog ipDlg    = ip.showInifiniteBlocking();
-            ServiceUtilisateur.EditUser(email.getText(), password.getText(),  path.getText());
+            ServiceUtilisateur.EditUser(email.getText(),password.getText());
             SessionManager.setEmail(email.getText());
             SessionManager.setPassowrd(password.getText());
 

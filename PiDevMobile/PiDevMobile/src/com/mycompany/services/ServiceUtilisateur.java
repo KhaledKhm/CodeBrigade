@@ -8,11 +8,13 @@ package com.mycompany.services;
 import com.codename1.io.CharArrayReader;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
+import com.codename1.io.MultipartRequest;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.*;
 import com.codename1.ui.util.Resources;
 import com.mycompany.gui.SessionManager;
 import com.mycompany.utils.Statics;
+import java.io.IOException;
 import static java.lang.Integer.parseInt;
 import java.util.Map;
 import java.util.Vector;
@@ -175,5 +177,34 @@ public class ServiceUtilisateur {
         
        return json;
     }
+    
+     
+    public static void EditUser(String email, String password){
+        
+    String url = Statics.BASE_URL+"/mobile/editUser?email="+email+"password="+password;
+                MultipartRequest req = new MultipartRequest();
+                
+                req.setUrl(url);
+                req.setPost(true);
+                req.addArgument("id", String.valueOf(SessionManager.getId()));
+                req.addArgument("email", email);
+                req.addArgument("password", password);
+                
+                System.out.println(url);
+                System.out.println(email);
+                req.addResponseListener((response)-> {
+                    
+                    byte[] data = (byte[]) response.getMetaData();
+                    String s = new String(data);
+                    System.out.println(s);
+                    if (s.equals("success")) {
+                    } else {
+                        Dialog.show("Erreur", "Echec de modification", "Ok", null);
+                    }                    
+                });
+                NetworkManager.getInstance().addToQueueAndWait(req);
+    }
+    
+    
     
 }
