@@ -1,0 +1,59 @@
+{% extends 'base2.html.twig' %}
+{% block body %}
+
+    <table class="table">
+        <tr class="table-light">
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Sexe</th>
+            <th scope="col">Etat Scolaire</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Telephone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Status</th>
+            <th scope="col">Date de naissance</th>
+            <th scope="col">Compétence</th>
+        </tr>
+        {% for Post in post %}
+            <tr>
+                <td>
+                    {{Post.Nom}}
+                </td>
+                <td>
+                    {{Post.Prenom}}
+                </td>
+                <td>
+                    {{ Post.Sexe}}
+                </td>
+                <td>
+                    {{ Post.EtatScolaire}}
+                </td>
+                <td>
+                    {{ Post.Adresse}}
+                </td>
+                <td>
+                    {{ Post.Telephone}}
+                </td>
+                <td>
+                    {{ Post.Email}}
+                </td>
+                <td>
+                    {{ Post.Status}}
+                </td>
+                <td>
+                    {{ Post.DateNais}}
+                </td>
+                <td>
+                    {{ Post.Competences}}
+                </td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('rendezvous',{'id':Post.id})}}">Accepter</a>
+                </td>
+                <td>
+                    <form  action="{{ path('suppPost',{'id':Post.id})}}"><button type="submit" class="btn btn-danger"> supprimer</button></form>
+                </td>
+
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
